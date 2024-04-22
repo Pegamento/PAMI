@@ -1,9 +1,9 @@
 {
-    "name": "chan-sccp/pami",
+    "name": "pegamento/pami",
     "type": "library",
     "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented (Fork)",
     "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor", "chan-sccp"],
-    "homepage": "http://github.com/chan-sccp/PAMI",
+    "homepage": "http://github.com/Pegamento/PAMI",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -20,10 +20,9 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/chan-sccp/PAMI/issues",
-        "wiki": "https://github.com/chan-sccp/PAMI/wiki",
-        "source": "https://github.com/chan-sccp/PAMI",
-        "docs": "https://chan-sccp.github.io/PAMI"
+        "issues": "https://github.com/Pegamento/PAMI/issues",
+        "wiki": "https://github.com/Pegamento/PAMI/wiki",
+        "source": "https://github.com/Pegamento/PAMI"
     },
     "autoload": {
         "psr-4": {

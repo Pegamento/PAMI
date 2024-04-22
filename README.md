@@ -1,19 +1,5 @@
-[![Gitter](https://badges.gitter.im/chan-sccp/PAMI.svg)](https://gitter.im/chan-sccp/PAMI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-<!--
-[![License](https://poser.pugx.org/marcelog/PAMI/license)](https://packagist.org/packages/marcelog/PAMI)
-[![Latest Stable Version](https://poser.pugx.org/marcelog/PAMI/v/stable)](https://packagist.org/packages/marcelog/PAMI)
-[![Documentation Status](https://readthedocs.org/projects/pami/badge/?version=latest)](http://pami.readthedocs.org/en/latest/?badge=latest)
--->
-[![Build Status](http://img.shields.io/travis/chan-sccp/PAMI.svg?style=flat)](https://app.travis-ci.com/github/chan-sccp/PAMI)
-[![Coverage Status](https://coveralls.io/repos/github/chan-sccp/PAMI/badge.svg?branch=master)](https://coveralls.io/github/chan-sccp/PAMI?branch=master)
-[![Code Climate](https://codeclimate.com/github/chan-sccp/PAMI/badges/gpa.svg)](https://codeclimate.com/github/chan-sccp/PAMI)
-<!--
-[![Issue Count](https://codeclimate.com/github/chan-sccp/PAMI/badges/issue_count.svg)](https://codeclimate.com/github/chan-sccp/PAMI)
-[![Click here to lend your support to: PAMI and make a donation at pledgie.com !](https://pledgie.com/campaigns/30944.png?skin_name=chrome' border='0')](https://pledgie.com/campaigns/30944)
--->
-
 # Fork !
-Note that this is a fork of the official release by [Marcelo Gornstein](https://github.com/marcelog/PAMI), which has not been maintained for a while (hence the fork).
+This version aims to optimize for PJSIP as a channel. Note that this is a fork of https://github.com/chan-sccp/PAMI which is a fork of the original release by [Marcelo Gornstein](https://github.com/marcelog/PAMI) - however their SCCP Channel modifications have been removed.
 
 # Introduction
 
@@ -24,13 +10,11 @@ events, using an observer-listener pattern.
 The idea behind this, is to easily implement operator consoles, monitors, etc.
 either via SOA or ajax.
 
- * A port for nodejs is available at: http://marcelog.github.com/Nami
- * A port for erlang is available at: https://github.com/marcelog/erlami
 
 # Resources
 
  * [API](doc/api.md) in Markdown
- * [API](https://chan-sccp.github.io/PAMI) in html
+ * [API](https://chan-sccp.github.io/PAMI) original chan-sccp documentation in html
  * Collection of [Examples](doc/examples/)
  * [Complete PAGI/PAMI talk for the PHP Conference Argentina 2013](http://www.slideshare.net/mgornstein/phpconf-2013). Check the slide notes for the complete text :)
 
@@ -43,7 +27,7 @@ Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
 ```json
   "require": {
-    "chan-sccp/pami": "2.*"
+    "pegamento/pami": "2.0.11"
   }
 ```
 
@@ -294,18 +278,6 @@ can still catch them. If you catch one of these, please report it!
  * RTCPSent
  * RTPReceiverStat
  * RTPSenderStat
- * SCCPConfEnd
- * SCCPConfEntered
- * SCCPConfLeave
- * SCCPConfLeft
- * SCCPConfLock
- * SCCPConfParticipantKicked
- * SCCPConfParticipantMute
- * SCCPConfParticipantPromotion
- * SCCPConfStart
- * SCCPConfStarted
- * SCCPShowDevice
- * SCCPShowLine
  * SendFAX
  * SessionLimit
  * SessionTimeout
@@ -478,36 +450,6 @@ can still catch them. If you catch one of these, please report it!
  * QueueUnpause
  * Redirect
  * Reload
- * SCCPAnswerCall
- * SCCPConference
- * SCCPConfigMetaData
- * SCCPDeviceAddLine
- * SCCPDeviceRestart
- * SCCPDeviceSetDND
- * SCCPDeviceUpdate
- * SCCPDndDevice
- * SCCPHangupCall
- * SCCPHoldCall
- * SCCPLineForwardUpdate
- * SCCPMessageDevice
- * SCCPMessageDevices
- * SCCPMicrophone
- * SCCPShowChannels
- * SCCPShowConference
- * SCCPShowConferences
- * SCCPShowDevice
- * SCCPShowDevices
- * SCCPShowGlobals
- * SCCPShowHintLineStates
- * SCCPShowHintSubscriptions
- * SCCPShowLine
- * SCCPShowLines
- * SCCPShowMWISubscriptions
- * SCCPShowSessions
- * SCCPShowSoftkeySets
- * SCCPStartCall
- * SCCPSystemMessage
- * SCCPTokenAck
  * SendText
  * SetVar
  * ShowDialPlan
