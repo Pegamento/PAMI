@@ -37,7 +37,7 @@ use PAMI\Exception\PAMIException;
 /**
  * A generic response message from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -60,6 +60,11 @@ abstract class Response extends IncomingMessage
      */
     protected $completed;
 
+    /**
+     * Declare var according to PHP8 spec
+     */
+    public $eventsCount;
+    
     /**
      * Serialize function.
      *
@@ -133,8 +138,8 @@ abstract class Response extends IncomingMessage
     public function isList()
     {
         return
-            stristr($this->getKey('EventList'), 'start') !== false
-            || stristr($this->getMessage(), 'follow') !== false
+            stristr(($this->getKey('EventList') ?? 'empty'), 'start') !== false
+            || stristr(($this->getMessage() ?? 'empty'), 'follow') !== false
         ;
     }
 

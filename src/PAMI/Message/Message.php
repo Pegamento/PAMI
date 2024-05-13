@@ -159,7 +159,7 @@ abstract class Message
             if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
                 return (boolean)false;
             }
-            if (filter_var($value, FILTER_SANITIZE_STRING, FILTER_NULL_ON_FAILURE)) {
+            if ($value = htmlspecialchars($value)) {
                 return (string)$value;
             }
             if (filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE)) {

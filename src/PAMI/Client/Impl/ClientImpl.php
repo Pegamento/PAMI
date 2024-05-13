@@ -154,7 +154,7 @@ class ClientImpl implements IClient
      * @var string
      */
     private $lastActionId;
-
+    
     /**
      * Event mask to apply on login action.
      * @var string|null
@@ -516,7 +516,7 @@ class ClientImpl implements IClient
             }
             $response = $this->getRelated($message);
             if ($response != false) {
-                $this->_lastActionId = false;
+                $this->lastActionId = false;
                 return $response;
             }
         }
