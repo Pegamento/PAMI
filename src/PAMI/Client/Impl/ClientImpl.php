@@ -489,7 +489,7 @@ class ClientImpl implements IClient
     public function send(OutgoingMessage $message)
     {
         $actionId = $message->getActionId();
-        if (null === $actionId) {
+        if (null === $actionId && $message instanceof \PAMI\Message\Action\ActionMessage) {
             $actionId = bin2hex(random_bytes(8));
             $message->setActionId($actionId);
             $this->logger->debug(

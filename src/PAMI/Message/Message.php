@@ -28,6 +28,8 @@
  */
 namespace PAMI\Message;
 
+use PAMI\Exception\PAMIException;
+
 /**
  * A generic ami message, in-or-outbound.
  *

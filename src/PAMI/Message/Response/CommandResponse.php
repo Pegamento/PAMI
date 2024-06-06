@@ -63,9 +63,10 @@ class CommandResponse extends Response
      *
      * @return string
      */
-    public function getCommandOutput()
+    public function getCommandOutput(): string
     {
-        return (string) implode(self::EOL, $this->getKey('Output'));
+        // return (string) implode(self::EOL, $this->getKey('Output'));
+        return $this->getKey('Output');
     }
 
     /**
