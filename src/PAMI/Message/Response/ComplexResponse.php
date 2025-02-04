@@ -71,9 +71,9 @@ class ComplexResponse extends Response
     public function addEvent(EventMessage $event)
     {
         // not eventlist (start/complete)
-        if (stristr($event->getEventList(), 'start') === false
-            && stristr($event->getEventList(), 'complete') === false
-            && stristr($event->getName(), 'complete') === false
+        if (stristr(($event->getEventList() ?? ''), 'start') === false
+            && stristr(($event->getEventList() ?? ''), 'complete') === false
+            && stristr(($event->getName() ?? ''), 'complete') === false
         ) {
             $unknownevent = "PAMI\\Message\\Event\\UnknownEvent";
             if (!($event instanceof $unknownevent)) {
@@ -100,8 +100,8 @@ class ComplexResponse extends Response
             }
         }
         // finish eventlist
-        if (stristr($event->getEventList(), 'complete') != false
-            || stristr($event->getName(), 'complete') != false
+        if (stristr(($event->getEventList() ?? ''), 'complete') != false
+            || stristr(($event->getName() ?? ''), 'complete') != false
         ) {
             $this->completed = true;
         }
