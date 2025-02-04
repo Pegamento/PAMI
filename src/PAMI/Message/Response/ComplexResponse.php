@@ -32,6 +32,8 @@ namespace PAMI\Message\Response;
 use PAMI\Message\Response\Response;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Exception\PAMIException;
+use PAMI\Message\Event\TableEndEvent;
+use PAMI\Message\Event\TableStartEvent;
 
 /**
  * A generic SCCP response message from ami.
@@ -78,11 +80,11 @@ class ComplexResponse extends Response
             $unknownevent = "PAMI\\Message\\Event\\UnknownEvent";
             if (!($event instanceof $unknownevent)) {
                 // Handle TableStart/TableEnd Differently
-                if (stristr($event->getName(), 'TableStart') != false) {
+                if (stristr($event->getName(), 'TableStart') != false && $event instanceof TableStartEvent) {
                     $this->temptable = array();
                     $this->temptable['Name'] = $event->getTableName();
                     $this->temptable['Entries'] = array();
-                } elseif (stristr($event->getName(), 'TableEnd') != false) {
+                } elseif (stristr($event->getName(), 'TableEnd') != false && $event instanceof TableEndEvent) {
                     if (!is_array($this->tables)) {
                         $this->tables = array();
                     }
