@@ -100,7 +100,7 @@ abstract class Response extends IncomingMessage
     public function addEvent(EventMessage $event)
     {
         $this->events[] = $event;
-        if (stristr($event->getEventList(), 'complete') !== false
+        if (stristr(($event->getEventList() ?? ''), 'complete') !== false
             || stristr($event->getName(), 'complete') !== false
             || stristr($event->getName(), 'DBGetResponse') !== false
         ) {
