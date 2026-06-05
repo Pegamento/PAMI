@@ -7,6 +7,18 @@
     "license": "Apache-2.0",
     "authors": [
         {
+            "name": "Robin Peters",
+            "email": "robin.peters@pegamento.nl",
+            "homepage": "http://github.com/Pegamento/",
+            "role": "Developer"
+        },
+        {
+            "name": "Ruben Kremer",
+            "email": "ruben.kremer@pegamento.nl",
+            "homepage": "http://github.com/Pegamento/",
+            "role": "Developer"
+        },
+        {
             "name": "Diederik de Groot",
             "email": "ddegroot@talon.nl",
             "homepage": "http://github.com/chan-sccp/",
