@@ -2,14 +2,13 @@
 /**
  * TCP Client implementation for AMI.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
  * @subpackage Impl
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,7 +26,6 @@
  * limitations under the License.
  *
  */
-declare(ticks=1);
 namespace PAMI\Client\Impl;
 
 use PAMI\Message\OutgoingMessage;
@@ -46,7 +44,7 @@ use Psr\Log\NullLogger;
 /**
  * TCP Client implementation for AMI.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
@@ -153,7 +151,7 @@ class ClientImpl implements IClient
     /**
      * This should not happen. Asterisk may send responses without a
      * corresponding ActionId.
-     * @var string
+     * @var string|null
      */
     private $lastActionId;
     
@@ -164,7 +162,8 @@ class ClientImpl implements IClient
     private $eventMask;
 
     /**
-     * @object class
+     * The last outgoing message sent, used to resolve responses.
+     * @var \PAMI\Message\OutgoingMessage|null
      */
     private $lastActionClass;
 
@@ -537,7 +536,7 @@ class ClientImpl implements IClient
             }
             $response = $this->getRelated($message);
             if ($response != false) {
-                $this->lastActionId = false;
+                $this->lastActionId = null;
                 return $response;
             }
         }
@@ -608,6 +607,6 @@ class ClientImpl implements IClient
         $this->eventFactory = new EventFactoryImpl();
         $this->responseFactory = new ResponseFactoryImpl();
         $this->incomingQueue = array();
-        $this->lastActionId = false;
+        $this->lastActionId = null;
     }
 }

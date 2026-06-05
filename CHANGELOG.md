@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed stale, non-existent test suites from the PHPUnit configuration.
 - `ClientImpl::open()` now reports stream read errors using the correct stream error API instead of the `ext-sockets` functions.
 - Credentials (`Secret`, `Password`, `MD5Key`, `AuthPassword`) are now masked in debug logs.
+- Internal cleanup in `ClientImpl`: removed the unused `declare(ticks=1)`, normalized `lastActionId` to `null`, and corrected stale/malformed PHPDoc.
 
 ### Behaviour changes
 
