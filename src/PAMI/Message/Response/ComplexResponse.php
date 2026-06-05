@@ -80,11 +80,11 @@ class ComplexResponse extends Response
             $unknownevent = "PAMI\\Message\\Event\\UnknownEvent";
             if (!($event instanceof $unknownevent)) {
                 // Handle TableStart/TableEnd Differently
-                if (stristr($event->getName(), 'TableStart') != false && $event instanceof TableStartEvent) {
+                if (stristr(($event->getName() ?? ''), 'TableStart') != false && $event instanceof TableStartEvent) {
                     $this->temptable = array();
                     $this->temptable['Name'] = $event->getTableName();
                     $this->temptable['Entries'] = array();
-                } elseif (stristr($event->getName(), 'TableEnd') != false && $event instanceof TableEndEvent) {
+                } elseif (stristr(($event->getName() ?? ''), 'TableEnd') != false && $event instanceof TableEndEvent) {
                     if (!is_array($this->tables)) {
                         $this->tables = array();
                     }
@@ -153,9 +153,10 @@ class ComplexResponse extends Response
      */
     public function getJSON()
     {
-        if (strlen($this->getKey('JSON')) > 0) {
-            if (($json = json_decode($this->getKey('JSON'), true)) != false) {
-                return $json;
+        $json = $this->getKey('JSON');
+        if (strlen((string)$json) > 0) {
+            if (($decoded = json_decode((string)$json, true)) != false) {
+                return $decoded;
             }
         }
         throw new PAMIException("No JSON Key found to return.");

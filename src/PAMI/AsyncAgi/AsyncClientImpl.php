@@ -94,7 +94,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
     {
         if ($event instanceof IAsyncAgiExecEvent) {
             if ($event->getCommandId() == $this->lastCommandId) {
-                $this->lastAgiResult = trim($event->getResult());
+                $this->lastAgiResult = trim($event->getResult() ?? '');
             }
         }
     }

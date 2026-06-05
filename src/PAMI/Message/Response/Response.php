@@ -101,8 +101,8 @@ abstract class Response extends IncomingMessage
     {
         $this->events[] = $event;
         if (stristr(($event->getEventList() ?? ''), 'complete') !== false
-            || stristr($event->getName(), 'complete') !== false
-            || stristr($event->getName(), 'DBGetResponse') !== false
+            || stristr(($event->getName() ?? ''), 'complete') !== false
+            || stristr(($event->getName() ?? ''), 'DBGetResponse') !== false
         ) {
             $this->completed = true;
         }
@@ -125,7 +125,7 @@ abstract class Response extends IncomingMessage
      */
     public function isSuccess()
     {
-        return stristr($this->getKey('Response'), 'Error') === false;
+        return stristr(($this->getKey('Response') ?? ''), 'Error') === false;
     }
 
     /**

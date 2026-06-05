@@ -415,7 +415,7 @@ class ClientImpl implements IClient
         }
 
         foreach ($predicate as $key => $value) {
-            if (!preg_match($value, $message->getKey($key))) {
+            if (!preg_match($value, ($message->getKey($key) ?? ''))) {
                 return false;
             }
         }
