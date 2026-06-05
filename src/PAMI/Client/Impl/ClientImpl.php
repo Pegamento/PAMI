@@ -234,14 +234,13 @@ class ClientImpl implements IClient
         }
         $this->logger->debug(sprintf('recv <-- asteriskId: "%s"', $asteriskId));
 
-        $msg = new LoginAction($this->user, $this->pass);
-        $this->send($msg, function (Response $response) use ($socketUri) {
-            if (!$response->isSuccess()) {
-                throw new ClientException(
-                    sprintf('Could not connect to: "%s", response: "%s"', $socketUri, $response->getMessage())
-                );
-            }
-        });
+        $msg = new LoginAction($this->user, $this->pass, $this->eventMask);
+        $response = $this->send($msg);
+        if (!$response->isSuccess()) {
+            throw new ClientException(
+                sprintf('Could not connect to: "%s", response: "%s"', $socketUri, $response->getMessage())
+            );
+        }
         $this->currentProcessingMessage = '';
         $this->logger->info(sprintf('Login to: "%s" by user: "%s"', $socketUri, $this->user));
     }
