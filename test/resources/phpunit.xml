@@ -34,12 +34,6 @@
     <testsuite name="Factories">
       <directory suffix=".php">../factories</directory>
     </testsuite>
-    <testsuite name="SCCP_Actions">
-      <directory suffix=".php">../sccp_actions</directory>
-    </testsuite>
-    <testsuite name="SCCP_Events">
-      <directory suffix=".php">../sccp_events</directory>
-    </testsuite>
     <testsuite name="XSLT_Actions">
       <directory suffix=".php">../xslt</directory>
     </testsuite>

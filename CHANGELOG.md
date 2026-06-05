@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `CommandResponse::getCommandOutput()` now returns the joined command output instead of throwing.
 - `ComplexResponse` no longer triggers an undefined-property warning when parsing multi-table responses.
 - Removed the stale, unused `ClientImpl.php.new` duplicate file from the repository.
+- Raised the declared minimum PHP version to 8.1 and bounded the `psr/log` constraint.
+- Modernized the dev tooling so the suite installs and runs on PHP 8.4 (PHPUnit `^9.6`); removed abandoned/unused dev dependencies and moved `marcelog/pagi` to `suggest`.
+- Removed stale, non-existent test suites from the PHPUnit configuration.
 
 ### Behaviour changes
 
