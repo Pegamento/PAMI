@@ -148,9 +148,6 @@ namespace PAMI\Client\Impl {
                 'ParkedCallGiveUp','ParkedCallTimeOut',
                 'ParkedCallsComplete',
                 'RequestBadFormat',
-                'PeerEntry',
-                'PeerlistComplete',
-                'PeerStatus',
                 'QueueCallerAbandon',
                 'QueueCallerAbandon',
                 'QueueCallerJoin',
@@ -166,7 +163,6 @@ namespace PAMI\Client\Impl {
                 'QueueSummary',
                 'QueueSummaryComplete',
                 'RegistrationsComplete',
-                'Registry',
                 'Reload',
                 'Rename',
                 'ResourceListDetail',
@@ -238,11 +234,6 @@ namespace PAMI\Client\Impl {
                 'Privilege' => 'Privilege',
                 'UniqueID' => 'UniqueID',
                 'UserEvent' => 'UserEvent'
-            ),
-            'Registry' => array(
-                'Channel' => 'Channel',
-                'Domain' => 'Domain',
-                'Status' => 'Status'
             ),
             'JabberEvent' => array(
                 'Privilege' => 'Privilege',
@@ -641,26 +632,6 @@ namespace PAMI\Client\Impl {
                 'ObjectType' => 'ObjectType',
                 'ObjectName' => 'ObjectName',
             ),
-            'PeerEntry' => array(
-                'RealtimeDevice' => 'RealtimeDevice',
-                'Status' => 'Status',
-                'ACL' => 'ACL',
-                'TextSupport' => 'TextSupport',
-                'VideoSupport' => 'VideoSupport',
-                'NatSupport' => 'NatSupport',
-                'Dynamic' => 'Dynamic',
-                'IPPort' => 'IPPort',
-                'IPAddress' => 'IPAddress',
-                'ChanObjectType' => 'ChanObjectType',
-                'ObjectName' => 'ObjectName',
-                'ChannelType' => 'ChannelType',
-            ),
-            'PeerStatus' => array(
-                'Privilege' => 'Privilege',
-                'ChannelType' => 'ChannelType',
-                'Peer' => 'Peer',
-                'PeerStatus' => 'PeerStatus'
-            ),
             'QueueEntry' => array(
                 'Queue' => 'Queue',
                 'Position' => 'Position',
@@ -745,7 +716,6 @@ namespace PAMI\Client\Impl {
             ),
             'QueueStatusComplete' => array(),
             'DAHDIShowChannelsComplete' => array('items' => 'ListItems'),
-            'PeerlistComplete' => array('ListItems' => 'ListItems'),
             'CoreShowChannelsComplete' => array('ListItems' => 'ListItems'),
             'RTCPReceived' => array(
                 'DLSR' => 'DLSR',
@@ -2087,7 +2057,6 @@ namespace PAMI\Client\Impl {
             'VoicemailUserEntry' => array(
                 'VmContext' => 'VoicemailContext',
             ),
-            'PeerEntry' => array('ChanObjectType' => 'ChannelObjectType'),
             'VarSet' => array('Variable' => 'VariableName'),
             'StatusComplete' => array('Items' => 'ListItems'),
             'DBGetResponse' => array('Key' => 'KeyName', 'Val' => 'Value'),
