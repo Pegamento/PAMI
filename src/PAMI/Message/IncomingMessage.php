@@ -51,13 +51,13 @@ abstract class IncomingMessage extends Message
 
     /**
      * Metadata. Specific channel variables.
-     * @var string[]
+     * @var array<string, array<string, string>>
      */
     protected $channelVariables;
 
     /**
      * Metadata. Specific channel variables.
-     * @var string[]
+     * @var array<string, array<string, string>>
      */
     protected $statusVariables;
 
