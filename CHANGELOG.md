@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Raised the declared minimum PHP version to 8.1 and bounded the `psr/log` constraint.
 - Modernized the dev tooling so the suite installs and runs on PHP 8.4 (PHPUnit `^9.6`); removed abandoned/unused dev dependencies and moved `marcelog/pagi` to `suggest`.
 - Removed stale, non-existent test suites from the PHPUnit configuration.
+- `ClientImpl::open()` now reports stream read errors using the correct stream error API instead of the `ext-sockets` functions.
+- Credentials (`Secret`, `Password`, `MD5Key`, `AuthPassword`) are now masked in debug logs.
 
 ### Behaviour changes
 
@@ -82,3 +84,30 @@ behaves correctly and no warning is produced.
 What this means for you:
 - No API or behavioural changes to parsed results; this only removes a spurious
   warning (and any noise it added to logs/output).
+
+#### Correct error reporting on socket read failure
+
+Previously, when reading the Asterisk banner failed, `open()` built its error
+message with the `ext-sockets` functions (`socket_strerror`/`socket_last_error`),
+which do not apply to the stream socket the client uses and require an extension
+that may not be loaded.
+
+As of 2.1, the error message is sourced from `error_get_last()`, so the reported
+reason is accurate and there is no dependency on `ext-sockets`.
+
+What this means for you:
+- No API changes. Only the error message text on this failure path changes
+  (it is now accurate instead of empty/misleading).
+
+#### Credentials are masked in debug logs
+
+Previously, debug-level logging emitted the full serialized AMI message,
+including the `Secret:` value of the login action in cleartext.
+
+As of 2.1, the values of sensitive keys (`Secret`, `Password`, `MD5Key`,
+`AuthPassword`) are replaced with `****` in both the "Sending" and "Received"
+debug log output.
+
+What this means for you:
+- No API changes. If you parse the library's debug log output, sensitive values
+  now appear as `****` instead of their cleartext value.

@@ -180,6 +180,23 @@ class ClientImpl implements IClient
     }
 
     /**
+     * Masks the value of sensitive keys (credentials) in a raw AMI message so
+     * they are not exposed in debug logs.
+     *
+     * @param string $message Raw serialized AMI message.
+     *
+     * @return string
+     */
+    private function maskSensitive($message)
+    {
+        return preg_replace(
+            '/^((?:Secret|Password|MD5Key|AuthPassword)\s*:\s*).*$/im',
+            '$1****',
+            (string) $message
+        );
+    }
+
+    /**
      * Connects a tcp connection to ami.
      *
      * @throws \PAMI\Client\Exception\ClientException
@@ -226,7 +243,10 @@ class ClientImpl implements IClient
         $asteriskId = stream_get_line($this->socket, 1024, Message::EOL);
 
         if ($asteriskId === false) {
-            throw new ClientException(sprintf('error: "%s" while read socket', socket_strerror(socket_last_error())));
+            $lastError = error_get_last();
+            throw new ClientException(
+                sprintf('error: "%s" while read socket', $lastError['message'] ?? 'unknown error')
+            );
         }
 
         if (strstr($asteriskId, 'Asterisk') === false) {
@@ -317,7 +337,7 @@ class ClientImpl implements IClient
         $msgs = $this->getMessages();
         foreach ($msgs as $aMsg) {
             $this->logger->debug(
-                '------ Received: ------ ' . "\n" . $aMsg . "\n\n"
+                '------ Received: ------ ' . "\n" . $this->maskSensitive($aMsg) . "\n\n"
             );
             $resPos = strpos($aMsg, 'Response:');
             $evePos = strpos($aMsg, 'Event:');
@@ -500,7 +520,7 @@ class ClientImpl implements IClient
         $messageToSend = $message->serialize();
         $length = strlen($messageToSend);
         $this->logger->debug(
-            '------ Sending: ------ ' . "\n" . $messageToSend . '----------'
+            '------ Sending: ------ ' . "\n" . $this->maskSensitive($messageToSend) . '----------'
         );
         $this->lastActionId = $message->getActionId();
         $this->lastActionClass = $message;
