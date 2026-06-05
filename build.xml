@@ -57,7 +57,7 @@
   </target>
 
   <target name="test">
-    <exec command="vendor/bin/phpunit -v --debug -c test/resources/phpunit.xml" checkreturn="true" passthru="true"/>
+    <exec command="vendor/bin/phpunit --testdox -c test/resources/phpunit.xml" checkreturn="true" passthru="true"/>
   </target>
 
   <target name="build" depends="clean, prepare, cpd, cs, md, doc, test"/>

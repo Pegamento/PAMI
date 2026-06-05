@@ -197,6 +197,7 @@ namespace PAMI\Client\Impl {
             );
             setFgetsMock($standardAMIStart, $write);
             $client = new \PAMI\Client\Impl\ClientImpl($options);
+            /** @var \PAMI\Message\Event\EventMessage|false $resultVariable */
             $resultVariable = false;
             $client->registerEventListener(function ($event) use (&$resultVariable) {
                 $resultVariable = $event;
@@ -691,7 +692,9 @@ namespace PAMI\Client\Impl {
             $this->assertEquals($events[0]->getKey('Channel'), 'pepe');
             $this->assertEquals($events[0]->getKey('Count'), 'Blah');
             $this->assertEquals($events[1]->getName(), 'CoreShowChannelsComplete');
-            $this->assertEquals($events[1]->getListItems(), 0);
+            /** @var \PAMI\Message\Event\CoreShowChannelsCompleteEvent $completeEvent */
+            $completeEvent = $events[1];
+            $this->assertEquals($completeEvent->getListItems(), 0);
         }
 
         /**

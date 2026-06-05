@@ -42,7 +42,7 @@ namespace PAMI\Client\Impl {
      * @license    http://marcelog.github.com/ Apache License 2.0
      * @link       http://marcelog.github.com/
      */
-    class Test_ResponseFactory extends BaseTestCase
+    class Test_Factories extends BaseTestCase
     {
         /**
          * @test
