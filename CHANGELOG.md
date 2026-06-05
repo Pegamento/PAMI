@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the `stream_socket_shutdown` test mock signature so it matches the built-in.
 - `ClientImpl::open()` now detects and reports failed AMI logins instead of silently continuing.
 - The `event_mask` client option is now actually correctly applied to the login action.
+- `CommandResponse::getCommandOutput()` now returns the joined command output instead of throwing.
 
 ### Behaviour changes
 
@@ -49,3 +50,16 @@ What this means for you:
 - Deployments that set `event_mask` may now receive a different (typically
   smaller) set of events, because the filter is finally being applied. Review
   your configured `event_mask` value before upgrading.
+
+#### `CommandResponse::getCommandOutput()` returns a string instead of throwing
+
+Previously this method was declared to return a `string` but returned the
+internal array of output lines, raising a `TypeError` on every call.
+
+As of 2.1, it returns the command output lines joined into a single string. The
+raw array is still available via `getCommandOutputArray()`.
+
+What this means for you:
+- No API or signature changes are required in your code.
+- Calls to `getCommandOutput()` now succeed and return the output as a string
+  (an empty string when there is no output) rather than throwing.
