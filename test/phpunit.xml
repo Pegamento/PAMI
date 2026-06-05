@@ -1,25 +1,15 @@
-<phpunit
-  backupGlobals="false"
-  backupStaticAttributes="false"
-  syntaxCheck="false"
-  convertErrorsToExceptions="true"
-  convertNoticesToExceptions="true"
-  convertWarningsToExceptions="true"
->
-  <filter>
-    <whitelist>
-      <directory suffix=".php">../src/PAMI</directory>
-    </whitelist>
-  </filter>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         bootstrap="resources/bootstrap.php"
+         cacheDirectory="resources/.phpunit.cache"
+         backupGlobals="true"
+         backupStaticProperties="false"
+         colors="true"
+         requireCoverageMetadata="false">
   <testsuites>
     <testsuite name="Client">
       <directory suffix=".php">client</directory>
-    </testsuite>
-    <testsuite name="Factories">
-      <directory suffix=".php">factories</directory>
-    </testsuite>
-    <testsuite name="Autoloader">
-      <directory suffix=".php">autoloader</directory>
     </testsuite>
     <testsuite name="Factories">
       <directory suffix=".php">factories</directory>
@@ -30,14 +20,13 @@
     <testsuite name="Events">
       <directory suffix=".php">events</directory>
     </testsuite>
-    <testsuite name="SCCPActions">
-      <directory suffix=".php">sccp_actions</directory>
-    </testsuite>
-    <testsuite name="SCCPEvents">
-      <directory suffix=".php">sccp_events</directory>
-    </testsuite>
     <testsuite name="XSLT">
       <directory suffix=".php">xslt</directory>
     </testsuite>
   </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">../src/PAMI</directory>
+    </include>
+  </source>
 </phpunit>

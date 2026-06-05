@@ -4,6 +4,7 @@ vendor
 .project
 .settings
 .phpunit.result.cache
+.phpunit.cache
 build
 doc/examples/quickstart/log.log
 resources/php.ini

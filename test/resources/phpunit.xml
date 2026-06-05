@@ -1,26 +1,19 @@
 <?xml version="1.0"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="true" backupStaticAttributes="false" bootstrap="bootstrap.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" forceCoversAnnotation="false" processIsolation="false" stopOnError="true" stopOnFailure="true" stopOnWarning="true" stopOnIncomplete="true" stopOnSkipped="true" stopOnRisky="true" timeoutForSmallTests="1" timeoutForMediumTests="10" timeoutForLargeTests="60" verbose="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">../../src</directory>
-    </include>
-    <exclude>
-      <directory suffix="Launcher.php">../../src/PAMI/Application</directory>
-      <directory suffix=".php">../../vendor</directory>
-    </exclude>
-    <report>
-      <clover outputFile="../../build/logs/clover.xml"/>
-      <html outputDirectory="../../build/coverage-html"/>
-      <xml outputDirectory="../../build/coverage-xml"/>
-    </report>
-  </coverage>
-  <!--
-    stopOnWarning="false"
-    stopOnSkipped="true"
-    stopOnRisky="false"
-    strictCoverage="false"
-    mapTestClassNameToCoveredClassName="false"
-    -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         bootstrap="bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         backupGlobals="true"
+         backupStaticProperties="false"
+         colors="true"
+         processIsolation="false"
+         stopOnError="true"
+         stopOnFailure="true"
+         stopOnWarning="true"
+         stopOnIncomplete="true"
+         stopOnSkipped="true"
+         stopOnRisky="true"
+         requireCoverageMetadata="false">
   <testsuites>
     <testsuite name="Client">
       <directory suffix=".php">../client</directory>
@@ -38,5 +31,12 @@
       <directory suffix=".php">../xslt</directory>
     </testsuite>
   </testsuites>
-  <logging/>
+  <source>
+    <include>
+      <directory suffix=".php">../../src</directory>
+    </include>
+    <exclude>
+      <directory suffix="Launcher.php">../../src/PAMI/Application</directory>
+    </exclude>
+  </source>
 </phpunit>

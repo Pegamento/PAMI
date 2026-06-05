@@ -340,6 +340,7 @@ namespace PAMI\Client\Impl {
             ));
             $action = new \PAMI\Message\Action\CommandAction("devstate change Custom:mystate1 INUSE");
             $result = $this->_start($write, $action);
+            /** @var \PAMI\Message\Response\CommandResponse $response */
             $response = $result['response'];
             $this->assertTrue($response instanceof \PAMI\Message\Response\CommandResponse);
             $this->assertEquals($response->getCommandOutput(), "Changing mystate1 to INUSE");

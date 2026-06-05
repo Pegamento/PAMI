@@ -28,6 +28,13 @@
  *
  */
 namespace {
+    // PHPUnit loads the bootstrap inside a function scope, so these mock
+    // defaults must be bound to the global scope explicitly to be reachable
+    // via `global $...` from within the test methods.
+    global $mockTime, $mockTimeCount, $mockTimeReturn, $mock_stream_socket_client,
+        $mock_stream_set_blocking, $mock_stream_set_timeout, $mock_stream_get_meta_data_return,
+        $mockFwrite, $mockFwriteReturn, $mockFwriteCount, $mockFgets, $mockFgetsCount,
+        $mockFreadReturn, $mockRTimeout, $standardAMIStart, $standardAMIStartBadLogin;
     $mockTime = false;
     $mockTimeCount = false;
     $mockTimeReturn = false;
