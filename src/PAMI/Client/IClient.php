@@ -106,7 +106,7 @@ interface IClient
     /**
      * Sets the logger implementation.
      *
-     * @param Psr\Log\LoggerInterface $logger The PSR3-Logger
+     * @param LoggerInterface $logger The PSR3-Logger
      *
      * @return void
      */

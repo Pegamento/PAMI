@@ -55,7 +55,7 @@ class CommandResponse extends Response
      */
     public function isCommandFinished()
     {
-        return stristr($this->getMessage(), 'command output follows') !== false;
+        return stristr(($this->getMessage() ?? ''), 'command output follows') !== false;
     }
 
     /**
@@ -65,8 +65,7 @@ class CommandResponse extends Response
      */
     public function getCommandOutput(): string
     {
-        // return (string) implode(self::EOL, $this->getKey('Output'));
-        return $this->getKey('Output');
+        return implode(self::EOL, (array) $this->getKey('Output'));
     }
 
     /**

@@ -97,7 +97,7 @@ namespace PAMI\Client\Impl {
             return \stream_socket_client($remote_socket, $errno, $errstr, $timeout, $flags, $context);
         }
     }
-    function stream_socket_shutdown()
+    function stream_socket_shutdown($stream, $mode)
     {
         return true;
     }

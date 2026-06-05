@@ -2,14 +2,13 @@
 /**
  * TCP Client implementation for AMI.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
  * @subpackage Impl
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,7 +26,6 @@
  * limitations under the License.
  *
  */
-declare(ticks=1);
 namespace PAMI\Client\Impl;
 
 use PAMI\Message\OutgoingMessage;
@@ -46,7 +44,7 @@ use Psr\Log\NullLogger;
 /**
  * TCP Client implementation for AMI.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
@@ -130,8 +128,10 @@ class ClientImpl implements IClient
     private $context;
 
     /**
-     * Our event listeners
-     * @var IEventListener[]
+     * Our event listeners. Keyed by listener id, each entry is a tuple of
+     * [listener, predicate] where listener is an IEventListener|Closure|array
+     * and predicate is a Closure|array|null.
+     * @var array<string, array{0: \PAMI\Listener\IEventListener|\Closure|array, 1: \Closure|array|null}>
      */
     private $eventListeners;
 
@@ -151,7 +151,7 @@ class ClientImpl implements IClient
     /**
      * This should not happen. Asterisk may send responses without a
      * corresponding ActionId.
-     * @var string
+     * @var string|null
      */
     private $lastActionId;
     
@@ -162,7 +162,8 @@ class ClientImpl implements IClient
     private $eventMask;
 
     /**
-     * @object class
+     * The last outgoing message sent, used to resolve responses.
+     * @var \PAMI\Message\OutgoingMessage|null
      */
     private $lastActionClass;
 
@@ -175,6 +176,23 @@ class ClientImpl implements IClient
     private function getSocketUri()
     {
         return sprintf('%s%s:%s', $this->scheme, $this->host, $this->port);
+    }
+
+    /**
+     * Masks the value of sensitive keys (credentials) in a raw AMI message so
+     * they are not exposed in debug logs.
+     *
+     * @param string $message Raw serialized AMI message.
+     *
+     * @return string
+     */
+    private function maskSensitive($message)
+    {
+        return preg_replace(
+            '/^((?:Secret|Password|MD5Key|AuthPassword)\s*:\s*).*$/im',
+            '$1****',
+            (string) $message
+        );
     }
 
     /**
@@ -224,7 +242,10 @@ class ClientImpl implements IClient
         $asteriskId = stream_get_line($this->socket, 1024, Message::EOL);
 
         if ($asteriskId === false) {
-            throw new ClientException(sprintf('error: "%s" while read socket', socket_strerror(socket_last_error())));
+            $lastError = error_get_last();
+            throw new ClientException(
+                sprintf('error: "%s" while read socket', $lastError['message'] ?? 'unknown error')
+            );
         }
 
         if (strstr($asteriskId, 'Asterisk') === false) {
@@ -232,14 +253,13 @@ class ClientImpl implements IClient
         }
         $this->logger->debug(sprintf('recv <-- asteriskId: "%s"', $asteriskId));
 
-        $msg = new LoginAction($this->user, $this->pass);
-        $this->send($msg, function (Response $response) use ($socketUri) {
-            if (!$response->isSuccess()) {
-                throw new ClientException(
-                    sprintf('Could not connect to: "%s", response: "%s"', $socketUri, $response->getMessage())
-                );
-            }
-        });
+        $msg = new LoginAction($this->user, $this->pass, $this->eventMask);
+        $response = $this->send($msg);
+        if (!$response->isSuccess()) {
+            throw new ClientException(
+                sprintf('Could not connect to: "%s", response: "%s"', $socketUri, $response->getMessage())
+            );
+        }
         $this->currentProcessingMessage = '';
         $this->logger->info(sprintf('Login to: "%s" by user: "%s"', $socketUri, $this->user));
     }
@@ -316,7 +336,7 @@ class ClientImpl implements IClient
         $msgs = $this->getMessages();
         foreach ($msgs as $aMsg) {
             $this->logger->debug(
-                '------ Received: ------ ' . "\n" . $aMsg . "\n\n"
+                '------ Received: ------ ' . "\n" . $this->maskSensitive($aMsg) . "\n\n"
             );
             $resPos = strpos($aMsg, 'Response:');
             $evePos = strpos($aMsg, 'Event:');
@@ -415,7 +435,7 @@ class ClientImpl implements IClient
         }
 
         foreach ($predicate as $key => $value) {
-            if (!preg_match($value, $message->getKey($key))) {
+            if (!preg_match($value, ($message->getKey($key) ?? ''))) {
                 return false;
             }
         }
@@ -499,7 +519,7 @@ class ClientImpl implements IClient
         $messageToSend = $message->serialize();
         $length = strlen($messageToSend);
         $this->logger->debug(
-            '------ Sending: ------ ' . "\n" . $messageToSend . '----------'
+            '------ Sending: ------ ' . "\n" . $this->maskSensitive($messageToSend) . '----------'
         );
         $this->lastActionId = $message->getActionId();
         $this->lastActionClass = $message;
@@ -516,7 +536,7 @@ class ClientImpl implements IClient
             }
             $response = $this->getRelated($message);
             if ($response != false) {
-                $this->lastActionId = false;
+                $this->lastActionId = null;
                 return $response;
             }
         }
@@ -549,7 +569,7 @@ class ClientImpl implements IClient
     /**
      * Get the logger implementation.
      *
-     * @return @object The current PSR3-Logger instance
+     * @return LoggerInterface The current PSR3-Logger instance
      */
     public function getLogger()
     {
@@ -587,6 +607,6 @@ class ClientImpl implements IClient
         $this->eventFactory = new EventFactoryImpl();
         $this->responseFactory = new ResponseFactoryImpl();
         $this->incomingQueue = array();
-        $this->lastActionId = false;
+        $this->lastActionId = null;
     }
 }
