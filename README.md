@@ -13,21 +13,19 @@ either via SOA or ajax.
 
 # Resources
 
- * [API](doc/api.md) in Markdown
- * [API](https://chan-sccp.github.io/PAMI) original chan-sccp documentation in html
- * Collection of [Examples](doc/examples/)
- * [Complete PAGI/PAMI talk for the PHP Conference Argentina 2013](http://www.slideshare.net/mgornstein/phpconf-2013). Check the slide notes for the complete text :)
+ * [Issues](https://github.com/Pegamento/PAMI/issues)
+ * [Wiki](https://github.com/Pegamento/PAMI/wiki)
 
 # PHP Versions
 
-Note: PAMI Requires PHP 5.6+.
+PAMI requires PHP 8.1 or higher.
 
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
 ```json
   "require": {
-    "pegamento/pami": "2.0.11"
+    "pegamento/pami": "^2.1"
   }
 ```
 
@@ -77,18 +75,6 @@ $client->registerEventListener(
 );
 ```
 
-# Example
-
-Please see docs/examples/quickstart/example.php for a very basic example.
-
-AsterTrace is a full application: https://github.com/marcelog/AsterTrace.
-
-Also, you might want to look at this article: http://marcelog.github.com/articles/php_asterisk_listener_example_using_pami_and_ding.html
-
-For an example of using asynchronous AGI with PAMI, see docs/examples/asyncagi
-
-The [march edition](http://sdjournal.org/a-practical-introduction-to-functional-programming-with-php-sdj-issue-released/) of [Software Developer Journal](http://sdjournal.org/) features a complete article about writing telephony applications with PAMI and PAGI.
-
 # Currently Supported Events
 
 More events will be added with time. I can only add the ones I can test for and
@@ -97,17 +83,18 @@ use, so your contributions may make the difference! ;)
 Unknown (not yet implemented) events will be reported as UnknownEvent, so you
 can still catch them. If you catch one of these, please report it!
 
+ * AGIExec
+ * AGIExecEnd
+ * AGIExecStart
  * AgentCalled
  * AgentComplete
  * AgentConnect
  * AgentDump
- * Agentlogin
- * Agentlogoff
+ * AgentLogin
+ * AgentLogoff
  * AgentRingNoAnswer
  * Agents
- * AGIExec
- * AGIExecEnd
- * AGIExecStart
+ * AgentsComplete
  * Alarm
  * AlarmClear
  * AorDetail
@@ -128,25 +115,28 @@ can still catch them. If you catch one of these, please report it!
  * BridgeDestroy
  * BridgeEnter
  * BridgeInfoChannel
+ * BridgeInfoComplete
  * BridgeLeave
  * BridgeListItem
  * BridgeVideoSourceUpdate
+ * CEL
  * CallAnswered
  * CallForward
  * Cdr
- * CEL
  * ChallengeResponseFailed
  * ChallengeSent
+ * ChanSpyStart
+ * ChanSpyStop
  * ChannelTalkingStart
  * ChannelTalkingStop
  * ChannelUpdate
- * ChanSpyStart
- * ChanSpyStop
  * ConfbridgeEnd
  * ConfbridgeJoin
  * ConfbridgeLeave
  * ConfbridgeList
+ * ConfbridgeListComplete
  * ConfbridgeListRooms
+ * ConfbridgeListRoomsComplete
  * ConfbridgeMute
  * ConfbridgeRecord
  * ConfbridgeStart
@@ -158,9 +148,16 @@ can still catch them. If you catch one of these, please report it!
  * ContactStatus
  * ContactStatusDetail
  * CoreShowChannel
+ * CoreShowChannelsComplete
  * DAHDIChannel
  * DAHDIShowChannels
+ * DAHDIShowChannelsComplete
  * DBGetResponse
+ * DND
+ * DNDState
+ * DTMF
+ * DTMFBegin
+ * DTMFEnd
  * DeviceStateChange
  * DeviceStateListComplete
  * DeviceStatus
@@ -168,31 +165,26 @@ can still catch them. If you catch one of these, please report it!
  * DialBegin
  * DialEnd
  * DialState
- * DND
- * DNDState
+ * DongleDeviceEntry
  * DongleNewCUSD
  * DongleNewUSSD
  * DongleNewUSSDBase64
  * DongleSMSStatus
+ * DongleShowDevicesComplete
  * DongleStatus
  * DongleUSSDStatus
- * DTMF
- * DTMFBegin
- * DTMFEnd
  * EndpointDetail
  * EndpointDetailComplete
  * EndpointList
- * EventFactoryImpl.php
- * EventMessage.php
+ * EndpointListComplete
  * ExtensionStateListComplete
  * ExtensionStatus
- * Factory
- * FailedACL
  * FAXSession
  * FAXSessionsComplete
  * FAXSessionsEntry
  * FAXStats
  * FAXStatus
+ * FailedACL
  * FullyBooted
  * Hangup
  * HangupHandlerPop
@@ -201,7 +193,6 @@ can still catch them. If you catch one of these, please report it!
  * HangupRequest
  * Hold
  * IdentifyDetail
- * Impl
  * InboundRegistrationDetail
  * InvalidAccountID
  * InvalidPassword
@@ -216,21 +207,21 @@ can still catch them. If you catch one of these, please report it!
  * LocalBridge
  * LocalOptimizationBegin
  * LocalOptimizationEnd
- * Masquerade
  * MCID
+ * MWIGet
+ * MWIGetComplete
+ * Masquerade
  * MemoryLimit
  * MessageWaiting
  * MiniVoiceMail
  * MusicOnHold
  * MusicOnHoldStart
  * MusicOnHoldStop
- * MWIGet
- * MWIGetComplete
  * NewAccountCode
  * NewCallerid
- * Newchannel
  * NewConnectedLine
- * Newexten
+ * NewExten
+ * Newchannel
  * Newstate
  * OriginateResponse
  * OutboundRegistrationDetail
@@ -239,6 +230,7 @@ can still catch them. If you catch one of these, please report it!
  * ParkedCallGiveUp
  * ParkedCallSwap
  * ParkedCallTimeOut
+ * ParkedCallsComplete
  * Pickup
  * PresenceStateChange
  * PresenceStateListComplete
@@ -246,6 +238,7 @@ can still catch them. If you catch one of these, please report it!
  * QueueCallerAbandon
  * QueueCallerJoin
  * QueueCallerLeave
+ * QueueEntry
  * QueueMember
  * QueueMemberAdded
  * QueueMemberPause
@@ -255,55 +248,59 @@ can still catch them. If you catch one of these, please report it!
  * QueueMemberRinginuse
  * QueueMemberStatus
  * QueueParams
+ * QueueStatusComplete
  * QueueSummary
+ * QueueSummaryComplete
+ * RTCPReceived
+ * RTCPReceiverStat
+ * RTCPSent
+ * RTPReceiverStat
+ * RTPSenderStat
  * ReceiveFAX
+ * RegistrationsComplete
  * Reload
  * Rename
  * RequestBadFormat
  * RequestNotAllowed
  * RequestNotSupported
  * ResourceListDetail
- * RTCPReceived
- * RTCPReceiverStat
- * RTCPSent
- * RTPReceiverStat
- * RTPSenderStat
  * SendFAX
  * SessionLimit
  * SessionTimeout
+ * ShowDialPlanComplete
  * Shutdown
  * SoftHangupRequest
  * SpanAlarm
  * SpanAlarmClear
  * Status
+ * StatusComplete
  * Success
  * SuccessfulAuth
  * TableEnd
  * TableStart
  * Transfer
  * TransportDetail
+ * UnParkedCall
  * UnexpectedAddress
  * Unhold
  * Unknown
  * Unlink
  * Unload
- * UnParkedCall
  * UserEvent
  * VarSet
  * VgsmMeState
  * VgsmNetState
  * VgsmSmsRx
+ * VoicemailUserEntry
+ * VoicemailUserEntryComplete
 
 # Currently Supported Actions
 
+ * AGI
  * AbsoluteTimeout
- * Action
- * ActionMessage.php
  * AgentLogoff
  * Agents
- * AGI
  * AttendedTransfer
- * Atxfer
  * BlindTransfer
  * Bridge
  * BridgeDestroy
@@ -331,9 +328,9 @@ can still catch them. If you catch one of these, please report it!
  * CoreShowChannels
  * CoreStatus
  * CreateConfig
- * DAHDIDialOffHook
- * DAHDIDNDOff
- * DAHDIDNDOn
+ * DAHDIDNDoff
+ * DAHDIDNDon
+ * DAHDIDialOffhook
  * DAHDIHangup
  * DAHDIRestart
  * DAHDIShowChannels
@@ -376,6 +373,9 @@ can still catch them. If you catch one of these, please report it!
  * LoggerRotate
  * Login
  * Logoff
+ * MWIDelete
+ * MWIGet
+ * MWIUpdate
  * MailboxCount
  * MailboxStatus
  * MixMonitor
@@ -385,14 +385,7 @@ can still catch them. If you catch one of these, please report it!
  * ModuleReload
  * ModuleUnload
  * MuteAudio
- * MWIDelete
- * MWIGet
- * MWIUpdate
  * Originate
- * Park
- * ParkedCalls
- * Parkinglots
- * Ping
  * PJSIPNotify
  * PJSIPQualify
  * PJSIPRegister
@@ -408,28 +401,31 @@ can still catch them. If you catch one of these, please report it!
  * PJSIPShowSubscriptionsInbound
  * PJSIPShowSubscriptionsOutbound
  * PJSIPUnregister
- * PlayDTMF
- * PresenceState
- * PresenceStateList
  * PRIDebugFileSet
  * PRIDebugFileUnset
  * PRIDebugSet
  * PRIShowSpans
+ * Park
+ * ParkedCalls
+ * Parkinglots
+ * Ping
+ * PlayDTMF
+ * PresenceState
+ * PresenceStateList
  * QueueAdd
  * QueueChangePriorityCaller
  * QueueLog
  * QueueMemberRingInUse
- * QueueMemberRingInUse.php
  * QueuePause
  * QueuePenalty
  * QueueReload
  * QueueRemove
  * QueueReset
  * QueueRule
- * Queues
  * QueueStatus
  * QueueSummary
  * QueueUnpause
+ * Queues
  * Redirect
  * Reload
  * SendText
@@ -446,10 +442,9 @@ can still catch them. If you catch one of these, please report it!
  * UserEvent
  * VGSMSMSTx
  * VoicemailRefresh
- * VoicemailUsersList
  * VoicemailUserStatus
+ * VoicemailUsersList
  * WaitEvent
-
 ## Debugging, logging
 
 You can optionally set a [PSR-3](http://www.php-fig.org/psr/psr-3/) compatible logger:
@@ -460,31 +455,28 @@ $pami->setLogger($logger);
 By default, the client will use the [NullLogger](http://www.php-fig.org/psr/psr-3/#1-4-helper-classes-and-interfaces).
 
 # Developers
-This project uses [phing](https://www.phing.info/). Current tasks include:
- * test: Runs [PHPUnit](https://phpunit.de/).
- * cs: Runs [CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
- * doc: Runs [PhpDocumentor](http://www.phpdoc.org/).
- * md: runs [PHPMD](http://phpmd.org/).
- * build: This is the default task, and will run all the other tasks.
 
-## Running a phing task
-To run a task, just do:
+Run the test suite:
 
 ```sh
-vendor/bin/phing build
+composer test
+```
+
+Other dev tools:
+
+```sh
+vendor/bin/phpunit -c test/resources/phpunit.xml
+vendor/bin/phpcs --standard=PSR2 src
+vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
 ```
 
 ## Contributing
+
 To contribute:
- * Make sure you open a **concise** and **short** pull request.
- * Throw in any needed unit tests to accomodate the new code or the
- changes involved.
- * Run `phing` and make sure everything is ok before submitting the pull
- request (make phpmd and CodeSniffer happy, also make sure that phpDocumentor
- does not throw any warnings, since all our documentation is automatically
- generated).
- * Your code must comply with [PSR-2](http://www.php-fig.org/psr/psr-2/),
- CodeSniffer should take care of that.
+
+ * Open a concise pull request with unit tests for new or changed behaviour.
+ * Run `composer test` before submitting.
+ * Code must comply with [PSR-2](http://www.php-fig.org/psr/psr-2/).
 
 LICENSE
 =======
@@ -502,14 +494,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-# Maintainer of This Fork:
+# Maintainers
 
-* Diederik de Groot <ddegroot@talon.nl>
-
-* Added the SCCP Message Implementation.
-* ResponseHandling for ReponseEvents returned from ActionMessages that
-  return multiple/complex results [Orig PR:73](https://github.com/marcelog/PAMI/pull/73).
-* Note: Had some help from Jacob Kiers on the ResponseHandling.
+This fork is maintained by [Pegamento](https://github.com/Pegamento/).
 
 # Thanks To:
 
