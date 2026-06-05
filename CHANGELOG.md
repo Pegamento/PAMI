@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ClientImpl::open()` now reports stream read errors using the correct stream error API instead of the `ext-sockets` functions.
 - Credentials (`Secret`, `Password`, `MD5Key`, `AuthPassword`) are now masked in debug logs.
 - Internal cleanup in `ClientImpl`: removed the unused `declare(ticks=1)`, normalized `lastActionId` to `null`, and corrected stale/malformed PHPDoc.
+- Removed legacy AMI support for Asterisk modules deprecated or dropped in Asterisk 20:
+  `res_monitor` (`Monitor`, `StopMonitor`, `PauseMonitor`, `UnpauseMonitor`, `ChangeMonitor` actions and `MonitorStart`/`MonitorStop` events),
+  `chan_sip` (`Sippeers`, `SIPshowpeer`, `SIPshowregistry`, `SIPnotify`, `Sipqualifypeer`, `SIPpeerstatus` actions and `PeerEntry`, `PeerlistComplete`, `PeerStatus`, `Registry`, `SIPQualifyPeerDone` events),
+  `app_meetme` (`MeetmeList`, `MeetmeListRooms`, `MeetmeMute`, `MeetmeUnmute` actions and `MeetmeEnd`, `MeetmeJoin`, `MeetmeLeave`, `MeetmeMute`, `MeetmeTalking`, `MeetmeTalkRequest` events),
+  and `chan_skinny` (`SKINNYdevices`, `SKINNYlines`, `SKINNYshowdevice`, `SKINNYshowline` actions).
+- FAX AMI support (`FAXSession`, `FAXSessions`, `FAXStats`, `ReceiveFAX`, `SendFAX`, etc.) is unchanged; it targets `res_fax`, not the deprecated `app_fax` module.
 
 ### Behaviour changes
 
@@ -112,3 +118,24 @@ debug log output.
 What this means for you:
 - No API changes. If you parse the library's debug log output, sensitive values
   now appear as `****` instead of their cleartext value.
+
+#### Legacy AMI actions and events removed for Asterisk 20
+
+As of 2.1, PAMI no longer ships PHP classes for AMI features tied to Asterisk
+modules that are deprecated or no longer built by default in Asterisk 20. This
+includes `res_monitor`, `chan_sip`, `app_meetme`, and `chan_skinny`.
+
+What this means for you:
+- If your application still imports or instantiates any of the removed classes,
+  upgrade to the modern equivalents before moving to 2.1:
+  - Call recording/spy: use `MixMonitorAction`, `StopMixMonitorAction`, and
+    `MixMonitorMuteAction` instead of the `Monitor*` actions.
+  - SIP endpoint management: use the `PJSIP*` actions and events instead of the
+    `SIP*` / `Peer*` / `Registry` classes.
+  - Conferencing: use the `Confbridge*` actions and events instead of `Meetme*`.
+  - Cisco SCCP (SKINNY): no replacement is provided; remove any usage.
+- FAX handling is unaffected; continue using the existing `FAX*` actions and
+  `ReceiveFAX`/`SendFAX` events.
+- Deployments on Asterisk 18 or older that still rely on the removed modules may
+  need to stay on PAMI 2.0.x, or migrate their dialplan/AMI integration to the
+  supported APIs above.

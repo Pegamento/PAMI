@@ -218,17 +218,9 @@ can still catch them. If you catch one of these, please report it!
  * LocalOptimizationEnd
  * Masquerade
  * MCID
- * MeetmeEnd
- * MeetmeJoin
- * MeetmeLeave
- * MeetmeMute
- * MeetmeTalking
- * MeetmeTalkRequest
  * MemoryLimit
  * MessageWaiting
  * MiniVoiceMail
- * MonitorStart
- * MonitorStop
  * MusicOnHold
  * MusicOnHoldStart
  * MusicOnHoldStop
@@ -247,7 +239,6 @@ can still catch them. If you catch one of these, please report it!
  * ParkedCallGiveUp
  * ParkedCallSwap
  * ParkedCallTimeOut
- * PeerStatus
  * Pickup
  * PresenceStateChange
  * PresenceStateListComplete
@@ -266,7 +257,6 @@ can still catch them. If you catch one of these, please report it!
  * QueueParams
  * QueueSummary
  * ReceiveFAX
- * Registry
  * Reload
  * Rename
  * RequestBadFormat
@@ -282,7 +272,6 @@ can still catch them. If you catch one of these, please report it!
  * SessionLimit
  * SessionTimeout
  * Shutdown
- * SIPQualifyPeerDone
  * SoftHangupRequest
  * SpanAlarm
  * SpanAlarmClear
@@ -326,7 +315,6 @@ can still catch them. If you catch one of these, please report it!
  * BridgeTechnologyUnsuspend
  * CancelAtxfer
  * Challenge
- * ChangeMonitor
  * Command
  * ConfbridgeKick
  * ConfbridgeList
@@ -390,17 +378,12 @@ can still catch them. If you catch one of these, please report it!
  * Logoff
  * MailboxCount
  * MailboxStatus
- * MeetmeList
- * MeetmeListRooms
- * MeetmeMute
- * MeetmeUnmute
  * MixMonitor
  * MixMonitorMute
  * ModuleCheck
  * ModuleLoad
  * ModuleReload
  * ModuleUnload
- * Monitor
  * MuteAudio
  * MWIDelete
  * MWIGet
@@ -409,7 +392,6 @@ can still catch them. If you catch one of these, please report it!
  * Park
  * ParkedCalls
  * Parkinglots
- * PauseMonitor
  * Ping
  * PJSIPNotify
  * PJSIPQualify
@@ -453,16 +435,6 @@ can still catch them. If you catch one of these, please report it!
  * SendText
  * SetVar
  * ShowDialPlan
- * SIPNotify
- * SIPPeers
- * SIPpeerstatus
- * SIPQualifyPeer
- * SIPShowPeer
- * SIPShowRegistry
- * SKINNYdevices
- * SKINNYlines
- * SKINNYshowdevice
- * SKINNYshowline
  * SorceryMemoryCacheExpire
  * SorceryMemoryCacheExpireObject
  * SorceryMemoryCachePopulate
@@ -470,8 +442,6 @@ can still catch them. If you catch one of these, please report it!
  * SorceryMemoryCacheStaleObject
  * Status
  * StopMixMonitor
- * StopMonitor
- * UnpauseMonitor
  * UpdateConfig
  * UserEvent
  * VGSMSMSTx
@@ -589,8 +559,6 @@ QueueParamsEvent. See:[Orig PR:177](https://github.com/marcelog/PAMI/pull/177).
 
 * @wizzle: Added PJSIPShowEndpoints et al. See:[Orig PR:158](https://github.com/marcelog/PAMI/pull/158)
 and [Orig PR:157](https://github.com/marcelog/PAMI/pull/157).
-
-* @syco: Extended MonitorAction. See:[Orig PR:149](https://github.com/marcelog/PAMI/pull/149).
 
 * @ilgiz-badamshin: Extended AsyncAgi impl. See:[Orig
   PR:143](https://github.com/marcelog/PAMI/pull/143).

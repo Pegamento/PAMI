@@ -166,72 +166,6 @@ namespace PAMI\Client\Impl {
 
 
     /**
-     * @test SKINNYdevices
-     *
-     */
-        public function can_skinnydevices()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SKINNYdevices',
-            'actionid: 1432.123',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SKINNYdevicesAction();
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
-     * @test SKINNYshowdevice
-     *
-     */
-        public function can_skinnyshowdevice()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SKINNYshowdevice',
-            'actionid: 1432.123',
-            'device: Device',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SKINNYshowdeviceAction('Device');
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
-     * @test SKINNYlines
-     *
-     */
-        public function can_skinnylines()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SKINNYlines',
-            'actionid: 1432.123',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SKINNYlinesAction();
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
-     * @test SKINNYshowline
-     *
-     */
-        public function can_skinnyshowline()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SKINNYshowline',
-            'actionid: 1432.123',
-            'line: Line',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SKINNYshowlineAction('Line');
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
      * @test DAHDIShowChannels
      *
      */
@@ -319,24 +253,6 @@ namespace PAMI\Client\Impl {
 
 
     /**
-     * @test SIPpeerstatus
-     *
-     */
-        public function can_sippeerstatus()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SIPpeerstatus',
-            'actionid: 1432.123',
-            'peer: Peer',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPpeerstatusAction();
-            $action->setPeer('Peer');
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
      * @test ConfbridgeSetSingleVideoSrc
      *
      */
@@ -368,22 +284,6 @@ namespace PAMI\Client\Impl {
             ''
             )));
             $action = new \PAMI\Message\Action\ControlPlaybackAction('Channel', 'Control');
-            $result = $this->start($write, $action);
-        }
-
-
-    /**
-     * @test MeetmeListRooms
-     *
-     */
-        public function can_meetmelistrooms()
-        {
-            $write = array(implode("\r\n", array(
-            'action: MeetmeListRooms',
-            'actionid: 1432.123',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MeetmeListRoomsAction();
             $result = $this->start($write, $action);
         }
 

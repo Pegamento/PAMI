@@ -155,11 +155,11 @@ namespace PAMI\Client\Impl {
             $client->registerEventListener(new SomeListenerClass);
             $client->open();
             $event = array(
-            'Event: PeerStatus',
+            'Event: Newchannel',
             'Privilege: system,all',
-            'ChannelType: SIP',
-            'Peer: SIP/someguy',
-            'PeerStatus: Registered',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
             ''
             );
             setFgetsMock($event, $event);
@@ -167,8 +167,8 @@ namespace PAMI\Client\Impl {
                 $client->process();
             }
             $event = SomeListenerClass::$event;
-            $this->assertEquals($event->getName(), 'PeerStatus');
-            $this->assertTrue($event instanceof \PAMI\Message\Event\PeerStatusEvent);
+            $this->assertEquals($event->getName(), 'Newchannel');
+            $this->assertTrue($event instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
         /**
@@ -204,19 +204,19 @@ namespace PAMI\Client\Impl {
             });
             $client->open();
             $event = array(
-            'Event: PeerStatus',
+            'Event: Newchannel',
             'Privilege: system,all',
-            'ChannelType: SIP',
-            'Peer: SIP/someguy',
-            'PeerStatus: Registered',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
             ''
             );
             setFgetsMock($event, $event);
             for ($i = 0; $i < 6; $i++) {
                 $client->process();
             }
-            $this->assertEquals($resultVariable->getName(), 'PeerStatus');
-            $this->assertTrue($resultVariable instanceof \PAMI\Message\Event\PeerStatusEvent);
+            $this->assertEquals($resultVariable->getName(), 'Newchannel');
+            $this->assertTrue($resultVariable instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
         /**
@@ -250,11 +250,11 @@ namespace PAMI\Client\Impl {
             $client->registerEventListener(array($listener, 'handle'));
             $client->open();
             $event = array(
-            'Event: PeerStatus',
+            'Event: Newchannel',
             'Privilege: system,all',
-            'ChannelType: SIP',
-            'Peer: SIP/someguy',
-            'PeerStatus: Registered',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
             ''
             );
             setFgetsMock($event, $event);
@@ -262,8 +262,8 @@ namespace PAMI\Client\Impl {
                 $client->process();
             }
             $event = SomeListenerClass::$event;
-            $this->assertEquals($event->getName(), 'PeerStatus');
-            $this->assertTrue($event instanceof \PAMI\Message\Event\PeerStatusEvent);
+            $this->assertEquals($event->getName(), 'Newchannel');
+            $this->assertTrue($event instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
         /**
@@ -296,11 +296,11 @@ namespace PAMI\Client\Impl {
             $id = $client->registerEventListener(new SomeListenerClass);
             $client->open();
             $event = array(
-            'Event: PeerStatus',
+            'Event: Newchannel',
             'Privilege: system,all',
-            'ChannelType: SIP',
-            'Peer: SIP/someguy',
-            'PeerStatus: Registered',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
             ''
             );
             setFgetsMock($event, $event);
@@ -349,11 +349,11 @@ namespace PAMI\Client\Impl {
             );
             $client->open();
             $event = array(
-            'Event: PeerStatus',
+            'Event: Newchannel',
             'Privilege: system,all',
-            'ChannelType: SIP',
-            'Peer: SIP/someguy',
-            'PeerStatus: Registered',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
             ''
             );
             setFgetsMock($event, $event);

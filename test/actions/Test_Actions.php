@@ -312,21 +312,6 @@ namespace PAMI\Client\Impl {
         /**
          * @test
          */
-        public function can_change_monitor()
-        {
-            $write = array(implode("\r\n", array(
-            'action: ChangeMonitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            'file: file',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\ChangeMonitorAction('channel', 'file', true);
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
         public function can_command()
         {
             $write = array(implode(
@@ -1010,50 +995,6 @@ namespace PAMI\Client\Impl {
         /**
          * @test
          */
-        public function can_meetme_list()
-        {
-            $write = array(implode("\r\n", array(
-            'action: MeetmeList',
-            'actionid: 1432.123',
-            'conference: conference',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MeetmeListAction('conference');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_meetme_mute()
-        {
-            $write = array(implode("\r\n", array(
-            'action: MeetmeMute',
-            'actionid: 1432.123',
-            'meetme: meetme',
-            'usernum: usernum',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MeetmeMuteAction('meetme', 'usernum');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_meetme_unmute()
-        {
-            $write = array(implode("\r\n", array(
-            'action: MeetmeUnmute',
-            'actionid: 1432.123',
-            'meetme: meetme',
-            'usernum: usernum',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MeetmeUnmuteAction('meetme', 'usernum');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
         public function can_mix_monitor()
         {
             $write = array(implode("\r\n", array(
@@ -1150,40 +1091,6 @@ namespace PAMI\Client\Impl {
         /**
          * @test
          */
-        public function can_monitor()
-        {
-            $write = array(implode("\r\n", array(
-            'action: Monitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            'file: file',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MonitorAction('channel', 'file');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_monitor_filemix()
-        {
-            $write = array(implode("\r\n", array(
-            'action: Monitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            'file: file',
-            'format: wav',
-            'mix: false',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\MonitorAction('channel', 'file');
-            $action->setFormat('wav');
-            $action->setMix(false);
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
         public function can_voicemail_users_list()
         {
             $write = array(implode("\r\n", array(
@@ -1192,48 +1099,6 @@ namespace PAMI\Client\Impl {
             ''
             )));
             $action = new \PAMI\Message\Action\VoicemailUsersListAction;
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_pause_monitor()
-        {
-            $write = array(implode("\r\n", array(
-            'action: PauseMonitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\PauseMonitorAction('channel');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_unpause_monitor()
-        {
-            $write = array(implode("\r\n", array(
-            'action: UnpauseMonitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\UnpauseMonitorAction('channel');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_stop_monitor()
-        {
-            $write = array(implode("\r\n", array(
-            'action: StopMonitor',
-            'actionid: 1432.123',
-            'channel: channel',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\StopMonitorAction('channel');
             $result = $this->_start($write, $action);
         }
         /**
@@ -1396,74 +1261,6 @@ namespace PAMI\Client\Impl {
             ''
             )));
             $action = new \PAMI\Message\Action\SendTextAction('channel', 'message');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_sip_show_registry()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SIPshowregistry',
-            'actionid: 1432.123',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPShowRegistryAction;
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_sip_peers()
-        {
-            $write = array(implode("\r\n", array(
-            'action: Sippeers',
-            'actionid: 1432.123',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPPeersAction;
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_sip_notify()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SIPnotify',
-            'actionid: 1432.123',
-            'channel: channel',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPNotifyAction('channel');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_sip_show_peer()
-        {
-            $write = array(implode("\r\n", array(
-            'action: SIPshowpeer',
-            'actionid: 1432.123',
-            'peer: peer',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPShowPeerAction('peer');
-            $result = $this->_start($write, $action);
-        }
-        /**
-         * @test
-         */
-        public function can_sip_qualify_peer()
-        {
-            $write = array(implode("\r\n", array(
-            'action: Sipqualifypeer',
-            'actionid: 1432.123',
-            'peer: peer',
-            ''
-            )));
-            $action = new \PAMI\Message\Action\SIPQualifyPeerAction('peer');
             $result = $this->_start($write, $action);
         }
         /**
