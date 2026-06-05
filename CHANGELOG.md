@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ClientImpl::open()` now detects and reports failed AMI logins instead of silently continuing.
 - The `event_mask` client option is now actually correctly applied to the login action.
 - `CommandResponse::getCommandOutput()` now returns the joined command output instead of throwing.
+- `ComplexResponse` no longer triggers an undefined-property warning when parsing multi-table responses.
+- Removed the stale, unused `ClientImpl.php.new` duplicate file from the repository.
 
 ### Behaviour changes
 
@@ -63,3 +65,17 @@ What this means for you:
 - No API or signature changes are required in your code.
 - Calls to `getCommandOutput()` now succeed and return the output as a string
   (an empty string when there is no output) rather than throwing.
+
+#### `ComplexResponse` no longer warns on multi-table responses
+
+Previously, after a table was completed the internal `temptable` property was
+`unset()`, and a subsequent read of it (`is_array($this->temptable)`) emitted an
+"Undefined property" warning while parsing responses that contain multiple
+tables.
+
+As of 2.1, the property is reset to `null` instead of being unset, so the check
+behaves correctly and no warning is produced.
+
+What this means for you:
+- No API or behavioural changes to parsed results; this only removes a spurious
+  warning (and any noise it added to logs/output).

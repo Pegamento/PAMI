@@ -89,7 +89,7 @@ class ComplexResponse extends Response
                         $this->tables = array();
                     }
                     $this->tables[$event->getTableName()] = $this->temptable;
-                    unset($this->temptable);
+                    $this->temptable = null;
                 } elseif (is_array($this->temptable)) {
                     $this->temptable['Entries'][] = $event;
                 } else {
