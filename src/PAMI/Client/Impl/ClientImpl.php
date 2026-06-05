@@ -130,8 +130,10 @@ class ClientImpl implements IClient
     private $context;
 
     /**
-     * Our event listeners
-     * @var IEventListener[]
+     * Our event listeners. Keyed by listener id, each entry is a tuple of
+     * [listener, predicate] where listener is an IEventListener|Closure|array
+     * and predicate is a Closure|array|null.
+     * @var array<string, array{0: \PAMI\Listener\IEventListener|\Closure|array, 1: \Closure|array|null}>
      */
     private $eventListeners;
 
@@ -549,7 +551,7 @@ class ClientImpl implements IClient
     /**
      * Get the logger implementation.
      *
-     * @return @object The current PSR3-Logger instance
+     * @return LoggerInterface The current PSR3-Logger instance
      */
     public function getLogger()
     {
