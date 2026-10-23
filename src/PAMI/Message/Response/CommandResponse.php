@@ -9,7 +9,6 @@
  * @subpackage Response
  * @author     Diederik de Groot <ddegroot@talon.nl>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2019 Diederik de Groot <ddegroot@talon.nl>

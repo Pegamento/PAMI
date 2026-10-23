@@ -10,7 +10,6 @@
  * @subpackage Action
  * @author     Matías Barletta <mrb@lionix.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
