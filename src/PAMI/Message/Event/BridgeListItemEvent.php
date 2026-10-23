@@ -3,7 +3,7 @@
 /**
  * Event triggered when an action BridgeList was issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -33,7 +33,7 @@ namespace PAMI\Message\Event;
 /**
  * Event triggered when an action BridgeList was issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

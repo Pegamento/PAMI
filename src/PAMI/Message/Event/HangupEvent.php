@@ -2,7 +2,7 @@
 /**
  * Triggered when a hangup is detected.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -34,7 +34,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Triggered when a hangup is detected.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

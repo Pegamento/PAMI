@@ -2,7 +2,7 @@
 /**
  * Whenever a ME (GSM module) changes working state, an event is generated.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -34,7 +34,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Whenever a ME (GSM module) changes working state, an event is generated.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

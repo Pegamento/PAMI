@@ -2,7 +2,7 @@
 /**
  * Event triggered when linking (connecting) two channels.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -34,7 +34,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when linking (connecting) two channels.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

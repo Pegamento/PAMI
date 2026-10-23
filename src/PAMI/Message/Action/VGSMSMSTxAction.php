@@ -3,7 +3,7 @@
  * Not all methods were implemented. For reference please check
  * http://open.voismart.it/index.php/VGSM_Manager_Interface
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -35,7 +35,7 @@ namespace PAMI\Message\Action;
  * Not all methods were implemented. For reference please check
  * http://open.voismart.it/index.php/VGSM_Manager_Interface
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

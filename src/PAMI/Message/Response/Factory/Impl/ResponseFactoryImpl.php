@@ -3,7 +3,7 @@
  * This factory knows which response to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Response
@@ -39,7 +39,7 @@ use PAMI\Message\Response\Response;
  * This factory knows which reponse handler to return according to a given raw message from ami,
  * the outgoingMessageClass and responseHandler requested by the Action
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Response

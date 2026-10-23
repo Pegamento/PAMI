@@ -4,7 +4,7 @@
  * vgsm_net_state event is generated. This event is available starting
  * from 0.21.0.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -38,7 +38,7 @@ use PAMI\Message\Event\EventMessage;
  * vgsm_net_state event is generated. This event is available starting
  * from 0.21.0.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

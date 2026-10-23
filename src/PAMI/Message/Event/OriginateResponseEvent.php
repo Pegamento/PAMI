@@ -2,7 +2,7 @@
 /**
  * Response from an async originate.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -34,7 +34,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Response from an async originate.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

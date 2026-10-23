@@ -2,7 +2,7 @@
 /**
  * This class will test some events.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
@@ -34,7 +34,7 @@ namespace PAMI\Client\Impl {
     /**
      * This class will test  xslt generated actions.
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test

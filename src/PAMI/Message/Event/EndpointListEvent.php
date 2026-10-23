@@ -3,7 +3,7 @@
  * Event from PJSIPShowEndpoints
  * Provide details about a device/endpoint/contact's status.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -35,7 +35,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event from PJSIPShowEndpoints
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

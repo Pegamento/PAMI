@@ -3,7 +3,7 @@
  * This factory knows which event to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
@@ -39,7 +39,7 @@ use PAMI\Exception\PAMIException;
  * This factory knows which event to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event

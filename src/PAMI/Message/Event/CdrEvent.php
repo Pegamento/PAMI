@@ -4,7 +4,7 @@
  *
  * NOTE: For correct callerid values: see: https://issues.asterisk.org/jira/browse/ASTERISK-16910
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -36,7 +36,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when a channel changes its status.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

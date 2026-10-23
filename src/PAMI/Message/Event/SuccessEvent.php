@@ -3,7 +3,7 @@
  * Event triggered for the end of the list when an action Success
  * is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

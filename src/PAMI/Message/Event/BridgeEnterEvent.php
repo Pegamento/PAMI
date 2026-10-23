@@ -2,7 +2,7 @@
 /**
  * Event triggered when a channel enters a bridge.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -32,7 +32,7 @@ namespace PAMI\Message\Event;
 /**
  * Event triggered when a channel enters a bridge.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

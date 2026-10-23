@@ -2,7 +2,7 @@
 /**
  * An AsyncAGI client implementation.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  AsyncAgi
@@ -39,7 +39,7 @@ use Psr\Log\NullLogger;
 /**
  * An AGI client implementation.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  AsyncAgi

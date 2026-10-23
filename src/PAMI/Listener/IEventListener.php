@@ -2,7 +2,7 @@
 /**
  * Implement this interface in your own classes to make them event listeners.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
@@ -34,7 +34,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Implement this interface in your own classes to make them event listeners.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event

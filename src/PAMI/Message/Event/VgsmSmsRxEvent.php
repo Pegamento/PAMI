@@ -4,7 +4,7 @@
  * reported as a manager event, however, acknowledgment still relies on SMS
  * spooler to handle the message. This event is generated starting from 0.21.0
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -38,7 +38,7 @@ use PAMI\Message\Event\EventMessage;
  * reported as a manager event, however, acknowledgment still relies on SMS
  * spooler to handle the message. This event is generated starting from 0.21.0
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

@@ -2,7 +2,7 @@
 /**
  * This class will test the ami response factory
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
@@ -33,7 +33,7 @@ namespace PAMI\Client\Impl {
     /**
      * This class will test the response factory
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test

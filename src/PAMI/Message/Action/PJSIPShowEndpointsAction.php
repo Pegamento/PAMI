@@ -3,7 +3,7 @@
  * PJSIPShowEndpoints action message.
  * Lists PJSIP endpoints.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -38,7 +38,7 @@ namespace PAMI\Message\Action;
  * event is raised that contains relevant attributes and status information.
  * Once all endpoints have been listed an 'EndpointListComplete' event is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

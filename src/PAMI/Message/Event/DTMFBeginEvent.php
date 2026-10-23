@@ -2,7 +2,7 @@
 /**
  * Event triggered when a DTMF digit has started on a channel.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -32,7 +32,7 @@ namespace PAMI\Message\Event;
 /**
  * Event triggered when a DTMF digit has started on a channel.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

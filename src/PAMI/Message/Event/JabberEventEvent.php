@@ -3,7 +3,7 @@
  * Event triggered for Jabber Activity. A contribution from
  * Richard Baar.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -35,7 +35,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event Jabber
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

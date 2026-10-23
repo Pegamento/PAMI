@@ -2,7 +2,7 @@
 /**
  * Interface for an ami client.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Client
@@ -35,7 +35,7 @@ use Psr\Log\NullLogger;
 /**
  * Interface for an ami client.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Client

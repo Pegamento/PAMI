@@ -2,7 +2,7 @@
 /**
  * PAMI family of exceptions.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Exception
@@ -31,7 +31,7 @@ namespace PAMI\Exception;
 /**
  * PAMI family of exceptions.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Exception

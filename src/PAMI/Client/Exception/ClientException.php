@@ -2,7 +2,7 @@
 /**
  * Connection/Protocol exception.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
@@ -34,7 +34,7 @@ use PAMI\Exception\PAMIException;
 /**
  * Connection/Protocol exception.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client

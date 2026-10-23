@@ -2,7 +2,7 @@
 /**
  * Queries for the status of a channel or all channels if none specified.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -32,7 +32,7 @@ namespace PAMI\Message\Action;
 /**
  * Queries for the status of a channel or all channels if none specified.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

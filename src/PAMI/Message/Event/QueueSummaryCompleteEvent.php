@@ -3,7 +3,7 @@
  * Event triggered for the end of the list when an action QueueSummary
  * is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -36,7 +36,7 @@ use PAMI\Message\Event\EventMessage;
  * Event triggered for the end of the list when an action QueueSummary
  * is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

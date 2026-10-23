@@ -2,7 +2,7 @@
 /**
  * A generic incoming message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message
@@ -33,7 +33,7 @@ use PAMI\Exception\PAMIException;
 /**
  * A generic incoming message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message

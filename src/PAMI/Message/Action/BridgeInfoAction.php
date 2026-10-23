@@ -2,7 +2,7 @@
 /**
  * Returns detailed information about a bridge and the channels in it.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -32,7 +32,7 @@ namespace PAMI\Message\Action;
 /**
  * Returns detailed information about a bridge and the channels in it.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message

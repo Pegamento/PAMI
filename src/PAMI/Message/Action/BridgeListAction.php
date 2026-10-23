@@ -2,7 +2,7 @@
 /**
  * BridgeList action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * Get a list of bridges in the system.
  * Returns a list of bridges, optionally filtering on a bridge type.

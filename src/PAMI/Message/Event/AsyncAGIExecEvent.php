@@ -2,7 +2,7 @@
 /**
  * Event triggered when AsyncAGI completes an AGI command.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -34,7 +34,7 @@ use PAMI\AsyncAgi\Event\IAsyncAgiExecEvent;
 /**
  * Event triggered when AsyncAGI completes an AGI command.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
