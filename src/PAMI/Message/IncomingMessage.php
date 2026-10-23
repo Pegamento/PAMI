@@ -95,6 +95,24 @@ abstract class IncomingMessage extends Message
     }
 
     /**
+     * Returns a key by name, sanitized.
+     *
+     * Sanitation errors include the original message.
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return string
+     */
+    public function getKey($key)
+    {
+        try {
+            return parent::getKey($key);
+        } catch (PAMIException $e) {
+            throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent ."\n");
+        }
+    }
+
+    /**
      * Returns the channel variables for all reported channels.
      * https://github.com/marcelog/PAMI/issues/85
      *
@@ -119,7 +137,7 @@ abstract class IncomingMessage extends Message
     public function getChannelVariables($channel = null)
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel'])) {
+            if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
                 return $this->getChannelVariables('default');
             } else {
                 return $this->getChannelVariables($this->keys['channel']);
@@ -158,7 +176,7 @@ abstract class IncomingMessage extends Message
     public function getStatusVariables($channel = null)
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel'])) {
+            if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
                 return $this->getStatusVariables('default');
             } else {
                 return $this->getStatusVariables($this->keys['channel']);
@@ -203,7 +221,7 @@ abstract class IncomingMessage extends Message
                 unset($content[0]);
                 $value = isset($content[1]) ? trim(implode(':', $content)) : '';
                 $this->channelVariables[$chanName][strtolower($name)] = $value;
-                $this->setSanitizedKey('chanvariable', $name);
+                $this->setKey('chanvariable', $name);
             } elseif (!strncmp($name, 'variable', 8)) {
                 // https://github.com/marcelog/PAMI/issues/85
                 $matches = preg_match("/\(([^\)]*)\)/", $name, $captures);
@@ -216,17 +234,12 @@ abstract class IncomingMessage extends Message
                 unset($content[0]);
                 $value = isset($content[1]) ? trim(implode(':', $content)) : '';
                 $this->statusVariables[$chanName][strtolower($name)] = $value;
-                $this->setSanitizedKey('variable', $name);
+                $this->setKey('variable', $name);
             }
-            // Added ResponseFactory #d3b0ce8
-            try {
-                $this->setSanitizedKey($name, $value);
-            } catch (PAMIException $e) {
-                throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent ."\n");
-            }
+            $this->setKey($name, $value);
         }
         // https://github.com/marcelog/PAMI/issues/85
-        if (isset($this->keys['channel'])) {
+        if (isset($this->keys['channel']) && $this->keys['channel'] !== '') {
             $channel = strtolower($this->keys['channel']);
 
             if (isset($this->channelVariables[$channel])) {

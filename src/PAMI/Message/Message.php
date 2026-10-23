@@ -69,8 +69,9 @@ abstract class Message
     protected $variables;
 
     /**
-     * Metadata. Message "keys" i.e: Action: login
-     * @var string[]
+     * Metadata. Message "keys" i.e: Action: login.
+     * Values are stored as received. Sanitation happens in getKey().
+     * @var string[]|array[]
      */
     protected $keys;
 
@@ -145,23 +146,27 @@ abstract class Message
                 // Return as string if there's a leading zero or plus sign to avoid losing information
                 return $value;
             }
+            // Float conversion drops trailing zeros in the fractional part (e.g. "1234.10" becomes 1234.1)
+            if (preg_match('/\.\d*0(?:[eE][+-]?\d+)?$/', $value)) {
+                return $value;
+            }
             if (filter_var($value, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_HEX | FILTER_FLAG_ALLOW_OCTAL)) {
                 return intval($value, 0);
             }
             if (filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND | FILTER_FLAG_ALLOW_SCIENTIFIC)) {
                 return (float)$value;
             }
-            return (double)$value;
+            return (float)$value;
         } elseif (is_string($value)) {
             //if (filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE))
             //    return (boolean)$value;
             if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
-                return (boolean)true;
+                return (bool)true;
             }
             if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
-                return (boolean)false;
+                return (bool)false;
             }
-            if ($value = htmlspecialchars($value)) {
+            if ($value == htmlspecialchars($value)) {
                 return (string)$value;
             }
             if (filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE)) {
@@ -174,7 +179,7 @@ abstract class Message
     }
 
     /**
-     * Adds a variable to this message.
+     * Adds a variable to this message. The value is stored unsanitized.
      *
      * @param string $key   Key name (i.e: Action).
      * @param string $value Key value.
@@ -188,25 +193,18 @@ abstract class Message
     }
 
     /**
-     * Adds a variable to this message after sanitizing it first.
-     *
-     * @param string $key   Key name (i.e: Action).
-     * @param string $value Key value.
-     *
-     * @return void
+     * @deprecated Use setKey() instead. 
      */
     protected function setSanitizedKey($key, $value)
     {
-        $key = strtolower((string)$key);
-        if ($key === 'actionid' or $key === 'uniqueid' or $key === 'linkedid') {
-            $this->keys[$key] = $value;
-        } else {
-            $this->keys[$key] = $this->sanitizeInput($value);
-        }
+        $this->setKey($key, $value);
     }
 
     /**
-     * Returns a key by name.
+     * Returns a key by name, sanitized.
+     *
+     * ActionId, Uniqueid and Linkedid are returned as stored so identifiers
+     * are not rewritten.
      *
      * @param string $key Key name (i.e: Action).
      *
@@ -215,11 +213,44 @@ abstract class Message
     public function getKey($key)
     {
         $key = strtolower($key);
-        if (!isset($this->keys[$key])) {
+        if (!array_key_exists($key, $this->keys)) {
             return null;
         }
-        //return (string)$this->keys[$key];
-        return $this->keys[$key];
+        $value = $this->keys[$key];
+        if ($key === 'actionid' || $key === 'uniqueid' || $key === 'linkedid') {
+            return $value;
+        }
+        if (is_array($value)) {
+            $sanitized = [];
+            foreach ($value as $item) {
+                $sanitizedItem = $this->sanitizeInput($item);
+                $sanitized[] = $sanitizedItem === null ? '' : (string)$sanitizedItem;
+            }
+            return $sanitized;
+        }
+        return $this->sanitizeInput($value);
+    }
+
+    /**
+     * Returns a key by name as stored, without sanitation.
+     *
+     * Repeated Output lines are returned as an array of the original strings.
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return string
+     */
+    public function getStringKey($key): ?string
+    {
+        $key = strtolower($key);
+        if (!array_key_exists($key, $this->keys)) {
+            return null;
+        }
+
+        if (is_array($this->keys[$key])) {
+            return implode("\n", $this->keys[$key]);
+        }
+        return (string) $this->keys[$key];
     }
 
     /**
@@ -232,10 +263,10 @@ abstract class Message
     public function getBoolKey($key)
     {
         $key = strtolower($key);
-        if (!isset($this->keys[$key])) {
+        if (!array_key_exists($key, $this->keys) || $this->keys[$key] === '') {
             return null;
         }
-        return (boolean) $this->keys[$key];
+        return (bool) $this->getKey($key);
     }
 
     /**
@@ -292,7 +323,13 @@ abstract class Message
     {
         $result = array();
         foreach ($this->getKeys() as $k => $v) {
-            $result[] = $k . ': ' . $v;
+            if (is_array($v)) {
+                foreach ($v as $singleValue) {
+                    $result[] = $k . ': ' . $singleValue;
+                }
+            } else {
+                $result[] = $k . ': ' . $v;
+            }
         }
         foreach ($this->getVariables() as $k => $v) {
             if (is_array($v)) {
@@ -314,7 +351,7 @@ abstract class Message
      */
     public function getActionID()
     {
-        return $this->getKey('ActionID');
+        return $this->getKey('actionid');
     }
 
     /**
