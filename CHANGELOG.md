@@ -5,6 +5,14 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changes
+
+- Raised the declared minimum PHP version from 8.1 to 8.4. Installing on PHP < 8.4 is no longer supported.
+- Added a GitHub Actions workflow that validates `composer.json` and runs the test suite on PHP 8.4 for pushes to `master` and pull requests.
+- Added a Dependabot configuration for GitHub Actions and Composer dependency updates.
+
 ## [2.1] - 2026-06-05
 
 ### Changes
