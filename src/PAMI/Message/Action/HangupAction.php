@@ -60,7 +60,7 @@ class HangupAction extends ActionMessage
         $this->setKey('Channel', $channel);
 
         if (null !== $cause) {
-            $this->setKey('Cause', $cause);
+            $this->setKey('Cause', (string) $cause);
         }
     }
 }

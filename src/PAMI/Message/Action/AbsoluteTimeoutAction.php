@@ -58,6 +58,6 @@ class AbsoluteTimeoutAction extends ActionMessage
     {
         parent::__construct('AbsoluteTimeout');
         $this->setKey('Channel', $channel);
-        $this->setKey('Timeout', $timeout);
+        $this->setKey('Timeout', (string) $timeout);
     }
 }

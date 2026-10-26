@@ -59,7 +59,7 @@ class MixMonitorMuteAction extends ActionMessage
      */
     public function setState(bool $state): void
     {
-        $this->setKey('State', $state ? 1 : 0);
+        $this->setKey('State', $state ? '1' : '0');
     }
 
     /**

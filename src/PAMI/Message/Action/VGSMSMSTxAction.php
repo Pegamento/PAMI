@@ -131,7 +131,7 @@ class VGSMSMSTxAction extends ActionMessage
      */
     public function setConcatRefId(string|int $refid): void
     {
-        $this->setKey('X-SMS-Concatenate-RefID', $refid);
+        $this->setKey('X-SMS-Concatenate-RefID', (string) $refid);
     }
 
     /**
@@ -143,7 +143,7 @@ class VGSMSMSTxAction extends ActionMessage
      */
     public function setConcatSeqNum(string|int $seqNum): void
     {
-        $this->setKey('X-SMS-Concatenate-Sequence-Number', $seqNum);
+        $this->setKey('X-SMS-Concatenate-Sequence-Number', (string) $seqNum);
     }
 
     /**
@@ -155,7 +155,7 @@ class VGSMSMSTxAction extends ActionMessage
      */
     public function setConcatTotalMsg(string|int $totalmsg): void
     {
-        $this->setKey('X-SMS-Concatenate-Total-Messages', $totalmsg);
+        $this->setKey('X-SMS-Concatenate-Total-Messages', (string) $totalmsg);
     }
 
     /**

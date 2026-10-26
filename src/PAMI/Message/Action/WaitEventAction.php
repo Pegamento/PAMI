@@ -54,6 +54,6 @@ class WaitEventAction extends ActionMessage
     public function __construct(int $timeout)
     {
         parent::__construct('WaitEvent');
-        $this->setKey('Timeout', (int)$timeout);
+        $this->setKey('Timeout', (string) $timeout);
     }
 }

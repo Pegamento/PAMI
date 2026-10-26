@@ -53,7 +53,7 @@ class BridgeListAction extends ActionMessage
     {
         parent::__construct('BridgeList');
         if (null !== $bridgeType) {
-            $this->setKey('BridgeType', $bridgeType);
+            $this->setKey('BridgeType', (string) $bridgeType);
         }
         if ($actionId !== '') {
             $this->setActionID($actionId);

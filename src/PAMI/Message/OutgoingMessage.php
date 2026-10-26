@@ -102,20 +102,32 @@ abstract class OutgoingMessage extends Message
      * Adds a key to this message.
      *
      * @param string $key   Key name (i.e: Action).
-     * @param string|int|float|bool|array|null $value Key value.
+     * @param string $value Key value.
      *
      * @return void
      * @throws PAMIException When the key or value would break the AMI frame.
      */
-    protected function setKey(string $key, string|int|float|bool|array|null $value): void
+    protected function setKey(string $key, string $value): void
     {
         $this->rejectUnsafeAmiText($key, true);
         $this->rejectUnsafeAmiText($value, false);
-        if (is_array($value)) {
-            $this->keys[strtolower((string) $key)] = $value;
-            return;
-        }
         parent::setKey($key, $value);
+    }
+
+    /**
+     * Appends another value for a key.
+     *
+     * @param string $key   Key name (i.e: Output).
+     * @param string $value Value to append.
+     *
+     * @return void
+     * @throws PAMIException When the key or value would break the AMI frame.
+     */
+    protected function addKey(string $key, string $value): void
+    {
+        $this->rejectUnsafeAmiText($key, true);
+        $this->rejectUnsafeAmiText($value, false);
+        parent::addKey($key, $value);
     }
 
     /**

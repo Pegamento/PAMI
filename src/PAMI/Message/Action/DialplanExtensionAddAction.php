@@ -56,9 +56,9 @@ class DialplanExtensionAddAction extends ActionMessage
         parent::__construct('DialplanExtensionAdd');
         $this->setKey('context', $context);
         $this->setKey('extension', $extension);
-        $this->setKey('priority', $priority);
+        $this->setKey('priority', (string) $priority);
         $this->setKey('application', $application);
-        $this->setKey('replace', $replace);
+        $this->setKey('replace', (string) $replace);
     }
 
     /**

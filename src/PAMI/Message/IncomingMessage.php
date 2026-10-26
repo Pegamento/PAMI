@@ -31,8 +31,6 @@ declare(strict_types=1);
 
 namespace PAMI\Message;
 
-use PAMI\Exception\PAMIException;
-
 /**
  * A generic incoming message.
  *
@@ -67,15 +65,30 @@ abstract class IncomingMessage extends Message
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array<string, mixed>
      */
-    public function __sleep(): array
+    public function __serialize(): array
     {
-        $ret = parent::__sleep();
-        $ret[] = 'rawContent';
-        $ret[] = 'channelVariables';
-        $ret[] = 'statusVariables';
-        return $ret;
+        return parent::__serialize() + [
+            'rawContent' => $this->rawContent,
+            'channelVariables' => $this->channelVariables,
+            'statusVariables' => $this->statusVariables,
+        ];
+    }
+
+    /**
+     * Restores the state produced by __serialize().
+     *
+     * @param array<string, mixed> $data Serialized state.
+     *
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        parent::__unserialize($data);
+        $this->rawContent = $data['rawContent'];
+        $this->channelVariables = $data['channelVariables'];
+        $this->statusVariables = $data['statusVariables'];
     }
 
     /**
@@ -84,7 +97,7 @@ abstract class IncomingMessage extends Message
      *
      * @return string|null
      */
-    public function getEventList(): string|int|float|bool|array|null
+    public function getEventList(): ?string
     {
         return $this->getKey('EventList');
     }
@@ -97,25 +110,6 @@ abstract class IncomingMessage extends Message
     public function getRawContent(): string
     {
         return $this->rawContent;
-    }
-
-    /**
-     * Returns a key by name, sanitized.
-     *
-     * Sanitation errors include the original message.
-     *
-     * @param string $key Key name (i.e: Action).
-     *
-     * @return string|int|float|bool|string[]|null
-     * @throws PAMIException
-     */
-    public function getKey(string $key): string|int|float|bool|array|null
-    {
-        try {
-            return parent::getKey($key);
-        } catch (PAMIException $e) {
-            throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent . "\n");
-        }
     }
 
     /**
@@ -143,10 +137,11 @@ abstract class IncomingMessage extends Message
     public function getChannelVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
+            $current = $this->getKey('channel');
+            if ($current === null || $current === '') {
                 return $this->getChannelVariables('default');
             } else {
-                return $this->getChannelVariables($this->keys['channel']);
+                return $this->getChannelVariables($current);
             }
         } else {
             $channel = strtolower($channel);
@@ -182,10 +177,11 @@ abstract class IncomingMessage extends Message
     public function getStatusVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
+            $current = $this->getKey('channel');
+            if ($current === null || $current === '') {
                 return $this->getStatusVariables('default');
             } else {
-                return $this->getStatusVariables($this->keys['channel']);
+                return $this->getStatusVariables($current);
             }
         } else {
             $channel = strtolower($channel);
@@ -227,7 +223,7 @@ abstract class IncomingMessage extends Message
                 unset($content[0]);
                 $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->channelVariables[$chanName][strtolower($name)] = $value;
-                $this->setKey('chanvariable', $name);
+                $this->addKey('chanvariable', $name);
             } elseif (!strncmp($name, 'variable', 8)) {
                 // https://github.com/marcelog/PAMI/issues/85
                 $matches = preg_match("/\(([^\)]*)\)/", $name, $captures);
@@ -240,13 +236,14 @@ abstract class IncomingMessage extends Message
                 unset($content[0]);
                 $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->statusVariables[$chanName][strtolower($name)] = $value;
-                $this->setKey('variable', $name);
+                $this->addKey('variable', $name);
             }
-            $this->setKey($name, $value);
+            $this->addKey($name, $value);
         }
         // https://github.com/marcelog/PAMI/issues/85
-        if (isset($this->keys['channel']) && $this->keys['channel'] !== '') {
-            $channel = strtolower($this->keys['channel']);
+        $channelName = $this->getKey('channel');
+        if ($channelName !== null && $channelName !== '') {
+            $channel = strtolower($channelName);
 
             if (isset($this->channelVariables[$channel])) {
                 $this->channelVariables[$channel] = array_merge(

@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Requires PHP 8.4.1. The 2.1 notes still described a PHP 8.1 / PHPUnit 9.6 baseline; development now uses PHPUnit 13.4.
 - `declare(strict_types=1)` is enabled across `src`. The core client, message, response, and factory APIs have native parameter, return, and property types.
-- `getKey()` still converts numeric values and `on`/`off`/`yes`/`no`/`true`/`false`. Other strings are returned unchanged. Values are no longer HTML-escaped.
+- `getKey()` returns the raw string. Repeated values are one string joined with `Message::EOL` via `addKey()`, and typed reads go through `getBoolKey()`, `getIntKey()`, and `getFloatKey()`. Values are no longer HTML-escaped.
+- Message serialization uses `__serialize()` so the private key map round-trips. Payloads written by the old `__sleep()` property list cannot be restored.
 - ActionIDs are random 16-character hex strings. Call `ActionMessage::setActionIdGenerator()` to supply your own, including a fixed id for tests.
 - `OutgoingMessage::setKey()` and `setVariable()` throw `PAMIException` when a value contains CR or LF, or a key contains CR, LF, or `:`.
 - Optional action arguments use `null` to mean "omit this field". `false` is no longer the sentinel.
@@ -34,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 3. Do not depend on ActionIDs being derived from `microtime()`. Read the id from the action, or set a generator before constructing actions.
 4. Do not put CR, LF, or `:` in outgoing keys, or CR/LF in outgoing values. Build multi-line command bodies through the command actions instead of raw key injection.
 5. Replace omitted optional arguments that were passed as `false` with `null` (`GetVar`, `SetVar`, `DBDelTree`, `GetConfig`, `Park`, `ShowDialPlan`, `Status`, the queue actions, `Reload`, `BridgeList`).
-6. Expect native types on the client and message APIs. Event getters stay untyped because a converted AMI value may be `string|int|float|bool|null`; their docblocks document that union. Getters that already cast still return `int` or `bool`.
+6. Expect native types on the client and message APIs. `getKey()` returns `?string`. Use `getBoolKey()`, `getIntKey()`, and `getFloatKey()` when a typed value is needed. Event getters that return `getKey()` return that raw string. Getters that already cast still return `int` or `bool`.
 7. Anything that read `Response::$eventsCount` or `Message::$lines` needs to drop that access. Channel and status variables are now part of `IncomingMessage` serialization.
 
 ## [2.1] - 2026-06-05

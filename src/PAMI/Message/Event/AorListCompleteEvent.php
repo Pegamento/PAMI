@@ -60,9 +60,9 @@ class AorListCompleteEvent extends EventMessage
      *
      * Returns key: 'EventList'
      *
-     * @return string|int|float|bool|array|null
+     * @return string|null
      */
-    public function getEventList(): string|int|float|bool|array|null
+    public function getEventList(): ?string
     {
         return $this->getKey('EventList');
     }

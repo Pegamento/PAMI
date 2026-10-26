@@ -898,7 +898,7 @@ namespace PAMI\Client\Impl {
             'VarSet' => array(
                 'Privilege' => 'Privilege',
                 'Channel' => 'Channel',
-                'Variable' => null,
+                'Variable' => '',
                 'Value' => 'Value',
                 'UniqueID' => 'UniqueID',
                 'ChannelState' => 'ChannelState',
@@ -2157,6 +2157,10 @@ namespace PAMI\Client\Impl {
                 }
                 if (isset($translatedValues[$eventName][$key])) {
                     $value = $translatedValues[$eventName][$key];
+                } elseif (strcasecmp($key, 'Event') === 0) {
+                    // The harness already sent "Event: $eventName". A repeated
+                    // Event header is kept, joined with CRLF, rather than replaced.
+                    $value = $eventName . "\r\n" . $value;
                 }
                 $this->assertTrue(
                     method_exists($event, $methodName),

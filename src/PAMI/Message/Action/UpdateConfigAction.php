@@ -123,7 +123,7 @@ class UpdateConfigAction extends ActionMessage
     public function setCat(string|int $input): void
     {
         $this->requireCurrentAction();
-        $this->setKey('Cat-' . $this->getPaddedCounter(), $input);
+        $this->setKey('Cat-' . $this->getPaddedCounter(), (string) $input);
     }
 
     /**

@@ -57,7 +57,7 @@ class QueuePenaltyAction extends ActionMessage
     {
         parent::__construct('QueuePenalty');
         $this->setKey('Interface', $interface);
-        $this->setKey('Penalty', $penalty);
+        $this->setKey('Penalty', (string) $penalty);
         if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }

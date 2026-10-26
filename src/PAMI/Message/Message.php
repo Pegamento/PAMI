@@ -64,10 +64,10 @@ abstract class Message
 
     /**
      * Metadata. Message "keys" i.e: Action: login.
-     * Values are stored as received. Sanitation happens in getKey().
-     * @var string[]|array[]
+     * Each value is the raw string. Repeated headers are joined with EOL.
+     * @var array<string, string>
      */
-    protected array $keys = [];
+    private array $keys = [];
 
     /**
      * Created date (unix timestamp).
@@ -76,13 +76,32 @@ abstract class Message
     protected int $createdDate;
 
     /**
-     * Serialize helper function.
+     * Serialize helper. __serialize() can see private $keys; __sleep() cannot
+     * when a child class supplies the property list.
      *
-     * @return string[]
+     * @return array<string, mixed>
      */
-    public function __sleep(): array
+    public function __serialize(): array
     {
-        return ['variables', 'keys', 'createdDate'];
+        return [
+            'variables' => $this->variables,
+            'keys' => $this->keys,
+            'createdDate' => $this->createdDate,
+        ];
+    }
+
+    /**
+     * Restores the state produced by __serialize().
+     *
+     * @param array<string, mixed> $data Serialized state.
+     *
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->variables = $data['variables'];
+        $this->keys = $data['keys'];
+        $this->createdDate = $data['createdDate'];
     }
 
     /**
@@ -121,120 +140,79 @@ abstract class Message
     }
 
     /**
-     * Sanitize incoming value
-     *
-     * @param string|null $value Key value.
-     *
-     * @return string|int|float|bool|null Typed value. Strings are never HTML-escaped.
-     */
-    protected function sanitizeInput(?string $value): string|int|float|bool|null
-    {
-        if (!isset($value) || strlen($value) == 0) {
-            return null;
-        }
-        if (is_numeric($value)) {
-            // index access is safe as is_numeric('') === false
-            if ($value[0] === '0' || $value[0] === '+') {
-                // Return as string if there's a leading zero or plus sign to avoid losing information
-                return $value;
-            }
-            // Float conversion drops trailing zeros in the fractional part (e.g. "1234.10" becomes 1234.1)
-            if (preg_match('/\.\d*0(?:[eE][+-]?\d+)?$/', $value)) {
-                return $value;
-            }
-            if (filter_var($value, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_HEX | FILTER_FLAG_ALLOW_OCTAL)) {
-                return intval($value, 0);
-            }
-            return (float)$value;
-        }
-        if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
-            return true;
-        }
-        if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
-            return false;
-        }
-        return $value;
-    }
-
-    /**
-     * Adds a variable to this message. The value is stored unsanitized.
+     * Replaces a key. The name is stored lowercased and the value is stored as given.
      *
      * @param string $key   Key name (i.e: Action).
      * @param string $value Key value.
      *
      * @return void
      */
-    protected function setKey(string $key, string|int|float|bool|array|null $value): void
+    protected function setKey(string $key, string $value): void
     {
-        $key = strtolower((string)$key);
-        $this->keys[$key] = (string)$value;
+        $this->keys[strtolower($key)] = $value;
+    }
+
+    /**
+     * Appends another value for a key, joined with EOL.
+     *
+     * The first occurrence is stored on its own. Each later value is appended
+     * after Message::EOL so repeated AMI headers stay one string.
+     *
+     * @param string $key   Key name (i.e: Output).
+     * @param string $value Value to append.
+     *
+     * @return void
+     */
+    protected function addKey(string $key, string $value): void
+    {
+        $key = strtolower($key);
+        if (!array_key_exists($key, $this->keys)) {
+            $this->keys[$key] = $value;
+            return;
+        }
+        $this->keys[$key] .= self::EOL . $value;
     }
 
     /**
      * @deprecated Use setKey() instead.
      */
-    protected function setSanitizedKey(string $key, string|int|float|bool|array|null $value): void
+    protected function setSanitizedKey(string $key, string $value): void
     {
         $this->setKey($key, $value);
     }
 
     /**
-     * Returns a key by name.
+     * Returns a key by name, exactly as stored.
      *
-     * Numeric and on/off/yes/no/true/false values are converted to int, float
-     * or bool. Other strings are returned unchanged and are never HTML-escaped.
-     * ActionId, Uniqueid and Linkedid are returned as stored so identifiers
-     * are not rewritten.
-     *
-     * @param string $key Key name (i.e: Action).
-     *
-     * @return string|int|float|bool|array|null
-     */
-    public function getKey(string $key): string|int|float|bool|array|null
-    {
-        $key = strtolower($key);
-        if (!array_key_exists($key, $this->keys)) {
-            return null;
-        }
-        $value = $this->keys[$key];
-        if ($key === 'actionid' || $key === 'uniqueid' || $key === 'linkedid') {
-            return $value;
-        }
-        if (is_array($value)) {
-            $sanitized = [];
-            foreach ($value as $item) {
-                $sanitizedItem = $this->sanitizeInput($item);
-                $sanitized[] = $sanitizedItem === null ? '' : (string)$sanitizedItem;
-            }
-            return $sanitized;
-        }
-        return $this->sanitizeInput($value);
-    }
-
-    /**
-     * Returns a key by name as stored, without sanitation.
-     *
-     * Repeated Output lines are joined with "\n".
+     * Repeated values are one string separated by EOL. No numeric or yes/no
+     * conversion is applied. A missing key is null.
      *
      * @param string $key Key name (i.e: Action).
      *
      * @return string|null
      */
-    public function getStringKey($key): ?string
+    public function getKey(string $key): ?string
     {
-        $key = strtolower($key);
-        if (!array_key_exists($key, $this->keys)) {
-            return null;
-        }
-
-        if (is_array($this->keys[$key])) {
-            return implode("\n", $this->keys[$key]);
-        }
-        return (string) $this->keys[$key];
+        return $this->keys[strtolower($key)] ?? null;
     }
 
     /**
-     * Returns a key by name, cast to bool.
+     * Returns a key by name, exactly as stored.
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return string|null
+     */
+    public function getStringKey(string $key): ?string
+    {
+        return $this->getKey($key);
+    }
+
+    /**
+     * Returns a key interpreted as a boolean.
+     *
+     * Accepts yes/no, on/off, true/false, and 1/0, case-insensitively.
+     * Missing, empty, and unrecognized values are null.
      *
      * @param string $key Key name (i.e: Action).
      *
@@ -242,21 +220,60 @@ abstract class Message
      */
     public function getBoolKey(string $key): ?bool
     {
-        $key = strtolower($key);
-        if (!array_key_exists($key, $this->keys) || $this->keys[$key] === '') {
+        $value = $this->getKey($key);
+        if ($value === null || $value === '') {
             return null;
         }
-        return (bool) $this->getKey($key);
+        if (preg_match('/^(on|true|yes|1)$/i', $value) === 1) {
+            return true;
+        }
+        if (preg_match('/^(off|false|no|0)$/i', $value) === 1) {
+            return false;
+        }
+        return null;
+    }
+
+    /**
+     * Returns a key interpreted as an integer.
+     *
+     * The whole value must be an optional sign followed by digits.
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return int|null
+     */
+    public function getIntKey(string $key): ?int
+    {
+        $value = $this->getKey($key);
+        if ($value === null || preg_match('/^[+-]?\d+$/', $value) !== 1) {
+            return null;
+        }
+        return (int) $value;
+    }
+
+    /**
+     * Returns a key interpreted as a float.
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return float|null
+     */
+    public function getFloatKey(string $key): ?float
+    {
+        $value = $this->getKey($key);
+        if ($value === null || !is_numeric($value)) {
+            return null;
+        }
+        return (float) $value;
     }
 
     /**
      * Returns all keys for this message.
      *
-     * @return array<string, string|string[]>
+     * @return array<string, string>
      */
     public function getKeys(): array
     {
-        // TODO: sanitize values
         return $this->keys;
     }
 
@@ -305,12 +322,8 @@ abstract class Message
     {
         $result = [];
         foreach ($this->getKeys() as $k => $v) {
-            if (is_array($v)) {
-                foreach ($v as $singleValue) {
-                    $result[] = $k . ': ' . $singleValue;
-                }
-            } else {
-                $result[] = $k . ': ' . $v;
+            foreach (explode(self::EOL, $v) as $singleValue) {
+                $result[] = $k . ': ' . $singleValue;
             }
         }
         foreach ($this->getVariables() as $k => $v) {

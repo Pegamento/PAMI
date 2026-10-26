@@ -60,7 +60,7 @@ class UserEventAction extends ActionMessage
 
         if (is_array($valuesArr) && $valuesArr) {
             foreach ($valuesArr as $key => $value) {
-                $this->setKey($key, $value);
+                $this->setKey((string) $key, $value === null ? '' : (string) $value);
             }
         }
     }

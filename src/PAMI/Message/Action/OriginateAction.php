@@ -115,7 +115,7 @@ class OriginateAction extends ActionMessage
      */
     public function setTimeout(string|int $timeout): void
     {
-        $this->setKey('Timeout', $timeout);
+        $this->setKey('Timeout', (string) $timeout);
     }
 
     /**

@@ -64,14 +64,28 @@ abstract class Response extends IncomingMessage
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array<string, mixed>
      */
-    public function __sleep(): array
+    public function __serialize(): array
     {
-        $ret = parent::__sleep();
-        $ret[] = 'completed';
-        $ret[] = 'events';
-        return $ret;
+        return parent::__serialize() + [
+            'completed' => $this->completed,
+            'events' => $this->events,
+        ];
+    }
+
+    /**
+     * Restores the state produced by __serialize().
+     *
+     * @param array<string, mixed> $data Serialized state.
+     *
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        parent::__unserialize($data);
+        $this->completed = $data['completed'];
+        $this->events = $data['events'];
     }
 
     /**
@@ -143,9 +157,9 @@ abstract class Response extends IncomingMessage
     /**
      * Returns key: 'Message'.
      *
-     * @return string|int|float|bool|string[]|null
+     * @return string|null
      */
-    public function getMessage(): string|int|float|bool|array|null
+    public function getMessage(): ?string
     {
         return $this->getKey('message');
     }

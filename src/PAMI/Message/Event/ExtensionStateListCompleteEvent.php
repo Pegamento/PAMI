@@ -60,9 +60,9 @@ class ExtensionStateListCompleteEvent extends EventMessage
      *
      * Returns:Conveys the status of the event list.
      *
-     * @return string|int|float|bool|array|null
+     * @return string|null
      */
-    public function getEventList(): string|int|float|bool|array|null
+    public function getEventList(): ?string
     {
         return $this->getKey('EventList');
     }
