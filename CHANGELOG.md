@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Breaking changes
 
-- Requires PHP 8.4. The 2.1 notes still described a PHP 8.1 / PHPUnit 9.6 baseline; development now uses PHPUnit 10.5.
+- Requires PHP 8.4.1. The 2.1 notes still described a PHP 8.1 / PHPUnit 9.6 baseline; development now uses PHPUnit 13.4.
 - `declare(strict_types=1)` is enabled across `src`. The core client, message, response, and factory APIs have native parameter, return, and property types.
 - `getKey()` still converts numeric values and `on`/`off`/`yes`/`no`/`true`/`false`. Other strings are returned unchanged. Values are no longer HTML-escaped.
 - ActionIDs are random 16-character hex strings. Call `ActionMessage::setActionIdGenerator()` to supply your own, including a fixed id for tests.
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Upgrade guide
 
-1. Run on PHP 8.4 or newer and install with `"pegamento/pami": "^3.0"`.
+1. Run on PHP 8.4.1 or newer and install with `"pegamento/pami": "^3.0"`.
 2. Stop decoding HTML entities out of AMI values. Characters such as `<` are now preserved.
 3. Do not depend on ActionIDs being derived from `microtime()`. Read the id from the action, or set a generator before constructing actions.
 4. Do not put CR, LF, or `:` in outgoing keys, or CR/LF in outgoing values. Build multi-line command bodies through the command actions instead of raw key injection.
