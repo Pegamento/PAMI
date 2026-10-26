@@ -576,7 +576,6 @@ namespace PAMI\Client\Impl {
                 'AppData' => 'AppData',
                 'Application' => 'Application',
                 'Priority' => 'Priority',
-                'Extension' => 'Extension',
                 'Exten' => 'Exten',
                 'Context' => 'Context',
                 'UniqueID' => 'UniqueID'
@@ -2020,6 +2019,9 @@ namespace PAMI\Client\Impl {
             'AsyncAGI' => array(
                 'Env' => 'Environment'
             ),
+            'AsyncAGIStart' => array(
+                'Env' => 'Environment'
+            ),
             'Agents' => array(
                 'LoggedInChan' => 'Channel'
             ),
@@ -2078,8 +2080,26 @@ namespace PAMI\Client\Impl {
                 'X-vGSM-ME-Old-State' => 'OldState',
                 'X-vGSM-ME-State' => 'State',
             ),
-            'ParkedCall' => array('Exten' => 'Extension'),
-            'UnParkedCall' => array('Exten' => 'Extension'),
+            'ParkedCall' => array(
+                'Timeout' => 'ParkingTimeout',
+                'ConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ConnectedLineName' => 'ParkeeConnectedLineName',
+                'Channel' => 'ParkeeChannel',
+                'CallerIDNum' => 'ParkeeCallerIDNum',
+                'CallerIDName' => 'ParkeeCallerIDName',
+                'UniqueID' => 'ParkeeUniqueid',
+                'Exten' => 'ParkingSpace',
+            ),
+            'UnParkedCall' => array(
+                'From' => 'RetrieverChannel',
+                'ConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ConnectedLineName' => 'ParkeeConnectedLineName',
+                'Channel' => 'ParkeeChannel',
+                'CallerIDNum' => 'ParkeeCallerIDNum',
+                'CallerIDName' => 'ParkeeCallerIDName',
+                'UniqueID' => 'ParkeeUniqueid',
+                'Exten' => 'ParkingSpace',
+            ),
             'AGIExecStart' => array(
 
             ),

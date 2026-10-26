@@ -67,17 +67,6 @@ class NewExtenEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Extension'.
-     * @deprecated Please use {@see getExten()}.
-     *
-     * @return string|int|float|bool|null
-     */
-    public function getExtension()
-    {
-        return $this->getKey('Extension');
-    }
-
-    /**
      * Returns key: 'Exten'.
      *
      * @return string

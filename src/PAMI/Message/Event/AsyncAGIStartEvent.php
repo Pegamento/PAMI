@@ -179,16 +179,6 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     }
 
     /**
-     * @deprecated
-     * @see AsyncAGIStartEvent::getEnvironment()
-     * @return string|int|float|bool|null
-     */
-    public function getEnv()
-    {
-        return $this->getEnvironment();
-    }
-
-    /**
      * Returns key: 'Env'.
      *
      * @return string|int|float|bool|null

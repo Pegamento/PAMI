@@ -57,17 +57,6 @@ class DNDStateEvent extends EventMessage
     }
 
     /**
-     * Returns key: 'Channel'.
-     * @deprecated Please use {@see getDAHDIChannel()}.
-     *
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->getDAHDIChannel();
-    }
-
-    /**
      * Returns key: 'DAHDIChannel'.
      *
      * @return string

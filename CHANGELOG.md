@@ -19,6 +19,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - An event whose name is not an identifier, or a message with no `Event:` header, is an `UnknownEvent`.
 - `UpdateConfigAction` numbers its actions per instance. `setCat()`, `setVar()`, and the other per-action setters throw if they are called before `setAction()`.
 - `AsyncClientImpl` accepts a `timeout` option (seconds). When it is set, the busy-wait throws `ChannelDownException` if the exec result does not arrive in time.
+- `AttendedTransferAction` no longer accepts `$context` and `$priority` in the constructor. Set them with `setContext()` and `setPriority()`.
+- Removed long-deprecated event getters. The current getters still read the old AMI header when the new one is absent:
+  - `ParkedCallEvent` and `UnParkedCallEvent`: `getTimeout()` is `getParkingTimeout()`, `getConnectedLineNum()` is `getParkeeConnectedLineNum()`, `getConnectedLineName()` is `getParkeeConnectedLineName()`, `getChannel()` is `getParkeeChannel()`, `getCallerIDNum()` is `getParkeeCallerIDNum()`, `getCallerIDName()` is `getParkeeCallerIDName()`, `getUniqueID()` is `getParkeeUniqueid()`, and `getExtension()` is `getParkingSpace()`. `UnParkedCallEvent::getFrom()` is `getRetrieverChannel()`.
+  - `DNDStateEvent::getChannel()` is `getDAHDIChannel()`.
+  - `NewExtenEvent::getExtension()` is `getExten()`.
+  - `AsyncAGIStartEvent::getEnv()` is `getEnvironment()`.
+  - `Message::setSanitizedKey()` remains, as a deprecated alias of `setKey()`.
 
 ### Upgrade guide
 
