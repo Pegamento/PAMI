@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a channel changes its status.
  *
@@ -28,6 +29,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -49,7 +53,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -59,7 +63,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -69,7 +73,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -79,7 +83,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -89,7 +93,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'. Asterisk < 1.8.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -99,7 +103,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'. Asterisk < 1.8.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -109,7 +113,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -119,7 +123,7 @@ class NewstateEvent extends EventMessage
    /**
      * Returns key: 'ConnectedLineNum'. Asterisk >= 1.8.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -129,7 +133,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'. Asterisk >= 1.8.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -139,7 +143,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'LinkedId'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedId()
     {
@@ -149,7 +153,7 @@ class NewstateEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {

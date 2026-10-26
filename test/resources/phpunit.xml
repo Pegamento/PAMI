@@ -30,13 +30,13 @@
     <testsuite name="XSLT_Actions">
       <directory suffix=".php">../xslt</directory>
     </testsuite>
+    <testsuite name="Regression">
+      <directory suffix=".php">../regression</directory>
+    </testsuite>
   </testsuites>
   <source>
     <include>
       <directory suffix=".php">../../src</directory>
     </include>
-    <exclude>
-      <directory suffix="Launcher.php">../../src/PAMI/Application</directory>
-    </exclude>
   </source>
 </phpunit>

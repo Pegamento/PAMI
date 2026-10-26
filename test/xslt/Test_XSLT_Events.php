@@ -29,6 +29,7 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test  xslt generated actions.
@@ -100,9 +101,7 @@ namespace PAMI\Client\Impl {
             }
         }
         
-        /**
-         * @test
-         */
+        #[Test]
         public function can_report_events()
         {
             $eventNames = array(

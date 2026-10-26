@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueReset action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -42,7 +46,6 @@ namespace PAMI\Message\Action;
  */
 class QueueMemberRingInUse extends ActionMessage
 {
-
     /**
      * Constructor.
      *
@@ -51,7 +54,7 @@ class QueueMemberRingInUse extends ActionMessage
      *
      * @return void
      */
-    public function __construct($interface, $ringinuse)
+    public function __construct(string $interface, bool $ringinuse)
     {
         parent::__construct('QueueMemberRingInUse');
         $this->setKey('Interface', $interface);
@@ -62,11 +65,11 @@ class QueueMemberRingInUse extends ActionMessage
     /**
      * Set Queue.
      *
-     * @param optional string $queue Queue name.
+     * @param string $queue Queue name.
      *
      * @return void
      */
-    public function setQueue($queue)
+    public function setQueue(string $queue): void
     {
         $this->setKey('Queue', $queue);
     }
@@ -78,7 +81,7 @@ class QueueMemberRingInUse extends ActionMessage
      *
      * @return void
      */
-    public function setRingInUse($ringinuse)
+    public function setRingInUse(bool $ringinuse): void
     {
         $this->setKey('RingInUse', $ringinuse ? 'true' : 'false');
     }

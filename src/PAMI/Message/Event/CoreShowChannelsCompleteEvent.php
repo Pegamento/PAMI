@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action CoreShowChannels
  * is issued.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -49,7 +53,7 @@ class CoreShowChannelsCompleteEvent extends EventMessage
     /**
      * Returns key: 'ListItems'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getListItems()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AgentLogoff Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns:Agent ID of the agent.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAgent()
     {
@@ -68,7 +72,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns:The number of seconds the agent was logged in.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLogintime()
     {
@@ -79,7 +83,7 @@ class AgentLogoffEvent extends EventMessage
     /**
      * get Agent Privilege
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -91,7 +95,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {

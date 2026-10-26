@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Atxfer action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class AttendedTransferAction extends ActionMessage
          *
          * @return void
          */
-    public function __construct($channel, $exten, $context = null, $priority = null)
+    public function __construct(string $channel, string $exten, ?string $context = null, ?string $priority = null)
     {
         parent::__construct('Atxfer');
         $this->setKey('Channel', $channel);
@@ -76,7 +80,7 @@ class AttendedTransferAction extends ActionMessage
          *
          * @return void
          */
-    public function setContext($context)
+    public function setContext(string $context): void
     {
         $this->setKey('Context', $context);
     }
@@ -89,7 +93,7 @@ class AttendedTransferAction extends ActionMessage
          *
          * @return void
          */
-    public function setPriority($priority)
+    public function setPriority(string $priority): void
     {
         $this->setKey('Priority', $priority);
     }

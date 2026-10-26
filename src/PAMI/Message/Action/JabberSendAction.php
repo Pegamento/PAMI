@@ -1,4 +1,5 @@
 <?php
+
 /**
  * JabberSend action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class JabberSendAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($jabber, $jid, $message)
+    public function __construct(string $jabber, string $jid, string $message)
     {
         parent::__construct('JabberSend');
         $this->setKey('Jabber', $jabber);

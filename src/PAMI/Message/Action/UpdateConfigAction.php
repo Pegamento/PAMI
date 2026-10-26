@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UpdateConfig action message.
  *
@@ -26,7 +27,12 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
+
+use PAMI\Exception\PAMIException;
 
 /**
  *  UpdateConfig action message.
@@ -42,7 +48,10 @@ namespace PAMI\Message\Action;
  */
 class UpdateConfigAction extends ActionMessage
 {
-    protected static $counter = -1;
+    /**
+     * Index of the current action tuple. -1 until the first setAction().
+     */
+    private int $counter = -1;
 
     /**
      * Constructor.
@@ -52,7 +61,6 @@ class UpdateConfigAction extends ActionMessage
     public function __construct()
     {
         parent::__construct('UpdateConfig');
-        self::$counter = -1;
     }
 
     /**
@@ -62,7 +70,7 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setSrcFilename($filename)
+    public function setSrcFilename(string $filename): void
     {
         $this->setKey('SrcFilename', $filename);
     }
@@ -74,7 +82,7 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setDstFilename($filename)
+    public function setDstFilename(string $filename): void
     {
         $this->setKey('DstFilename', $filename);
     }
@@ -82,11 +90,11 @@ class UpdateConfigAction extends ActionMessage
      /**
      * Sets Reload key.
      *
-     * @param string $input.
+     * @param bool $reload
      *
      * @return void
      */
-    public function setReload($reload)
+    public function setReload(bool $reload): void
     {
         $this->setKey('Reload', $reload ? 'yes' : 'no');
     }
@@ -99,22 +107,23 @@ class UpdateConfigAction extends ActionMessage
      * @return void
      */
 
-    public function setAction($input)
+    public function setAction(string $input): void
     {
-        UpdateConfigAction::$counter++;
-        $this->setKey('Action-'.$this->getPaddedCounter(), $input);
+        $this->counter++;
+        $this->setKey('Action-' . $this->getPaddedCounter(), $input);
     }
 
     /**
      * Sets Cat-XXXXXX key.
      *
-     * @param string $cat.
+     * @param string|int $input
      *
      * @return void
      */
-    public function setCat($input)
+    public function setCat(string|int $input): void
     {
-        $this->setKey('Cat-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Cat-' . $this->getPaddedCounter(), $input);
     }
 
     /**
@@ -124,9 +133,10 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setVar($input)
+    public function setVar(string $input): void
     {
-        $this->setKey('Var-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Var-' . $this->getPaddedCounter(), $input);
     }
 
     /**
@@ -136,9 +146,10 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setValue($input)
+    public function setValue(string $input): void
     {
-        $this->setKey('Value-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Value-' . $this->getPaddedCounter(), $input);
     }
 
      /**
@@ -148,9 +159,10 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setMatch($input)
+    public function setMatch(string $input): void
     {
-        $this->setKey('Match-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Match-' . $this->getPaddedCounter(), $input);
     }
 
      /**
@@ -160,9 +172,10 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setLine($input)
+    public function setLine(string $input): void
     {
-        $this->setKey('Line-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Line-' . $this->getPaddedCounter(), $input);
     }
 
      /**
@@ -172,9 +185,23 @@ class UpdateConfigAction extends ActionMessage
      *
      * @return void
      */
-    public function setOptions($input)
+    public function setOptions(string $input): void
     {
-        $this->setKey('Options-'.$this->getPaddedCounter(), $input);
+        $this->requireCurrentAction();
+        $this->setKey('Options-' . $this->getPaddedCounter(), $input);
+    }
+
+    /**
+     * Per-action fields share the index of the most recent setAction().
+     *
+     * @return void
+     * @throws PAMIException
+     */
+    private function requireCurrentAction(): void
+    {
+        if ($this->counter < 0) {
+            throw new PAMIException('setAction() must be called before setting per-action fields.');
+        }
     }
 
     /**
@@ -184,6 +211,6 @@ class UpdateConfigAction extends ActionMessage
      */
     protected function getPaddedCounter()
     {
-        return str_pad(UpdateConfigAction::$counter, 6, '0', STR_PAD_LEFT);
+        return str_pad((string) $this->counter, 6, '0', STR_PAD_LEFT);
     }
 }

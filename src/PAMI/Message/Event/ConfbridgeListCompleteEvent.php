@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when .. ?
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ConfbridgeListCompleteEvent extends EventMessage
     /**
      * Shows count of returned items.
      *
-     * @return key: 'ListItems'.
+     * @return string|int|float|bool|null 'ListItems'.
      */
     public function getListItems()
     {

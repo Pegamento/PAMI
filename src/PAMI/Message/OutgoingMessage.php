@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic outgoing message.
  *
@@ -25,6 +26,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message;
 
 use PAMI\Exception\PAMIException;
@@ -54,7 +58,7 @@ abstract class OutgoingMessage extends Message
      *
      * @return string|null
      */
-    public function getResponseHandler()
+    public function getResponseHandler(): ?string
     {
         return $this->responseHandler;
     }
@@ -67,7 +71,7 @@ abstract class OutgoingMessage extends Message
      * @return void
      * @throws PAMIException
      */
-    public function setResponseHandler($newResponseHandler)
+    public function setResponseHandler(string $newResponseHandler): void
     {
         $className = '\\PAMI\\Message\\Response\\' . $newResponseHandler . 'Response';
         if (class_exists($className, true) && is_a($className, '\PAMI\Message\Response\Response', true)) {
@@ -75,6 +79,70 @@ abstract class OutgoingMessage extends Message
             return;
         }
 
-        throw new PAMIException('ResponseHandler '.$className.' could not be found. Please provide a valid class name.');
+        throw new PAMIException('ResponseHandler ' . $className . ' could not be found. Please provide a valid class name.');
+    }
+
+    /**
+     * Adds a variable to this message.
+     *
+     * @param string $key   Variable name.
+     * @param string|array $value Variable value. Arrays are repeated values.
+     *
+     * @return void
+     * @throws PAMIException When the key or value would break the AMI frame.
+     */
+    public function setVariable(string $key, string|int|float|bool|array|null $value): void
+    {
+        $this->rejectUnsafeAmiText($key, true);
+        $this->rejectUnsafeAmiText($value, false);
+        parent::setVariable($key, $value);
+    }
+
+    /**
+     * Adds a key to this message.
+     *
+     * @param string $key   Key name (i.e: Action).
+     * @param string|int|float|bool|array|null $value Key value.
+     *
+     * @return void
+     * @throws PAMIException When the key or value would break the AMI frame.
+     */
+    protected function setKey(string $key, string|int|float|bool|array|null $value): void
+    {
+        $this->rejectUnsafeAmiText($key, true);
+        $this->rejectUnsafeAmiText($value, false);
+        if (is_array($value)) {
+            $this->keys[strtolower((string) $key)] = $value;
+            return;
+        }
+        parent::setKey($key, $value);
+    }
+
+    /**
+     * Reject CR/LF in outgoing keys and values, and colons in keys.
+     *
+     * Incoming messages never go through OutgoingMessage, so parsing is unaffected.
+     *
+     * @param mixed $text  Key, value, or list of values.
+     * @param bool  $isKey True when $text is a key name.
+     *
+     * @return void
+     * @throws PAMIException
+     */
+    private function rejectUnsafeAmiText($text, bool $isKey): void
+    {
+        if (is_array($text)) {
+            foreach ($text as $item) {
+                $this->rejectUnsafeAmiText($item, false);
+            }
+            return;
+        }
+
+        $text = (string) $text;
+        if (strpbrk($text, "\r\n") !== false || ($isKey && str_contains($text, ':'))) {
+            throw new PAMIException(
+                'CR, LF or a colon in an outgoing AMI key, or CR/LF in a value, is not allowed.'
+            );
+        }
     }
 }

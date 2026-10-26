@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a dtmf is detected in a call.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -67,7 +71,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'Digit'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDigit()
     {
@@ -77,7 +81,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'Direction'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDirection()
     {
@@ -87,7 +91,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'End'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEnd()
     {
@@ -97,7 +101,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'Begin'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBegin()
     {
@@ -107,7 +111,7 @@ class DTMFEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

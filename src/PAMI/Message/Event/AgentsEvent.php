@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for agents.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -57,7 +61,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Agent'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAgent()
     {
@@ -67,7 +71,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Name'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getName()
     {
@@ -77,7 +81,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'LoggedInChan'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -87,7 +91,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'LoggedInTime'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getLoggedInTime()
     {
@@ -97,7 +101,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingTo'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getTalkingTo()
     {
@@ -107,7 +111,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingToChannel'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getTalkingToChannel()
     {

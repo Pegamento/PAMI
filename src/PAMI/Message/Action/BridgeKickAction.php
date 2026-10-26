@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BridgeKick Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -55,7 +59,7 @@ class BridgeKickAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('BridgeKick');
         $this->setKey('Channel', $channel);
@@ -69,7 +73,7 @@ class BridgeKickAction extends ActionMessage
      *
      * @return void
      */
-    public function setBridgeUniqueid($bridgeuniqueid)
+    public function setBridgeUniqueid(string $bridgeuniqueid): void
     {
         $this->setKey('BridgeUniqueid', $bridgeuniqueid);
     }

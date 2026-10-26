@@ -18,14 +18,14 @@ either via SOA or ajax.
 
 # PHP Versions
 
-PAMI requires PHP 8.1 or higher.
+PAMI requires PHP 8.4 or higher.
 
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
 ```json
   "require": {
-    "pegamento/pami": "^2.1"
+    "pegamento/pami": "^3.0"
   }
 ```
 
@@ -58,6 +58,25 @@ $client->registerEventListener(array($listener, 'handle'));
 // Register an IEventListener:
 $client->registerEventListener($listener);
 ```
+
+# Action IDs
+
+Every outgoing action is given a random ActionID (`bin2hex(random_bytes(8))`).
+Install a generator before constructing actions when a caller needs a stable id,
+and pass `null` to go back to the random generator:
+
+```php
+\PAMI\Message\Action\ActionMessage::setActionIdGenerator(static fn (): string => 'my-id');
+\PAMI\Message\Action\ActionMessage::setActionIdGenerator(null);
+```
+
+# Async AGI
+
+`PAMI\AsyncAgi\AsyncClientImpl` needs the suggested `marcelog/pagi` package.
+Construct it with `pamiClient`, `asyncAgiEvent`, and an optional `timeout` in
+seconds. When `timeout` is set, a command throws
+`PAGI\Exception\ChannelDownException` if the exec result does not arrive in
+time. Omit `timeout` to wait indefinitely.
 
 # Using Predicates
 A second (optional) argument can be used when registering the event listener: a

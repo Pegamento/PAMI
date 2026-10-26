@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Restarts a dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class DongleRestartAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($when, $device)
+    public function __construct(string $when, string $device)
     {
         parent::__construct('DongleRestart');
         $this->setKey('when', $when);

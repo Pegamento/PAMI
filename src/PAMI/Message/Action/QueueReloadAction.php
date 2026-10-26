@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueReload action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -53,13 +57,13 @@ class QueueReloadAction extends ActionMessage
      * @return void
      */
     public function __construct(
-        $queue = false,
-        $members = false,
-        $rules = false,
-        $parameters = false
+        ?string $queue = null,
+        bool $members = false,
+        bool $rules = false,
+        bool $parameters = false
     ) {
         parent::__construct('QueueReload');
-        if ($queue !== false) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
         $this->setKey('Members', $members ? 'yes' : 'no');

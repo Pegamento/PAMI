@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Implement this interface in your own classes to make them event listeners.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Listener;
 
 use PAMI\Message\Event\EventMessage;
@@ -51,5 +55,5 @@ interface IEventListener
      *
      * @return void
      */
-    public function handle(EventMessage $event);
+    public function handle(EventMessage $event): void;
 }

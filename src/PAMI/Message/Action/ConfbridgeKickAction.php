@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConfbridgeKick action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class ConfbridgeKickAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($conference, $channel)
+    public function __construct(string $conference, string $channel)
     {
         parent::__construct('ConfbridgeKick');
         $this->setKey('Conference', $conference);

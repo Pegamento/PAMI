@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AGI action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,11 +49,11 @@ class AGIAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $channel
-     * @param $command
-     * @param string $commandId
+     * @param string $channel
+     * @param string $command
+     * @param string|null $commandId
      */
-    public function __construct($channel, $command, $commandId = null)
+    public function __construct(string $channel, string $command, ?string $commandId = null)
     {
         parent::__construct('AGI');
         $this->setKey('Channel', $channel);

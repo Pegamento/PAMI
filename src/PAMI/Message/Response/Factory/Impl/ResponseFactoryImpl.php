@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This factory knows which response to return according to a given raw message
  * from ami.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response\Factory\Impl;
 
 use PAMI\Exception\PAMIException;
@@ -58,7 +62,7 @@ class ResponseFactoryImpl implements IResponseFactory
      * @return Response
      * @throws PAMIException
      */
-    public function createFromRaw($message, $requestingAction = null)
+    public function createFromRaw(string $message, ?OutgoingMessage $requestingAction = null): Response
     {
         $responseHandlerClass = '\\PAMI\\Message\\Response\\GenericResponse';
         if ($requestingAction && $requestingAction->getResponseHandler()) {

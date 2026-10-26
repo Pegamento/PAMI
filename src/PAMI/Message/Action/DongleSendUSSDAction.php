@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send a USSD through dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class DongleSendUSSDAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($device, $ussd)
+    public function __construct(string $device, string $ussd)
     {
         parent::__construct('DongleSendUSSD');
         $this->setKey('Device', $device);

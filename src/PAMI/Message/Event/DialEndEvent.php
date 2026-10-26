@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a dial action has completed.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -55,7 +59,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -65,7 +69,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -75,7 +79,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -85,7 +89,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -95,7 +99,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -105,7 +109,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -115,7 +119,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -125,7 +129,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -135,7 +139,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -145,7 +149,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -155,7 +159,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -165,7 +169,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -175,7 +179,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannel()
     {
@@ -185,7 +189,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelState()
     {
@@ -195,7 +199,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelStateDesc()
     {
@@ -205,7 +209,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDNum()
     {
@@ -215,7 +219,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDName()
     {
@@ -225,7 +229,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineNum()
     {
@@ -235,7 +239,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineName()
     {
@@ -245,7 +249,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestAccountCode()
     {
@@ -255,7 +259,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestContext()
     {
@@ -265,7 +269,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestExten()
     {
@@ -275,7 +279,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestPriority()
     {
@@ -285,7 +289,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DestUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestUniqueid()
     {
@@ -295,7 +299,7 @@ class DialEndEvent extends EventMessage
     /**
      * Returns key: 'DialStatus'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialStatus()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Login action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class LoginAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($user, $password, $eventMask = null)
+    public function __construct(string $user, string $password, string|null $eventMask = null)
     {
         parent::__construct('Login');
         $this->setKey('Username', $user);

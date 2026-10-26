@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SpanAlarm Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class SpanAlarmEvent extends EventMessage
      *
      * Returns:The span on which the alarm occurred.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpan()
     {
@@ -68,7 +72,7 @@ class SpanAlarmEvent extends EventMessage
      *
      * Returns:A textual description of the alarm that occurred.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAlarm()
     {

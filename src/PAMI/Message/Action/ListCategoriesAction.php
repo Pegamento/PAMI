@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ListCategories action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class ListCategoriesAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($file)
+    public function __construct(string $file)
     {
         parent::__construct('ListCategories');
         $this->setKey('Filename', $file);

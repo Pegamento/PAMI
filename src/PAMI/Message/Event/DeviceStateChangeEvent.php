@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DeviceStateChange Event
  * isListEntry and Part Action: DeviceStateList
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class DeviceStateChangeEvent extends EventMessage
      *
      * Returns:The device whose state has changed
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDevice()
     {
@@ -68,7 +72,7 @@ class DeviceStateChangeEvent extends EventMessage
      *
      * Returns:The new state of the device
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getState()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when an action DAHDIShowChannel is issued.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'DAHDIChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -57,7 +61,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Signalling'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSignalling()
     {
@@ -67,7 +71,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'SignallingCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSignallingCode()
     {
@@ -77,7 +81,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -88,7 +92,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'DND'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDND()
     {
@@ -98,7 +102,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Alarm'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAlarm()
     {

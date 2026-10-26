@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueMemberRingInUse Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class QueueMemberRingInUseAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($interface, $ringinuse)
+    public function __construct(string $interface, string $ringinuse)
     {
         parent::__construct('QueueMemberRingInUse');
         $this->setKey('Interface', $interface);
@@ -66,7 +70,7 @@ class QueueMemberRingInUseAction extends ActionMessage
      *
      * @return void
      */
-    public function setQueue($queue)
+    public function setQueue(string $queue): void
     {
         $this->setKey('Queue', $queue);
     }

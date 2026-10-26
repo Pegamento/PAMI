@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExtensionState action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class ExtensionStateAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($exten, $context)
+    public function __construct(string $exten, string $context)
     {
         parent::__construct('ExtensionState');
         $this->setKey('Exten', $exten);

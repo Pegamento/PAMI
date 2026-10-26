@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ShowDialPlan action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,13 +54,13 @@ class ShowDialPlanAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context = false, $extension = false)
+    public function __construct(?string $context = null, ?string $extension = null)
     {
         parent::__construct('ShowDialPlan');
-        if ($context != false) {
+        if ($context !== null) {
             $this->setKey('Context', $context);
         }
-        if ($extension != false) {
+        if ($extension !== null) {
             $this->setKey('Extension', $extension);
         }
     }

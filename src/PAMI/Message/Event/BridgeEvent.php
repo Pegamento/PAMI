@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when bridging (connecting) two channels.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'Bridgestate'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeState()
     {
@@ -67,7 +71,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'Bridgetype'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -77,7 +81,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'Channel1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel1()
     {
@@ -87,7 +91,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'Channel2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel2()
     {
@@ -97,7 +101,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'CallerID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID1()
     {
@@ -107,7 +111,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'CallerID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID2()
     {
@@ -117,7 +121,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'UniqueID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID1()
     {
@@ -127,7 +131,7 @@ class BridgeEvent extends EventMessage
     /**
      * Returns key: 'UniqueID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID2()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FAXStats Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Number of active FAX sessions
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCurrentSessions()
     {
@@ -68,7 +72,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Number of reserved FAX sessions
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReservedSessions()
     {
@@ -80,7 +84,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions for which Asterisk is/was the transmitter
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransmitAttempts()
     {
@@ -92,7 +96,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions for which Asterisk is/was the recipient
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReceiveAttempts()
     {
@@ -104,7 +108,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions which have been completed successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCompletedFAXes()
     {
@@ -116,7 +120,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions which failed to complete successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFailedFAXes()
     {

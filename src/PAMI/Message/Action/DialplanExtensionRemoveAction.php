@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DialplanExtensionRemove Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -62,7 +66,7 @@ class DialplanExtensionRemoveAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context, $extension)
+    public function __construct(string $context, string $extension)
     {
         parent::__construct('DialplanExtensionRemove');
         $this->setKey('Context', $context);
@@ -77,7 +81,7 @@ class DialplanExtensionRemoveAction extends ActionMessage
      *
      * @return void
      */
-    public function setPriority($priority)
+    public function setPriority(string $priority): void
     {
         $this->setKey('Priority', $priority);
     }

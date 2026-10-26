@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PAMI\AsyncAgi\Event;
 
 /**
@@ -30,7 +33,7 @@ interface IAsyncAgiExecEvent
     /**
      * Returns key: 'Result'.
      *
-     * @return string
+     * @return string|null
      */
     public function getResult();
 }

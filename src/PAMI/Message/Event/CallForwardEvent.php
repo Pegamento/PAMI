@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when the 'SCCPCallForward' Event arrives.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'ChannelType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelType()
     {
@@ -57,7 +61,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'ChannelObjectType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelObjectType()
     {
@@ -67,7 +71,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'Feature'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFeature()
     {
@@ -87,7 +91,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'Extension'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -97,7 +101,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'SCCPLine'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPLine()
     {
@@ -107,7 +111,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'SCCPDevice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPDevice()
     {

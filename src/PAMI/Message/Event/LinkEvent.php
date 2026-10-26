@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when linking (connecting) two channels.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'Channel1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel1()
     {
@@ -67,7 +71,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'Channel2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel2()
     {
@@ -77,7 +81,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'CallerID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID1()
     {
@@ -87,7 +91,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'CallerID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID2()
     {
@@ -97,7 +101,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'UniqueID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID1()
     {
@@ -107,7 +111,7 @@ class LinkEvent extends EventMessage
     /**
      * Returns key: 'UniqueID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID2()
     {

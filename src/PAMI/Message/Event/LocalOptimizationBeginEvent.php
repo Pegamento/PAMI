@@ -1,4 +1,5 @@
 <?php
+
 /**
  * LocalOptimizationBegin Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannel()
     {
@@ -68,7 +72,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to LocalOneChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannelState()
     {
@@ -80,7 +84,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannelStateDesc()
     {
@@ -92,7 +96,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneCallerIDNum()
     {
@@ -104,7 +108,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneCallerIDName()
     {
@@ -116,7 +120,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneConnectedLineNum()
     {
@@ -128,7 +132,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneConnectedLineName()
     {
@@ -140,7 +144,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneLanguage()
     {
@@ -152,7 +156,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneAccountCode()
     {
@@ -164,7 +168,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneContext()
     {
@@ -176,7 +180,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneExten()
     {
@@ -188,7 +192,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOnePriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOnePriority()
     {
@@ -200,7 +204,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalOneUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneUniqueid()
     {
@@ -212,7 +216,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneLinkedid()
     {
@@ -224,7 +228,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannel()
     {
@@ -236,7 +240,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to LocalTwoChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannelState()
     {
@@ -248,7 +252,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannelStateDesc()
     {
@@ -260,7 +264,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoCallerIDNum()
     {
@@ -272,7 +276,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoCallerIDName()
     {
@@ -284,7 +288,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoConnectedLineNum()
     {
@@ -296,7 +300,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoConnectedLineName()
     {
@@ -308,7 +312,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoLanguage()
     {
@@ -320,7 +324,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoAccountCode()
     {
@@ -332,7 +336,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoContext()
     {
@@ -344,7 +348,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoExten()
     {
@@ -356,7 +360,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoPriority()
     {
@@ -368,7 +372,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'LocalTwoUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoUniqueid()
     {
@@ -380,7 +384,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoLinkedid()
     {
@@ -392,7 +396,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceChannel()
     {
@@ -404,7 +408,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to SourceChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceChannelState()
     {
@@ -416,7 +420,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceChannelStateDesc()
     {
@@ -428,7 +432,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceCallerIDNum()
     {
@@ -440,7 +444,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceCallerIDName()
     {
@@ -452,7 +456,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceConnectedLineNum()
     {
@@ -464,7 +468,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceConnectedLineName()
     {
@@ -476,7 +480,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceLanguage()
     {
@@ -488,7 +492,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceAccountCode()
     {
@@ -500,7 +504,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceContext()
     {
@@ -512,7 +516,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceExten()
     {
@@ -524,7 +528,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourcePriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourcePriority()
     {
@@ -536,7 +540,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns key: 'SourceUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceUniqueid()
     {
@@ -548,7 +552,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSourceLinkedid()
     {
@@ -560,7 +564,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:The unique ID of the bridge into which the local channel is optimizing.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestUniqueId()
     {
@@ -572,7 +576,7 @@ class LocalOptimizationBeginEvent extends EventMessage
      *
      * Returns:Identification for the optimization operation.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getId()
     {

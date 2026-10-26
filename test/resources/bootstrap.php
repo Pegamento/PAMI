@@ -11,6 +11,8 @@ require_once implode(DIRECTORY_SEPARATOR, array(
   __DIR__, "..", "..", "vendor", "autoload.php"
 ));
 
+\PAMI\Message\Action\ActionMessage::setActionIdGenerator(static fn (): string => '1432.123');
+
 require_once implode(DIRECTORY_SEPARATOR, array(
   __DIR__, "mockSetup.php"
 ));

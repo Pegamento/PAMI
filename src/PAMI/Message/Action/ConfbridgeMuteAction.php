@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ConfbridgeMute action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class ConfbridgeMuteAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $conference)
+    public function __construct(string $channel, string $conference)
     {
         parent::__construct('ConfbridgeMute');
         $this->setKey('Channel', $channel);

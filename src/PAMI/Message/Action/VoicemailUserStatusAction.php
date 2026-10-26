@@ -1,4 +1,5 @@
 <?php
+
 /**
  * VoicemailUserStatus Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class VoicemailUserStatusAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context, $mailbox)
+    public function __construct(string $context, string $mailbox)
     {
         parent::__construct('VoicemailUserStatus');
         $this->setKey('Context', $context);

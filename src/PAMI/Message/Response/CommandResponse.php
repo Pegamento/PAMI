@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic SCCP response message from ami.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response;
 
 /**
@@ -46,14 +50,14 @@ class CommandResponse extends Response
      * Command output, one entry per Output line.
      * @var string[]
      */
-    protected $output = [];
+    protected array $output = [];
 
     /**
      * Returns true if this response contains the Message: command output follows
      *
      * @return bool
      */
-    public function isCommandFinished()
+    public function isCommandFinished(): bool
     {
         return stristr(($this->getMessage() ?? ''), 'command output follows') !== false;
     }
@@ -65,17 +69,17 @@ class CommandResponse extends Response
      */
     public function getCommandOutput(): string
     {
-        return implode(self::EOL, (array) $this->getKey('output'));
+        return implode(self::EOL, $this->output);
     }
 
     /**
      * Returns Command output result array
      *
-     * @return string[]|null
+     * @return string[]
      */
-    public function getCommandOutputArray()
+    public function getCommandOutputArray(): array
     {
-        return $this->getKey('output');
+        return $this->output;
     }
 
 
@@ -87,7 +91,7 @@ class CommandResponse extends Response
      *
      * @return void
      */
-    protected function setKey($key, $value)
+    protected function setKey(string $key, string|int|float|bool|array|null $value): void
     {
         $key = strtolower((string)$key);
         if ($key === 'output') {
@@ -106,7 +110,7 @@ class CommandResponse extends Response
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
         $this->completed = $this->isCommandFinished();

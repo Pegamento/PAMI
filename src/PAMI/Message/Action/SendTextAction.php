@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SendText action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class SendTextAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $message)
+    public function __construct(string $channel, string $message)
     {
         parent::__construct('SendText');
         $this->setKey('Channel', $channel);

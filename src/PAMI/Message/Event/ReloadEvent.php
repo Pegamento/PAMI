@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action Reload
  * is issued.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -38,8 +42,9 @@ class ReloadEvent extends EventMessage
      *
      * @return string
      */
-    public function getRawContent()
+    public function getRawContent(): string
     {
-        return $this->getKey('RawContent');
+        $value = $this->getKey('RawContent');
+        return is_string($value) ? $value : '';
     }
 }

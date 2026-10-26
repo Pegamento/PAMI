@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetConfig action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,15 +50,15 @@ class GetConfigAction extends ActionMessage
      * Constructor.
      *
      * @param string  $filename Configuration filename (e.g.: foo.conf).
-     * @param boolean $category Category in configuration file.
+     * @param string|null $category Category in configuration file.
      *
      * @return void
      */
-    public function __construct($filename, $category = false)
+    public function __construct(string $filename, ?string $category = null)
     {
         parent::__construct('GetConfig');
         $this->setKey('Filename', $filename);
-        if ($category != false) {
+        if ($category !== null) {
             $this->setKey('Category', $category);
         }
     }

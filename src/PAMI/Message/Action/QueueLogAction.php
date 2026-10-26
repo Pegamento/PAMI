@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueLog action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class QueueLogAction extends ActionMessage
      *
      * @return void
      */
-    public function setUniqueId($uniqueId)
+    public function setUniqueId(string $uniqueId): void
     {
         $this->setKey('UniqueId', $uniqueId);
     }
@@ -61,7 +65,7 @@ class QueueLogAction extends ActionMessage
      *
      * @return void
      */
-    public function setMemberName($interface)
+    public function setMemberName(string $interface): void
     {
         $this->setKey('Interface', $interface);
     }
@@ -74,7 +78,7 @@ class QueueLogAction extends ActionMessage
      *
      * @return void
      */
-    public function setMessage($message)
+    public function setMessage(string $message): void
     {
         $this->setKey('Message', $message);
     }
@@ -87,7 +91,7 @@ class QueueLogAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($queue, $event)
+    public function __construct(string $queue, string $event)
     {
         parent::__construct('QueueLog');
         $this->setKey('Event', $event);

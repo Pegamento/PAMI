@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Not all methods were implemented. For reference please check
  * http://open.voismart.it/index.php/VGSM_Manager_Interface
@@ -28,6 +29,9 @@
  *
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -52,7 +56,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setTo($target)
+    public function setTo(string $target): void
     {
         $this->setKey('To', $target);
     }
@@ -64,7 +68,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setContentType($contentType)
+    public function setContentType(string $contentType): void
     {
         $this->setKey('Content-type', $contentType);
     }
@@ -76,7 +80,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setContentEncoding($encoding)
+    public function setContentEncoding(string $encoding): void
     {
         $this->setKey('Content-Transfer-Encoding', $encoding);
     }
@@ -88,7 +92,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setMe($chipId)
+    public function setMe(string $chipId): void
     {
         $this->setKey('X-SMS-ME', $chipId);
     }
@@ -100,7 +104,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setContent($content)
+    public function setContent(string $content): void
     {
         $this->setKey('Content', $content);
     }
@@ -112,7 +116,7 @@ class VGSMSMSTxAction extends ActionMessage
      *
      * @return void
      */
-    public function setSmsClass($smsClass)
+    public function setSmsClass(string $smsClass): void
     {
         $this->setKey('X-SMS-Class', $smsClass);
     }
@@ -122,10 +126,10 @@ class VGSMSMSTxAction extends ActionMessage
      * Sets X-SMS-Concatenate-RefID . Optional. Should be set with
      * setConcatSeqNum and setConcatSeqNum
      *
-     * @param $refid
+     * @param string|int $refid
      * @return void
      */
-    public function setConcatRefId($refid)
+    public function setConcatRefId(string|int $refid): void
     {
         $this->setKey('X-SMS-Concatenate-RefID', $refid);
     }
@@ -134,10 +138,10 @@ class VGSMSMSTxAction extends ActionMessage
      * Sets X-SMS-Concatenate-Sequence-Number. Optional. Should be set with
      * setConcatSeqNum: setConcatTotalMsg
      *
-     * @param $seqNum
+     * @param string|int $seqNum
      * @return void
      */
-    public function setConcatSeqNum($seqNum)
+    public function setConcatSeqNum(string|int $seqNum): void
     {
         $this->setKey('X-SMS-Concatenate-Sequence-Number', $seqNum);
     }
@@ -146,10 +150,10 @@ class VGSMSMSTxAction extends ActionMessage
      * Sets X-SMS-Concatenate-Total-Messages. Optional. Should be set with
      * setConcatRefId and setConcatSeqNum
      *
-     * @param $totalmsg
+     * @param string|int $totalmsg
      * @return void
      */
-    public function setConcatTotalMsg($totalmsg)
+    public function setConcatTotalMsg(string|int $totalmsg): void
     {
         $this->setKey('X-SMS-Concatenate-Total-Messages', $totalmsg);
     }
@@ -157,11 +161,11 @@ class VGSMSMSTxAction extends ActionMessage
     /**
      * Sets Account key.
      *
-     * @param string Account code.
+     * @param string $account Account code.
      *
      * @return void
      */
-    public function setAccount($account)
+    public function setAccount(string $account): void
     {
         $this->setKey('Account', $account);
     }

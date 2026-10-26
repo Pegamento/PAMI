@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BridgeTechnologySuspend Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -52,7 +56,7 @@ class BridgeTechnologySuspendAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($bridgetechnology)
+    public function __construct(string $bridgetechnology)
     {
         parent::__construct('BridgeTechnologySuspend');
         $this->setKey('BridgeTechnology', $bridgetechnology);

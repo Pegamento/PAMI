@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when the 'SCCP Device Status' Event arrives.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DeviceStatusEvent extends EventMessage
     /**
      * Returns key: 'ChannelType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelType()
     {
@@ -57,7 +61,7 @@ class DeviceStatusEvent extends EventMessage
     /**
      * Returns key: 'ChannelObjectType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelObjectType()
     {
@@ -67,7 +71,7 @@ class DeviceStatusEvent extends EventMessage
     /**
      * Returns key: 'DeviceStatus'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDeviceStatus()
     {
@@ -77,7 +81,7 @@ class DeviceStatusEvent extends EventMessage
     /**
      * Returns key: 'SCCPDevice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPDevice()
     {

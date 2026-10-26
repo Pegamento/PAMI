@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Show sip peers.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +51,7 @@ class ConfbridgeListAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($conference)
+    public function __construct(string $conference)
     {
         parent::__construct('ConfbridgeList');
         $this->setKey('Conference', $conference);

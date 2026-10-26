@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Command action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class CommandAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($command)
+    public function __construct(string $command)
     {
         parent::__construct('Command');
         $this->setKey('Command', $command);

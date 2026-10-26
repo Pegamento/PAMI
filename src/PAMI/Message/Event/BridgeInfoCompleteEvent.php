@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action BridgeInfo is issued.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -55,7 +59,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -65,7 +69,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -75,7 +79,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -85,7 +89,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -95,7 +99,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -105,7 +109,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeVideoSourceMode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSourceMode()
     {
@@ -115,7 +119,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeVideoSource'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSource()
     {

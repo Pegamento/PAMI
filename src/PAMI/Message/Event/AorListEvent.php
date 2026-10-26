@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AorList Event
  * isListEntry and Part Action: PJSIPShowAors
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:The object's type. This will always be 'aor'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -68,7 +72,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -80,7 +84,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Minimum keep alive time for an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMinimumExpiration()
     {
@@ -92,7 +96,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Maximum time to keep an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaximumExpiration()
     {
@@ -104,7 +108,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Default expiration time in seconds for contacts that are dynamically bound to an AoR.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDefaultExpiration()
     {
@@ -116,7 +120,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Interval at which to qualify an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQualifyFrequency()
     {
@@ -128,7 +132,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Authenticates a qualify challenge response if needed
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthenticateQualify()
     {
@@ -140,7 +144,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Maximum number of contacts that can bind to an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaxContacts()
     {
@@ -152,7 +156,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Determines whether new contacts replace existing ones.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRemoveExisting()
     {
@@ -164,7 +168,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Allow subscriptions for the specified mailbox(es)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMailboxes()
     {
@@ -176,7 +180,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Outbound proxy used when sending OPTIONS request
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOutboundProxy()
     {
@@ -188,7 +192,7 @@ class AorListEvent extends EventMessage
      *
      * Returns:Enables Path support for REGISTER requests and Route support for other requests.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSupportPath()
     {

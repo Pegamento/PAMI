@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a caller abandons the queue.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -55,7 +59,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -65,7 +69,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -75,7 +79,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -85,7 +89,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -95,7 +99,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -105,7 +109,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -115,7 +119,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -125,7 +129,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -135,7 +139,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -145,7 +149,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -155,7 +159,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -165,7 +169,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -175,7 +179,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Queue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -185,7 +189,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'Position'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPosition()
     {
@@ -195,7 +199,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'OriginalPosition'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOriginalPosition()
     {
@@ -205,7 +209,7 @@ class QueueCallerAbandonEvent extends EventMessage
     /**
      * Returns key: 'HoldTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getHoldTime()
     {

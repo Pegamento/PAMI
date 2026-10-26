@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when getting a dongle device.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Device'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDevice()
     {
@@ -57,7 +61,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'AudioSetting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAudioSetting()
     {
@@ -67,7 +71,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DataSetting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDataSetting()
     {
@@ -77,7 +81,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'IMEISetting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIMEISetting()
     {
@@ -87,7 +91,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'IMSISetting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIMSISetting()
     {
@@ -97,7 +101,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'ChannelLanguage'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelLanguage()
     {
@@ -107,7 +111,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -117,7 +121,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -127,7 +131,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Group'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getGroup()
     {
@@ -137,7 +141,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'RXGain'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRXGain()
     {
@@ -147,7 +151,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'TXGain'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTXGain()
     {
@@ -157,7 +161,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'U2DIAG'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getU2DIAG()
     {
@@ -167,7 +171,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'UseCallingPres'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUseCallingPres()
     {
@@ -177,7 +181,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DefaultCallingPres'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDefaultCallingPres()
     {
@@ -187,7 +191,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'AutoDeleteSMS'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAutoDeleteSMS()
     {
@@ -197,7 +201,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DisableSMS'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDisableSMS()
     {
@@ -207,7 +211,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'ResetDongle'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResetDongle()
     {
@@ -217,7 +221,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'SMSPDU'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMSPDU()
     {
@@ -227,7 +231,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CallWaitingSetting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallWaitingSetting()
     {
@@ -237,7 +241,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DTMF'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDTMF()
     {
@@ -247,7 +251,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'MinimalDTMFGap'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMinimalDTMFGap()
     {
@@ -257,7 +261,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'MinimalDTMFDuration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMinimalDTMFDuration()
     {
@@ -267,7 +271,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'MinimalDTMFInterval'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMinimalDTMFInterval()
     {
@@ -277,7 +281,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'State'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getState()
     {
@@ -287,7 +291,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'AudioState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAudioState()
     {
@@ -297,7 +301,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DataState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDataState()
     {
@@ -307,7 +311,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Voice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVoice()
     {
@@ -317,7 +321,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'SMS'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMS()
     {
@@ -327,7 +331,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Manufacturer'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getManufacturer()
     {
@@ -337,7 +341,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Model'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getModel()
     {
@@ -347,7 +351,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Firmware'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFirmware()
     {
@@ -357,7 +361,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'IMEIState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIMEIState()
     {
@@ -367,7 +371,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'IMSIState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIMSIState()
     {
@@ -377,7 +381,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'GSMRegistrationStatus'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getGSMRegistrationStatus()
     {
@@ -387,7 +391,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'RSSI'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRSSI()
     {
@@ -397,7 +401,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Mode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMode()
     {
@@ -407,7 +411,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Submode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubmode()
     {
@@ -417,7 +421,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'ProviderName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getProviderName()
     {
@@ -427,7 +431,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'LocationAreaCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocationAreaCode()
     {
@@ -437,7 +441,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CellID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCellID()
     {
@@ -447,7 +451,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'SubscriberNumber'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubscriberNumber()
     {
@@ -457,7 +461,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'SMSServiceCenter'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMSServiceCenter()
     {
@@ -467,7 +471,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'UseUCS2Encoding'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUseUCS2Encoding()
     {
@@ -477,7 +481,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'USSDUse7BitEncoding'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUSSDUse7BitEncoding()
     {
@@ -487,7 +491,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'USSDUseUCS2Decoding'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUSSDUseUCS2Decoding()
     {
@@ -497,7 +501,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'TasksInQueue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTasksInQueue()
     {
@@ -507,7 +511,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CommandsInQueue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCommandsInQueue()
     {
@@ -517,7 +521,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CallWaitingState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallWaitingState()
     {
@@ -527,7 +531,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CurrentDeviceState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCurrentDeviceState()
     {
@@ -537,7 +541,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'DesiredDeviceState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDesiredDeviceState()
     {
@@ -547,7 +551,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'CallsChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallsChannels()
     {
@@ -557,7 +561,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Active'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getActive()
     {
@@ -567,7 +571,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Held'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getHeld()
     {
@@ -577,7 +581,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Dialing'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialing()
     {
@@ -587,7 +591,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Alerting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAlerting()
     {
@@ -597,7 +601,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Incoming'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIncoming()
     {
@@ -607,7 +611,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Waiting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getWaiting()
     {
@@ -617,7 +621,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Releasing'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReleasing()
     {
@@ -627,7 +631,7 @@ class DongleDeviceEntryEvent extends EventMessage
     /**
      * Returns key: 'Initializing'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getInitializing()
     {

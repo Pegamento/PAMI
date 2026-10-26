@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FAXSessionsComplete Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class FAXSessionsCompleteEvent extends EventMessage
      *
      * Returns:Count of FAXSession events sent in response to FAXSessions action
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTotal()
     {

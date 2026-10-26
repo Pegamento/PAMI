@@ -30,6 +30,7 @@
 
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test  xslt generated actions.
@@ -100,10 +101,7 @@ namespace PAMI\Client\Impl {
         }
 
     
-    /**
-     * @test IAXpeers
-     *
-     */
+        #[Test]
         public function can_iaxpeers()
         {
             $write = array(implode("\r\n", array(
@@ -116,10 +114,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test IAXpeerlist
-     *
-     */
+        #[Test]
         public function can_iaxpeerlist()
         {
             $write = array(implode("\r\n", array(
@@ -132,10 +127,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test IAXnetstats
-     *
-     */
+        #[Test]
         public function can_iaxnetstats()
         {
             $write = array(implode("\r\n", array(
@@ -148,10 +140,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test IAXregistry
-     *
-     */
+        #[Test]
         public function can_iaxregistry()
         {
             $write = array(implode("\r\n", array(
@@ -164,10 +153,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test DAHDIShowChannels
-     *
-     */
+        #[Test]
         public function can_dahdishowchannels()
         {
             $write = array(implode("\r\n", array(
@@ -182,10 +168,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PRIShowSpans
-     *
-     */
+        #[Test]
         public function can_prishowspans()
         {
             $write = array(implode("\r\n", array(
@@ -200,10 +183,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PRIDebugSet
-     *
-     */
+        #[Test]
         public function can_pridebugset()
         {
             $write = array(implode("\r\n", array(
@@ -218,10 +198,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PRIDebugFileSet
-     *
-     */
+        #[Test]
         public function can_pridebugfileset()
         {
             $write = array(implode("\r\n", array(
@@ -235,10 +212,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PRIDebugFileUnset
-     *
-     */
+        #[Test]
         public function can_pridebugfileunset()
         {
             $write = array(implode("\r\n", array(
@@ -251,10 +225,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test ConfbridgeSetSingleVideoSrc
-     *
-     */
+        #[Test]
         public function can_confbridgesetsinglevideosrc()
         {
             $write = array(implode("\r\n", array(
@@ -269,10 +240,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test ControlPlayback
-     *
-     */
+        #[Test]
         public function can_controlplayback()
         {
             $write = array(implode("\r\n", array(
@@ -287,10 +255,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test VoicemailUserStatus
-     *
-     */
+        #[Test]
         public function can_voicemailuserstatus()
         {
             $write = array(implode("\r\n", array(
@@ -305,10 +270,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test VoicemailRefresh
-     *
-     */
+        #[Test]
         public function can_voicemailrefresh()
         {
             $write = array(implode("\r\n", array(
@@ -325,10 +287,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test QueueMemberRingInUse
-     *
-     */
+        #[Test]
         public function can_queuememberringinuse()
         {
             $write = array(implode("\r\n", array(
@@ -345,10 +304,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test QueueChangePriorityCaller
-     *
-     */
+        #[Test]
         public function can_queuechangeprioritycaller()
         {
             $write = array(implode("\r\n", array(
@@ -364,10 +320,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test BridgeDestroy
-     *
-     */
+        #[Test]
         public function can_bridgedestroy()
         {
             $write = array(implode("\r\n", array(
@@ -381,10 +334,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test BridgeKick
-     *
-     */
+        #[Test]
         public function can_bridgekick()
         {
             $write = array(implode("\r\n", array(
@@ -400,10 +350,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test BridgeTechnologyList
-     *
-     */
+        #[Test]
         public function can_bridgetechnologylist()
         {
             $write = array(implode("\r\n", array(
@@ -416,10 +363,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test BridgeTechnologySuspend
-     *
-     */
+        #[Test]
         public function can_bridgetechnologysuspend()
         {
             $write = array(implode("\r\n", array(
@@ -433,10 +377,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test BridgeTechnologyUnsuspend
-     *
-     */
+        #[Test]
         public function can_bridgetechnologyunsuspend()
         {
             $write = array(implode("\r\n", array(
@@ -450,10 +391,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test ExtensionStateList
-     *
-     */
+        #[Test]
         public function can_extensionstatelist()
         {
             $write = array(implode("\r\n", array(
@@ -466,10 +404,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test CancelAtxfer
-     *
-     */
+        #[Test]
         public function can_cancelatxfer()
         {
             $write = array(implode("\r\n", array(
@@ -483,10 +418,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PresenceState
-     *
-     */
+        #[Test]
         public function can_presencestate()
         {
             $write = array(implode("\r\n", array(
@@ -500,10 +432,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test LoggerRotate
-     *
-     */
+        #[Test]
         public function can_loggerrotate()
         {
             $write = array(implode("\r\n", array(
@@ -516,10 +445,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test Filter
-     *
-     */
+        #[Test]
         public function can_filter()
         {
             $write = array(implode("\r\n", array(
@@ -536,10 +462,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test Parkinglots
-     *
-     */
+        #[Test]
         public function can_parkinglots()
         {
             $write = array(implode("\r\n", array(
@@ -552,10 +475,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test DeviceStateList
-     *
-     */
+        #[Test]
         public function can_devicestatelist()
         {
             $write = array(implode("\r\n", array(
@@ -568,10 +488,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PresenceStateList
-     *
-     */
+        #[Test]
         public function can_presencestatelist()
         {
             $write = array(implode("\r\n", array(
@@ -584,10 +501,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test MuteAudio
-     *
-     */
+        #[Test]
         public function can_muteaudio()
         {
             $write = array(implode("\r\n", array(
@@ -603,10 +517,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test MWIGet
-     *
-     */
+        #[Test]
         public function can_mwiget()
         {
             $write = array(implode("\r\n", array(
@@ -620,10 +531,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test MWIDelete
-     *
-     */
+        #[Test]
         public function can_mwidelete()
         {
             $write = array(implode("\r\n", array(
@@ -637,10 +545,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test MWIUpdate
-     *
-     */
+        #[Test]
         public function can_mwiupdate()
         {
             $write = array(implode("\r\n", array(
@@ -658,10 +563,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PJSIPNotify
-     *
-     */
+        #[Test]
         public function can_pjsipnotify()
         {
             $write = array(implode("\r\n", array(
@@ -681,10 +583,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test SorceryMemoryCacheExpireObject
-     *
-     */
+        #[Test]
         public function can_sorcerymemorycacheexpireobject()
         {
             $write = array(implode("\r\n", array(
@@ -699,10 +598,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test SorceryMemoryCacheExpire
-     *
-     */
+        #[Test]
         public function can_sorcerymemorycacheexpire()
         {
             $write = array(implode("\r\n", array(
@@ -716,10 +612,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test SorceryMemoryCacheStaleObject
-     *
-     */
+        #[Test]
         public function can_sorcerymemorycachestaleobject()
         {
             $write = array(implode("\r\n", array(
@@ -736,10 +629,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test SorceryMemoryCacheStale
-     *
-     */
+        #[Test]
         public function can_sorcerymemorycachestale()
         {
             $write = array(implode("\r\n", array(
@@ -753,10 +643,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test SorceryMemoryCachePopulate
-     *
-     */
+        #[Test]
         public function can_sorcerymemorycachepopulate()
         {
             $write = array(implode("\r\n", array(
@@ -770,10 +657,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test FAXSessions
-     *
-     */
+        #[Test]
         public function can_faxsessions()
         {
             $write = array(implode("\r\n", array(
@@ -786,10 +670,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test FAXSession
-     *
-     */
+        #[Test]
         public function can_faxsession()
         {
             $write = array(implode("\r\n", array(
@@ -803,10 +684,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test FAXStats
-     *
-     */
+        #[Test]
         public function can_faxstats()
         {
             $write = array(implode("\r\n", array(
@@ -819,10 +697,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PJSIPShowAors
-     *
-     */
+        #[Test]
         public function can_pjsipshowaors()
         {
             $write = array(implode("\r\n", array(
@@ -835,10 +710,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PJSIPShowAuths
-     *
-     */
+        #[Test]
         public function can_pjsipshowauths()
         {
             $write = array(implode("\r\n", array(
@@ -851,10 +723,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PJSIPShowContacts
-     *
-     */
+        #[Test]
         public function can_pjsipshowcontacts()
         {
             $write = array(implode("\r\n", array(
@@ -867,10 +736,7 @@ namespace PAMI\Client\Impl {
         }
 
 
-    /**
-     * @test PJSIPShowRegistrationInboundContactStatuses
-     *
-     */
+        #[Test]
         public function can_pjsipshowregistrationinboundcontactstatuses()
         {
             $write = array(implode("\r\n", array(

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send a PDU through dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class DongleSendPDUAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($device, $pdu)
+    public function __construct(string $device, string $pdu)
     {
         parent::__construct('DongleSendPDU');
         $this->setKey('Device', $device);

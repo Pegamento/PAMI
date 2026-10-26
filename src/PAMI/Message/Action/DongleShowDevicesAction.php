@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Show all dongle devices.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -44,10 +48,6 @@ class DongleShowDevicesAction extends ActionMessage
 {
     /**
      * Constructor.
-     *
-     * @param string $device  Device name (like dongle01).
-     * @param string $number  Destination number.
-     * @param string $message What to send.
      *
      * @return void
      */

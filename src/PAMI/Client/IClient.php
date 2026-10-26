@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Interface for an ami client.
  *
@@ -25,6 +26,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Client;
 
 use PAMI\Message\OutgoingMessage;
@@ -49,7 +53,7 @@ interface IClient
      * @throws \PAMI\Client\Exception\ClientException
      * @return void
      */
-    public function open();
+    public function open(): void;
 
     /**
      * Main processing loop. Also called from send(), you should call this in
@@ -58,7 +62,7 @@ interface IClient
      *
      * @return void
      */
-    public function process();
+    public function process(): void;
 
     /**
      * Registers the given listener so it can receive events. Returns the generated
@@ -71,7 +75,7 @@ interface IClient
      *
      * @return string
      */
-    public function registerEventListener($listener, $predicate = null);
+    public function registerEventListener(\PAMI\Listener\IEventListener|\Closure|array $listener, \Closure|array|null $predicate = null): string;
 
     /**
      * Unregisters an event listener.
@@ -80,14 +84,14 @@ interface IClient
      *
      * @return void
      */
-    public function unregisterEventListener($listenerId);
+    public function unregisterEventListener(string $listenerId): void;
 
     /**
      * Closes the connection to ami.
      *
      * @return void
      */
-    public function close();
+    public function close(): void;
 
     /**
      * Sends a message to ami.
@@ -98,7 +102,7 @@ interface IClient
      * @throws \PAMI\Client\Exception\ClientException
      * @return \PAMI\Message\Response\Response
      */
-    public function send(OutgoingMessage $message);
+    public function send(OutgoingMessage $message): \PAMI\Message\Response\Response;
 
     /**
      * Sets the logger implementation.
@@ -107,5 +111,5 @@ interface IClient
      *
      * @return void
      */
-    public function setLogger(LoggerInterface $logger);
+    public function setLogger(LoggerInterface $logger): void;
 }

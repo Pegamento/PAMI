@@ -33,7 +33,7 @@ namespace {
     // via `global $...` from within the test methods.
     global $mockTime, $mockTimeCount, $mockTimeReturn, $mock_stream_socket_client,
         $mock_stream_set_blocking, $mock_stream_set_timeout, $mock_stream_get_meta_data_return,
-        $mockFwrite, $mockFwriteReturn, $mockFwriteCount, $mockFgets, $mockFgetsCount,
+        $mockFwrite, $mockFwriteReturn, $mockFwriteCount, $mockFwritePartial, $mockFgets, $mockFgetsCount,
         $mockFreadReturn, $mockRTimeout, $standardAMIStart, $standardAMIStartBadLogin;
     $mockTime = false;
     $mockTimeCount = false;
@@ -45,6 +45,7 @@ namespace {
     $mockFwrite = false;
     $mockFwriteReturn = false;
     $mockFwriteCount = 0;
+    $mockFwritePartial = 0;
     $mockFgets = false;
     $mockFgetsCount = 0;
     $mockFreadReturn = false;
@@ -68,34 +69,7 @@ namespace {
     );
 }
 
-namespace PAMI\Message\Action {
-    function microtime()
-    {
-        global $mockTime;
-        global $mockTimeCount;
-        global $mockTimeReturn;
-        if (isset($mockTime) && $mockTime === true) {
-            return 1432.123;
-        } else {
-            return call_user_func_array('\microtime', func_get_args());
-        }
-    }
-}
-
 namespace PAMI\Client\Impl {
-    use PHPUnit\Framework\TestCase as BaseTestCase;
-
-    function microtime()
-    {
-        global $mockTime;
-        global $mockTimeCount;
-        global $mockTimeReturn;
-        if (isset($mockTime) && $mockTime === true) {
-            return 1432.123;
-        } else {
-            return call_user_func_array('\microtime', func_get_args());
-        }
-    }
     function stream_socket_client($remote_socket, &$errno = null, &$errstr = null, $timeout = null, $flags = null, $context = null)
     {
         global $mock_stream_socket_client;
@@ -157,6 +131,7 @@ namespace PAMI\Client\Impl {
         global $mockFwrite;
         global $mockFwriteCount;
         global $mockFwriteReturn;
+        global $mockFwritePartial;
         if (isset($mockFwrite) && $mockFwrite === true) {
             $args = func_get_args();
             if (isset($mockFwriteReturn[$mockFwriteCount]) && $mockFwriteReturn[$mockFwriteCount] !== false) {
@@ -172,8 +147,15 @@ namespace PAMI\Client\Impl {
                     );
                 }
             }
+            $length = strlen($args[1]);
+            if (is_int($mockFwritePartial) && $mockFwritePartial > 0 && $mockFwritePartial < $length) {
+                $written = $mockFwritePartial;
+                $mockFwritePartial = 0;
+                $mockFwriteCount++;
+                return $written;
+            }
             $mockFwriteCount++;
-            return strlen($args[1]);
+            return $length;
         } else {
             return call_user_func_array('\fwrite', func_get_args());
         }
@@ -226,19 +208,21 @@ namespace PAMI\Client\Impl {
         global $mockFwrite;
         global $mockFwriteCount;
         global $mockFwriteReturn;
+        global $mockFwritePartial;
         $mockFgets = true;
         $mockFopen = true;
         $mockFwrite = true;
         $mockFgetsCount = 0;
         $mockFgetsReturn = $readValues;
         $mockFwriteCount = 0;
+        $mockFwritePartial = 0;
         $mockFwriteReturn = $writeValues;
     }
     class SomeListenerClass implements \PAMI\Listener\IEventListener
     {
         public static $event;
 
-        public function handle(\PAMI\Message\Event\EventMessage $event)
+        public function handle(\PAMI\Message\Event\EventMessage $event): void
         {
             self::$event = $event;
         }

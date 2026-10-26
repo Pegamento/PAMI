@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when .. ?
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class MusicOnHoldEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class MusicOnHoldEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -67,7 +71,7 @@ class MusicOnHoldEvent extends EventMessage
     /**
      * Returns key: 'State'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getState()
     {
@@ -77,7 +81,7 @@ class MusicOnHoldEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when exchanging rtp stats.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'From'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFrom()
     {
@@ -67,7 +71,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'PT'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPT()
     {
@@ -77,7 +81,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'ReceptionReports'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReceptionReports()
     {
@@ -87,7 +91,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'SenderSSRC'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSenderSSRC()
     {
@@ -97,7 +101,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'FractionLost'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFractionLost()
     {
@@ -107,7 +111,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'PacketsLost'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPacketsLost()
     {
@@ -117,7 +121,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'HighestSequence'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getHighestSequence()
     {
@@ -126,7 +130,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'SequenceNumberCycles'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSequenceNumberCycles()
     {
@@ -135,7 +139,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'IAJitter'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIAJitter()
     {
@@ -144,7 +148,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'LastSR'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLastSR()
     {
@@ -153,7 +157,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'DLSR'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDLSR()
     {
@@ -162,7 +166,7 @@ class RTCPReceivedEvent extends EventMessage
     /**
      * Returns key: 'RTT'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRTT()
     {

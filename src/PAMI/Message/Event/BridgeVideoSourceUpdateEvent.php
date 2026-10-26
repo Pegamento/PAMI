@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BridgeVideoSourceUpdate Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns key: 'BridgeUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -68,7 +72,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:The type of bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -80,7 +84,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:Technology in use by the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -92,7 +96,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:Entity that created the bridge if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -104,7 +108,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:Name used to refer to the bridge by its BridgeCreator if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -116,7 +120,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:Number of channels in the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -128,7 +132,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:The video source mode for the bridge.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSourceMode()
     {
@@ -140,7 +144,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:If there is a video source for the bridge, the unique ID of the channel that is the video source.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSource()
     {
@@ -152,7 +156,7 @@ class BridgeVideoSourceUpdateEvent extends EventMessage
      *
      * Returns:The unique ID of the channel that was the video source.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgePreviousVideoSource()
     {

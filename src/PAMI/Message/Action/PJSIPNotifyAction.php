@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PJSIPNotify Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -48,7 +52,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($variable)
+    public function __construct(string $variable)
     {
         parent::__construct('PJSIPNotify');
         $this->setKey('Variable', $variable);
@@ -62,7 +66,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(string $endpoint): void
     {
         $this->setKey('Endpoint', $endpoint);
     }
@@ -74,7 +78,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setURI($uri)
+    public function setURI(string $uri): void
     {
         $this->setKey('URI', $uri);
     }
@@ -86,7 +90,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setchannel($channel)
+    public function setchannel(string $channel): void
     {
         $this->setKey('channel', $channel);
     }

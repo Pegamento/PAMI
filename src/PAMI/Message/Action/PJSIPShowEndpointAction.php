@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PJSIPShowEndpoint action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,11 +49,11 @@ class PJSIPShowEndpointAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $peer Peer name.
+     * @param string $endpointName Endpoint name.
      *
      * @return void
      */
-    public function __construct($endpointName)
+    public function __construct(string $endpointName)
     {
         parent::__construct('PJSIPShowEndpoint');
         $this->setKey('Endpoint', $endpointName);

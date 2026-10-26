@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SoftHangupRequest Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Channel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +72,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -80,7 +84,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'ChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -92,7 +96,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'CallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -104,7 +108,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'CallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -116,7 +120,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -128,7 +132,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -140,7 +144,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Language'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -152,7 +156,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'AccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -164,7 +168,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -176,7 +180,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -188,7 +192,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Priority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -200,7 +204,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -212,7 +216,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -224,7 +228,7 @@ class SoftHangupRequestEvent extends EventMessage
      *
      * Returns:A numeric cause code for why the channel was hung up.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCause()
     {

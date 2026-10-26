@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PresenceStatus Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -68,7 +72,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -80,7 +84,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Hint'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getHint()
     {
@@ -92,7 +96,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Status'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -104,7 +108,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Subtype'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubtype()
     {
@@ -116,7 +120,7 @@ class PresenceStatusEvent extends EventMessage
      *
      * Returns key: 'Message'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMessage()
     {

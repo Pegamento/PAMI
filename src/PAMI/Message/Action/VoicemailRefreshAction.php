@@ -1,4 +1,5 @@
 <?php
+
 /**
  * VoicemailRefresh Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -58,7 +62,7 @@ class VoicemailRefreshAction extends ActionMessage
      *
      * @return void
      */
-    public function setContext($context)
+    public function setContext(string $context): void
     {
         $this->setKey('Context', $context);
     }
@@ -70,7 +74,7 @@ class VoicemailRefreshAction extends ActionMessage
      *
      * @return void
      */
-    public function setMailbox($mailbox)
+    public function setMailbox(string $mailbox): void
     {
         $this->setKey('Mailbox', $mailbox);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DAHDIShowChannels Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -58,7 +62,7 @@ class DAHDIShowChannelsAction extends ActionMessage
      *
      * @return void
      */
-    public function setDAHDIChannel($dahdichannel)
+    public function setDAHDIChannel(string $dahdichannel): void
     {
         $this->setKey('DAHDIChannel', $dahdichannel);
     }

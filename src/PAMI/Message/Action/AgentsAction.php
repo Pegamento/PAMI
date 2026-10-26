@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Agents action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**

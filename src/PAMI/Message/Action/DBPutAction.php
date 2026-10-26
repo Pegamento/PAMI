@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DBPut action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class DBPutAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($family, $key, $value)
+    public function __construct(string $family, string $key, string $value)
     {
         parent::__construct('DBPut');
         $this->setKey('Family', $family);

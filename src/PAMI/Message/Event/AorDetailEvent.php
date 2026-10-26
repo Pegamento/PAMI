@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event from PJSIPShowEndpoint
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectType'. The object's type. This will always be 'aor'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -57,7 +61,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectName'. The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -67,7 +71,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'MinimumExpiration'. Minimum keep alive time for an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMinimumExpiration()
     {
@@ -77,7 +81,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'MaximumExpiration'. Maximum time to keep an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaximumExpiration()
     {
@@ -87,7 +91,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'DefaultExpiration'. Default expiration time in seconds for contacts that are dynamicallybound to an AoR.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDefaultExpiration()
     {
@@ -97,7 +101,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'QualifyFrequency'. Interval at which to qualify an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQualifyFrequency()
     {
@@ -107,7 +111,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'AuthenticateQualify'. Authenticates a qualify request if needed
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthenticateQualify()
     {
@@ -117,7 +121,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'MaxContacts'. Maximum number of contacts that can bind to an AoR
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaxContacts()
     {
@@ -127,7 +131,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'RemoveExisting'. Determines whether new contacts replace existing ones.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRemoveExisting()
     {
@@ -137,7 +141,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'Mailboxes'. Allow subscriptions for the specified mailbox(es)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMailboxes()
     {
@@ -147,7 +151,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'OutboundProxy'. Outbound proxy used when sending OPTIONS request
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOutboundProxy()
     {
@@ -157,7 +161,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'SupportPath'. Enables Path support for REGISTER requests and Route support forother requests.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSupportPath()
     {
@@ -167,7 +171,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'TotalContacts'. The total number of contacts associated with this AoR.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTotalContacts()
     {
@@ -177,7 +181,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'ContactsRegistered'. The number of non-permanent contacts associated with this AoR.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContactsRegistered()
     {
@@ -187,7 +191,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'EndpointName'. The name of the endpoint associated with this information.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpointName()
     {
@@ -197,7 +201,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'Contact'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContact()
     {
@@ -207,7 +211,7 @@ class AorDetailEvent extends EventMessage
     /**
      * Returns key: 'Contacts'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContacts()
     {

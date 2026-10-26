@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MWIGet Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class MWIGetEvent extends EventMessage
      *
      * Returns:Specific mailbox ID.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMailbox()
     {
@@ -68,7 +72,7 @@ class MWIGetEvent extends EventMessage
      *
      * Returns:The number of old messages in the mailbox.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOldMessages()
     {
@@ -80,7 +84,7 @@ class MWIGetEvent extends EventMessage
      *
      * Returns:The number of new messages in the mailbox.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getNewMessages()
     {

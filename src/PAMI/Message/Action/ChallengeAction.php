@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Challenge action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +51,7 @@ class ChallengeAction extends ActionMessage
      *
      * @param string $authType Auth type
      */
-    public function __construct($authType = 'MD5')
+    public function __construct(string $authType = 'MD5')
     {
         parent::__construct('Challenge');
         $this->setKey('AuthType', $authType);

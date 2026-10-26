@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Reload action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,10 +53,10 @@ class ReloadAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($module = false)
+    public function __construct(?string $module = null)
     {
         parent::__construct('Reload');
-        if ($module !== false) {
+        if ($module !== null) {
             $this->setKey('Module', $module);
         }
     }

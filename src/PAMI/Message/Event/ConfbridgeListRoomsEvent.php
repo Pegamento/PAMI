@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for each conference when an action ConfbridgeListRooms is issued.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Conference'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -57,7 +61,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Parties'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParties()
     {
@@ -67,7 +71,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Marked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMarked()
     {
@@ -77,7 +81,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Locked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocked()
     {

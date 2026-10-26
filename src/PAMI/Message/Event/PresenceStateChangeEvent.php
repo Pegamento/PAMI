@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PresenceStateChange Event
  * isListEntry and Part Action: PresenceStateList
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class PresenceStateChangeEvent extends EventMessage
      *
      * Returns:The entity whose presence state has changed
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPresentity()
     {
@@ -68,7 +72,7 @@ class PresenceStateChangeEvent extends EventMessage
      *
      * Returns:The new status of the presentity
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -80,7 +84,7 @@ class PresenceStateChangeEvent extends EventMessage
      *
      * Returns:The new subtype of the presentity
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubtype()
     {
@@ -92,7 +96,7 @@ class PresenceStateChangeEvent extends EventMessage
      *
      * Returns:The new message of the presentity
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMessage()
     {

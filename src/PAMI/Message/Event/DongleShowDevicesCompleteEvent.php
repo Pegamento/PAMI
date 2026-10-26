@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list of dongle channels.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DongleShowDevicesCompleteEvent extends EventMessage
     /**
      * Returns key: 'ListItems'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getListItems()
     {

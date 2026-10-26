@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<ruleset name="PAMI">
+    <description>PSR-12. Comment line length is ignored so the Apache license headers are not flagged.</description>
+
+    <file>src</file>
+
+    <arg name="basepath" value="."/>
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <rule ref="PSR12">
+        <exclude name="Generic.Files.LineLength"/>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="120"/>
+            <property name="ignoreComments" value="true"/>
+        </properties>
+    </rule>
+</ruleset>

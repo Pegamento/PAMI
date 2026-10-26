@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PJSIPRegister action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class PJSIPRegisterAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($registration)
+    public function __construct(string $registration)
     {
         parent::__construct('PJSIPRegister');
         $this->setKey('Registration', $registration);

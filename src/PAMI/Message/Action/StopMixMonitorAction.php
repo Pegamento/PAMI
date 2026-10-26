@@ -1,4 +1,5 @@
 <?php
+
 /**
  * StopMixMonitor action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class StopMixMonitorAction extends ActionMessage
      *
      * @return void
      */
-    public function setMixMonitorId($mixMonitorId)
+    public function setMixMonitorId(string $mixMonitorId): void
     {
         $this->setKey('MixMonitorID', $mixMonitorId);
     }
@@ -61,7 +65,7 @@ class StopMixMonitorAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('StopMixMonitor');
         $this->setKey('Channel', $channel);

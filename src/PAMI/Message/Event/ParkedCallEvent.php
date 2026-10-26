@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a call is parked.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -55,7 +59,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Parkinglot'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkinglot()
     {
@@ -65,7 +69,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'From'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFrom()
     {
@@ -173,7 +177,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelState()
     {
@@ -183,7 +187,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelStateDesc()
     {
@@ -233,7 +237,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeAccountCode()
     {
@@ -243,7 +247,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeContext()
     {
@@ -253,7 +257,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeExten()
     {
@@ -263,7 +267,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeePriority()
     {
@@ -283,7 +287,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerDialString'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerDialString()
     {
@@ -313,7 +317,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkingDuration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingDuration()
     {

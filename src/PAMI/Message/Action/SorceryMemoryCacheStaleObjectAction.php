@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SorceryMemoryCacheStaleObject Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class SorceryMemoryCacheStaleObjectAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($cache, $object)
+    public function __construct(string $cache, string $object)
     {
         parent::__construct('SorceryMemoryCacheStaleObject');
         $this->setKey('Cache', $cache);
@@ -66,7 +70,7 @@ class SorceryMemoryCacheStaleObjectAction extends ActionMessage
      *
      * @return void
      */
-    public function setReload($reload)
+    public function setReload(string $reload): void
     {
         $this->setKey('Reload', $reload);
     }

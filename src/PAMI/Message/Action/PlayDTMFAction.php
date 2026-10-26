@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PlayDTMF action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,10 +49,10 @@ class PlayDTMFAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $channel
-     * @param $digit
+     * @param string $channel
+     * @param string $digit
      */
-    public function __construct($channel, $digit)
+    public function __construct(string $channel, string $digit)
     {
         parent::__construct('PlayDTMF');
         $this->setKey('Channel', $channel);

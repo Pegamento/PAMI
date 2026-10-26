@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ChanSpyStart Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerChannel()
     {
@@ -68,7 +72,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to SpyerChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerChannelState()
     {
@@ -80,7 +84,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerChannelStateDesc()
     {
@@ -92,7 +96,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerCallerIDNum()
     {
@@ -104,7 +108,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerCallerIDName()
     {
@@ -116,7 +120,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerConnectedLineNum()
     {
@@ -128,7 +132,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerConnectedLineName()
     {
@@ -140,7 +144,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerLanguage()
     {
@@ -152,7 +156,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerAccountCode()
     {
@@ -164,7 +168,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerContext()
     {
@@ -176,7 +180,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerExten()
     {
@@ -188,7 +192,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerPriority()
     {
@@ -200,7 +204,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyerUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerUniqueid()
     {
@@ -212,7 +216,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyerLinkedid()
     {
@@ -224,7 +228,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeChannel()
     {
@@ -236,7 +240,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to SpyeeChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeChannelState()
     {
@@ -248,7 +252,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeChannelStateDesc()
     {
@@ -260,7 +264,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeCallerIDNum()
     {
@@ -272,7 +276,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeCallerIDName()
     {
@@ -284,7 +288,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeConnectedLineNum()
     {
@@ -296,7 +300,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeConnectedLineName()
     {
@@ -308,7 +312,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeLanguage()
     {
@@ -320,7 +324,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeAccountCode()
     {
@@ -332,7 +336,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeContext()
     {
@@ -344,7 +348,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeExten()
     {
@@ -356,7 +360,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeePriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeePriority()
     {
@@ -368,7 +372,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns key: 'SpyeeUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeUniqueid()
     {
@@ -380,7 +384,7 @@ class ChanSpyStartEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpyeeLinkedid()
     {

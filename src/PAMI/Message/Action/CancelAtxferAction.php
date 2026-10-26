@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CancelAtxfer Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class CancelAtxferAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('CancelAtxfer');
         $this->setKey('Channel', $channel);

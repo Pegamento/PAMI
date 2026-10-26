@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueStatus action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,13 +53,13 @@ class QueueStatusAction extends ActionMessage
      *
      * @param string $member
      */
-    public function __construct($queue = null, $member = null)
+    public function __construct(?string $queue = null, ?string $member = null)
     {
         parent::__construct('QueueStatus');
-        if ($queue != null) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
-        if ($member != null) {
+        if ($member !== null) {
             $this->setKey('Member', $member);
         }
     }

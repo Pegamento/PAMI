@@ -1,4 +1,5 @@
 <?php
+
 /**
  * An AsyncAGI client implementation.
  *
@@ -25,6 +26,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\AsyncAgi;
 
 use PAMI\Message\Action\AGIAction;
@@ -53,35 +57,41 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      * The pami client to be used.
      * @var \PAMI\Client\IClient
      */
-    private $pamiClient;
+    private \PAMI\Client\IClient $pamiClient;
     /**
      * The event that originated this async agi request.
      * @var IAsyncAgiStartEvent
      */
-    private $asyncAgiEvent;
+    private IAsyncAgiStartEvent $asyncAgiEvent;
     /**
      * The channel that originated this async agi request.
      * @var string
      */
-    private $channel;
+    private string $channel;
     /**
      * The listener id after registering with the pami client.
      * @var string
      */
-    private $listenerId;
+    private string $listenerId;
 
     /**
      * Last CommandId issued, so we can track responses for agi commands.
      * @var string
      */
-    private $lastCommandId;
+    private string $lastCommandId;
 
     /**
      * Filled when an async agi event has been received, with command id equal
      * to the last command id sent.
      * @var string
      */
-    private $lastAgiResult;
+    private string|false $lastAgiResult = false;
+
+    /**
+     * Optional busy-wait limit, in seconds. Null waits until a result arrives.
+     * @var float|null
+     */
+    private ?float $timeout = null;
 
     /**
      * Handles pami events.
@@ -90,20 +100,21 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      *
      * @return void
      */
-    public function handle(EventMessage $event)
+    public function handle(EventMessage $event): void
     {
         if ($event instanceof IAsyncAgiExecEvent) {
-            if ($event->getCommandId() == $this->lastCommandId) {
+            if ($event->getCommandID() == $this->lastCommandId) {
                 $this->lastAgiResult = trim($event->getResult() ?? '');
             }
         }
     }
 
     /**
-     * (non-PHPdoc)
-     * @see ClientImpl::send()
-     * @param $text
-     * @return Result
+     * The parameter stays untyped so this override stays compatible with
+     * PAGI\Client\AbstractClient::send(), which has no native parameter type.
+     *
+     * @param string $text
+     * @return mixed
      * @throws \PAGI\Exception\ChannelDownException
      * @throws \PAGI\Exception\InvalidCommandException
      * @throws \PAMI\Client\Exception\ClientException
@@ -118,18 +129,23 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
         if (!$response->isSuccess()) {
             throw new ChannelDownException($response->getMessage());
         }
-        while ($this->lastAgiResult === false) {
+        $deadline = $this->timeout !== null ? microtime(true) + $this->timeout : null;
+        // handle() stores the result while process() runs, which static analysis cannot see.
+        while ($this->lastAgiResult === false) { // @phpstan-ignore identical.alwaysTrue
+            if ($deadline !== null && microtime(true) >= $deadline) {
+                throw new ChannelDownException('Async AGI command timed out');
+            }
             $this->pamiClient->process();
             usleep(1000);
         }
-        return $this->getResultFromResultString($this->lastAgiResult);
+        return $this->getResultFromResultString($this->lastAgiResult); // @phpstan-ignore deadCode.unreachable
     }
 
     /**
      * (non-PHPdoc)
      * @see ClientImpl::open()
      */
-    protected function open()
+    protected function open(): void
     {
         $environment = $this->asyncAgiEvent->getEnvironment();
         $this->channel = $this->asyncAgiEvent->getChannel();
@@ -147,7 +163,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      * (non-PHPdoc)
      * @see ClientImpl::close()
      */
-    protected function close()
+    protected function close(): void
     {
         $this->pamiClient->unregisterEventListener($this->listenerId);
     }
@@ -161,6 +177,9 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      *
      * environment => Environment as received by the AsyncAGI Event.
      *
+     * timeout => Optional seconds to wait for an AsyncAGI exec result before
+     * throwing ChannelDownException. Omit it to wait indefinitely.
+     *
      * @param array $options Optional properties.
      *
      * @return void
@@ -168,9 +187,10 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
     public function __construct(array $options = [])
     {
         // $this->options = $options;
-        $this->logger = new NullLogger;
+        $this->logger = new NullLogger();
         $this->pamiClient = $options['pamiClient'];
         $this->asyncAgiEvent = $options['asyncAgiEvent'];
+        $this->timeout = isset($options['timeout']) ? (float) $options['timeout'] : null;
         $this->open();
     }
 
@@ -179,7 +199,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      * (non-PHPdoc)
      * @see IAsyncClient::asyncBreak()
      */
-    public function asyncBreak()
+    public function asyncBreak(): void
     {
         $this->send('ASYNCAGI BREAK');
     }

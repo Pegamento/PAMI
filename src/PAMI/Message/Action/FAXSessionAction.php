@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FAXSession Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -48,7 +52,7 @@ class FAXSessionAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($sessionnumber)
+    public function __construct(string $sessionnumber)
     {
         parent::__construct('FAXSession');
         $this->setKey('SessionNumber', $sessionnumber);

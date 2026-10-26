@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when exchanging rtp stats.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'To'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTo()
     {
@@ -67,7 +71,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'OurSSRC'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOurSSRC()
     {
@@ -77,7 +81,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'SentNTP'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSentNTP()
     {
@@ -87,7 +91,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'SentRTP'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSentRTP()
     {
@@ -97,7 +101,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'SentPackets'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSentPackets()
     {
@@ -107,7 +111,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'SentOctets'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSentOctets()
     {
@@ -117,7 +121,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'ReportBlock'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReportBlock()
     {
@@ -127,7 +131,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'FractionLost'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFractionLost()
     {
@@ -137,7 +141,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'CumulativeLoss'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCumulativeLoss()
     {
@@ -147,7 +151,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'IAJitter'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIAJitter()
     {
@@ -157,7 +161,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'TheirLastSR'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTheirLastSR()
     {
@@ -167,7 +171,7 @@ class RTCPSentEvent extends EventMessage
     /**
      * Returns key: 'DLSR'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDLSR()
     {

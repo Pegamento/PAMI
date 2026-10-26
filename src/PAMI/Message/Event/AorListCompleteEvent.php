@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AorListComplete Event
  * Part Of Action: PJSIPShowAors
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,9 +60,9 @@ class AorListCompleteEvent extends EventMessage
      *
      * Returns key: 'EventList'
      *
-     * @return string
+     * @return string|int|float|bool|array|null
      */
-    public function getEventList()
+    public function getEventList(): string|int|float|bool|array|null
     {
         return $this->getKey('EventList');
     }
@@ -68,7 +72,7 @@ class AorListCompleteEvent extends EventMessage
      *
      * Returns key: 'ListItems'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getListItems()
     {

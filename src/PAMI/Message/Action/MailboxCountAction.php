@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MailboxCount action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class MailboxCountAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($mailbox)
+    public function __construct(string $mailbox)
     {
         parent::__construct('MailboxCount');
         $this->setKey('Mailbox', $mailbox);

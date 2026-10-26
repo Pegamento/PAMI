@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This factory knows which event to return according to a given raw message
  * from ami.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event\Factory\Impl;
 
 use PAMI\Message\Event\EventMessage;
@@ -55,14 +59,21 @@ class EventFactoryImpl
      *
      * @return EventMessage
      */
-    public function createFromRaw($message)
+    public function createFromRaw(string $message): EventMessage
     {
-        $eventStart = strpos($message, 'Event: ') + 7;
+        $eventStart = strpos($message, 'Event: ');
+        if ($eventStart === false) {
+            return new UnknownEvent($message);
+        }
+        $eventStart += 7;
         $eventEnd = strpos($message, Message::EOL, $eventStart);
         if ($eventEnd === false) {
             $eventEnd = strlen($message);
         }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
+        if (!preg_match('/^\w+$/', $name)) {
+            return new UnknownEvent($message);
+        }
         $name = implode('', array_map('ucfirst', explode('_', $name)));
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
         if (class_exists($className, true)) {

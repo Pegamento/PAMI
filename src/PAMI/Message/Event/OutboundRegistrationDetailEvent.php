@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event from PJSIPShowRegistrationsOutbound
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -57,7 +61,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -67,7 +71,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'SupportPath'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSupportPath()
     {
@@ -77,7 +81,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'AuthRejectionPermanent'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthRejectionPermanent()
     {
@@ -87,7 +91,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ServerUri'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getServerUri()
     {
@@ -97,7 +101,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ClientUri'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getClientUri()
     {
@@ -107,7 +111,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'RetryInterval'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetryInterval()
     {
@@ -117,7 +121,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'MaxRetries'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaxRetries()
     {
@@ -127,7 +131,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'OutboundProxy'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOutboundProxy()
     {
@@ -137,7 +141,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'Transport'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransport()
     {
@@ -147,7 +151,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ForbiddenRetryInterval'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getForbiddenRetryInterval()
     {
@@ -157,7 +161,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'OutboundAuth'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOutboundAuth()
     {
@@ -167,7 +171,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'ContactUser'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContactUser()
     {
@@ -177,7 +181,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'Expiration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExpiration()
     {
@@ -187,7 +191,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -197,7 +201,7 @@ class OutboundRegistrationDetailEvent extends EventMessage
     /**
      * Returns key: 'NextReg'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getNextReg()
     {

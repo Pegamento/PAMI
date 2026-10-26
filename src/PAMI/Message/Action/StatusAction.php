@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Queries for the status of a channel or all channels if none specified.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,10 +53,10 @@ class StatusAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel = false)
+    public function __construct(?string $channel = null)
     {
         parent::__construct('Status');
-        if ($channel !== false) {
+        if ($channel !== null) {
             $this->setKey('Channel', $channel);
         }
     }
@@ -64,7 +68,7 @@ class StatusAction extends ActionMessage
      *
      * @return void
      */
-    public function setVariables($variables = [])
+    public function setVariables(array $variables = []): void
     {
         if (!empty($variables)) {
             $this->setKey('Variables', implode(',', $variables));

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SorceryMemoryCacheExpire Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -48,7 +52,7 @@ class SorceryMemoryCacheExpireAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($cache)
+    public function __construct(string $cache)
     {
         parent::__construct('SorceryMemoryCacheExpire');
         $this->setKey('Cache', $cache);

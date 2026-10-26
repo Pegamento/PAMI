@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SpanAlarmClear Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class SpanAlarmClearEvent extends EventMessage
      *
      * Returns:The span on which the alarm was cleared.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSpan()
     {

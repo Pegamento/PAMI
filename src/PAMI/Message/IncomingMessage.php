@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic incoming message.
  *
@@ -25,6 +26,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message;
 
 use PAMI\Exception\PAMIException;
@@ -46,29 +50,31 @@ abstract class IncomingMessage extends Message
      * Holds original message.
      * @var string
      */
-    protected $rawContent;
+    protected string $rawContent;
 
     /**
      * Metadata. Specific channel variables.
      * @var array<string, array<string, string>>
      */
-    protected $channelVariables;
+    protected array $channelVariables;
 
     /**
      * Metadata. Status variables (Variable: lines), keyed by channel.
      * @var array<string, array<string, string>>
      */
-    protected $statusVariables;
+    protected array $statusVariables;
 
     /**
      * Serialize function.
      *
      * @return string[]
      */
-    public function __sleep()
+    public function __sleep(): array
     {
         $ret = parent::__sleep();
         $ret[] = 'rawContent';
+        $ret[] = 'channelVariables';
+        $ret[] = 'statusVariables';
         return $ret;
     }
 
@@ -78,7 +84,7 @@ abstract class IncomingMessage extends Message
      *
      * @return string|null
      */
-    public function getEventList()
+    public function getEventList(): string|int|float|bool|array|null
     {
         return $this->getKey('EventList');
     }
@@ -88,7 +94,7 @@ abstract class IncomingMessage extends Message
      *
      * @return string
      */
-    public function getRawContent()
+    public function getRawContent(): string
     {
         return $this->rawContent;
     }
@@ -103,12 +109,12 @@ abstract class IncomingMessage extends Message
      * @return string|int|float|bool|string[]|null
      * @throws PAMIException
      */
-    public function getKey($key)
+    public function getKey(string $key): string|int|float|bool|array|null
     {
         try {
             return parent::getKey($key);
         } catch (PAMIException $e) {
-            throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent ."\n");
+            throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent . "\n");
         }
     }
 
@@ -120,7 +126,7 @@ abstract class IncomingMessage extends Message
      *
      * @return array<string, array<string, string>>
      */
-    public function getAllChannelVariables()
+    public function getAllChannelVariables(): array
     {
         return $this->channelVariables;
     }
@@ -134,7 +140,7 @@ abstract class IncomingMessage extends Message
      *
      * @return array<string, string>|null
      */
-    public function getChannelVariables($channel = null)
+    public function getChannelVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
             if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
@@ -159,7 +165,7 @@ abstract class IncomingMessage extends Message
      *
      * @return array<string, array<string, string>>
      */
-    public function getAllStatusVariables()
+    public function getAllStatusVariables(): array
     {
         return $this->statusVariables;
     }
@@ -173,7 +179,7 @@ abstract class IncomingMessage extends Message
      *
      * @return array<string, string>|null
      */
-    public function getStatusVariables($channel = null)
+    public function getStatusVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
             if (!isset($this->keys['channel']) || $this->keys['channel'] === '') {
@@ -197,7 +203,7 @@ abstract class IncomingMessage extends Message
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct();
         $this->channelVariables = ['default' => []];
@@ -219,7 +225,7 @@ abstract class IncomingMessage extends Message
                 $content = explode('=', $value);
                 $name = trim($content[0]);
                 unset($content[0]);
-                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->channelVariables[$chanName][strtolower($name)] = $value;
                 $this->setKey('chanvariable', $name);
             } elseif (!strncmp($name, 'variable', 8)) {
@@ -232,7 +238,7 @@ abstract class IncomingMessage extends Message
                 $content = explode('=', $value);
                 $name = trim($content[0]);
                 unset($content[0]);
-                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->statusVariables[$chanName][strtolower($name)] = $value;
                 $this->setKey('variable', $name);
             }

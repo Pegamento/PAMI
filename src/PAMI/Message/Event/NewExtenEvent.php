@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a new extension is accessed.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -55,7 +59,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -66,7 +70,7 @@ class NewExtenEvent extends EventMessage
      * Returns key: 'Extension'.
      * @deprecated Please use {@see getExten()}.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -86,7 +90,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -96,7 +100,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -106,7 +110,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Application'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplication()
     {
@@ -116,7 +120,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'AppData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplicationData()
     {
@@ -126,7 +130,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

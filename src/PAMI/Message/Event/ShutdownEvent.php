@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Shutdown Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class ShutdownEvent extends EventMessage
      *
      * Returns:Whether the shutdown is proceeding cleanly (all channels were hungup successfully) or uncleanly (channels will be terminated)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getShutdown()
     {
@@ -68,7 +72,7 @@ class ShutdownEvent extends EventMessage
      *
      * Returns:Whether or not a restart will occur.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRestart()
     {

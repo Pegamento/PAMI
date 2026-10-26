@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DAHDIDNDoff Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -48,7 +52,7 @@ class DAHDIDNDoffAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($dahdichannel)
+    public function __construct(string $dahdichannel)
     {
         parent::__construct('DAHDIDNDoff');
         $this->setKey('DAHDIChannel', $dahdichannel);

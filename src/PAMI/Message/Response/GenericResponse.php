@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic response message from ami.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response;
 
 use PAMI\Message\Response\Response;
@@ -51,7 +55,7 @@ class GenericResponse extends Response
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
     }

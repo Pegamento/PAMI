@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic ami message, in-or-outbound.
  *
@@ -25,9 +26,10 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message;
 
-use PAMI\Exception\PAMIException;
+declare(strict_types=1);
+
+namespace PAMI\Message;
 
 /**
  * A generic ami message, in-or-outbound.
@@ -55,13 +57,6 @@ abstract class Message
     public const EOM = "\r\n\r\n";
 
     /**
-     * Message content, line by line. This is what it gets sent
-     * or received literally.
-     * @var string[]
-     */
-    protected array $lines = [];
-
-    /**
      * Metadata. Message variables (key/value).
      * @var string[]
      */
@@ -78,16 +73,16 @@ abstract class Message
      * Created date (unix timestamp).
      * @var integer
      */
-    protected $createdDate;
+    protected int $createdDate;
 
     /**
      * Serialize helper function.
      *
      * @return string[]
      */
-    public function __sleep()
+    public function __sleep(): array
     {
-        return ['lines', 'variables', 'keys', 'createdDate'];
+        return ['variables', 'keys', 'createdDate'];
     }
 
     /**
@@ -95,7 +90,7 @@ abstract class Message
      *
      * @return int
      */
-    public function getCreatedDate()
+    public function getCreatedDate(): int
     {
         return $this->createdDate;
     }
@@ -108,7 +103,7 @@ abstract class Message
      *
      * @return void
      */
-    public function setVariable($key, $value)
+    public function setVariable(string $key, string|int|float|bool|array|null $value): void
     {
         $this->variables[$key] = $value;
     }
@@ -120,7 +115,7 @@ abstract class Message
      *
      * @return string|null
      */
-    public function getVariable($key)
+    public function getVariable(string $key): string|array|null
     {
         return $this->variables[$key] ?? null;
     }
@@ -130,14 +125,14 @@ abstract class Message
      *
      * @param string|null $value Key value.
      *
-     * @return string|int|float|bool|null Typed and sanitized value.
-     * @throws PAMIException
+     * @return string|int|float|bool|null Typed value. Strings are never HTML-escaped.
      */
-    protected function sanitizeInput($value)
+    protected function sanitizeInput(?string $value): string|int|float|bool|null
     {
         if (!isset($value) || strlen($value) == 0) {
             return null;
-        } elseif (is_numeric($value)) {
+        }
+        if (is_numeric($value)) {
             // index access is safe as is_numeric('') === false
             if ($value[0] === '0' || $value[0] === '+') {
                 // Return as string if there's a leading zero or plus sign to avoid losing information
@@ -151,23 +146,14 @@ abstract class Message
                 return intval($value, 0);
             }
             return (float)$value;
-        } elseif (is_string($value)) {
-            if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
-                return true;
-            }
-            if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
-                return false;
-            }
-            if ($value === htmlspecialchars($value)) {
-                return $value;
-            }
-            if (filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE)) {
-                return (string)htmlspecialchars($value, ENT_QUOTES);
-            }
-            throw new PAMIException("Incoming String is not sanitary. Skipping: '" . $value . "'\n");
-        } else {
-            throw new PAMIException("Don't know how to convert: '" . $value . "'\n");
         }
+        if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
+            return true;
+        }
+        if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
+            return false;
+        }
+        return $value;
     }
 
     /**
@@ -178,7 +164,7 @@ abstract class Message
      *
      * @return void
      */
-    protected function setKey($key, $value)
+    protected function setKey(string $key, string|int|float|bool|array|null $value): void
     {
         $key = strtolower((string)$key);
         $this->keys[$key] = (string)$value;
@@ -187,22 +173,24 @@ abstract class Message
     /**
      * @deprecated Use setKey() instead.
      */
-    protected function setSanitizedKey($key, $value)
+    protected function setSanitizedKey(string $key, string|int|float|bool|array|null $value): void
     {
         $this->setKey($key, $value);
     }
 
     /**
-     * Returns a key by name, sanitized.
+     * Returns a key by name.
      *
+     * Numeric and on/off/yes/no/true/false values are converted to int, float
+     * or bool. Other strings are returned unchanged and are never HTML-escaped.
      * ActionId, Uniqueid and Linkedid are returned as stored so identifiers
      * are not rewritten.
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string|int|float|bool|string[]|null
+     * @return string|int|float|bool|array|null
      */
-    public function getKey($key)
+    public function getKey(string $key): string|int|float|bool|array|null
     {
         $key = strtolower($key);
         if (!array_key_exists($key, $this->keys)) {
@@ -252,7 +240,7 @@ abstract class Message
      *
      * @return bool|null
      */
-    public function getBoolKey($key)
+    public function getBoolKey(string $key): ?bool
     {
         $key = strtolower($key);
         if (!array_key_exists($key, $this->keys) || $this->keys[$key] === '') {
@@ -266,7 +254,7 @@ abstract class Message
      *
      * @return array<string, string|string[]>
      */
-    public function getKeys()
+    public function getKeys(): array
     {
         // TODO: sanitize values
         return $this->keys;
@@ -277,7 +265,7 @@ abstract class Message
      *
      * @return array<string, string|string[]>
      */
-    public function getVariables()
+    public function getVariables(): array
     {
         return $this->variables;
     }
@@ -289,7 +277,7 @@ abstract class Message
      *
      * @return string
      */
-    protected function finishMessage($message)
+    protected function finishMessage(string $message): string
     {
         return $message . self::EOL . self::EOL;
     }
@@ -313,7 +301,7 @@ abstract class Message
      *
      * @return string
      */
-    public function serialize()
+    public function serialize(): string
     {
         $result = [];
         foreach ($this->getKeys() as $k => $v) {
@@ -343,7 +331,7 @@ abstract class Message
      *
      * @return string|null
      */
-    public function getActionID()
+    public function getActionID(): ?string
     {
         return $this->getKey('actionid');
     }
@@ -355,9 +343,6 @@ abstract class Message
      */
     public function __construct()
     {
-        // $this->lines = [];
-        // $this->variables = [];
-        // $this->keys = [];
         $this->createdDate = time();
     }
 }

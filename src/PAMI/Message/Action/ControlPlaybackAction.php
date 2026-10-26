@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ControlPlayback Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -53,7 +57,7 @@ class ControlPlaybackAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $control)
+    public function __construct(string $channel, string $control)
     {
         parent::__construct('ControlPlayback');
         $this->setKey('Channel', $channel);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueReset action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,10 +53,10 @@ class QueueResetAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($queue = false)
+    public function __construct(?string $queue = null)
     {
         parent::__construct('QueueReset');
-        if ($queue !== false) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
     }

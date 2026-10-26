@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Originate action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setExtension($extension)
+    public function setExtension(string $extension): void
     {
         $this->setKey('Exten', $extension);
     }
@@ -61,7 +65,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setContext($context)
+    public function setContext(string $context): void
     {
         $this->setKey('Context', $context);
     }
@@ -73,7 +77,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setPriority($priority)
+    public function setPriority(string $priority): void
     {
         $this->setKey('Priority', $priority);
     }
@@ -85,7 +89,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setApplication($application)
+    public function setApplication(string $application): void
     {
         $this->setKey('Application', $application);
     }
@@ -97,7 +101,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setData($data)
+    public function setData(string $data): void
     {
         $this->setKey('Data', $data);
     }
@@ -109,7 +113,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setTimeout($timeout)
+    public function setTimeout(string|int $timeout): void
     {
         $this->setKey('Timeout', $timeout);
     }
@@ -121,7 +125,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setCallerId($clid)
+    public function setCallerId(string $clid): void
     {
         $this->setKey('CallerID', $clid);
     }
@@ -129,11 +133,11 @@ class OriginateAction extends ActionMessage
     /**
      * Sets Account key.
      *
-     * @param string Account code.
+     * @param string $account Account code.
      *
      * @return void
      */
-    public function setAccount($account)
+    public function setAccount(string $account): void
     {
         $this->setKey('Account', $account);
     }
@@ -145,7 +149,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setAsync($async)
+    public function setAsync(bool $async): void
     {
         $this->setKey('Async', $async ? 'true' : 'false');
     }
@@ -157,7 +161,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function setCodecs(array $codecs)
+    public function setCodecs(array $codecs): void
     {
         $this->setKey('Codecs', implode(',', $codecs));
     }
@@ -169,7 +173,7 @@ class OriginateAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('Originate');
         $this->setKey('Channel', $channel);

@@ -5,6 +5,31 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0] - 2026-10-26
+
+### Breaking changes
+
+- Requires PHP 8.4. The 2.1 notes still described a PHP 8.1 / PHPUnit 9.6 baseline; development now uses PHPUnit 10.5.
+- `declare(strict_types=1)` is enabled across `src`. The core client, message, response, and factory APIs have native parameter, return, and property types.
+- `getKey()` still converts numeric values and `on`/`off`/`yes`/`no`/`true`/`false`. Other strings are returned unchanged. Values are no longer HTML-escaped.
+- ActionIDs are random 16-character hex strings. Call `ActionMessage::setActionIdGenerator()` to supply your own, including a fixed id for tests.
+- `OutgoingMessage::setKey()` and `setVariable()` throw `PAMIException` when a value contains CR or LF, or a key contains CR, LF, or `:`.
+- Optional action arguments use `null` to mean "omit this field". `false` is no longer the sentinel.
+- Removed `Response::$eventsCount` and `Message::$lines`.
+- An event whose name is not an identifier, or a message with no `Event:` header, is an `UnknownEvent`.
+- `UpdateConfigAction` numbers its actions per instance. `setCat()`, `setVar()`, and the other per-action setters throw if they are called before `setAction()`.
+- `AsyncClientImpl` accepts a `timeout` option (seconds). When it is set, the busy-wait throws `ChannelDownException` if the exec result does not arrive in time.
+
+### Upgrade guide
+
+1. Run on PHP 8.4 or newer and install with `"pegamento/pami": "^3.0"`.
+2. Stop decoding HTML entities out of AMI values. Characters such as `<` are now preserved.
+3. Do not depend on ActionIDs being derived from `microtime()`. Read the id from the action, or set a generator before constructing actions.
+4. Do not put CR, LF, or `:` in outgoing keys, or CR/LF in outgoing values. Build multi-line command bodies through the command actions instead of raw key injection.
+5. Replace omitted optional arguments that were passed as `false` with `null` (`GetVar`, `SetVar`, `DBDelTree`, `GetConfig`, `Park`, `ShowDialPlan`, `Status`, the queue actions, `Reload`, `BridgeList`).
+6. Expect native types on the client and message APIs. Event getters stay untyped because a converted AMI value may be `string|int|float|bool|null`; their docblocks document that union. Getters that already cast still return `int` or `bool`.
+7. Anything that read `Response::$eventsCount` or `Message::$lines` needs to drop that access. Channel and status variables are now part of `IncomingMessage` serialization.
+
 ## [2.1] - 2026-06-05
 
 ### Changes

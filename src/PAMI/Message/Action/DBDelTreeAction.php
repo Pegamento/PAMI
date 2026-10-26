@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DBDelTree action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,11 +54,11 @@ class DBDelTreeAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($family, $key = false)
+    public function __construct(string $family, ?string $key = null)
     {
         parent::__construct('DBDelTree');
         $this->setKey('Family', $family);
-        if ($key != false) {
+        if ($key !== null) {
             $this->setKey('Key', $key);
         }
     }

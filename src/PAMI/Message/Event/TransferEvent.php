@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a call is transfered.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferMethod'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferMethod()
     {
@@ -67,7 +71,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferType()
     {
@@ -77,7 +81,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -87,7 +91,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TargetChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetChannel()
     {
@@ -97,7 +101,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'SIP-Callid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSipCallID()
     {
@@ -107,7 +111,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -117,7 +121,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TargetUniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetUniqueID()
     {
@@ -127,7 +131,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferExten()
     {
@@ -137,7 +141,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferContext()
     {

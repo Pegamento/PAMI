@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetConfig action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +51,7 @@ class DialplanExtensionAddAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context, $extension, $priority, $application, $replace = false)
+    public function __construct(string $context, string $extension, string|int $priority, string $application, bool $replace = false)
     {
         parent::__construct('DialplanExtensionAdd');
         $this->setKey('context', $context);
@@ -60,10 +64,10 @@ class DialplanExtensionAddAction extends ActionMessage
     /**
      * set Optional ApplicationData.
      *
-     * @param string input
+     * @param string $input
      * @return void
      */
-    public function setApplicationData($input)
+    public function setApplicationData(string $input): void
     {
         $this->setKey('applicationData', $input);
     }
@@ -71,10 +75,10 @@ class DialplanExtensionAddAction extends ActionMessage
     /**
      * set Replace previous entry at this priority.
      *
-     * @param boolean input
+     * @param bool $input
      * @return void
      */
-    public function setReplace($input)
+    public function setReplace(bool $input): void
     {
         $this->setKey('replace', $input ? 'true' : 'false');
     }

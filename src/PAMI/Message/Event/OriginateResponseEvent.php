@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Response from an async originate.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -67,7 +71,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -77,7 +81,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -87,7 +91,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Reason'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReason()
     {
@@ -97,7 +101,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -107,9 +111,9 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'ActionID'.
      *
-     * @return string
+     * @return string|null
      */
-    public function getActionID()
+    public function getActionID(): ?string
     {
         return $this->getKey('ActionID');
     }
@@ -117,7 +121,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'Response'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResponse()
     {
@@ -127,7 +131,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'CallerIdNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIdNum()
     {
@@ -137,7 +141,7 @@ class OriginateResponseEvent extends EventMessage
     /**
      * Returns key: 'CallerIdName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIdName()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when issuing a VoicemailUsersList action.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
@@ -45,7 +49,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'NewMessageCount'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getNewMessageCount()
     {
@@ -55,7 +59,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'MaxMessageLength'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaxMessageLength()
     {
@@ -65,7 +69,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'MaxMessageCount'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMaxMessageCount()
     {
@@ -75,7 +79,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'CallOperator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallOperator()
     {
@@ -85,7 +89,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'CanReview'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCanReview()
     {
@@ -95,7 +99,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'VolumeGain'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVolumeGain()
     {
@@ -105,7 +109,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'DeleteMessage'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDeleteMessage()
     {
@@ -115,7 +119,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'AttachmentFormat'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAttachmentFormat()
     {
@@ -125,7 +129,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'AttachMessage'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAttachMessage()
     {
@@ -135,7 +139,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'SayCID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSayCID()
     {
@@ -145,7 +149,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'SayEnvelope'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSayEnvelope()
     {
@@ -155,7 +159,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'SayDurationMin'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSayDurationMin()
     {
@@ -165,7 +169,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'ExitContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExitContext()
     {
@@ -175,7 +179,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -185,7 +189,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'DialOut'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialOut()
     {
@@ -195,7 +199,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Callback'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallback()
     {
@@ -205,7 +209,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Timezone'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTimezone()
     {
@@ -215,7 +219,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Language'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -225,7 +229,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'MailCommand'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMailCommand()
     {
@@ -235,7 +239,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'ServerEmail'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getServerEmail()
     {
@@ -245,7 +249,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Pager'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPager()
     {
@@ -255,7 +259,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Email'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEmail()
     {
@@ -265,7 +269,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'Fullname'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFullname()
     {
@@ -275,7 +279,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'VoicemailBox'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVoicemailBox()
     {
@@ -285,7 +289,7 @@ class VoicemailUserEntryEvent extends EventMessage
     /**
      * Returns key: 'VmContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVoicemailContext()
     {

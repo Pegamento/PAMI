@@ -1,4 +1,5 @@
 <?php
+
 /**
  * BridgeDestroy Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -55,7 +59,7 @@ class BridgeDestroyAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($bridgeuniqueid)
+    public function __construct(string $bridgeuniqueid)
     {
         parent::__construct('BridgeDestroy');
         $this->setKey('BridgeUniqueid', $bridgeuniqueid);

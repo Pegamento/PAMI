@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action DAHDIChannel
  * is issued.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -36,7 +40,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -46,7 +50,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'DAHDIChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDAHDIChannel()
     {
@@ -56,7 +60,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'DAHDISpan'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDAHDISpan()
     {
@@ -66,7 +70,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -76,7 +80,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is a generic event received from ami.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\IncomingMessage;
@@ -47,7 +51,7 @@ abstract class EventMessage extends IncomingMessage
     /**
      * Returns key 'Event'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getName()
     {

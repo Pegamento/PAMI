@@ -1,4 +1,5 @@
 <?php
+
 /**
  * UserEventAction action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,11 +49,11 @@ class UserEventAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $userevent Event
-     * @param $valuesArr Array
+     * @param string $userevent Event
+     * @param array<string, string|int|float|bool|null>|null $valuesArr
      * @return void
      */
-    public function __construct($userevent, $valuesArr = null)
+    public function __construct(string $userevent, ?array $valuesArr = null)
     {
         parent::__construct('UserEvent');
         $this->setKey('UserEvent', $userevent);

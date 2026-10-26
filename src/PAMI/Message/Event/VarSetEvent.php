@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a variable is set via agi or dialplan.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -67,7 +71,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'Variable'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVariableName()
     {
@@ -77,7 +81,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'Value'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getValue()
     {
@@ -87,7 +91,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -98,7 +102,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -107,7 +111,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -116,7 +120,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -125,7 +129,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -134,7 +138,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -143,7 +147,7 @@ class VarSetEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {

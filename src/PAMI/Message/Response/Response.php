@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A generic response message from ami.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response;
 
 use PAMI\Message\IncomingMessage;
@@ -55,20 +59,14 @@ abstract class Response extends IncomingMessage
      * Is this response completed? (with all its events).
      * @var bool
      */
-    protected $completed;
-
-    /**
-     * @deprecated Not maintained; always 0. Use count($response->getEvents()) instead.
-     * @var int
-     */
-    public int $eventsCount = 0;
+    protected bool $completed;
 
     /**
      * Serialize function.
      *
      * @return string[]
      */
-    public function __sleep()
+    public function __sleep(): array
     {
         $ret = parent::__sleep();
         $ret[] = 'completed';
@@ -83,7 +81,7 @@ abstract class Response extends IncomingMessage
      *
      * @return bool
      */
-    public function isComplete()
+    public function isComplete(): bool
     {
         return $this->completed;
     }
@@ -95,10 +93,11 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function addEvent(EventMessage $event)
+    public function addEvent(EventMessage $event): void
     {
         $this->events[] = $event;
-        if (stristr(($event->getEventList() ?? ''), 'complete') !== false
+        if (
+            stristr(($event->getEventList() ?? ''), 'complete') !== false
             || stristr(($event->getName() ?? ''), 'complete') !== false
             || stristr(($event->getName() ?? ''), 'DBGetResponse') !== false
         ) {
@@ -111,7 +110,7 @@ abstract class Response extends IncomingMessage
      *
      * @return EventMessage[]
      */
-    public function getEvents()
+    public function getEvents(): array
     {
         return $this->events;
     }
@@ -121,7 +120,7 @@ abstract class Response extends IncomingMessage
      *
      * @return bool
      */
-    public function isSuccess()
+    public function isSuccess(): bool
     {
         return stristr(($this->getKey('response') ?? ''), 'Error') === false;
     }
@@ -133,7 +132,7 @@ abstract class Response extends IncomingMessage
      *
      * @return bool
      */
-    public function isList()
+    public function isList(): bool
     {
         return
             stristr(($this->getKey('eventlist') ?? 'empty'), 'start') !== false
@@ -146,7 +145,7 @@ abstract class Response extends IncomingMessage
      *
      * @return string|int|float|bool|string[]|null
      */
-    public function getMessage()
+    public function getMessage(): string|int|float|bool|array|null
     {
         return $this->getKey('message');
     }
@@ -159,7 +158,7 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function setActionId($actionId)
+    public function setActionId(string $actionId): void
     {
         $this->setKey('ActionId', $actionId);
     }
@@ -171,7 +170,7 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
         $this->completed = !$this->isList();

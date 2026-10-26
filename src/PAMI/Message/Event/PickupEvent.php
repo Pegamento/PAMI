@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Pickup Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Channel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +72,7 @@ class PickupEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -80,7 +84,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'ChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -92,7 +96,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'CallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -104,7 +108,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'CallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -116,7 +120,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -128,7 +132,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -140,7 +144,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Language'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -152,7 +156,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'AccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -164,7 +168,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -176,7 +180,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -188,7 +192,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Priority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -200,7 +204,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -212,7 +216,7 @@ class PickupEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -224,7 +228,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetChannel()
     {
@@ -236,7 +240,7 @@ class PickupEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to TargetChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetChannelState()
     {
@@ -248,7 +252,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetChannelStateDesc()
     {
@@ -260,7 +264,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetCallerIDNum()
     {
@@ -272,7 +276,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetCallerIDName()
     {
@@ -284,7 +288,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetConnectedLineNum()
     {
@@ -296,7 +300,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetConnectedLineName()
     {
@@ -308,7 +312,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetLanguage()
     {
@@ -320,7 +324,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetAccountCode()
     {
@@ -332,7 +336,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetContext()
     {
@@ -344,7 +348,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetExten()
     {
@@ -356,7 +360,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetPriority()
     {
@@ -368,7 +372,7 @@ class PickupEvent extends EventMessage
      *
      * Returns key: 'TargetUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetUniqueid()
     {
@@ -380,7 +384,7 @@ class PickupEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetLinkedid()
     {

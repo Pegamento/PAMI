@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when an action ShowDialPlan is issued.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -57,7 +61,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'Extension'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -67,7 +71,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -77,7 +81,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'Application'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplication()
     {
@@ -87,7 +91,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'AppData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplicationData()
     {
@@ -97,7 +101,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'Registrar'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRegistrar()
     {
@@ -107,7 +111,7 @@ class ListDialplanEvent extends EventMessage
     /**
      * Returns key: 'IncludeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIncludeContext()
     {

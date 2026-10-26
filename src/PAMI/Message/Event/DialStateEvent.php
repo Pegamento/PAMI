@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DialState Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Channel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +72,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -80,7 +84,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'ChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -92,7 +96,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'CallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -104,7 +108,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'CallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -116,7 +120,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -128,7 +132,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -140,7 +144,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Language'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -152,7 +156,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'AccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -164,7 +168,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -176,7 +180,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -188,7 +192,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Priority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -200,7 +204,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -212,7 +216,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -224,7 +228,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannel()
     {
@@ -236,7 +240,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to DestChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelState()
     {
@@ -248,7 +252,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelStateDesc()
     {
@@ -260,7 +264,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDNum()
     {
@@ -272,7 +276,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDName()
     {
@@ -284,7 +288,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineNum()
     {
@@ -296,7 +300,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineName()
     {
@@ -308,7 +312,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestLanguage()
     {
@@ -320,7 +324,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestAccountCode()
     {
@@ -332,7 +336,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestContext()
     {
@@ -344,7 +348,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestExten()
     {
@@ -356,7 +360,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestPriority()
     {
@@ -368,7 +372,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns key: 'DestUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestUniqueid()
     {
@@ -380,7 +384,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestLinkedid()
     {
@@ -392,7 +396,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:The new state of the outbound dial attempt.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialStatus()
     {
@@ -404,7 +408,7 @@ class DialStateEvent extends EventMessage
      *
      * Returns:If the call was forwarded, where the call was forwarded to.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getForward()
     {

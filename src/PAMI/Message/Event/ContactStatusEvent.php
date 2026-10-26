@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ContactStatus Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class ContactStatusEvent extends EventMessage
      *
      * Returns:This contact's URI.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getURI()
     {
@@ -68,7 +72,7 @@ class ContactStatusEvent extends EventMessage
      *
      * Returns:New status of the contact.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContactStatus()
     {
@@ -80,7 +84,7 @@ class ContactStatusEvent extends EventMessage
      *
      * Returns:The name of the associated aor.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAOR()
     {
@@ -92,7 +96,7 @@ class ContactStatusEvent extends EventMessage
      *
      * Returns:The name of the associated endpoint.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpointName()
     {
@@ -104,7 +108,7 @@ class ContactStatusEvent extends EventMessage
      *
      * Returns:The RTT measured during the last qualify.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRoundtripUsec()
     {

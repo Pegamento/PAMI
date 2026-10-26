@@ -28,6 +28,7 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test some events.
@@ -51,9 +52,7 @@ namespace PAMI\Client\Impl {
             $this->_properties = array();
         }
 */
-        /**
-         * @test
-         */
+        #[Test]
         public function can_report_events()
         {
             $eventNames = array(
@@ -200,11 +199,8 @@ namespace PAMI\Client\Impl {
                 'IsInCall' => 1,
             ),
             'QueueMemberAdded' => array(
-                'Paused' => true,
-            ),
-            'QueueMemberAdded' => array(
                 'LastCall' => 1,
-                'Paused' => 2,
+                'Paused' => true,
                 'CallsTaken' => 3,
                 'Penalty' => 4,
             ),
@@ -2100,7 +2096,8 @@ namespace PAMI\Client\Impl {
             global $mock_stream_set_blocking;
             global $mockTime;
             global $standardAMIStart;
-            $eventClass = "\\PAMI\\Message\\Event\\" . $eventName . 'Event';
+            $normalized = implode('', array_map('ucfirst', explode('_', $eventName)));
+            $eventClass = "\\PAMI\\Message\\Event\\" . $normalized . 'Event';
             $mockTime = true;
             $mock_stream_socket_client = true;
             $mock_stream_set_blocking = true;
@@ -2131,7 +2128,7 @@ namespace PAMI\Client\Impl {
                 $client->process();
             }
             $event = SomeListenerClass::$event;
-            //$this->assertInstanceOf($eventClass, $event);
+            $this->assertInstanceOf($eventClass, $event);
             foreach ($values as $key => $value) {
                 if (isset($getters[$eventName][$key])) {
                     $methodName = 'get' . $getters[$eventName][$key];
@@ -2146,7 +2143,7 @@ namespace PAMI\Client\Impl {
                     sprintf('Method %s doesn\'t exist in the event %s', $methodName, get_class($event))
                 );
 
-                $this->assertEquals($event->$methodName(), $value, $eventName);
+                $this->assertSame($value, $event->$methodName(), $eventName . ' ' . $key);
             }
         }
     }

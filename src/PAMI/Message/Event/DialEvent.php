@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a dial is executed.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'SubEvent'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubEvent()
     {
@@ -67,7 +71,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -77,7 +81,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'Destination'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestination()
     {
@@ -87,7 +91,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -97,7 +101,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -107,7 +111,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -117,7 +121,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'DestUniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestUniqueID()
     {
@@ -127,7 +131,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'DialString'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialString()
     {
@@ -137,7 +141,7 @@ class DialEvent extends EventMessage
     /**
      * Returns key: 'DialStatus'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDialStatus()
     {

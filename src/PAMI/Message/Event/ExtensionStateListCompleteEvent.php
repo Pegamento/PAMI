@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ExtensionStateListComplete Event
  * Part Of Action: ExtensionStateList
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,9 +60,9 @@ class ExtensionStateListCompleteEvent extends EventMessage
      *
      * Returns:Conveys the status of the event list.
      *
-     * @return string
+     * @return string|int|float|bool|array|null
      */
-    public function getEventList()
+    public function getEventList(): string|int|float|bool|array|null
     {
         return $this->getKey('EventList');
     }
@@ -68,7 +72,7 @@ class ExtensionStateListCompleteEvent extends EventMessage
      *
      * Returns:Conveys the number of statuses reported.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getListItems()
     {

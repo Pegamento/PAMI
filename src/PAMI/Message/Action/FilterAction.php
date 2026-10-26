@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Filter Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -61,7 +65,7 @@ class FilterAction extends ActionMessage
      *
      * @return void
      */
-    public function setOperation($operation)
+    public function setOperation(string $operation): void
     {
         $this->setKey('Operation', $operation);
     }
@@ -73,7 +77,7 @@ class FilterAction extends ActionMessage
      *
      * @return void
      */
-    public function setFilter($filter)
+    public function setFilter(string $filter): void
     {
         $this->setKey('Filter', $filter);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when the 'SCCP Call Answered' Event arrives.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -57,7 +61,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'SCCPLine'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPLine()
     {
@@ -67,7 +71,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'SCCPDevice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPDevice()
     {
@@ -77,7 +81,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -87,7 +91,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'CallingPartyNumber'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallingPartyNumber()
     {
@@ -97,7 +101,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'CallingPartyName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallingPartyName()
     {
@@ -107,7 +111,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'originalCallingParty'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getoriginalCallingParty()
     {
@@ -117,7 +121,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'lastRedirectingParty'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getlastRedirectingParty()
     {

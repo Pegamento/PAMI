@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Triggered when a hangup is detected.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -67,7 +71,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -77,7 +81,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -87,7 +91,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -97,7 +101,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Cause'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCause()
     {
@@ -107,7 +111,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Cause-txt'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCauseText()
     {

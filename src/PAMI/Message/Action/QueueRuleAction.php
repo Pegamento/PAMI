@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueRule action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,10 +53,10 @@ class QueueRuleAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($rule = false)
+    public function __construct(?string $rule = null)
     {
         parent::__construct('QueueRule');
-        if ($rule !== false) {
+        if ($rule !== null) {
             $this->setKey('Rule', $rule);
         }
     }

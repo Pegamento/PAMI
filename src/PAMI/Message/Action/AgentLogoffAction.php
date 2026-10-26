@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AgentLogoff action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -46,11 +50,11 @@ class AgentLogoffAction extends ActionMessage
      * Constructor.
      *
      * @param string $agent Agent ID of the agent to log off.
-     * @param string $soft  Set to true to not hangup existing calls.
+     * @param bool $soft  Set to true to not hangup existing calls.
      *
      * @return void
      */
-    public function __construct($agent, $soft = false)
+    public function __construct(string $agent, bool $soft = false)
     {
         parent::__construct('AgentLogoff');
         $this->setKey('Agent', $agent);

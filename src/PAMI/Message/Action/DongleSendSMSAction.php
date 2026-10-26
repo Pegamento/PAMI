@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Send a SMS through Dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class DongleSendSMSAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($device, $number, $message)
+    public function __construct(string $device, string $number, string $message)
     {
         parent::__construct('DongleSendSMS');
         $this->setKey('Device', $device);

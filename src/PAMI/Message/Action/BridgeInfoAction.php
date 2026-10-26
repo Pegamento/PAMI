@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Returns detailed information about a bridge and the channels in it.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class BridgeInfoAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($bridgeUniqueid)
+    public function __construct(string $bridgeUniqueid)
     {
         parent::__construct('BridgeInfo');
 

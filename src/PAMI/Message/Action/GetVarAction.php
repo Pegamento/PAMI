@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetVar action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,11 +54,11 @@ class GetVarAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($name, $channel = false)
+    public function __construct(string $name, ?string $channel = null)
     {
         parent::__construct('Getvar');
         $this->setKey('Variable', $name);
-        if ($channel != false) {
+        if ($channel !== null) {
             $this->setKey('Channel', $channel);
         }
     }

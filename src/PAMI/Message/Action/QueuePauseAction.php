@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Queue pause action.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,11 +49,11 @@ class QueuePauseAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $interface
-     * @param string $queue
-     * @param string $reason
+     * @param string $interface
+     * @param string|null $queue
+     * @param string|null $reason
      */
-    public function __construct($interface, $queue = null, $reason = null)
+    public function __construct(string $interface, ?string $queue = null, ?string $reason = null)
     {
         parent::__construct('QueuePause');
         if ($queue !== null) {

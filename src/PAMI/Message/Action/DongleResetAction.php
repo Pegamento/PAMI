@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Resets a dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class DongleResetAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($device)
+    public function __construct(string $device)
     {
         parent::__construct('DongleReset');
         $this->setKey('device', $device);

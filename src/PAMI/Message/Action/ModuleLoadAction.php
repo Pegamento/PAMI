@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ModuleLoad action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -57,7 +61,7 @@ class ModuleLoadAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($module)
+    public function __construct(string $module)
     {
         parent::__construct('ModuleLoad');
         $this->setKey('Module', $module);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event from PJSIPShowResourceLists
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ResourceListDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectType'. The object's type. This will always be 'aor'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -57,7 +61,7 @@ class ResourceListDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectName'. The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {

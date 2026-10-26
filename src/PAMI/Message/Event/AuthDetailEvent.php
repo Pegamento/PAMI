@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event from PJSIPShowEndpoint
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -44,11 +48,10 @@ use PAMI\Message\Event\EventMessage;
  */
 class AuthDetailEvent extends EventMessage
 {
-
     /**
      * Returns key: 'ObjectType'. The object's type. This will always be 'auth'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -58,7 +61,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectName'. The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -68,7 +71,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'Username'. Username to use for account
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUsername()
     {
@@ -78,7 +81,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'Password'. Username to use for account
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPassword()
     {
@@ -88,7 +91,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'Md5Cred'. MD5 Hash used for authentication.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMd5Cred()
     {
@@ -98,7 +101,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'Realm'. SIP realm for endpoint
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRealm()
     {
@@ -108,7 +111,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'NonceLifetime'. Lifetime of a nonce associated with this authentication config.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getNonceLifetime()
     {
@@ -118,7 +121,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'AuthType'. Authentication type
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthType()
     {
@@ -128,7 +131,7 @@ class AuthDetailEvent extends EventMessage
     /**
      * Returns key: 'EndpointName'. The name of the endpoint associated with this information.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpointName()
     {

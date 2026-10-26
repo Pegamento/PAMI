@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a ussd was queued for sent by dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class DongleNewUSSDEvent extends EventMessage
     /**
      * Returns key: 'Device'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDevice()
     {
@@ -57,7 +61,7 @@ class DongleNewUSSDEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -67,7 +71,7 @@ class DongleNewUSSDEvent extends EventMessage
     /**
      * Returns key: 'LineCount'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLineCount()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DAHDITransfer action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +51,7 @@ class DAHDITransferAction extends ActionMessage
      *
      * @param string $channel DAHDIChannel
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('DAHDITransfer');
         $this->setKey('DAHDIChannel', $channel);

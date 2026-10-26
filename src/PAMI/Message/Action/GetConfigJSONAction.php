@@ -1,4 +1,5 @@
 <?php
+
 /**
  * GetConfigJSON action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class GetConfigJSONAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($filename)
+    public function __construct(string $filename)
     {
         parent::__construct('GetConfigJSON');
         $this->setKey('Filename', $filename);

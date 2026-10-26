@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InvalidAccountID Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The time the event was detected.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventTV()
     {
@@ -68,7 +72,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:A relative severity of the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSeverity()
     {
@@ -80,7 +84,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The Asterisk service that raised the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getService()
     {
@@ -92,7 +96,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The version of this event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventVersion()
     {
@@ -104,7 +108,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The Service account associated with the security event notification.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountID()
     {
@@ -116,7 +120,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:A unique identifier for the session in the service that raised the event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionID()
     {
@@ -128,7 +132,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The address of the Asterisk service that raised the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalAddress()
     {
@@ -140,7 +144,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The remote address of the entity that caused the security event to be raised.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRemoteAddress()
     {
@@ -152,7 +156,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:If available, the name of the module that raised the event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getModule()
     {
@@ -164,7 +168,7 @@ class InvalidAccountIDEvent extends EventMessage
      *
      * Returns:The timestamp reported by the session.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionTV()
     {

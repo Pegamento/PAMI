@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Reload a dongle.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +53,7 @@ class DongleReloadAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($when)
+    public function __construct(string $when)
     {
         parent::__construct('DongleReload');
         $this->setKey('when', $when);

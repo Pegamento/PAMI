@@ -1,0 +1,10 @@
+parameters:
+    level: 6
+    paths:
+        - src
+    bootstrapFiles:
+        - stubs/pagi-bootstrap.php
+    ignoreErrors:
+        # Plain array types are used throughout; value types are not part of the public API.
+        -
+            identifier: missingType.iterableValue

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MixMonitorMute action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -53,7 +57,7 @@ class MixMonitorMuteAction extends ActionMessage
      *
      * @return void
      */
-    public function setState($state)
+    public function setState(bool $state): void
     {
         $this->setKey('State', $state ? 1 : 0);
     }
@@ -66,7 +70,7 @@ class MixMonitorMuteAction extends ActionMessage
      *
      * @return void
      */
-    public function setDirection($direction)
+    public function setDirection(string $direction): void
     {
         $this->setKey('Direction', $direction);
     }
@@ -79,7 +83,7 @@ class MixMonitorMuteAction extends ActionMessage
      * @param string $direction Which part of the recording to mute:
      *                          read, write or both (from channel, to channel or both channels).
      */
-    public function __construct($channel, $state = true, $direction = 'both')
+    public function __construct(string $channel, bool $state = true, string $direction = 'both')
     {
         parent::__construct('MixMonitorMute');
         $this->setKey('Channel', $channel);

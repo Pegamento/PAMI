@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action VoicemailUsersList
  * is issued.
@@ -27,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;

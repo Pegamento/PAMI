@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when a channel changes its status.
  *
@@ -28,6 +29,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -49,7 +53,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -59,7 +63,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -68,7 +72,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -77,7 +81,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'Source'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSource()
     {
@@ -86,7 +90,7 @@ class CdrEvent extends EventMessage
         /**
      * Returns key: 'Destination'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestination()
     {
@@ -95,7 +99,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'DestinationContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestinationContext()
     {
@@ -104,7 +108,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'CallerID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID()
     {
@@ -113,7 +117,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -122,7 +126,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'DestinationChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestinationChannel()
     {
@@ -131,7 +135,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'LastApplication'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLastApplication()
     {
@@ -140,7 +144,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'LastData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLastData()
     {
@@ -149,7 +153,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'StartTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStartTime()
     {
@@ -158,7 +162,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'AnswerTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAnswerTime()
     {
@@ -167,7 +171,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'EndTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndTime()
     {
@@ -176,7 +180,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'Duration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDuration()
     {
@@ -185,7 +189,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'BillableSeconds'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBillableSeconds()
     {
@@ -194,7 +198,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'Disposition'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDisposition()
     {
@@ -203,7 +207,7 @@ class CdrEvent extends EventMessage
     /**
      * Returns key: 'AMAFlags'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAMAFlags()
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Connection/Protocol exception.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Client\Exception;
 
 use PAMI\Exception\PAMIException;
@@ -44,5 +48,4 @@ use PAMI\Exception\PAMIException;
  */
 class ClientException extends PAMIException
 {
-
 }

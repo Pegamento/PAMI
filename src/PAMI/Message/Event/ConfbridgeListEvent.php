@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when .. ?
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'Conference'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -57,7 +61,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -67,7 +71,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -77,7 +81,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -87,7 +91,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'Admin'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAdmin()
     {
@@ -97,7 +101,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'MarkedUser'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMarkedUser()
     {
@@ -107,7 +111,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'WaitMarked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getWaitMarked()
     {
@@ -117,7 +121,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'EndMarked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndMarked()
     {
@@ -127,7 +131,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'Waiting'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getWaiting()
     {
@@ -137,7 +141,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'Muted'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMuted()
     {
@@ -147,7 +151,7 @@ class ConfbridgeListEvent extends EventMessage
     /**
      * Returns key: 'AnsweredTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAnsweredTime()
     {

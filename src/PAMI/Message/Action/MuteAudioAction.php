@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MuteAudio Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -54,7 +58,7 @@ class MuteAudioAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $direction, $state)
+    public function __construct(string $channel, string $direction, string $state)
     {
         parent::__construct('MuteAudio');
         $this->setKey('Channel', $channel);

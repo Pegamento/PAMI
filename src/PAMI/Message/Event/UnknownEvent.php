@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is an unknown (not implemented yet) event received from ami.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**

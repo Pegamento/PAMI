@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PresenceState Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class PresenceStateAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($provider)
+    public function __construct(string $provider)
     {
         parent::__construct('PresenceState');
         $this->setKey('Provider', $provider);

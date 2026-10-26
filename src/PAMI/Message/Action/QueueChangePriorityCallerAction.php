@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueChangePriorityCaller Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -54,7 +58,7 @@ class QueueChangePriorityCallerAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($queue, $caller, $priority)
+    public function __construct(string $queue, string $caller, string $priority)
     {
         parent::__construct('QueueChangePriorityCaller');
         $this->setKey('Queue', $queue);

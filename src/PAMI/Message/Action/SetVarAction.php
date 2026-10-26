@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SetVar action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,12 +55,12 @@ class SetVarAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($name, $value, $channel = false)
+    public function __construct(string $name, string $value, ?string $channel = null)
     {
         parent::__construct('Setvar');
         $this->setKey('Variable', $name);
         $this->setKey('Value', $value);
-        if ($channel != false) {
+        if ($channel !== null) {
             $this->setKey('Channel', $channel);
         }
     }

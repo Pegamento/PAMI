@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bridge action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class BridgeAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel1, $channel2, $tone = false)
+    public function __construct(string $channel1, string $channel2, bool $tone = false)
     {
         parent::__construct('Bridge');
         $this->setKey('Channel1', $channel1);

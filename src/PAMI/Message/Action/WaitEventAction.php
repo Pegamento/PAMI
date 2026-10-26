@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WaitEvent action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -47,7 +51,7 @@ class WaitEventAction extends ActionMessage
      *
      * @param int $timeout Timeout in seconds
      */
-    public function __construct($timeout)
+    public function __construct(int $timeout)
     {
         parent::__construct('WaitEvent');
         $this->setKey('Timeout', (int)$timeout);

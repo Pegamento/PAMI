@@ -1,4 +1,5 @@
 <?php
+
 /**
  * DBDel action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -50,7 +54,7 @@ class DBDelAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($family, $key)
+    public function __construct(string $family, string $key)
     {
         parent::__construct('DBDel');
         $this->setKey('Family', $family);

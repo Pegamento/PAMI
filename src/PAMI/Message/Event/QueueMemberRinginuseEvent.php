@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueMemberRinginuse Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The name of the queue.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -68,7 +72,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The name of the queue member.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMemberName()
     {
@@ -80,7 +84,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The queue member's channel technology or location.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getInterface()
     {
@@ -92,7 +96,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:Channel technology or location from which to read device state changes.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStateInterface()
     {
@@ -104,7 +108,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns key: 'Membership'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMembership()
     {
@@ -116,7 +120,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The penalty associated with the queue member.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPenalty()
     {
@@ -128,7 +132,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The number of calls this queue member has serviced.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallsTaken()
     {
@@ -140,7 +144,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The time this member last took a call, expressed in seconds since 00:00, Jan 1, 1970 UTC.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLastCall()
     {
@@ -152,7 +156,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The time when started last paused the queue member.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLastPause()
     {
@@ -164,7 +168,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:Set to 1 if member is in call. Set to 0 after LastCall time is updated.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getInCall()
     {
@@ -176,7 +180,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The numeric device state status of the queue member.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -188,7 +192,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns key: 'Paused'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPaused()
     {
@@ -200,7 +204,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:If set when paused, the reason the queue member was paused.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPausedReason()
     {
@@ -212,7 +216,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns key: 'Ringinuse'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRinginuse()
     {
@@ -224,7 +228,7 @@ class QueueMemberRinginuseEvent extends EventMessage
      *
      * Returns:The Wrapup Time of the queue member. If this value is set will override the wrapup time of queue.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getWrapuptime()
     {

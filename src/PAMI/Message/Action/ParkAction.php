@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Park action message.
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -52,15 +56,15 @@ class ParkAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel1, $channel2, $timeout = false, $lot = false)
+    public function __construct(string $channel1, string $channel2, string|int|null $timeout = null, ?string $lot = null)
     {
         parent::__construct('Park');
         $this->setKey('Channel', $channel1);
         $this->setKey('Channel2', $channel2);
-        if ($timeout != false) {
+        if ($timeout !== null) {
             $this->setKey('Timeout', $timeout);
         }
-        if ($lot != false) {
+        if ($lot !== null) {
             $this->setKey('Parkinglot', $lot);
         }
     }

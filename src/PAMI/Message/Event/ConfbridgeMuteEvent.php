@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Event triggered when .. ?
  *
@@ -26,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -47,7 +51,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -57,7 +61,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -67,7 +71,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -77,7 +81,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Conference'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -87,7 +91,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'CallerIDnum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDnum()
     {
@@ -97,7 +101,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'CallerIDname'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDname()
     {
@@ -107,7 +111,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -117,7 +121,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -127,7 +131,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -137,7 +141,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -147,7 +151,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -157,7 +161,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'BridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -167,7 +171,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -177,7 +181,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -187,7 +191,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -197,7 +201,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -207,7 +211,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -217,7 +221,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -227,7 +231,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -237,7 +241,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -247,7 +251,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Linkedid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -257,7 +261,7 @@ class ConfbridgeMuteEvent extends EventMessage
     /**
      * Returns key: 'Admin'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAdmin()
     {

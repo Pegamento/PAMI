@@ -1,4 +1,5 @@
 <?php
+
 /**
  * IdentifyDetail Event
  * isListEntry and Part Action: PJSIPShowEndpoint
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:The object's type. This will always be 'identify'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -68,7 +72,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -80,7 +84,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:Name of endpoint identified
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpoint()
     {
@@ -92,7 +96,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:Perform SRV lookups for provided hostnames.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSrvLookups()
     {
@@ -104,7 +108,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:IP addresses or networks to match against.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMatch()
     {
@@ -116,7 +120,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:Header/value pair to match against.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMatchHeader()
     {
@@ -128,7 +132,7 @@ class IdentifyDetailEvent extends EventMessage
      *
      * Returns:The name of the endpoint associated with this information.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpointName()
     {

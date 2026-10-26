@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Load Event
  *
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class LoadEvent extends EventMessage
      *
      * Returns:The name of the module that was loaded
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getModule()
     {
@@ -68,7 +72,7 @@ class LoadEvent extends EventMessage
      *
      * Returns:The result of the load request.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {

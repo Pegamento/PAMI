@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PRIDebugSet Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -51,7 +55,7 @@ class PRIDebugSetAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($span, $level)
+    public function __construct(string $span, string $level)
     {
         parent::__construct('PRIDebugSet');
         $this->setKey('Span', $span);

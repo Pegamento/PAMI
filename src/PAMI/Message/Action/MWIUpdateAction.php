@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MWIUpdate Action
  *
@@ -31,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -48,7 +52,7 @@ class MWIUpdateAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($mailbox)
+    public function __construct(string $mailbox)
     {
         parent::__construct('MWIUpdate');
         $this->setKey('Mailbox', $mailbox);
@@ -62,7 +66,7 @@ class MWIUpdateAction extends ActionMessage
      *
      * @return void
      */
-    public function setOldMessages($oldmessages)
+    public function setOldMessages(string $oldmessages): void
     {
         $this->setKey('OldMessages', $oldmessages);
     }
@@ -74,7 +78,7 @@ class MWIUpdateAction extends ActionMessage
      *
      * @return void
      */
-    public function setNewMessages($newmessages)
+    public function setNewMessages(string $newmessages): void
     {
         $this->setKey('NewMessages', $newmessages);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AuthList Event
  * isListEntry and Part Action: PJSIPShowAuths
@@ -30,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -56,7 +60,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:The object's type. This will always be 'auth'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -68,7 +72,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -80,7 +84,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:Username to use for account
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUsername()
     {
@@ -92,7 +96,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:MD5 Hash used for authentication.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMd5Cred()
     {
@@ -104,7 +108,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:SIP realm for endpoint
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRealm()
     {
@@ -116,7 +120,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:Authentication type
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthType()
     {
@@ -128,7 +132,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:Plain text password used for authentication.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPassword()
     {
@@ -140,7 +144,7 @@ class AuthListEvent extends EventMessage
      *
      * Returns:Lifetime of a nonce associated with this authentication config.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getNonceLifetime()
     {
