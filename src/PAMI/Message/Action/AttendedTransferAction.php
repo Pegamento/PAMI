@@ -47,29 +47,13 @@ class AttendedTransferAction extends ActionMessage
          * @param string $exten
          *        Extension to transfer to.
          *
-         * @param string $context
-         *        Context to transfer to.
-         *
-         * @param string $priority
-         *        Priority to transfer to.
-         *
          * @return void
          */
-    public function __construct(string $channel, string $exten, ?string $context = null, ?string $priority = null)
+    public function __construct(string $channel, string $exten)
     {
         parent::__construct('Atxfer');
         $this->setKey('Channel', $channel);
         $this->setKey('Exten', $exten);
-
-        if ($context !== null) {
-            trigger_error('Argument $context will be remove at next major version', E_USER_DEPRECATED);
-            $this->setContext($context);
-        }
-
-        if ($priority !== null) {
-            trigger_error('Argument $priority will be remove at next major version', E_USER_DEPRECATED);
-            $this->setPriority($priority);
-        }
     }
 
         /**

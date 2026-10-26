@@ -191,32 +191,6 @@ namespace PAMI\Client\Impl {
             $result = $this->_start($write, $action);
         }
 
-        
-        #[Test]
-        public function can_old_attendedtransfer()
-        {
-            $write = array(implode("\r\n", array(
-            'action: Atxfer',
-            'actionid: 1432.123',
-            'channel: Channel',
-            'exten: Exten',
-            'context: Context',
-            'priority: 1',
-            ''
-            )));
-            /* skip over the error generation because of old function implementation deprecation warning */
-            set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-                echo("\ndeprecation error caught\n");
-                return true;
-            });
-            try {
-                $action = new \PAMI\Message\Action\AttendedTransferAction('Channel', 'Exten', 'Context', 1);
-                $result = $this->_start($write, $action);
-            } finally {
-                restore_error_handler();
-            }
-        }
-        
         #[Test]
         public function can_blindTransfer()
         {
