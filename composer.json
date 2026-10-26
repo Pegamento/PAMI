@@ -1,7 +1,7 @@
 {
     "name": "pegamento/pami",
     "type": "library",
-    "description": "Asterisk Manager Interface (AMI) client for PHP 8.1(+) focussed on PJSIP usage, event driven, object oriented (Fork)",
+    "description": "Asterisk Manager Interface (AMI) client for PHP focused on PJSIP usage, event driven, object oriented (Fork)",
     "keywords": ["asterisk","ami","client","telephony","voip","event","action","manager","monitor","pjsip"],
     "homepage": "http://github.com/Pegamento/PAMI",
     "license": "Apache-2.0",

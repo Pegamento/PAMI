@@ -28,12 +28,8 @@
  */
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Response\Response;
-use PAMI\Message\Event\EventMessage;
-use PAMI\Exception\PAMIException;
-
 /**
- * A generic SCCP response message from ami.
+ * Response to a CommandAction, collecting the Output lines.
  *
  * PHP Version 8
  *
@@ -46,11 +42,16 @@ use PAMI\Exception\PAMIException;
  */
 class CommandResponse extends Response
 {
-    protected $output = [];
     /**
-     * Returns true if this response contains the Message: command output follow
+     * Command output, one entry per Output line.
+     * @var string[]
+     */
+    protected $output = [];
+
+    /**
+     * Returns true if this response contains the Message: command output follows
      *
-     * @return boolean
+     * @return bool
      */
     public function isCommandFinished()
     {
@@ -70,7 +71,7 @@ class CommandResponse extends Response
     /**
      * Returns Command output result array
      *
-     * @return array of string
+     * @return string[]|null
      */
     public function getCommandOutputArray()
     {
@@ -97,7 +98,7 @@ class CommandResponse extends Response
 
         parent::setKey($key, $value);
     }
-    
+
     /**
      * Constructor.
      *

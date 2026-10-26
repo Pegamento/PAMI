@@ -49,13 +49,11 @@ use PAMI\Message\Response\Response;
  */
 class ResponseFactoryImpl implements IResponseFactory
 {
-    private $responseClassMapping = array();
-
     /**
      * This is our factory method.
      *
-     * @param string          $message Literal message as received from ami.
-     * @param OutgoingMessage $requestingAction
+     * @param string                     $message          Literal message as received from ami.
+     * @param OutgoingMessage|null $requestingAction Action this message is a response to.
      *
      * @return Response
      * @throws PAMIException

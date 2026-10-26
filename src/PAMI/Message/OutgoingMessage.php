@@ -8,7 +8,6 @@
  * @package  Message
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -44,11 +43,11 @@ use PAMI\Exception\PAMIException;
 abstract class OutgoingMessage extends Message
 {
     /**
-     * String of the Class name to handle the Response to this Message
+     * Fully qualified class name of the Response that handles replies to this message.
      *
-     * @var string
+     * @var class-string<\PAMI\Message\Response\Response>|null
      */
-    private $responseHandler = null;
+    private ?string $responseHandler = null;
 
     /**
      * Returns the class name of the response handler.
@@ -63,24 +62,19 @@ abstract class OutgoingMessage extends Message
     /**
      * Set the response handler.
      *
-     * @param string $responseHandler
+     * @param string $newResponseHandler Short handler name, e.g. "Command" for CommandResponse.
      *
      * @return void
      * @throws PAMIException
      */
     public function setResponseHandler($newResponseHandler)
     {
-        /*if (class_exists($newResponseHandler) && is_a($newResponseHandler, '\PAMI\Message\Response\Response', true)) {
-            $this->responseHandler = $newResponseHandler;
-            return;
-        }*/
-
         $className = '\\PAMI\\Message\\Response\\' . $newResponseHandler . 'Response';
         if (class_exists($className, true) && is_a($className, '\PAMI\Message\Response\Response', true)) {
             $this->responseHandler = $className;
             return;
         }
 
-        throw new PAMIException('ResponseHandler '.$className.' could not be found. Please provide a fully qualified class name.');
+        throw new PAMIException('ResponseHandler '.$className.' could not be found. Please provide a valid class name.');
     }
 }

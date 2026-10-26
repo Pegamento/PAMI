@@ -42,10 +42,10 @@ namespace PAMI\Message\Event;
  */
 class BlindTransferEvent extends EventMessage
 {
-    const RESULT_FAIL = 'Fail';
-    const RESULT_INVALID = 'Invalid';
-    const RESULT_NOT_PERMITTED = 'Not Permitted';
-    const RESULT_SUCCESS = 'Success';
+    public const RESULT_FAIL = 'Fail';
+    public const RESULT_INVALID = 'Invalid';
+    public const RESULT_NOT_PERMITTED = 'Not Permitted';
+    public const RESULT_SUCCESS = 'Success';
 
     /**
      * Returns key: 'Privilege'.

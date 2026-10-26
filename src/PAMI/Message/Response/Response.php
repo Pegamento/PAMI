@@ -28,10 +28,8 @@
  */
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Event\EventMessage;
-use PAMI\Exception\PAMIException;
 
 /**
  * A generic response message from ami.
@@ -51,19 +49,20 @@ abstract class Response extends IncomingMessage
      * Child events.
      * @var EventMessage[]
      */
-    protected $events;
+    protected array $events = [];
 
     /**
      * Is this response completed? (with all its events).
-     * @var boolean
+     * @var bool
      */
     protected $completed;
 
     /**
-     * Declare var according to PHP8 spec
+     * @deprecated Not maintained; always 0. Use count($response->getEvents()) instead.
+     * @var int
      */
-    public $eventsCount;
-    
+    public int $eventsCount = 0;
+
     /**
      * Serialize function.
      *
@@ -82,7 +81,7 @@ abstract class Response extends IncomingMessage
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.
      *
-     * @return boolean
+     * @return bool
      */
     public function isComplete()
     {
@@ -120,11 +119,11 @@ abstract class Response extends IncomingMessage
     /**
      * Checks if the Response field has the word Error in it.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSuccess()
     {
-        return stristr(($this->getKey('Response') ?? ''), 'Error') === false;
+        return stristr(($this->getKey('response') ?? ''), 'Error') === false;
     }
 
     /**
@@ -132,24 +131,24 @@ abstract class Response extends IncomingMessage
      * word 'start' in it. Another way is to have a Message key, like:
      * Message: Result will follow
      *
-     * @return boolean
+     * @return bool
      */
     public function isList()
     {
         return
-            stristr(($this->getKey('EventList') ?? 'empty'), 'start') !== false
+            stristr(($this->getKey('eventlist') ?? 'empty'), 'start') !== false
             || stristr(($this->getMessage() ?? 'empty'), 'follow') !== false
         ;
     }
 
     /**
-     * Returns key: 'Privilege'.
+     * Returns key: 'Message'.
      *
-     * @return string
+     * @return string|int|float|bool|string[]|null
      */
     public function getMessage()
     {
-        return $this->getKey('Message');
+        return $this->getKey('message');
     }
 
     /**
@@ -175,8 +174,6 @@ abstract class Response extends IncomingMessage
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->events = array();
-        $this->eventsCount = 0;
         $this->completed = !$this->isList();
     }
 }

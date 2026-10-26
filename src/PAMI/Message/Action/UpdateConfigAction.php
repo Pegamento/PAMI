@@ -164,7 +164,7 @@ class UpdateConfigAction extends ActionMessage
     {
         $this->setKey('Line-'.$this->getPaddedCounter(), $input);
     }
-    
+
      /**
      * Sets Options-XXXXXX key.
      *

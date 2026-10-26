@@ -42,9 +42,9 @@ namespace PAMI\Message\Action;
  */
 class MixMonitorMuteAction extends ActionMessage
 {
-    const DIRECTION_READ = 'read';
-    const DIRECTION_WRITE = 'write';
-    const DIRECTION_BOTH = 'both';
+    public const DIRECTION_READ = 'read';
+    public const DIRECTION_WRITE = 'write';
+    public const DIRECTION_BOTH = 'both';
 
     /**
      * Sets state key.

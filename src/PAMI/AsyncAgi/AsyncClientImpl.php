@@ -165,7 +165,7 @@ class AsyncClientImpl extends PagiClient implements IEventListener, IAsyncClient
      *
      * @return void
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         // $this->options = $options;
         $this->logger = new NullLogger;

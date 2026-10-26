@@ -32,7 +32,6 @@ namespace PAMI\Message\Event\Factory\Impl;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\UnknownEvent;
 use PAMI\Message\Message;
-use PAMI\Exception\PAMIException;
 
 /**
  * This factory knows which event to return according to a given raw message
@@ -52,7 +51,7 @@ class EventFactoryImpl
     /**
      * This is our factory method.
      *
-     * @param string $message Literall message as received from ami.
+     * @param string $message Literal message as received from ami.
      *
      * @return EventMessage
      */
@@ -64,25 +63,11 @@ class EventFactoryImpl
             $eventEnd = strlen($message);
         }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
-        $parts = explode('_', $name);
-        $totalParts = count($parts);
-        for ($i = 0; $i < $totalParts; $i++) {
-            $parts[$i] = ucfirst($parts[$i]);
-        }
-        $name = implode('', $parts);
+        $name = implode('', array_map('ucfirst', explode('_', $name)));
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
         if (class_exists($className, true)) {
             return new $className($message);
         }
         return new UnknownEvent($message);
-    }
-
-    /**
-     * Constructor. Nothing to see here, move along.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
     }
 }

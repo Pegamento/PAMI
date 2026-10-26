@@ -114,7 +114,7 @@ class RequestBadFormatEvent extends EventMessage
     {
         return $this->getKey('Severity');
     }
-    
+
     /**
      * Returns key: 'Service'.
      *

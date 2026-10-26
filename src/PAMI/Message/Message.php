@@ -8,7 +8,6 @@
  * @package  Message
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -47,33 +46,33 @@ abstract class Message
      * End Of Line means this token.
      * @var string
      */
-    const EOL = "\r\n";
+    public const EOL = "\r\n";
 
     /**
      * End Of Message means this token.
      * @var string
      */
-    const EOM = "\r\n\r\n";
+    public const EOM = "\r\n\r\n";
 
     /**
      * Message content, line by line. This is what it gets sent
      * or received literally.
      * @var string[]
      */
-    protected $lines;
+    protected array $lines = [];
 
     /**
      * Metadata. Message variables (key/value).
      * @var string[]
      */
-    protected $variables;
+    protected array $variables = [];
 
     /**
      * Metadata. Message "keys" i.e: Action: login.
      * Values are stored as received. Sanitation happens in getKey().
      * @var string[]|array[]
      */
-    protected $keys;
+    protected array $keys = [];
 
     /**
      * Created date (unix timestamp).
@@ -88,13 +87,13 @@ abstract class Message
      */
     public function __sleep()
     {
-        return array('lines', 'variables', 'keys', 'createdDate');
+        return ['lines', 'variables', 'keys', 'createdDate'];
     }
 
     /**
      * Returns created date.
      *
-     * @return integer
+     * @return int
      */
     public function getCreatedDate()
     {
@@ -119,26 +118,24 @@ abstract class Message
      *
      * @param string $key Variable name.
      *
-     * @return string
+     * @return string|null
      */
     public function getVariable($key)
     {
-        if (!isset($this->variables[$key])) {
-            return null;
-        }
-        return $this->variables[$key];
+        return $this->variables[$key] ?? null;
     }
 
     /**
      * Sanitize incoming value
      *
-     * @param string $value Key value.
+     * @param string|null $value Key value.
      *
-     * @return typed and sanitized value
+     * @return string|int|float|bool|null Typed and sanitized value.
+     * @throws PAMIException
      */
     protected function sanitizeInput($value)
     {
-        if (!isset($value) || $value === null || strlen($value) == 0) {
+        if (!isset($value) || strlen($value) == 0) {
             return null;
         } elseif (is_numeric($value)) {
             // index access is safe as is_numeric('') === false
@@ -153,21 +150,16 @@ abstract class Message
             if (filter_var($value, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_HEX | FILTER_FLAG_ALLOW_OCTAL)) {
                 return intval($value, 0);
             }
-            if (filter_var($value, FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION | FILTER_FLAG_ALLOW_THOUSAND | FILTER_FLAG_ALLOW_SCIENTIFIC)) {
-                return (float)$value;
-            }
             return (float)$value;
         } elseif (is_string($value)) {
-            //if (filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE))
-            //    return (boolean)$value;
             if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
-                return (bool)true;
+                return true;
             }
             if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
-                return (bool)false;
+                return false;
             }
-            if ($value == htmlspecialchars($value)) {
-                return (string)$value;
+            if ($value === htmlspecialchars($value)) {
+                return $value;
             }
             if (filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE)) {
                 return (string)htmlspecialchars($value, ENT_QUOTES);
@@ -193,7 +185,7 @@ abstract class Message
     }
 
     /**
-     * @deprecated Use setKey() instead. 
+     * @deprecated Use setKey() instead.
      */
     protected function setSanitizedKey($key, $value)
     {
@@ -208,7 +200,7 @@ abstract class Message
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string
+     * @return string|int|float|bool|string[]|null
      */
     public function getKey($key)
     {
@@ -234,11 +226,11 @@ abstract class Message
     /**
      * Returns a key by name as stored, without sanitation.
      *
-     * Repeated Output lines are returned as an array of the original strings.
+     * Repeated Output lines are joined with "\n".
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string
+     * @return string|null
      */
     public function getStringKey($key): ?string
     {
@@ -254,11 +246,11 @@ abstract class Message
     }
 
     /**
-     * Returns a key by name.
+     * Returns a key by name, cast to bool.
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string
+     * @return bool|null
      */
     public function getBoolKey($key)
     {
@@ -272,17 +264,18 @@ abstract class Message
     /**
      * Returns all keys for this message.
      *
-     * @return string[]
+     * @return array<string, string|string[]>
      */
     public function getKeys()
     {
+        // TODO: sanitize values
         return $this->keys;
     }
 
     /**
-     * Returns all variabels for this message.
+     * Returns all variables for this message.
      *
-     * @return string[]
+     * @return array<string, string|string[]>
      */
     public function getVariables()
     {
@@ -292,7 +285,8 @@ abstract class Message
     /**
      * Returns the end of message token appended to the end of a given message.
      *
-     * @param $message
+     * @param string $message
+     *
      * @return string
      */
     protected function finishMessage($message)
@@ -308,7 +302,7 @@ abstract class Message
      *
      * @return string
      */
-    private function serializeVariable($key, $value)
+    private function serializeVariable($key, $value): string
     {
         return "Variable: $key=$value";
     }
@@ -321,7 +315,7 @@ abstract class Message
      */
     public function serialize()
     {
-        $result = array();
+        $result = [];
         foreach ($this->getKeys() as $k => $v) {
             if (is_array($v)) {
                 foreach ($v as $singleValue) {
@@ -347,7 +341,7 @@ abstract class Message
     /**
      * Returns key: 'ActionID'.
      *
-     * @return string
+     * @return string|null
      */
     public function getActionID()
     {
@@ -361,9 +355,9 @@ abstract class Message
      */
     public function __construct()
     {
-        $this->lines = array();
-        $this->variables = array();
-        $this->keys = array();
+        // $this->lines = [];
+        // $this->variables = [];
+        // $this->keys = [];
         $this->createdDate = time();
     }
 }

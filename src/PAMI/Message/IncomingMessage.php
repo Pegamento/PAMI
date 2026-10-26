@@ -8,7 +8,6 @@
  * @package  Message
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -56,7 +55,7 @@ abstract class IncomingMessage extends Message
     protected $channelVariables;
 
     /**
-     * Metadata. Specific channel variables.
+     * Metadata. Status variables (Variable: lines), keyed by channel.
      * @var array<string, array<string, string>>
      */
     protected $statusVariables;
@@ -74,10 +73,10 @@ abstract class IncomingMessage extends Message
     }
 
     /**
-     * Returns key 'EventList'. In respones, this will surely be a "start". In
+     * Returns key 'EventList'. In responses, this will surely be a "start". In
      * events, should be a "complete".
      *
-     * @return string
+     * @return string|null
      */
     public function getEventList()
     {
@@ -101,7 +100,8 @@ abstract class IncomingMessage extends Message
      *
      * @param string $key Key name (i.e: Action).
      *
-     * @return string
+     * @return string|int|float|bool|string[]|null
+     * @throws PAMIException
      */
     public function getKey($key)
     {
@@ -118,7 +118,7 @@ abstract class IncomingMessage extends Message
      *
      * The channel names will be lowercased.
      *
-     * @return array
+     * @return array<string, array<string, string>>
      */
     public function getAllChannelVariables()
     {
@@ -132,7 +132,7 @@ abstract class IncomingMessage extends Message
      * @param string $channel Channel name. If not given, will return variables
      * for the "current" channel.
      *
-     * @return array
+     * @return array<string, string>|null
      */
     public function getChannelVariables($channel = null)
     {
@@ -152,12 +152,12 @@ abstract class IncomingMessage extends Message
     }
 
     /**
-     * Returns the channel variables for all reported channels.
+     * Returns the status variables for all reported channels.
      * https://github.com/marcelog/PAMI/issues/85
      *
      * The channel names will be lowercased.
      *
-     * @return array
+     * @return array<string, array<string, string>>
      */
     public function getAllStatusVariables()
     {
@@ -165,13 +165,13 @@ abstract class IncomingMessage extends Message
     }
 
     /**
-     * Returns the channel variables for the given channel.
+     * Returns the status variables for the given channel.
      * https://github.com/marcelog/PAMI/issues/85
      *
      * @param string $channel Channel name. If not given, will return variables
      * for the "current" channel.
      *
-     * @return array
+     * @return array<string, string>|null
      */
     public function getStatusVariables($channel = null)
     {
@@ -200,8 +200,8 @@ abstract class IncomingMessage extends Message
     public function __construct($rawContent)
     {
         parent::__construct();
-        $this->channelVariables = array('default' => array());
-        $this->statusVariables = array('default' => array());
+        $this->channelVariables = ['default' => []];
+        $this->statusVariables = ['default' => []];
         $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {

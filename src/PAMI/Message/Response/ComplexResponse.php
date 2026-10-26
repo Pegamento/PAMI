@@ -28,14 +28,14 @@
  */
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Response\Response;
 use PAMI\Message\Event\EventMessage;
 use PAMI\Exception\PAMIException;
 use PAMI\Message\Event\TableEndEvent;
 use PAMI\Message\Event\TableStartEvent;
+use PAMI\Message\Event\UnknownEvent;
 
 /**
- * A generic SCCP response message from ami.
+ * A response that may contain tables (TableStart/TableEnd) and/or a JSON key.
  *
  * PHP Version 8
  *
@@ -49,16 +49,16 @@ use PAMI\Message\Event\TableStartEvent;
 class ComplexResponse extends Response
 {
     /**
-     * Child Tables
-     * @var EventMessage[]
+     * Child Tables, keyed by table name.
+     * @var array<string, array{Name: mixed, Entries: EventMessage[]}>|null
      */
-    protected $tables;
+    protected ?array $tables = null;
 
     /**
      * Catch All incoming Events into current Table.
-     * @var Array
+     * @var array{Name: mixed, Entries: EventMessage[]}|null
      */
-    private $temptable;
+    private ?array $temptable = null;
 
     /**
      * Adds an event to this response.
@@ -76,16 +76,15 @@ class ComplexResponse extends Response
             && stristr(($event->getEventList() ?? ''), 'complete') === false
             && stristr(($event->getName() ?? ''), 'complete') === false
         ) {
-            $unknownevent = "PAMI\\Message\\Event\\UnknownEvent";
-            if (!($event instanceof $unknownevent)) {
+            if (!($event instanceof UnknownEvent)) {
                 // Handle TableStart/TableEnd Differently
-                if (stristr(($event->getName() ?? ''), 'TableStart') != false && $event instanceof TableStartEvent) {
-                    $this->temptable = array();
+                if (stristr(($event->getName() ?? ''), 'TableStart') !== false && $event instanceof TableStartEvent) {
+                    $this->temptable = [];
                     $this->temptable['Name'] = $event->getTableName();
-                    $this->temptable['Entries'] = array();
-                } elseif (stristr(($event->getName() ?? ''), 'TableEnd') != false && $event instanceof TableEndEvent) {
+                    $this->temptable['Entries'] = [];
+                } elseif (stristr(($event->getName() ?? ''), 'TableEnd') !== false && $event instanceof TableEndEvent) {
                     if (!is_array($this->tables)) {
-                        $this->tables = array();
+                        $this->tables = [];
                     }
                     $this->tables[$event->getTableName()] = $this->temptable;
                     $this->temptable = null;
@@ -101,8 +100,8 @@ class ComplexResponse extends Response
             }
         }
         // finish eventlist
-        if (stristr(($event->getEventList() ?? ''), 'complete') != false
-            || stristr(($event->getName() ?? ''), 'complete') != false
+        if (stristr(($event->getEventList() ?? ''), 'complete') !== false
+            || stristr(($event->getName() ?? ''), 'complete') !== false
         ) {
             $this->completed = true;
         }
@@ -111,31 +110,33 @@ class ComplexResponse extends Response
     /**
      * Returns true if this Response Message contains an events tables (TableStart/TableEnd)
      *
-     * @return boolean
+     * @return bool
      */
     public function hasTable()
     {
-        if (is_array($this->tables)) {
-            return true;
-        }
-        return false;
+        return is_array($this->tables);
     }
 
     /**
-     * Returns all eventtabless for this response.
+     * Returns the names of all tables in this response.
      *
-     * @return EventMessage[]
+     * @return string[]
      */
     public function getTableNames()
     {
+        if (!is_array($this->tables)) {
+            return [];
+        }
         return array_keys($this->tables);
     }
 
-
     /**
-     * Returns all associated events for this response->tablename.
+     * Returns the given table of this response.
      *
-     * @return EventMessage[]
+     * @param string $tablename Table name.
+     *
+     * @return array{Name: mixed, Entries: EventMessage[]}
+     * @throws PAMIException
      */
     public function getTable($tablename)
     {
@@ -149,6 +150,7 @@ class ComplexResponse extends Response
      * Returns decoded version of the 'JSON' key if present.
      *
      * @return array
+     * @throws PAMIException
      */
     public function getJSON()
     {
@@ -159,17 +161,5 @@ class ComplexResponse extends Response
             }
         }
         throw new PAMIException("No JSON Key found to return.");
-    }
-
-    /**
-     * Constructor.
-     *
-     * @param string $rawContent Literal message as received from ami.
-     *
-     * @return void
-     */
-    public function __construct($rawContent)
-    {
-        parent::__construct($rawContent);
     }
 }

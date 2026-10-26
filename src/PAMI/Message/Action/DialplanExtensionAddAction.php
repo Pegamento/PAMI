@@ -56,7 +56,7 @@ class DialplanExtensionAddAction extends ActionMessage
         $this->setKey('application', $application);
         $this->setKey('replace', $replace);
     }
-    
+
     /**
      * set Optional ApplicationData.
      *
@@ -67,7 +67,7 @@ class DialplanExtensionAddAction extends ActionMessage
     {
         $this->setKey('applicationData', $input);
     }
-    
+
     /**
      * set Replace previous entry at this priority.
      *

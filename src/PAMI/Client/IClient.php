@@ -8,7 +8,6 @@
  * @package  Client
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -30,7 +29,6 @@ namespace PAMI\Client;
 
 use PAMI\Message\OutgoingMessage;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 /**
  * Interface for an ami client.
@@ -41,7 +39,6 @@ use Psr\Log\NullLogger;
  * @package  Client
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  */
 interface IClient
@@ -69,8 +66,8 @@ interface IClient
      * and an array containing the object and name of the method to invoke. Can specify
      * an optional predicate to invoke before calling the callback.
      *
-     * @param mixed $listener
-     * @param Closure|null $predicate
+     * @param \PAMI\Listener\IEventListener|\Closure|array $listener
+     * @param \Closure|array<string, string>|null $predicate Closure, or map of key => regex.
      *
      * @return string
      */

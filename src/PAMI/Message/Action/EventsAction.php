@@ -49,7 +49,7 @@ class EventsAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct(array $mask = array())
+    public function __construct(array $mask = [])
     {
         parent::__construct('Events');
         if (empty($mask)) {

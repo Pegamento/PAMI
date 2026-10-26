@@ -64,7 +64,7 @@ class StatusAction extends ActionMessage
      *
      * @return void
      */
-    public function setVariables($variables = array())
+    public function setVariables($variables = [])
     {
         if (!empty($variables)) {
             $this->setKey('Variables', implode(',', $variables));
