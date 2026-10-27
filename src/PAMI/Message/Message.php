@@ -58,7 +58,7 @@ abstract class Message
 
     /**
      * Metadata. Message variables (key/value).
-     * @var string[]
+     * @var array<string, string|int|float|bool|array|null>
      */
     protected array $variables = [];
 
@@ -117,8 +117,8 @@ abstract class Message
     /**
      * Adds a variable to this message.
      *
-     * @param string $key   Variable name.
-     * @param string $value Variable value.
+     * @param string $key Variable name.
+     * @param string|int|float|bool|array<array-key, mixed>|null $value Variable value.
      *
      * @return void
      */
@@ -130,11 +130,14 @@ abstract class Message
     /**
      * Returns a variable by name.
      *
+     * The value is whatever setVariable() stored. Numeric and boolean values
+     * are not converted.
+     *
      * @param string $key Variable name.
      *
-     * @return string|null
+     * @return string|int|float|bool|array<array-key, mixed>|null
      */
-    public function getVariable(string $key): string|array|null
+    public function getVariable(string $key): string|int|float|bool|array|null
     {
         return $this->variables[$key] ?? null;
     }
@@ -280,7 +283,7 @@ abstract class Message
     /**
      * Returns all variables for this message.
      *
-     * @return array<string, string|string[]>
+     * @return array<string, string|int|float|bool|array|null>
      */
     public function getVariables(): array
     {

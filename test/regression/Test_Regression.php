@@ -329,6 +329,92 @@ namespace PAMI\Client\Impl {
             $withChannel = new \PAMI\Message\Action\GetVarAction('FOO', 'PJSIP/a');
             $this->assertSame('PJSIP/a', $withChannel->getKey('channel'));
         }
+
+        #[Test]
+        public function raw_key_values_keep_trailing_and_leading_zeroes()
+        {
+            $raw = "Event: Newchannel\r\nChannel: PJSIP/a\r\nDuration: 1.10\r\nExtension: 0123\r\nCallerIDName: <sip>\r\n\r\n";
+            $event = new \PAMI\Message\Event\NewchannelEvent($raw);
+            $this->assertSame('1.10', $event->getKey('Duration'));
+            $this->assertSame('0123', $event->getKey('Extension'));
+            $this->assertSame('<sip>', $event->getKey('CallerIDName'));
+        }
+
+        #[Test]
+        public function string_and_decimal_timeouts_are_accepted()
+        {
+            $stringTimeouts = new \PAMI\Client\Impl\ClientImpl(array(
+                'host' => '2.3.4.5',
+                'port' => '9999',
+                'username' => 'asd',
+                'secret' => 'asd',
+                'connect_timeout' => '10',
+                'read_timeout' => '10',
+            ));
+            $decimalReadTimeout = new \PAMI\Client\Impl\ClientImpl(array(
+                'host' => '2.3.4.5',
+                'port' => 9999,
+                'username' => 'asd',
+                'secret' => 'asd',
+                'connect_timeout' => '10.5',
+                'read_timeout' => 0.5,
+            ));
+            $this->assertSame(10.0, $this->timeoutProperty($stringTimeouts, 'cTimeout'));
+            $this->assertSame(10, $this->timeoutProperty($stringTimeouts, 'rTimeout'));
+            $this->assertSame(10.5, $this->timeoutProperty($decimalReadTimeout, 'cTimeout'));
+            $this->assertSame(0, $this->timeoutProperty($decimalReadTimeout, 'rTimeout'));
+        }
+
+        #[Test]
+        public function get_variable_returns_the_value_set_variable_stored()
+        {
+            $action = new \PAMI\Message\Action\PingAction();
+            $action->setVariable('n', 5);
+            $action->setVariable('f', 1.5);
+            $action->setVariable('b', false);
+            $this->assertSame(5, $action->getVariable('n'));
+            $this->assertSame(1.5, $action->getVariable('f'));
+            $this->assertFalse($action->getVariable('b'));
+            $this->assertStringContainsString('Variable: n=5', $action->serialize());
+        }
+
+        #[Test]
+        public function message_send_keeps_a_single_line_body()
+        {
+            $action = new \PAMI\Message\Action\MessageSendAction(
+                'pjsip:sipuser',
+                'hello',
+                array('Content-Type' => 'text/plain'),
+                'pjsip:me'
+            );
+            $this->assertSame('hello', $action->getKey('body'));
+            $this->assertNull($action->getKey('base64body'));
+            $this->assertSame('pjsip:me', $action->getKey('from'));
+            $this->assertSame('text/plain', $action->getVariable('Content-Type'));
+        }
+
+        #[Test]
+        public function message_send_encodes_a_multi_line_body()
+        {
+            $body = "hello\r\nworld";
+            $action = new \PAMI\Message\Action\MessageSendAction('pjsip:sipuser', $body);
+            $action->setFrom('pjsip:me');
+            $this->assertNull($action->getKey('body'));
+            $this->assertSame(base64_encode($body), $action->getKey('base64body'));
+            $this->assertSame('pjsip:me', $action->getKey('from'));
+            $this->assertStringNotContainsString("hello\r\nworld", $action->serialize());
+        }
+
+        /**
+         * @return int|float
+         */
+        private function timeoutProperty(\PAMI\Client\Impl\ClientImpl $client, string $name): int|float
+        {
+            $property = new \ReflectionProperty($client, $name);
+            $value = $property->getValue($client);
+            $this->assertTrue(is_int($value) || is_float($value));
+            return $value;
+        }
     }
 
     class RegressionStaticListener

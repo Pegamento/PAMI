@@ -85,8 +85,8 @@ abstract class OutgoingMessage extends Message
     /**
      * Adds a variable to this message.
      *
-     * @param string $key   Variable name.
-     * @param string|array $value Variable value. Arrays are repeated values.
+     * @param string $key Variable name.
+     * @param string|int|float|bool|array<array-key, mixed>|null $value Variable value. Arrays are repeated values.
      *
      * @return void
      * @throws PAMIException When the key or value would break the AMI frame.

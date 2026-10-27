@@ -91,9 +91,9 @@ class ClientImpl implements IClient
 
     /**
      * Connection timeout, in seconds.
-     * @var int|float
+     * @var float
      */
-    private int|float $cTimeout;
+    private float $cTimeout;
 
     /**
      * Connection scheme, like tcp:// or tls://
@@ -544,6 +544,9 @@ class ClientImpl implements IClient
     /**
      * Closes the connection to ami.
      *
+     * When the client is logged in, this sends Logoff and waits for the reply
+     * before closing the socket. That wait is bounded by read_timeout.
+     *
      * @return void
      */
     public function close(): void
@@ -598,7 +601,7 @@ class ClientImpl implements IClient
     /**
      * Constructor.
      *
-     * @param array{host: string, port: int|string, username: string, secret: string, connect_timeout: int|float, read_timeout?: int, scheme?: string, event_mask?: string} $options
+     * @param array{host: string, port: int|string, username: string, secret: string, connect_timeout: int|float|numeric-string, read_timeout?: int|float|numeric-string, scheme?: string, event_mask?: string} $options
      */
     public function __construct(array $options)
     {
@@ -612,8 +615,10 @@ class ClientImpl implements IClient
         $this->port = (int) $options['port'];
         $this->user = $options['username'];
         $this->pass = $options['secret'];
-        $this->cTimeout = $options['connect_timeout'];
-        $this->rTimeout = $options['read_timeout'] ?? 1;
+        // Env and ini values arrive as strings. stream_socket_client takes a
+        // float; stream_set_timeout takes whole seconds.
+        $this->cTimeout = (float) $options['connect_timeout'];
+        $this->rTimeout = (int) ($options['read_timeout'] ?? 1);
         $this->scheme = $options['scheme'] ?? 'tcp://';
         $this->eventMask = $options['event_mask'] ?? null;
         $this->eventFactory = new EventFactoryImpl();

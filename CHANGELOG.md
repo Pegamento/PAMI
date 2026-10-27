@@ -5,7 +5,7 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0] - 2026-10-26
+## [3.0] - 2026-10-27
 
 ### Breaking changes
 
@@ -32,6 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added a GitHub Actions workflow that validates `composer.json` and runs the test suite on PHP 8.4 for pushes to `master` and pull requests.
 - Added a Dependabot configuration for GitHub Actions and Composer dependency updates.
+- `ClientImpl::close()` sends a `Logoff` action and waits for the reply before closing the socket. Closing can take up to `read_timeout` seconds. A failed logoff is logged and the socket is still closed.
+- `connect_timeout` and `read_timeout` accept numeric strings, which is what `.env` and ini files produce. `connect_timeout` is seconds as a float. `read_timeout` is a whole number of seconds; a fractional value is truncated.
+- `MessageSendAction` sends a body that contains CR or LF as `Base64Body`, and accepts an optional `From`.
 
 ### Upgrade guide
 
