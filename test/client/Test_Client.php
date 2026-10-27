@@ -353,6 +353,65 @@ namespace PAMI\Client\Impl {
             $this->assertFalse($resultVariable);
         }
 
+        #[Test]
+        public function can_filter_with_int_predicate()
+        {
+            global $mock_stream_socket_client;
+            global $mock_stream_set_blocking;
+            global $mockTime;
+            global $standardAMIStart;
+            $mockTime = true;
+            $mock_stream_socket_client = true;
+            $mock_stream_set_blocking = true;
+            $options = array(
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 10,
+            'read_timeout' => 10
+            );
+            $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+            );
+            setFgetsMock($standardAMIStart, $write);
+            $client = new \PAMI\Client\Impl\ClientImpl($options);
+            $matched = false;
+            $unmatched = false;
+            $client->registerEventListener(
+                function () use (&$matched) {
+                    $matched = true;
+                },
+                function ($event) {
+                    return preg_match('/PJSIP/', (string) $event->getKey('Channel'));
+                }
+            );
+            $client->registerEventListener(
+                function () use (&$unmatched) {
+                    $unmatched = true;
+                },
+                function ($event) {
+                    return preg_match('/^SIP\//', (string) $event->getKey('Channel'));
+                }
+            );
+            $client->open();
+            $event = array(
+            'Event: Newchannel',
+            'Privilege: system,all',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
+            ''
+            );
+            setFgetsMock($event, $event);
+            for ($i = 0; $i < 6; $i++) {
+                $client->process();
+            }
+            $this->assertTrue($matched);
+            $this->assertFalse($unmatched);
+        }
+
         
         #[Test]
         public function can_login()

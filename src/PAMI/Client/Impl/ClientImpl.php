@@ -426,7 +426,8 @@ class ClientImpl implements IClient
     protected function evaluatePredicate(\Closure|array|null $predicate, IncomingMessage $message): bool
     {
         if (is_callable($predicate)) {
-            return call_user_func($predicate, $message);
+            // preg_match() and similar predicates return int; coerce under strict_types.
+            return (bool) $predicate($message);
         }
 
         if (!is_array($predicate)) {
