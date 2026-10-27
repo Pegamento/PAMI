@@ -28,6 +28,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `AsyncAGIStartEvent::getEnv()` is `getEnvironment()`.
   - `Message::setSanitizedKey()` remains, as a deprecated alias of `setKey()`.
 
+### Changes
+
+- Added a GitHub Actions workflow that validates `composer.json` and runs the test suite on PHP 8.4 for pushes to `master` and pull requests.
+- Added a Dependabot configuration for GitHub Actions and Composer dependency updates.
+
 ### Upgrade guide
 
 1. Run on PHP 8.4.1 or newer and install with `"pegamento/pami": "^3.0"`.

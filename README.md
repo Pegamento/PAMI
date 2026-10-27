@@ -20,6 +20,7 @@ either via SOA or ajax.
 
 PAMI requires PHP 8.4.1 or higher.
 
+
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
 composer.json:
@@ -497,8 +498,8 @@ To contribute:
  * Run `composer test` before submitting.
  * Code must comply with [PSR-2](http://www.php-fig.org/psr/psr-2/).
 
-LICENSE
-=======
+## LICENSE
+
 Copyright 2016 Marcelo Gornstein <marcelog@gmail.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
