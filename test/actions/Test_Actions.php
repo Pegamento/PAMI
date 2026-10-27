@@ -1455,7 +1455,7 @@ namespace PAMI\Client\Impl {
             'action: Park',
             'actionid: 1432.123',
             'channel: channel1',
-            'channel2: channel2',
+            'timeoutchannel: channel2',
             'timeout: timeout',
             'parkinglot: lot',
             ''
