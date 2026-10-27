@@ -1,11 +1,12 @@
 <?php
+
 /**
  * AgentComplete Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Channel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -69,7 +72,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -81,7 +84,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'ChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -93,7 +96,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'CallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -105,7 +108,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'CallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -117,7 +120,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -129,7 +132,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -141,7 +144,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Language'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -153,7 +156,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'AccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -165,7 +168,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -177,7 +180,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -189,7 +192,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Priority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -201,7 +204,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -213,7 +216,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -225,7 +228,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannel()
     {
@@ -237,7 +240,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to DestChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelState()
     {
@@ -249,7 +252,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestChannelStateDesc()
     {
@@ -261,7 +264,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDNum()
     {
@@ -273,7 +276,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestCallerIDName()
     {
@@ -285,7 +288,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineNum()
     {
@@ -297,7 +300,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestConnectedLineName()
     {
@@ -309,7 +312,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestLanguage()
     {
@@ -321,7 +324,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestAccountCode()
     {
@@ -333,7 +336,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestContext()
     {
@@ -345,7 +348,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestExten()
     {
@@ -357,7 +360,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestPriority()
     {
@@ -369,7 +372,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'DestUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestUniqueid()
     {
@@ -381,7 +384,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestLinkedid()
     {
@@ -393,7 +396,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:The name of the queue.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -405,7 +408,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:The name of the queue member.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMemberName()
     {
@@ -417,7 +420,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:The queue member's channel technology or location.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getInterface()
     {
@@ -429,7 +432,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:The time the channel was in the queue, expressed in seconds since 00:00, Jan 1, 1970 UTC.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getHoldTime()
     {
@@ -441,7 +444,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns:The time the queue member talked with the caller in the queue, expressed in seconds since 00:00, Jan 1, 1970 UTC.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTalkTime()
     {
@@ -453,7 +456,7 @@ class AgentCompleteEvent extends EventMessage
      *
      * Returns key: 'Reason'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReason()
     {

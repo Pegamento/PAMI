@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a channel enters a bridge.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a channel enters a bridge.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -56,7 +59,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -66,7 +69,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -76,7 +79,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -86,7 +89,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -96,7 +99,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -106,7 +109,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'BridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -116,7 +119,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -126,7 +129,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -136,7 +139,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -146,7 +149,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -156,7 +159,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -166,7 +169,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -176,7 +179,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -186,7 +189,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -196,7 +199,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -206,7 +209,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -216,7 +219,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -226,7 +229,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -236,7 +239,7 @@ class BridgeEnterEvent extends EventMessage
     /**
      * Returns key: 'SwapUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSwapUniqueid()
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PAMI\AsyncAgi;
 
 use PAGI\Client\IClient;
@@ -9,12 +11,11 @@ use PAGI\Client\IClient;
  */
 interface IAsyncClient extends IClient
 {
-
     /**
      * Interrupts expected flow of Async AGI commands and returns
      * control to previous source (typically, the PBX dialplan).
      *
      * @return void
      */
-    public function asyncBreak();
+    public function asyncBreak(): void;
 }

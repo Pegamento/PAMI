@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when the Do Not Disturb state is changed on a DAHDI channel.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,22 +49,11 @@ class DNDStateEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
         return $this->getKey('Privilege');
-    }
-
-    /**
-     * Returns key: 'Channel'.
-     * @deprecated Please use {@see getDAHDIChannel()}.
-     *
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->getDAHDIChannel();
     }
 
     /**
@@ -77,7 +69,7 @@ class DNDStateEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {

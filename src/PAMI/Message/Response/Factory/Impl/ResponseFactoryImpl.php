@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This factory knows which response to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Response
  * @subpackage Factory.Impl
  * @author     Diederik de Groot <ddegroot@users.sf.net>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Diederik de Groot <ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
@@ -28,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response\Factory\Impl;
 
 use PAMI\Exception\PAMIException;
@@ -39,7 +42,7 @@ use PAMI\Message\Response\Response;
  * This factory knows which reponse handler to return according to a given raw message from ami,
  * the outgoingMessageClass and responseHandler requested by the Action
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Response
@@ -50,18 +53,16 @@ use PAMI\Message\Response\Response;
  */
 class ResponseFactoryImpl implements IResponseFactory
 {
-    private $responseClassMapping = array();
-
     /**
      * This is our factory method.
      *
-     * @param string          $message Literal message as received from ami.
-     * @param OutgoingMessage $requestingAction
+     * @param string                     $message          Literal message as received from ami.
+     * @param OutgoingMessage|null $requestingAction Action this message is a response to.
      *
      * @return Response
      * @throws PAMIException
      */
-    public function createFromRaw($message, $requestingAction = null)
+    public function createFromRaw(string $message, ?OutgoingMessage $requestingAction = null): Response
     {
         $responseHandlerClass = '\\PAMI\\Message\\Response\\GenericResponse';
         if ($requestingAction && $requestingAction->getResponseHandler()) {

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a call is transfered.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when an attended transfer is complete.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -43,10 +46,10 @@ namespace PAMI\Message\Event;
  */
 class AttendedTransferEvent extends EventMessage
 {
-    const RESULT_FAIL = 'Fail';
-    const RESULT_INVALID = 'Invalid';
-    const RESULT_NOT_PERMITTED = 'Not Permitted';
-    const RESULT_SUCCESS = 'Success';
+    public const RESULT_FAIL = 'Fail';
+    public const RESULT_INVALID = 'Invalid';
+    public const RESULT_NOT_PERMITTED = 'Not Permitted';
+    public const RESULT_SUCCESS = 'Success';
 
     /**
      * Returns key: 'Result'.
@@ -57,7 +60,7 @@ class AttendedTransferEvent extends EventMessage
      * - Not Permitted - Bridge does not permit transfers
      * - Success - Transfer completed successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResult()
     {
@@ -67,7 +70,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererChannel()
     {
@@ -77,7 +80,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererChannelState()
     {
@@ -99,7 +102,7 @@ class AttendedTransferEvent extends EventMessage
      * Pre-ring
      * Unknown
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererChannelStateDesc()
     {
@@ -109,7 +112,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererCallerIDNum()
     {
@@ -119,7 +122,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererCallerIDName()
     {
@@ -129,7 +132,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererConnectedLineNum()
     {
@@ -139,7 +142,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererConnectedLineName()
     {
@@ -149,7 +152,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererAccountCode()
     {
@@ -159,7 +162,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererContext()
     {
@@ -169,7 +172,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererExten()
     {
@@ -179,7 +182,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererPriority()
     {
@@ -189,7 +192,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigTransfererUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigTransfererUniqueid()
     {
@@ -199,7 +202,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeUniqueid()
     {
@@ -209,7 +212,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeType()
     {
@@ -219,7 +222,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeTechnology()
     {
@@ -229,7 +232,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeCreator()
     {
@@ -239,7 +242,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeName()
     {
@@ -249,7 +252,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'OrigBridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOrigBridgeNumChannels()
     {
@@ -259,7 +262,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererChannel()
     {
@@ -269,7 +272,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererChannelState()
     {
@@ -291,7 +294,7 @@ class AttendedTransferEvent extends EventMessage
      * Pre-ring
      * Unknown
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererChannelStateDesc()
     {
@@ -301,7 +304,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererCallerIDNum()
     {
@@ -311,7 +314,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererCallerIDName()
     {
@@ -321,7 +324,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererConnectedLineNum()
     {
@@ -331,7 +334,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererConnectedLineName()
     {
@@ -341,7 +344,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererAccountCode()
     {
@@ -351,7 +354,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererContext()
     {
@@ -361,7 +364,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererExten()
     {
@@ -371,7 +374,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererPriority()
     {
@@ -381,7 +384,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondTransfererUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondTransfererUniqueid()
     {
@@ -391,7 +394,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeUniqueid()
     {
@@ -401,7 +404,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeType()
     {
@@ -411,7 +414,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeTechnology()
     {
@@ -421,7 +424,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeCreator()
     {
@@ -431,7 +434,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeName()
     {
@@ -441,7 +444,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'SecondBridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSecondBridgeNumChannels()
     {
@@ -458,7 +461,7 @@ class AttendedTransferEvent extends EventMessage
      * Threeway - The transfer was accomplished by placing all parties into a threeway call.
      * Fail - The transfer failed.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestType()
     {
@@ -468,7 +471,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'DestBridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestBridgeUniqueid()
     {
@@ -478,7 +481,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'DestApp'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestApp()
     {
@@ -488,7 +491,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannel()
     {
@@ -498,7 +501,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannelState()
     {
@@ -508,7 +511,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneChannelStateDesc()
     {
@@ -518,7 +521,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneCallerIDNum()
     {
@@ -528,7 +531,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneCallerIDName()
     {
@@ -538,7 +541,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneConnectedLineNum()
     {
@@ -548,7 +551,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneConnectedLineName()
     {
@@ -558,7 +561,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneAccountCode()
     {
@@ -568,7 +571,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneContext()
     {
@@ -578,7 +581,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneExten()
     {
@@ -588,7 +591,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOnePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOnePriority()
     {
@@ -598,7 +601,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalOneUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalOneUniqueid()
     {
@@ -608,7 +611,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannel()
     {
@@ -618,7 +621,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannelState()
     {
@@ -628,7 +631,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoChannelStateDesc()
     {
@@ -638,7 +641,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoCallerIDNum()
     {
@@ -648,7 +651,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoCallerIDName()
     {
@@ -658,7 +661,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoConnectedLineNum()
     {
@@ -668,7 +671,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoConnectedLineName()
     {
@@ -678,7 +681,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoAccountCode()
     {
@@ -688,7 +691,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoContext()
     {
@@ -698,7 +701,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoExten()
     {
@@ -708,7 +711,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoPriority()
     {
@@ -718,7 +721,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'LocalTwoUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalTwoUniqueid()
     {
@@ -728,7 +731,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'DestTransfererChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDestTransfererChannel()
     {
@@ -738,7 +741,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannel()
     {
@@ -748,7 +751,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannelState()
     {
@@ -758,7 +761,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannelStateDesc()
     {
@@ -768,7 +771,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeCallerIDNum()
     {
@@ -778,7 +781,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeCallerIDName()
     {
@@ -788,7 +791,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeConnectedLineNum()
     {
@@ -798,7 +801,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeConnectedLineName()
     {
@@ -808,7 +811,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeAccountCode()
     {
@@ -818,7 +821,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeContext()
     {
@@ -828,7 +831,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeExten()
     {
@@ -838,7 +841,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereePriority()
     {
@@ -848,7 +851,7 @@ class AttendedTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeUniqueid()
     {

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when .. ?
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when .. ?
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'Conference'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -68,7 +71,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -78,7 +81,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -88,7 +91,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -98,7 +101,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -108,7 +111,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -118,7 +121,7 @@ class ConfbridgeEndEvent extends EventMessage
     /**
      * Returns key: 'BridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {

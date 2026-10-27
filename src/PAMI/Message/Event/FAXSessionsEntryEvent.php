@@ -1,11 +1,12 @@
 <?php
+
 /**
  * FAXSessionsEntry Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:Name of the channel responsible for the FAX session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -69,7 +72,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:The FAX technology that the FAX session is using
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTechnology()
     {
@@ -81,7 +84,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:The numerical identifier for this particular session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionNumber()
     {
@@ -93,7 +96,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:FAX session passthru/relay type
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionType()
     {
@@ -105,7 +108,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:FAX session operation type
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOperation()
     {
@@ -117,7 +120,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:Current state of the FAX session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getState()
     {
@@ -129,7 +132,7 @@ class FAXSessionsEntryEvent extends EventMessage
      *
      * Returns:File or list of files associated with this FAX session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFiles()
     {

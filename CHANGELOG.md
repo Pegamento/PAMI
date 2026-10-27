@@ -5,13 +5,46 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.0] - 2026-10-27
+
+### Breaking changes
+
+- Requires PHP 8.4.1. The 2.1 notes still described a PHP 8.1 / PHPUnit 9.6 baseline; development now uses PHPUnit 13.4.
+- `declare(strict_types=1)` is enabled across `src`. The core client, message, response, and factory APIs have native parameter, return, and property types.
+- `getKey()` returns the raw string. Repeated values are one string joined with `Message::EOL` via `addKey()`, and typed reads go through `getBoolKey()`, `getIntKey()`, and `getFloatKey()`. Values are no longer HTML-escaped.
+- Message serialization uses `__serialize()` so the private key map round-trips. Payloads written by the old `__sleep()` property list cannot be restored.
+- ActionIDs are random 16-character hex strings. Call `ActionMessage::setActionIdGenerator()` to supply your own, including a fixed id for tests.
+- `OutgoingMessage::setKey()` and `setVariable()` throw `PAMIException` when a value contains CR or LF, or a key contains CR, LF, or `:`.
+- Optional action arguments use `null` to mean "omit this field". `false` is no longer the sentinel.
+- Removed `Response::$eventsCount` and `Message::$lines`.
+- An event whose name is not an identifier, or a message with no `Event:` header, is an `UnknownEvent`.
+- `UpdateConfigAction` numbers its actions per instance. `setCat()`, `setVar()`, and the other per-action setters throw if they are called before `setAction()`.
+- `AsyncClientImpl` accepts a `timeout` option (seconds). When it is set, the busy-wait throws `ChannelDownException` if the exec result does not arrive in time.
+- `AttendedTransferAction` no longer accepts `$context` and `$priority` in the constructor. Set them with `setContext()` and `setPriority()`.
+- Removed long-deprecated event getters. The current getters still read the old AMI header when the new one is absent:
+  - `ParkedCallEvent` and `UnParkedCallEvent`: `getTimeout()` is `getParkingTimeout()`, `getConnectedLineNum()` is `getParkeeConnectedLineNum()`, `getConnectedLineName()` is `getParkeeConnectedLineName()`, `getChannel()` is `getParkeeChannel()`, `getCallerIDNum()` is `getParkeeCallerIDNum()`, `getCallerIDName()` is `getParkeeCallerIDName()`, `getUniqueID()` is `getParkeeUniqueid()`, and `getExtension()` is `getParkingSpace()`. `UnParkedCallEvent::getFrom()` is `getRetrieverChannel()`.
+  - `DNDStateEvent::getChannel()` is `getDAHDIChannel()`.
+  - `NewExtenEvent::getExtension()` is `getExten()`.
+  - `AsyncAGIStartEvent::getEnv()` is `getEnvironment()`.
+  - `Message::setSanitizedKey()` remains, as a deprecated alias of `setKey()`.
 
 ### Changes
 
-- Raised the declared minimum PHP version from 8.1 to 8.4. Installing on PHP < 8.4 is no longer supported.
 - Added a GitHub Actions workflow that validates `composer.json` and runs the test suite on PHP 8.4 for pushes to `master` and pull requests.
 - Added a Dependabot configuration for GitHub Actions and Composer dependency updates.
+- `ClientImpl::close()` sends a `Logoff` action and waits for the reply before closing the socket. Closing can take up to `read_timeout` seconds. A failed logoff is logged and the socket is still closed.
+- `connect_timeout` and `read_timeout` accept numeric strings, which is what `.env` and ini files produce. `connect_timeout` is seconds as a float. `read_timeout` is a whole number of seconds; a fractional value is truncated.
+- `MessageSendAction` sends a body that contains CR or LF as `Base64Body`, and accepts an optional `From`.
+
+### Upgrade guide
+
+1. Run on PHP 8.4.1 or newer and install with `"pegamento/pami": "^3.0"`.
+2. Stop decoding HTML entities out of AMI values. Characters such as `<` are now preserved.
+3. Do not depend on ActionIDs being derived from `microtime()`. Read the id from the action, or set a generator before constructing actions.
+4. Do not put CR, LF, or `:` in outgoing keys, or CR/LF in outgoing values. Build multi-line command bodies through the command actions instead of raw key injection.
+5. Replace omitted optional arguments that were passed as `false` with `null` (`GetVar`, `SetVar`, `DBDelTree`, `GetConfig`, `Park`, `ShowDialPlan`, `Status`, the queue actions, `Reload`, `BridgeList`).
+6. Expect native types on the client and message APIs. `getKey()` returns `?string`. Use `getBoolKey()`, `getIntKey()`, and `getFloatKey()` when a typed value is needed. Event getters that return `getKey()` return that raw string. Getters that already cast still return `int` or `bool`.
+7. Anything that read `Response::$eventsCount` or `Message::$lines` needs to drop that access. Channel and status variables are now part of `IncomingMessage` serialization.
 
 ## [2.1] - 2026-06-05
 

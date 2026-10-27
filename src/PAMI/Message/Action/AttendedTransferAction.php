@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Atxfer action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -44,29 +47,13 @@ class AttendedTransferAction extends ActionMessage
          * @param string $exten
          *        Extension to transfer to.
          *
-         * @param string $context
-         *        Context to transfer to.
-         *
-         * @param string $priority
-         *        Priority to transfer to.
-         *
          * @return void
          */
-    public function __construct($channel, $exten, $context = null, $priority = null)
+    public function __construct(string $channel, string $exten)
     {
         parent::__construct('Atxfer');
         $this->setKey('Channel', $channel);
         $this->setKey('Exten', $exten);
-
-        if ($context !== null) {
-            trigger_error('Argument $context will be remove at next major version', E_USER_DEPRECATED);
-            $this->setContext($context);
-        }
-
-        if ($priority !== null) {
-            trigger_error('Argument $priority will be remove at next major version', E_USER_DEPRECATED);
-            $this->setPriority($priority);
-        }
     }
 
         /**
@@ -77,7 +64,7 @@ class AttendedTransferAction extends ActionMessage
          *
          * @return void
          */
-    public function setContext($context)
+    public function setContext(string $context): void
     {
         $this->setKey('Context', $context);
     }
@@ -90,7 +77,7 @@ class AttendedTransferAction extends ActionMessage
          *
          * @return void
          */
-    public function setPriority($priority)
+    public function setPriority(string $priority): void
     {
         $this->setKey('Priority', $priority);
     }

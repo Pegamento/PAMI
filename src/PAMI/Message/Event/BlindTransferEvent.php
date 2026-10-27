@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a blind transfer is complete.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a blind transfer is complete.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -43,15 +46,15 @@ namespace PAMI\Message\Event;
  */
 class BlindTransferEvent extends EventMessage
 {
-    const RESULT_FAIL = 'Fail';
-    const RESULT_INVALID = 'Invalid';
-    const RESULT_NOT_PERMITTED = 'Not Permitted';
-    const RESULT_SUCCESS = 'Success';
+    public const RESULT_FAIL = 'Fail';
+    public const RESULT_INVALID = 'Invalid';
+    public const RESULT_NOT_PERMITTED = 'Not Permitted';
+    public const RESULT_SUCCESS = 'Success';
 
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -67,7 +70,7 @@ class BlindTransferEvent extends EventMessage
      * - Not Permitted - Bridge does not permit transfers
      * - Success - Transfer completed successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResult()
     {
@@ -77,7 +80,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererChannel()
     {
@@ -88,7 +91,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'TransfererChannelState'.
      * TransfererChannelState - A numeric code for the channel's current state, related to TransfererChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererChannelState()
     {
@@ -110,7 +113,7 @@ class BlindTransferEvent extends EventMessage
      * Pre-ring
      * Unknown
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererChannelStateDesc()
     {
@@ -120,7 +123,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererCallerIDNum()
     {
@@ -130,7 +133,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererCallerIDName()
     {
@@ -140,7 +143,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererConnectedLineNum()
     {
@@ -150,7 +153,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererConnectedLineName()
     {
@@ -160,7 +163,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererAccountCode()
     {
@@ -170,7 +173,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererContext()
     {
@@ -180,7 +183,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererExten()
     {
@@ -190,7 +193,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererPriority()
     {
@@ -200,7 +203,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfererUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfererUniqueid()
     {
@@ -210,7 +213,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannel()
     {
@@ -221,7 +224,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'TransfereeChannelState'.
      * TransfereeChannelState - A numeric code for the channel's current state, related to TransfereeChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannelState()
     {
@@ -243,7 +246,7 @@ class BlindTransferEvent extends EventMessage
      * Pre-ring
      * Unknown
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeChannelStateDesc()
     {
@@ -253,7 +256,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeCallerIDNum()
     {
@@ -263,7 +266,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeCallerIDName()
     {
@@ -273,7 +276,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeConnectedLineNum()
     {
@@ -283,7 +286,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeConnectedLineName()
     {
@@ -293,7 +296,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeAccountCode()
     {
@@ -303,7 +306,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeContext()
     {
@@ -313,7 +316,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeExten()
     {
@@ -323,7 +326,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereePriority()
     {
@@ -333,7 +336,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'TransfereeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransfereeUniqueid()
     {
@@ -343,7 +346,7 @@ class BlindTransferEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -354,7 +357,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'BridgeType'.
      * BridgeType - The type of bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -365,7 +368,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'BridgeTechnology'.
      * BridgeTechnology - Technology in use by the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -376,7 +379,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'BridgeCreator'.
      * BridgeCreator - Entity that created the bridge if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -387,7 +390,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'BridgeName'.
      * BridgeName - Name used to refer to the bridge by its BridgeCreator if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -398,7 +401,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'BridgeNumChannels'.
      * BridgeNumChannels - Number of channels in the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -413,7 +416,7 @@ class BlindTransferEvent extends EventMessage
      * Yes
      * No
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getIsExternal()
     {
@@ -428,14 +431,14 @@ class BlindTransferEvent extends EventMessage
      */
     public function isExternal()
     {
-        return $this->getIsExternal() === 'Yes';
+        return $this->getBoolKey('IsExternal') === true;
     }
 
     /**
      * Returns key: 'Context'.
      * Context - Destination context for the blind transfer.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -446,7 +449,7 @@ class BlindTransferEvent extends EventMessage
      * Returns key: 'Extension'.
      * Extension - Destination extension for the blind transfer.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {

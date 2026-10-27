@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action BridgeInfo is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Matt Styles <mstyleshk@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered for the end of the list when an action BridgeInfo is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -56,7 +59,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -66,7 +69,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeTechnology'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -76,7 +79,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeCreator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -86,7 +89,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -96,7 +99,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeNumChannels'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -106,7 +109,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeVideoSourceMode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSourceMode()
     {
@@ -116,7 +119,7 @@ class BridgeInfoCompleteEvent extends EventMessage
     /**
      * Returns key: 'BridgeVideoSource'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSource()
     {

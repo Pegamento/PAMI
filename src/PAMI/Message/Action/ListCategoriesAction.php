@@ -1,15 +1,15 @@
 <?php
+
 /**
  * ListCategories action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * ListCategories action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,7 +53,7 @@ class ListCategoriesAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($file)
+    public function __construct(string $file)
     {
         parent::__construct('ListCategories');
         $this->setKey('Filename', $file);

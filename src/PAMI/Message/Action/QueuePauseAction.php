@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Queue pause action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Queue pause action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,11 +49,11 @@ class QueuePauseAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $interface
-     * @param string $queue
-     * @param string $reason
+     * @param string $interface
+     * @param string|null $queue
+     * @param string|null $reason
      */
-    public function __construct($interface, $queue = null, $reason = null)
+    public function __construct(string $interface, ?string $queue = null, ?string $reason = null)
     {
         parent::__construct('QueuePause');
         if ($queue !== null) {

@@ -1,16 +1,16 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action Success
  * is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Adrián Zúñiga <jaime.ziga@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -28,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -39,8 +42,9 @@ class SuccessEvent extends EventMessage
      *
      * @return string
      */
-    public function getRawContent()
+    public function getRawContent(): string
     {
-        return $this->getKey('RawContent');
+        $value = $this->getKey('RawContent');
+        return is_string($value) ? $value : '';
     }
 }

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when an async agi is executed.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\AsyncAgi\Event\IAsyncAgiExecEvent;
@@ -35,7 +38,7 @@ use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
 /**
  * Event triggered when an async agi is executed.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -49,7 +52,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -59,7 +62,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns key: 'SubEvent'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubEvent()
     {
@@ -69,7 +72,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -79,7 +82,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns the original environment received with this event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEnvironment()
     {
@@ -89,7 +92,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns the agi result for the command issued.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResult()
     {
@@ -99,7 +102,7 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     /**
      * Returns the command id associated with this event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCommandId()
     {
@@ -115,7 +118,13 @@ class AsyncAGIEvent extends EventMessage implements IAsyncAgiExecEvent, IAsyncAg
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->setKey('Env', urldecode($this->getEnvironment()));
-        $this->setKey('Result', urldecode($this->getResult()));
+        $env = $this->getStringKey('Env');
+        if ($env !== null) {
+            $this->setKey('Env', rawurldecode($env));
+        }
+        $result = $this->getStringKey('Result');
+        if ($result !== null) {
+            $this->setKey('Result', rawurldecode($result));
+        }
     }
 }

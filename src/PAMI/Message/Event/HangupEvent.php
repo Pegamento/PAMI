@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Triggered when a hangup is detected.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Triggered when a hangup is detected.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +71,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -78,7 +81,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -88,7 +91,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -98,7 +101,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Cause'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCause()
     {
@@ -108,7 +111,7 @@ class HangupEvent extends EventMessage
     /**
      * Returns key: 'Cause-txt'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCauseText()
     {

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when the 'SCCP Call Answered' Event arrives.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Diederik de Groot <ddegroot@users.sf.net>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Diederik de Groot <ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when the 'SCCP Call Answered' Event arrives.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -58,7 +61,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'SCCPLine'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPLine()
     {
@@ -68,7 +71,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'SCCPDevice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPDevice()
     {
@@ -78,7 +81,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -88,7 +91,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'CallingPartyNumber'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallingPartyNumber()
     {
@@ -98,7 +101,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'CallingPartyName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallingPartyName()
     {
@@ -108,7 +111,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'originalCallingParty'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getoriginalCallingParty()
     {
@@ -118,7 +121,7 @@ class CallAnsweredEvent extends EventMessage
     /**
      * Returns key: 'lastRedirectingParty'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getlastRedirectingParty()
     {

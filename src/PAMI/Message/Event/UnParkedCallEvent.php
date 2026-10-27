@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a call is unparked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a call is unparked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -56,110 +59,11 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Parkinglot'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkinglot()
     {
         return $this->getKey('Parkinglot');
-    }
-
-    /**
-     * Returns key: 'From'.
-     * @deprecated Deprecated since Asterisk 12. {@use getRetrieverChannel()}.
-     *
-     * @return string
-     */
-    public function getFrom()
-    {
-        return $this->getRetrieverChannel();
-    }
-
-    /**
-     * Returns key: 'Timeout'.
-     * @deprecated Deprecated since Asterisk 12. {@use ParkingTimeout()}.
-     *
-     * @return string
-     */
-    public function getTimeout()
-    {
-        return $this->getParkingTimeout();
-    }
-
-    /**
-     * Returns key: 'ConnectedLineNum'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineNum()}.
-     *
-     * @return string
-     */
-    public function getConnectedLineNum()
-    {
-        return $this->getParkeeConnectedLineNum();
-    }
-
-    /**
-     * Returns key: 'ConnectedLineName'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineName()}.
-     *
-     * @return string
-     */
-    public function getConnectedLineName()
-    {
-        return $this->getParkeeConnectedLineName();
-    }
-
-    /**
-     * Returns key: 'Channel'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeChannel()}.
-     *
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->getParkeeChannel();
-    }
-
-    /**
-     * Returns key: 'CallerIDNum'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDNum()}.
-     *
-     * @return string
-     */
-    public function getCallerIDNum()
-    {
-        return $this->getParkeeCallerIDNum();
-    }
-
-    /**
-     * Returns key: 'CallerIDName'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDName()}.
-     *
-     * @return string
-     */
-    public function getCallerIDName()
-    {
-        return $this->getParkeeCallerIDName();
-    }
-
-    /**
-     * Returns key: 'UniqueID'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeUniqueid()}.
-     *
-     * @return string
-     */
-    public function getUniqueID()
-    {
-        return $this->getParkeeUniqueid();
-    }
-
-    /**
-     * Returns key: 'Exten'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkingSpace()}.
-     *
-     * @return string
-     */
-    public function getExtension()
-    {
-        return $this->getParkingSpace();
     }
 
     /**
@@ -175,7 +79,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelState()
     {
@@ -185,7 +89,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelStateDesc()
     {
@@ -235,7 +139,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeAccountCode()
     {
@@ -245,7 +149,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeContext()
     {
@@ -255,7 +159,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeExten()
     {
@@ -265,7 +169,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeePriority()
     {
@@ -285,7 +189,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerDialString'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerDialString()
     {
@@ -315,7 +219,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkingDuration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingDuration()
     {
@@ -325,7 +229,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannel()
     {
@@ -335,7 +239,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannelState()
     {
@@ -345,7 +249,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannelStateDesc()
     {
@@ -355,7 +259,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerCallerIDNum()
     {
@@ -365,7 +269,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerCallerIDName()
     {
@@ -375,7 +279,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerConnectedLineNum()
     {
@@ -385,7 +289,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerConnectedLineName()
     {
@@ -395,7 +299,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerAccountCode()
     {
@@ -405,7 +309,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerContext()
     {
@@ -415,7 +319,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerExten()
     {
@@ -425,7 +329,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerPriority()
     {
@@ -435,7 +339,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerUniqueid()
     {
@@ -455,7 +359,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverChannelState()
     {
@@ -465,7 +369,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverChannelStateDesc()
     {
@@ -475,7 +379,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverCallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverCallerIDNum()
     {
@@ -485,7 +389,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverCallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverCallerIDName()
     {
@@ -495,7 +399,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverConnectedLineNum()
     {
@@ -505,7 +409,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverConnectedLineName()
     {
@@ -515,7 +419,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverAccountCode()
     {
@@ -525,7 +429,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverContext()
     {
@@ -535,7 +439,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverExten()
     {
@@ -545,7 +449,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverPriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverPriority()
     {
@@ -555,7 +459,7 @@ class UnParkedCallEvent extends EventMessage
     /**
      * Returns key: 'RetrieverUniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRetrieverUniqueid()
     {

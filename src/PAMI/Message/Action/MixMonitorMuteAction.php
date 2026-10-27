@@ -1,15 +1,15 @@
 <?php
+
 /**
  * MixMonitorMute action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Matt Styles <mstyleshk@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * MixMonitorMute action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -43,9 +46,9 @@ namespace PAMI\Message\Action;
  */
 class MixMonitorMuteAction extends ActionMessage
 {
-    const DIRECTION_READ = 'read';
-    const DIRECTION_WRITE = 'write';
-    const DIRECTION_BOTH = 'both';
+    public const DIRECTION_READ = 'read';
+    public const DIRECTION_WRITE = 'write';
+    public const DIRECTION_BOTH = 'both';
 
     /**
      * Sets state key.
@@ -54,9 +57,9 @@ class MixMonitorMuteAction extends ActionMessage
      *
      * @return void
      */
-    public function setState($state)
+    public function setState(bool $state): void
     {
-        $this->setKey('State', $state ? 1 : 0);
+        $this->setKey('State', $state ? '1' : '0');
     }
 
     /**
@@ -67,7 +70,7 @@ class MixMonitorMuteAction extends ActionMessage
      *
      * @return void
      */
-    public function setDirection($direction)
+    public function setDirection(string $direction): void
     {
         $this->setKey('Direction', $direction);
     }
@@ -80,7 +83,7 @@ class MixMonitorMuteAction extends ActionMessage
      * @param string $direction Which part of the recording to mute:
      *                          read, write or both (from channel, to channel or both channels).
      */
-    public function __construct($channel, $state = true, $direction = 'both')
+    public function __construct(string $channel, bool $state = true, string $direction = 'both')
     {
         parent::__construct('MixMonitorMute');
         $this->setKey('Channel', $channel);

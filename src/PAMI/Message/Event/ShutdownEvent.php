@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Shutdown Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class ShutdownEvent extends EventMessage
      *
      * Returns:Whether the shutdown is proceeding cleanly (all channels were hungup successfully) or uncleanly (channels will be terminated)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getShutdown()
     {
@@ -69,7 +72,7 @@ class ShutdownEvent extends EventMessage
      *
      * Returns:Whether or not a restart will occur.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRestart()
     {

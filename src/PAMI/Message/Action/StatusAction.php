@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Queries for the status of a channel or all channels if none specified.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Queries for the status of a channel or all channels if none specified.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,10 +53,10 @@ class StatusAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel = false)
+    public function __construct(?string $channel = null)
     {
         parent::__construct('Status');
-        if ($channel !== false) {
+        if ($channel !== null) {
             $this->setKey('Channel', $channel);
         }
     }
@@ -65,7 +68,7 @@ class StatusAction extends ActionMessage
      *
      * @return void
      */
-    public function setVariables($variables = array())
+    public function setVariables(array $variables = []): void
     {
         if (!empty($variables)) {
             $this->setKey('Variables', implode(',', $variables));

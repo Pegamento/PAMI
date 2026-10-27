@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Queue unpause action. This does not exist in the ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Queue unpause action. This does not exist in the ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,17 +49,17 @@ class QueueUnpauseAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $interface
-     * @param bool $queue
-     * @param bool $reason
+     * @param string $interface
+     * @param string|null $queue
+     * @param string|null $reason
      */
-    public function __construct($interface, $queue = false, $reason = false)
+    public function __construct(string $interface, ?string $queue = null, ?string $reason = null)
     {
         parent::__construct('QueuePause');
-        if ($queue !== false) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
-        if ($reason !== false) {
+        if ($reason !== null) {
             $this->setKey('Reason', $reason);
         }
         $this->setKey('Interface', $interface);

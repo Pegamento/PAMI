@@ -1,8 +1,9 @@
 <?php
+
 /**
  * BridgeList action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * Get a list of bridges in the system.
  * Returns a list of bridges, optionally filtering on a bridge type.
@@ -25,6 +26,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -45,11 +49,14 @@ class BridgeListAction extends ActionMessage
      * @param string|bool $bridgeType Optional type for filtering the resulting list of bridges.
      * @param string $actionId ActionID for this transaction. Will be returned.
      */
-    public function __construct($bridgeType = false, $actionId = '')
+    public function __construct(string|bool|null $bridgeType = null, string $actionId = '')
     {
         parent::__construct('BridgeList');
-        if (false !== $bridgeType) {
-            $this->setKey('BridgeType', $bridgeType);
+        if (null !== $bridgeType) {
+            $this->setKey('BridgeType', (string) $bridgeType);
+        }
+        if ($actionId !== '') {
+            $this->setActionID($actionId);
         }
     }
 }

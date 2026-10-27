@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a call is parked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a call is parked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -56,7 +59,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'Parkinglot'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkinglot()
     {
@@ -66,99 +69,11 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'From'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFrom()
     {
         return $this->getKey('From');
-    }
-
-    /**
-     * Returns key: 'Timeout'.
-     * @deprecated Deprecated since Asterisk 12. {@use ParkingTimeout()}.
-     *
-     * @return string
-     */
-    public function getTimeout()
-    {
-        return $this->getParkingTimeout();
-    }
-
-    /**
-     * Returns key: 'ConnectedLineNum'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineNum()}.
-     *
-     * @return string
-     */
-    public function getConnectedLineNum()
-    {
-        return $this->getParkeeConnectedLineNum();
-    }
-
-    /**
-     * Returns key: 'ConnectedLineName'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeConnectedLineName()}.
-     *
-     * @return string
-     */
-    public function getConnectedLineName()
-    {
-        return $this->getParkeeConnectedLineName();
-    }
-
-    /**
-     * Returns key: 'Channel'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeChannel()}.
-     *
-     * @return string
-     */
-    public function getChannel()
-    {
-        return $this->getParkeeChannel();
-    }
-
-    /**
-     * Returns key: 'CallerIDNum'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDNum()}.
-     *
-     * @return string
-     */
-    public function getCallerIDNum()
-    {
-        return $this->getParkeeCallerIDNum();
-    }
-
-    /**
-     * Returns key: 'CallerIDName'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeCallerIDName()}.
-     *
-     * @return string
-     */
-    public function getCallerIDName()
-    {
-        return $this->getParkeeCallerIDName();
-    }
-
-    /**
-     * Returns key: 'UniqueID'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkeeUniqueid()}.
-     *
-     * @return string
-     */
-    public function getUniqueID()
-    {
-        return $this->getParkeeUniqueid();
-    }
-
-    /**
-     * Returns key: 'Exten'.
-     * @deprecated Deprecated since Asterisk 12. {@use getParkingSpace()}.
-     *
-     * @return string
-     */
-    public function getExtension()
-    {
-        return $this->getParkingSpace();
     }
 
     /**
@@ -174,7 +89,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelState()
     {
@@ -184,7 +99,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelStateDesc()
     {
@@ -234,7 +149,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeAccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeAccountCode()
     {
@@ -244,7 +159,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeContext()
     {
@@ -254,7 +169,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeeExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeExten()
     {
@@ -264,7 +179,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkeePriority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeePriority()
     {
@@ -284,7 +199,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkerDialString'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerDialString()
     {
@@ -314,7 +229,7 @@ class ParkedCallEvent extends EventMessage
     /**
      * Returns key: 'ParkingDuration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingDuration()
     {

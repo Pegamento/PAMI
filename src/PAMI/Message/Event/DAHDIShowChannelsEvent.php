@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when an action DAHDIShowChannel is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when an action DAHDIShowChannel is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'DAHDIChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -58,7 +61,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Signalling'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSignalling()
     {
@@ -68,7 +71,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'SignallingCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSignallingCode()
     {
@@ -78,7 +81,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -89,7 +92,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'DND'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDND()
     {
@@ -99,7 +102,7 @@ class DAHDIShowChannelsEvent extends EventMessage
     /**
      * Returns key: 'Alarm'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAlarm()
     {

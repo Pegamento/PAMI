@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This factory knows which event to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
  * @subpackage Factory.Impl
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -28,18 +28,20 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event\Factory\Impl;
 
 use PAMI\Message\Event\EventMessage;
 use PAMI\Message\Event\UnknownEvent;
 use PAMI\Message\Message;
-use PAMI\Exception\PAMIException;
 
 /**
  * This factory knows which event to return according to a given raw message
  * from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
@@ -53,37 +55,30 @@ class EventFactoryImpl
     /**
      * This is our factory method.
      *
-     * @param string $message Literall message as received from ami.
+     * @param string $message Literal message as received from ami.
      *
      * @return EventMessage
      */
-    public function createFromRaw($message)
+    public function createFromRaw(string $message): EventMessage
     {
-        $eventStart = strpos($message, 'Event: ') + 7;
+        $eventStart = strpos($message, 'Event: ');
+        if ($eventStart === false) {
+            return new UnknownEvent($message);
+        }
+        $eventStart += 7;
         $eventEnd = strpos($message, Message::EOL, $eventStart);
         if ($eventEnd === false) {
             $eventEnd = strlen($message);
         }
         $name = substr($message, $eventStart, $eventEnd - $eventStart);
-        $parts = explode('_', $name);
-        $totalParts = count($parts);
-        for ($i = 0; $i < $totalParts; $i++) {
-            $parts[$i] = ucfirst($parts[$i]);
+        if (!preg_match('/^\w+$/', $name)) {
+            return new UnknownEvent($message);
         }
-        $name = implode('', $parts);
+        $name = implode('', array_map('ucfirst', explode('_', $name)));
         $className = '\\PAMI\\Message\\Event\\' . $name . 'Event';
         if (class_exists($className, true)) {
             return new $className($message);
         }
         return new UnknownEvent($message);
-    }
-
-    /**
-     * Constructor. Nothing to see here, move along.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
     }
 }

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * MCID Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Channel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -69,7 +72,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -81,7 +84,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'ChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -93,7 +96,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'CallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -105,7 +108,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'CallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -117,7 +120,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -129,7 +132,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'ConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -141,7 +144,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Language'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLanguage()
     {
@@ -153,7 +156,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'AccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -165,7 +168,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Context'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -177,7 +180,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Exten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -189,7 +192,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Priority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -201,7 +204,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -213,7 +216,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedid()
     {
@@ -225,7 +228,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNumValid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNumValid()
     {
@@ -237,7 +240,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNum()
     {
@@ -249,7 +252,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDton'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDton()
     {
@@ -261,7 +264,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNumPlan'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNumPlan()
     {
@@ -273,7 +276,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNumPres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNumPres()
     {
@@ -285,7 +288,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNameValid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNameValid()
     {
@@ -297,7 +300,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDName()
     {
@@ -309,7 +312,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNameCharSet'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNameCharSet()
     {
@@ -321,7 +324,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDNamePres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDNamePres()
     {
@@ -333,7 +336,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDSubaddr'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDSubaddr()
     {
@@ -345,7 +348,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDSubaddrType'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDSubaddrType()
     {
@@ -357,7 +360,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDSubaddrOdd'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDSubaddrOdd()
     {
@@ -369,7 +372,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MCallerIDPres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMCallerIDPres()
     {
@@ -381,7 +384,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNumValid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNumValid()
     {
@@ -393,7 +396,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNum()
     {
@@ -405,7 +408,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDton'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDton()
     {
@@ -417,7 +420,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNumPlan'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNumPlan()
     {
@@ -429,7 +432,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNumPres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNumPres()
     {
@@ -441,7 +444,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNameValid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNameValid()
     {
@@ -453,7 +456,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDName()
     {
@@ -465,7 +468,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNameCharSet'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNameCharSet()
     {
@@ -477,7 +480,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDNamePres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDNamePres()
     {
@@ -489,7 +492,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDSubaddr'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDSubaddr()
     {
@@ -501,7 +504,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDSubaddrType'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDSubaddrType()
     {
@@ -513,7 +516,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDSubaddrOdd'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDSubaddrOdd()
     {
@@ -525,7 +528,7 @@ class MCIDEvent extends EventMessage
      *
      * Returns key: 'MConnectedIDPres'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMConnectedIDPres()
     {

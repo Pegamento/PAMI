@@ -1,14 +1,14 @@
 <?php
+
 /**
  * A generic incoming message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -26,14 +26,15 @@
  * limitations under the License.
  *
  */
-namespace PAMI\Message;
 
-use PAMI\Exception\PAMIException;
+declare(strict_types=1);
+
+namespace PAMI\Message;
 
 /**
  * A generic incoming message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message
@@ -47,39 +48,56 @@ abstract class IncomingMessage extends Message
      * Holds original message.
      * @var string
      */
-    protected $rawContent;
+    protected string $rawContent;
 
     /**
      * Metadata. Specific channel variables.
      * @var array<string, array<string, string>>
      */
-    protected $channelVariables;
+    protected array $channelVariables;
 
     /**
-     * Metadata. Specific channel variables.
+     * Metadata. Status variables (Variable: lines), keyed by channel.
      * @var array<string, array<string, string>>
      */
-    protected $statusVariables;
+    protected array $statusVariables;
 
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array<string, mixed>
      */
-    public function __sleep()
+    public function __serialize(): array
     {
-        $ret = parent::__sleep();
-        $ret[] = 'rawContent';
-        return $ret;
+        return parent::__serialize() + [
+            'rawContent' => $this->rawContent,
+            'channelVariables' => $this->channelVariables,
+            'statusVariables' => $this->statusVariables,
+        ];
     }
 
     /**
-     * Returns key 'EventList'. In respones, this will surely be a "start". In
+     * Restores the state produced by __serialize().
+     *
+     * @param array<string, mixed> $data Serialized state.
+     *
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        parent::__unserialize($data);
+        $this->rawContent = $data['rawContent'];
+        $this->channelVariables = $data['channelVariables'];
+        $this->statusVariables = $data['statusVariables'];
+    }
+
+    /**
+     * Returns key 'EventList'. In responses, this will surely be a "start". In
      * events, should be a "complete".
      *
-     * @return string
+     * @return string|null
      */
-    public function getEventList()
+    public function getEventList(): ?string
     {
         return $this->getKey('EventList');
     }
@@ -89,7 +107,7 @@ abstract class IncomingMessage extends Message
      *
      * @return string
      */
-    public function getRawContent()
+    public function getRawContent(): string
     {
         return $this->rawContent;
     }
@@ -100,9 +118,9 @@ abstract class IncomingMessage extends Message
      *
      * The channel names will be lowercased.
      *
-     * @return array
+     * @return array<string, array<string, string>>
      */
-    public function getAllChannelVariables()
+    public function getAllChannelVariables(): array
     {
         return $this->channelVariables;
     }
@@ -114,15 +132,16 @@ abstract class IncomingMessage extends Message
      * @param string $channel Channel name. If not given, will return variables
      * for the "current" channel.
      *
-     * @return array
+     * @return array<string, string>|null
      */
-    public function getChannelVariables($channel = null)
+    public function getChannelVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel'])) {
+            $current = $this->getKey('channel');
+            if ($current === null || $current === '') {
                 return $this->getChannelVariables('default');
             } else {
-                return $this->getChannelVariables($this->keys['channel']);
+                return $this->getChannelVariables($current);
             }
         } else {
             $channel = strtolower($channel);
@@ -134,34 +153,35 @@ abstract class IncomingMessage extends Message
     }
 
     /**
-     * Returns the channel variables for all reported channels.
+     * Returns the status variables for all reported channels.
      * https://github.com/marcelog/PAMI/issues/85
      *
      * The channel names will be lowercased.
      *
-     * @return array
+     * @return array<string, array<string, string>>
      */
-    public function getAllStatusVariables()
+    public function getAllStatusVariables(): array
     {
         return $this->statusVariables;
     }
 
     /**
-     * Returns the channel variables for the given channel.
+     * Returns the status variables for the given channel.
      * https://github.com/marcelog/PAMI/issues/85
      *
      * @param string $channel Channel name. If not given, will return variables
      * for the "current" channel.
      *
-     * @return array
+     * @return array<string, string>|null
      */
-    public function getStatusVariables($channel = null)
+    public function getStatusVariables(?string $channel = null): ?array
     {
         if (is_null($channel)) {
-            if (!isset($this->keys['channel'])) {
+            $current = $this->getKey('channel');
+            if ($current === null || $current === '') {
                 return $this->getStatusVariables('default');
             } else {
-                return $this->getStatusVariables($this->keys['channel']);
+                return $this->getStatusVariables($current);
             }
         } else {
             $channel = strtolower($channel);
@@ -179,11 +199,11 @@ abstract class IncomingMessage extends Message
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct();
-        $this->channelVariables = array('default' => array());
-        $this->statusVariables = array('default' => array());
+        $this->channelVariables = ['default' => []];
+        $this->statusVariables = ['default' => []];
         $this->rawContent = $rawContent;
         $lines = explode(Message::EOL, $rawContent);
         foreach ($lines as $line) {
@@ -201,9 +221,9 @@ abstract class IncomingMessage extends Message
                 $content = explode('=', $value);
                 $name = trim($content[0]);
                 unset($content[0]);
-                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->channelVariables[$chanName][strtolower($name)] = $value;
-                $this->setSanitizedKey('chanvariable', $name);
+                $this->addKey('chanvariable', $name);
             } elseif (!strncmp($name, 'variable', 8)) {
                 // https://github.com/marcelog/PAMI/issues/85
                 $matches = preg_match("/\(([^\)]*)\)/", $name, $captures);
@@ -214,20 +234,16 @@ abstract class IncomingMessage extends Message
                 $content = explode('=', $value);
                 $name = trim($content[0]);
                 unset($content[0]);
-                $value = isset($content[1]) ? trim(implode(':', $content)) : '';
+                $value = isset($content[1]) ? trim(implode('=', $content)) : '';
                 $this->statusVariables[$chanName][strtolower($name)] = $value;
-                $this->setSanitizedKey('variable', $name);
+                $this->addKey('variable', $name);
             }
-            // Added ResponseFactory #d3b0ce8
-            try {
-                $this->setSanitizedKey($name, $value);
-            } catch (PAMIException $e) {
-                throw new PAMIException("Error: '" . $e . "'\n Dump RawContent:\n"  . $this->rawContent ."\n");
-            }
+            $this->addKey($name, $value);
         }
         // https://github.com/marcelog/PAMI/issues/85
-        if (isset($this->keys['channel'])) {
-            $channel = strtolower($this->keys['channel']);
+        $channelName = $this->getKey('channel');
+        if ($channelName !== null && $channelName !== '') {
+            $channel = strtolower($channelName);
 
             if (isset($this->channelVariables[$channel])) {
                 $this->channelVariables[$channel] = array_merge(

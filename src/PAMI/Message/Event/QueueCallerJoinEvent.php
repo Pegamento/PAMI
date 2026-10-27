@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a caller joins a Queue.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a caller joins a Queue.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -56,7 +59,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -66,7 +69,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -76,7 +79,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -86,7 +89,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Count'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCount()
     {
@@ -96,7 +99,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Queue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -106,7 +109,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Position'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPosition()
     {
@@ -116,7 +119,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -126,7 +129,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'CallerIdNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIdNum()
     {
@@ -136,7 +139,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'CallerIdName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIdName()
     {
@@ -146,7 +149,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -156,7 +159,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -166,7 +169,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -176,7 +179,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -186,7 +189,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -196,7 +199,7 @@ class QueueCallerJoinEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {

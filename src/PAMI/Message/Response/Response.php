@@ -1,15 +1,15 @@
 <?php
+
 /**
  * A generic response message from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Response
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,13 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response;
 
-use PAMI\Message\Message;
 use PAMI\Message\IncomingMessage;
 use PAMI\Message\Event\EventMessage;
-use PAMI\Exception\PAMIException;
 
 /**
  * A generic response message from ami.
@@ -52,30 +53,39 @@ abstract class Response extends IncomingMessage
      * Child events.
      * @var EventMessage[]
      */
-    protected $events;
+    protected array $events = [];
 
     /**
      * Is this response completed? (with all its events).
-     * @var boolean
+     * @var bool
      */
-    protected $completed;
+    protected bool $completed;
 
-    /**
-     * Declare var according to PHP8 spec
-     */
-    public $eventsCount;
-    
     /**
      * Serialize function.
      *
-     * @return string[]
+     * @return array<string, mixed>
      */
-    public function __sleep()
+    public function __serialize(): array
     {
-        $ret = parent::__sleep();
-        $ret[] = 'completed';
-        $ret[] = 'events';
-        return $ret;
+        return parent::__serialize() + [
+            'completed' => $this->completed,
+            'events' => $this->events,
+        ];
+    }
+
+    /**
+     * Restores the state produced by __serialize().
+     *
+     * @param array<string, mixed> $data Serialized state.
+     *
+     * @return void
+     */
+    public function __unserialize(array $data): void
+    {
+        parent::__unserialize($data);
+        $this->completed = $data['completed'];
+        $this->events = $data['events'];
     }
 
     /**
@@ -83,9 +93,9 @@ abstract class Response extends IncomingMessage
      * if it's not a list OR it's a list with its last child event containing
      * an EventList = Complete.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isComplete()
+    public function isComplete(): bool
     {
         return $this->completed;
     }
@@ -97,10 +107,11 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function addEvent(EventMessage $event)
+    public function addEvent(EventMessage $event): void
     {
         $this->events[] = $event;
-        if (stristr(($event->getEventList() ?? ''), 'complete') !== false
+        if (
+            stristr(($event->getEventList() ?? ''), 'complete') !== false
             || stristr(($event->getName() ?? ''), 'complete') !== false
             || stristr(($event->getName() ?? ''), 'DBGetResponse') !== false
         ) {
@@ -113,7 +124,7 @@ abstract class Response extends IncomingMessage
      *
      * @return EventMessage[]
      */
-    public function getEvents()
+    public function getEvents(): array
     {
         return $this->events;
     }
@@ -121,11 +132,11 @@ abstract class Response extends IncomingMessage
     /**
      * Checks if the Response field has the word Error in it.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isSuccess()
+    public function isSuccess(): bool
     {
-        return stristr(($this->getKey('Response') ?? ''), 'Error') === false;
+        return stristr(($this->getKey('response') ?? ''), 'Error') === false;
     }
 
     /**
@@ -133,24 +144,24 @@ abstract class Response extends IncomingMessage
      * word 'start' in it. Another way is to have a Message key, like:
      * Message: Result will follow
      *
-     * @return boolean
+     * @return bool
      */
-    public function isList()
+    public function isList(): bool
     {
         return
-            stristr(($this->getKey('EventList') ?? 'empty'), 'start') !== false
+            stristr(($this->getKey('eventlist') ?? 'empty'), 'start') !== false
             || stristr(($this->getMessage() ?? 'empty'), 'follow') !== false
         ;
     }
 
     /**
-     * Returns key: 'Privilege'.
+     * Returns key: 'Message'.
      *
-     * @return string
+     * @return string|null
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
-        return $this->getKey('Message');
+        return $this->getKey('message');
     }
 
     /**
@@ -161,7 +172,7 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function setActionId($actionId)
+    public function setActionId(string $actionId): void
     {
         $this->setKey('ActionId', $actionId);
     }
@@ -173,11 +184,9 @@ abstract class Response extends IncomingMessage
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
-        $this->events = array();
-        $this->eventsCount = 0;
         $this->completed = !$this->isList();
     }
 }

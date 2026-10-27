@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueueMemberRingInUse Action
  *
@@ -6,7 +7,7 @@
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -14,7 +15,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -32,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -52,7 +55,7 @@ class QueueMemberRingInUseAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($interface, $ringinuse)
+    public function __construct(string $interface, string $ringinuse)
     {
         parent::__construct('QueueMemberRingInUse');
         $this->setKey('Interface', $interface);
@@ -67,7 +70,7 @@ class QueueMemberRingInUseAction extends ActionMessage
      *
      * @return void
      */
-    public function setQueue($queue)
+    public function setQueue(string $queue): void
     {
         $this->setKey('Queue', $queue);
     }

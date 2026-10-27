@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Park action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Park action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,22 +49,26 @@ class ParkAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string  $channel1 Channel name to park.
-     * @param string  $channel2 Channel to announce park info to (and return to if timeout).
-     * @param integer $timeout  Number of milliseconds to wait before callback.
-     * @param string  $lot      Parking lot to park channel in.
+     * @param string          $channel1       Channel name to park.
+     * @param string          $timeoutChannel Channel name used to build the dial string if the parked channel times out.
+     * @param string|int|null $timeout        Number of milliseconds to wait before callback.
+     * @param string|null     $lot            Parking lot to park channel in.
      *
      * @return void
      */
-    public function __construct($channel1, $channel2, $timeout = false, $lot = false)
-    {
+    public function __construct(
+        string $channel1,
+        string $timeoutChannel,
+        string|int|null $timeout = null,
+        ?string $lot = null
+    ) {
         parent::__construct('Park');
         $this->setKey('Channel', $channel1);
-        $this->setKey('Channel2', $channel2);
-        if ($timeout != false) {
-            $this->setKey('Timeout', $timeout);
+        $this->setKey('TimeoutChannel', $timeoutChannel);
+        if ($timeout !== null) {
+            $this->setKey('Timeout', (string) $timeout);
         }
-        if ($lot != false) {
+        if ($lot !== null) {
             $this->setKey('Parkinglot', $lot);
         }
     }

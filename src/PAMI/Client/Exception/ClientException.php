@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Connection/Protocol exception.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
  * @subpackage Exception
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Client\Exception;
 
 use PAMI\Exception\PAMIException;
@@ -34,7 +37,7 @@ use PAMI\Exception\PAMIException;
 /**
  * Connection/Protocol exception.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Client
@@ -45,5 +48,4 @@ use PAMI\Exception\PAMIException;
  */
 class ClientException extends PAMIException
 {
-
 }

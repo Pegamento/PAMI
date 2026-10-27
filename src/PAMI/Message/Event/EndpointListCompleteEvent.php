@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Provide final information about an endpoint list.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Niklas Larsson <niklas@tese.se>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Niklas Larsson <niklas@tese.se>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Provide final information about an endpoint list.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class EndpointListCompleteEvent extends EventMessage
     /**
      * Shows count of returned items.
      *
-     * @return key: 'ListItems'.
+     * @return string|int|float|bool|null 'ListItems'.
      */
     public function getListItems()
     {

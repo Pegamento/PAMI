@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Redirect action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Redirect action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,7 +53,7 @@ class RedirectAction extends ActionMessage
      *
      * @return void
      */
-    public function setExtraChannel($channel)
+    public function setExtraChannel(string $channel): void
     {
         $this->setKey('ExtraChannel', $channel);
     }
@@ -62,7 +65,7 @@ class RedirectAction extends ActionMessage
      *
      * @return void
      */
-    public function setExtraExtension($extension)
+    public function setExtraExtension(string $extension): void
     {
         $this->setKey('ExtraExten', $extension);
     }
@@ -74,7 +77,7 @@ class RedirectAction extends ActionMessage
      *
      * @return void
      */
-    public function setExtraContext($context)
+    public function setExtraContext(string $context): void
     {
         $this->setKey('ExtraContext', $context);
     }
@@ -86,7 +89,7 @@ class RedirectAction extends ActionMessage
      *
      * @return void
      */
-    public function setExtraPriority($priority)
+    public function setExtraPriority(string $priority): void
     {
         $this->setKey('ExtraPriority', $priority);
     }
@@ -101,7 +104,7 @@ class RedirectAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $extension, $context, $priority)
+    public function __construct(string $channel, string $extension, string $context, string $priority)
     {
         parent::__construct('Redirect');
         $this->setKey('Channel', $channel);

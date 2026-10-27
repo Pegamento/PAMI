@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for agents.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered for agents.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -58,7 +61,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Agent'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAgent()
     {
@@ -68,7 +71,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'Name'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getName()
     {
@@ -78,7 +81,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'LoggedInChan'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -88,7 +91,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'LoggedInTime'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getLoggedInTime()
     {
@@ -98,7 +101,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingTo'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getTalkingTo()
     {
@@ -108,7 +111,7 @@ class AgentsEvent extends EventMessage
     /**
      * Returns key: 'TalkingToChannel'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getTalkingToChannel()
     {

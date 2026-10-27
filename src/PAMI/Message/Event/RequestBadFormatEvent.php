@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when an agent logs in.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Diederik de Groot <ddegroot@users.sf.net>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Diederik de Groot <ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when an agent logs in.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -45,11 +48,10 @@ use PAMI\Message\Event\EventMessage;
  */
 class RequestBadFormatEvent extends EventMessage
 {
-
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -59,7 +61,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'SequenceNumber'.
      *
-     * @return int
+     * @return string|int|float|bool|null
      */
     public function getSequenceNumber()
     {
@@ -69,7 +71,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'File'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFile()
     {
@@ -79,7 +81,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'Line'.
      *
-     * @return int
+     * @return string|int|float|bool|null
      */
     public function getLine()
     {
@@ -89,7 +91,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'Func'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFunc()
     {
@@ -99,7 +101,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'EventTV'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventTV()
     {
@@ -109,17 +111,17 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'Severity'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSeverity()
     {
         return $this->getKey('Severity');
     }
-    
+
     /**
      * Returns key: 'Service'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getService()
     {
@@ -129,7 +131,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'EventVersion'.
      *
-     * @return int
+     * @return string|int|float|bool|null
      */
     public function getEventVersion()
     {
@@ -139,7 +141,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'AccountID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountID()
     {
@@ -149,7 +151,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'SessionID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionID()
     {
@@ -159,7 +161,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'LocalAddress'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalAddress()
     {
@@ -169,7 +171,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'RemoteAddress'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRemoteAddress()
     {
@@ -189,7 +191,7 @@ class RequestBadFormatEvent extends EventMessage
     /**
      * Returns key: 'SessionTV'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionTV()
     {

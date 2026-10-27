@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PJSIPNotify Action
  *
@@ -6,7 +7,7 @@
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -14,7 +15,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -32,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -49,7 +52,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($variable)
+    public function __construct(string $variable)
     {
         parent::__construct('PJSIPNotify');
         $this->setKey('Variable', $variable);
@@ -63,7 +66,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(string $endpoint): void
     {
         $this->setKey('Endpoint', $endpoint);
     }
@@ -75,7 +78,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setURI($uri)
+    public function setURI(string $uri): void
     {
         $this->setKey('URI', $uri);
     }
@@ -87,7 +90,7 @@ class PJSIPNotifyAction extends ActionMessage
      *
      * @return void
      */
-    public function setchannel($channel)
+    public function setchannel(string $channel): void
     {
         $this->setKey('channel', $channel);
     }

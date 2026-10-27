@@ -1,11 +1,12 @@
 <?php
+
 /**
  * FAXStats Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Number of active FAX sessions
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCurrentSessions()
     {
@@ -69,7 +72,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Number of reserved FAX sessions
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReservedSessions()
     {
@@ -81,7 +84,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions for which Asterisk is/was the transmitter
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransmitAttempts()
     {
@@ -93,7 +96,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions for which Asterisk is/was the recipient
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReceiveAttempts()
     {
@@ -105,7 +108,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions which have been completed successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCompletedFAXes()
     {
@@ -117,7 +120,7 @@ class FAXStatsEvent extends EventMessage
      *
      * Returns:Total FAX sessions which failed to complete successfully
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFailedFAXes()
     {

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * AGI action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * AGI action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,11 +49,11 @@ class AGIAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param $channel
-     * @param $command
-     * @param string $commandId
+     * @param string $channel
+     * @param string $command
+     * @param string|null $commandId
      */
-    public function __construct($channel, $command, $commandId = null)
+    public function __construct(string $channel, string $command, ?string $commandId = null)
     {
         parent::__construct('AGI');
         $this->setKey('Channel', $channel);

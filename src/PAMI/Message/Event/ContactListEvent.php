@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ContactList Event
  * isListEntry and Part Action: PJSIPShowContacts
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The object's type. This will always be 'contact'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -69,7 +72,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -81,7 +84,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:IP address of the last Via header in REGISTER request. Will only appear in the event if available.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getViaAddr()
     {
@@ -93,7 +96,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:Port number of the last Via header in REGISTER request. Will only appear in the event if available.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getViaPort()
     {
@@ -105,7 +108,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The elapsed time in decimal seconds after which an OPTIONS message is sent before the contact is considered unavailable.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQualifyTimeout()
     {
@@ -117,7 +120,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:Content of the Call-ID header in REGISTER request. Will only appear in the event if available.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallId()
     {
@@ -129,7 +132,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:Asterisk Server name.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRegServer()
     {
@@ -141,7 +144,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:If true delete the contact on Asterisk restart/boot.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPruneOnBoot()
     {
@@ -153,7 +156,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The Path header received on the REGISTER.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPath()
     {
@@ -165,7 +168,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The name of the endpoint associated with this information.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpoint()
     {
@@ -177,7 +180,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:A boolean indicating whether a qualify should be authenticated.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAuthenticateQualify()
     {
@@ -189,7 +192,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:This contact's URI.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUri()
     {
@@ -201,7 +204,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The interval in seconds at which the contact will be qualified.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQualifyFrequency()
     {
@@ -213,7 +216,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:Content of the User-Agent header in REGISTER request
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUserAgent()
     {
@@ -225,7 +228,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:Absolute time that this contact is no longer valid after
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExpirationTime()
     {
@@ -237,7 +240,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The contact's outbound proxy.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOutboundProxy()
     {
@@ -249,7 +252,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:This contact's status.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -261,7 +264,7 @@ class ContactListEvent extends EventMessage
      *
      * Returns:The round trip time in microseconds.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRoundtripUsec()
     {

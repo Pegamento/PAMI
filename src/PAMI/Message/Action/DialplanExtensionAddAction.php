@@ -1,15 +1,15 @@
 <?php
+
 /**
  * GetConfig action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * GetConfig action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,34 +51,34 @@ class DialplanExtensionAddAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($context, $extension, $priority, $application, $replace = false)
+    public function __construct(string $context, string $extension, string|int $priority, string $application, bool $replace = false)
     {
         parent::__construct('DialplanExtensionAdd');
         $this->setKey('context', $context);
         $this->setKey('extension', $extension);
-        $this->setKey('priority', $priority);
+        $this->setKey('priority', (string) $priority);
         $this->setKey('application', $application);
-        $this->setKey('replace', $replace);
+        $this->setKey('replace', (string) $replace);
     }
-    
+
     /**
      * set Optional ApplicationData.
      *
-     * @param string input
+     * @param string $input
      * @return void
      */
-    public function setApplicationData($input)
+    public function setApplicationData(string $input): void
     {
         $this->setKey('applicationData', $input);
     }
-    
+
     /**
      * set Replace previous entry at this priority.
      *
-     * @param boolean input
+     * @param bool $input
      * @return void
      */
-    public function setReplace($input)
+    public function setReplace(bool $input): void
     {
         $this->setKey('replace', $input ? 'true' : 'false');
     }

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for a QueueStatus action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Ales Farcnik <@alesf>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered for a QueueStatus action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'Queue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -58,9 +61,9 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'Position'.
      *
-     * @return integer
+     * @return int
      */
-    public function getPosition()
+    public function getPosition(): int
     {
         return intval($this->getKey('Position'));
     }
@@ -68,7 +71,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -78,7 +81,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -88,7 +91,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -98,7 +101,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -108,7 +111,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -118,7 +121,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -128,7 +131,7 @@ class QueueEntryEvent extends EventMessage
     /**
      * Returns key: 'Wait'.
      *
-     * @return float
+     * @return string|int|float|bool|null
      */
     public function getWait()
     {

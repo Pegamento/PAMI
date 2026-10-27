@@ -1,15 +1,15 @@
 <?php
+
 /**
  * LocalOptimizeAwayaction message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * LocalOptimizeAway action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,7 +53,7 @@ class LocalOptimizeAwayAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('LocalOptimizeAway');
         $this->setKey('Channel', $channel);

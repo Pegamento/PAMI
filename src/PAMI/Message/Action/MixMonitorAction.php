@@ -1,15 +1,15 @@
 <?php
+
 /**
  * MixMonitor action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Matt Styles <mstyleshk@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * MixMonitor action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,7 +53,7 @@ class MixMonitorAction extends ActionMessage
      *
      * @return void
      */
-    public function setFile($file)
+    public function setFile(string $file): void
     {
         $this->setKey('File', $file);
     }
@@ -62,7 +65,7 @@ class MixMonitorAction extends ActionMessage
      *
      * @return void
      */
-    public function setOptions(array $options)
+    public function setOptions(array $options): void
     {
         $this->setKey('Options', implode('', $options));
     }
@@ -74,7 +77,7 @@ class MixMonitorAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel)
+    public function __construct(string $channel)
     {
         parent::__construct('MixMonitor');
         $this->setKey('Channel', $channel);

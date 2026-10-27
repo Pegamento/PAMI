@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a new extension is accessed.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 /**
  * Event triggered when a new extension is accessed.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,7 +49,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -56,22 +59,11 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
         return $this->getKey('Channel');
-    }
-
-    /**
-     * Returns key: 'Extension'.
-     * @deprecated Please use {@see getExten()}.
-     *
-     * @return string
-     */
-    public function getExtension()
-    {
-        return $this->getKey('Extension');
     }
 
     /**
@@ -87,7 +79,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -97,7 +89,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -107,7 +99,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'Application'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplication()
     {
@@ -117,7 +109,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'AppData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplicationData()
     {
@@ -127,7 +119,7 @@ class NewExtenEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

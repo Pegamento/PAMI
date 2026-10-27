@@ -1,15 +1,15 @@
 <?php
+
 /**
  * A generic response message from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Response
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Response;
 
 use PAMI\Message\Response\Response;
@@ -34,7 +37,7 @@ use PAMI\Message\Response\Response;
 /**
  * A generic response message from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -52,7 +55,7 @@ class GenericResponse extends Response
      *
      * @return void
      */
-    public function __construct($rawContent)
+    public function __construct(string $rawContent)
     {
         parent::__construct($rawContent);
     }

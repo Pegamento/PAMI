@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for each conference when an action ConfbridgeListRooms is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered for each conference when an action ConfbridgeListRooms is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Conference'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -58,7 +61,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Parties'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParties()
     {
@@ -68,7 +71,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Marked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMarked()
     {
@@ -78,7 +81,7 @@ class ConfbridgeListRoomsEvent extends EventMessage
     /**
      * Returns key: 'Locked'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocked()
     {

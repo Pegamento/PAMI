@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Implement this interface in your own classes to make them event listeners.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
  * @subpackage Listener
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Listener;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Implement this interface in your own classes to make them event listeners.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Event
@@ -52,5 +55,5 @@ interface IEventListener
      *
      * @return void
      */
-    public function handle(EventMessage $event);
+    public function handle(EventMessage $event): void;
 }

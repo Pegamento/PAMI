@@ -1,14 +1,14 @@
 <?php
+
 /**
  * Interface for an ami client.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Client
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -26,22 +26,23 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Client;
 
 use PAMI\Message\OutgoingMessage;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 /**
  * Interface for an ami client.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Client
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  */
 interface IClient
@@ -52,7 +53,7 @@ interface IClient
      * @throws \PAMI\Client\Exception\ClientException
      * @return void
      */
-    public function open();
+    public function open(): void;
 
     /**
      * Main processing loop. Also called from send(), you should call this in
@@ -61,7 +62,7 @@ interface IClient
      *
      * @return void
      */
-    public function process();
+    public function process(): void;
 
     /**
      * Registers the given listener so it can receive events. Returns the generated
@@ -69,12 +70,12 @@ interface IClient
      * and an array containing the object and name of the method to invoke. Can specify
      * an optional predicate to invoke before calling the callback.
      *
-     * @param mixed $listener
-     * @param Closure|null $predicate
+     * @param \PAMI\Listener\IEventListener|\Closure|array $listener
+     * @param \Closure|array<string, string>|null $predicate Closure, or map of key => regex.
      *
      * @return string
      */
-    public function registerEventListener($listener, $predicate = null);
+    public function registerEventListener(\PAMI\Listener\IEventListener|\Closure|array $listener, \Closure|array|null $predicate = null): string;
 
     /**
      * Unregisters an event listener.
@@ -83,14 +84,17 @@ interface IClient
      *
      * @return void
      */
-    public function unregisterEventListener($listenerId);
+    public function unregisterEventListener(string $listenerId): void;
 
     /**
      * Closes the connection to ami.
      *
+     * When the client is logged in, this sends Logoff and waits for the reply
+     * before closing the socket. That wait is bounded by read_timeout.
+     *
      * @return void
      */
-    public function close();
+    public function close(): void;
 
     /**
      * Sends a message to ami.
@@ -101,7 +105,7 @@ interface IClient
      * @throws \PAMI\Client\Exception\ClientException
      * @return \PAMI\Message\Response\Response
      */
-    public function send(OutgoingMessage $message);
+    public function send(OutgoingMessage $message): \PAMI\Message\Response\Response;
 
     /**
      * Sets the logger implementation.
@@ -110,5 +114,5 @@ interface IClient
      *
      * @return void
      */
-    public function setLogger(LoggerInterface $logger);
+    public function setLogger(LoggerInterface $logger): void;
 }

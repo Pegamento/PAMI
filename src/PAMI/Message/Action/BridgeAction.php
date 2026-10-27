@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Bridge action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Bridge action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -52,7 +55,7 @@ class BridgeAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel1, $channel2, $tone = false)
+    public function __construct(string $channel1, string $channel2, bool $tone = false)
     {
         parent::__construct('Bridge');
         $this->setKey('Channel1', $channel1);

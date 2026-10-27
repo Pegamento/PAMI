@@ -1,11 +1,12 @@
 <?php
+
 /**
  * AgentLogoff Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns:Agent ID of the agent.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAgent()
     {
@@ -69,7 +72,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns:The number of seconds the agent was logged in.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLogintime()
     {
@@ -80,7 +83,7 @@ class AgentLogoffEvent extends EventMessage
     /**
      * get Agent Privilege
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -92,7 +95,7 @@ class AgentLogoffEvent extends EventMessage
      *
      * Returns key: 'Uniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {

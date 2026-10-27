@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for a change in a queue member (pause/unpause).
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered for a change in a queue member (pause/unpause).
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'Queue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -68,7 +71,7 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'Location'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocation()
     {
@@ -78,7 +81,7 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'MemberName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMemberName()
     {
@@ -88,9 +91,9 @@ class QueueMemberPausedEvent extends EventMessage
     /**
      * Returns key: 'Paused'.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getPaused()
+    public function getPaused(): bool
     {
         return intval($this->getKey('Paused')) != 0;
     }

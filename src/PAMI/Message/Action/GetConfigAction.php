@@ -1,15 +1,15 @@
 <?php
+
 /**
  * GetConfig action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * GetConfig action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -47,15 +50,15 @@ class GetConfigAction extends ActionMessage
      * Constructor.
      *
      * @param string  $filename Configuration filename (e.g.: foo.conf).
-     * @param boolean $category Category in configuration file.
+     * @param string|null $category Category in configuration file.
      *
      * @return void
      */
-    public function __construct($filename, $category = false)
+    public function __construct(string $filename, ?string $category = null)
     {
         parent::__construct('GetConfig');
         $this->setKey('Filename', $filename);
-        if ($category != false) {
+        if ($category !== null) {
             $this->setKey('Category', $category);
         }
     }

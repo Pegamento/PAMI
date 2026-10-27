@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PAMI\AsyncAgi\Event;
 
 /**
@@ -6,7 +9,6 @@ namespace PAMI\AsyncAgi\Event;
  */
 interface IAsyncAgiStartEvent
 {
-
     /**
      * Returns key: 'Privilege'.
      *

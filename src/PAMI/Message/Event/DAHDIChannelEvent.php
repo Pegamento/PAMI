@@ -1,16 +1,16 @@
 <?php
+
 /**
  * Event triggered for the end of the list when an action DAHDIChannel
  * is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Adrián Zúñiga <jaime.ziga@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -28,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -37,7 +40,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -47,7 +50,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'DAHDIChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDAHDIChannel()
     {
@@ -57,7 +60,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'DAHDISpan'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDAHDISpan()
     {
@@ -67,7 +70,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -77,7 +80,7 @@ class DAHDIChannelEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {

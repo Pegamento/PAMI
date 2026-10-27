@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a call is transfered.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when a call is transfered.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferMethod'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferMethod()
     {
@@ -68,7 +71,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferType()
     {
@@ -78,7 +81,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -88,7 +91,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TargetChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetChannel()
     {
@@ -98,7 +101,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'SIP-Callid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSipCallID()
     {
@@ -108,7 +111,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -118,7 +121,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TargetUniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTargetUniqueID()
     {
@@ -128,7 +131,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferExten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferExten()
     {
@@ -138,7 +141,7 @@ class TransferEvent extends EventMessage
     /**
      * Returns key: 'TransferContext'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransferContext()
     {

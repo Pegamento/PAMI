@@ -1,15 +1,15 @@
 <?php
+
 /**
  * QueueStatus action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * QueueStatus action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -50,13 +53,13 @@ class QueueStatusAction extends ActionMessage
      *
      * @param string $member
      */
-    public function __construct($queue = null, $member = null)
+    public function __construct(?string $queue = null, ?string $member = null)
     {
         parent::__construct('QueueStatus');
-        if ($queue != null) {
+        if ($queue !== null) {
             $this->setKey('Queue', $queue);
         }
-        if ($member != null) {
+        if ($member !== null) {
             $this->setKey('Member', $member);
         }
     }

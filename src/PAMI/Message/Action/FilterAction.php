@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Filter Action
  *
@@ -6,7 +7,7 @@
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -14,7 +15,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -32,6 +32,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
@@ -62,7 +65,7 @@ class FilterAction extends ActionMessage
      *
      * @return void
      */
-    public function setOperation($operation)
+    public function setOperation(string $operation): void
     {
         $this->setKey('Operation', $operation);
     }
@@ -74,7 +77,7 @@ class FilterAction extends ActionMessage
      *
      * @return void
      */
-    public function setFilter($filter)
+    public function setFilter(string $filter): void
     {
         $this->setKey('Filter', $filter);
     }

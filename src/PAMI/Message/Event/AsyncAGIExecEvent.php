@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when AsyncAGI completes an AGI command.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\AsyncAgi\Event\IAsyncAgiExecEvent;
@@ -34,7 +37,7 @@ use PAMI\AsyncAgi\Event\IAsyncAgiExecEvent;
 /**
  * Event triggered when AsyncAGI completes an AGI command.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +71,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -78,7 +81,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -88,7 +91,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -98,7 +101,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -108,7 +111,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -118,7 +121,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -128,7 +131,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -138,7 +141,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -148,7 +151,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -158,7 +161,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -168,7 +171,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -178,7 +181,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'CommandID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCommandID()
     {
@@ -188,7 +191,7 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     /**
      * Returns key: 'Result'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getResult()
     {
@@ -203,6 +206,9 @@ class AsyncAGIExecEvent extends EventMessage implements IAsyncAgiExecEvent
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->setKey('Result', urldecode($this->getResult()));
+        $result = $this->getStringKey('Result');
+        if ($result !== null) {
+            $this->setKey('Result', rawurldecode($result));
+        }
     }
 }

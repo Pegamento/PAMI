@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a new channel is created.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when a new channel is created.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +71,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -78,7 +81,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -88,7 +91,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -98,7 +101,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -108,7 +111,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -118,7 +121,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -128,7 +131,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -138,7 +141,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -148,7 +151,7 @@ class NewchannelEvent extends EventMessage
     /**
      * Returns key: 'LinkedId'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedId()
     {

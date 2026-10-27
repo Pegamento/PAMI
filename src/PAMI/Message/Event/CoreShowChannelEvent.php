@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when an action CoreShowChannel is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when an action CoreShowChannel is issued.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +71,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -78,7 +81,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -88,7 +91,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Extension'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -99,7 +102,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -109,7 +112,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -119,7 +122,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -129,7 +132,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Application'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplication()
     {
@@ -139,7 +142,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'ApplicationData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplicationData()
     {
@@ -149,7 +152,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -159,7 +162,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'Duration'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDuration()
     {
@@ -169,7 +172,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -179,7 +182,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'BridgedChannel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgedChannel()
     {
@@ -189,7 +192,7 @@ class CoreShowChannelEvent extends EventMessage
     /**
      * Returns key: 'BridgedUniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgedUniqueID()
     {

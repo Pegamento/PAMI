@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Hangup action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * Hangup action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -51,13 +54,13 @@ class HangupAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($channel, $cause = null)
+    public function __construct(string $channel, ?int $cause = null)
     {
         parent::__construct('Hangup');
         $this->setKey('Channel', $channel);
 
         if (null !== $cause) {
-            $this->setKey('Cause', $cause);
+            $this->setKey('Cause', (string) $cause);
         }
     }
 }

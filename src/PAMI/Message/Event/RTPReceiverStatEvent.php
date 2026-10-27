@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when exchanging rtp stats.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when exchanging rtp stats.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'SSRC'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSSRC()
     {
@@ -68,7 +71,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'ReceivedPackets'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReceivedPackets()
     {
@@ -78,7 +81,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'LostPackets'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLostPackets()
     {
@@ -88,7 +91,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'Jitter'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getJitter()
     {
@@ -98,7 +101,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'Transit'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTransit()
     {
@@ -108,7 +111,7 @@ class RTPReceiverStatEvent extends EventMessage
     /**
      * Returns key: 'RRCount'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRRCount()
     {

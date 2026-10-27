@@ -2,14 +2,13 @@
 /**
  * This class will test the ami response factory
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
  * @subpackage ReponseFactory
  * @author     Diederik de Groot <ddegroot@users.sf.net>
  * @license    http://marcelog.github.com/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -29,11 +28,12 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test the response factory
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test
@@ -45,36 +45,34 @@ namespace PAMI\Client\Impl {
     class Test_Factories extends BaseTestCase
     {
         /**
-         * @test
          *
          * we might want to revise this behaviour, Response ie. GenericReponse should catch this and throw an exception
          */
+        #[Test]
         public function can_create_genericresponse_with_empty_message()
         {
             $factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
             $responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 
-            $response = $factory->createFromRaw('', false);
+            $response = $factory->createFromRaw('', null);
 
             // we might want to revise this behaviour, GenericReponse should capture this i think and throw
             $this->assertTrue($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_create_genericresponse_using_responsefactory()
         {
             $factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
             $responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 
-            $response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', false);
+            $response = $factory->createFromRaw("Response: Success\r\nMessage: Imaginary\r\n\r\n", null);
             $this->assertTrue($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_create_genericresponse_by_outgoingMessageClass()
         {
             $factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
@@ -82,13 +80,12 @@ namespace PAMI\Client\Impl {
             $action = new $actionClass('test', 'boo');
             $responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 
-            $response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', $action);
+            $response = $factory->createFromRaw("Response: Success\r\nMessage: Imaginary\r\n\r\n", $action);
             $this->assertTrue($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_create_genericresponse_by_responsehandler()
         {
             $factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
@@ -97,28 +94,9 @@ namespace PAMI\Client\Impl {
             $action->setResponseHandler('Generic');
             $responseExpect = "PAMI\\Message\\Response\\GenericResponse";
 
-            $response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', $action);
+            $response = $factory->createFromRaw("Response: Success\r\nMessage: Imaginary\r\n\r\n", $action);
             $this->assertTrue($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));
         }
 
-        /**
-         * @ignore
-         * @test
-         * @expectedException PAMI\Exception\PAMIException
-         */
-        /*
-        public function can_get_exception_using_responsefactory_with_outgoingMessageClass()
-        {
-            $factory = new \PAMI\Message\Response\Factory\Impl\ResponseFactoryImpl();
-            $actionClass = "\\PAMI\\Message\\Action\\LoginAction";
-            $action = new $actionClass('test', 'boo');
-            $action->setResponseHandler('DoesNotExist');
-            $responseExpect = "PAMI\\Message\\Response\\DoesNotExistResponse";
-            $actualResponseHandlerSet = $action->getResponseHandler();
-            $this->assertNotEquals($responseExpect, $actualResponseHandlerSet);
-            $response = $factory->createFromRaw('Response: Success\r\nMessage: Imaginary\r\n\r\n', $action);
-            $this->assertFalse($response instanceof $responseExpect, 'Expected Class: ' . $responseExpect .  ', But got class: ' . get_class($response));
-        }
-        */
     }
 }

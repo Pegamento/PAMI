@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a channel starts AsyncAGI command processing.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
@@ -34,7 +37,7 @@ use PAMI\AsyncAgi\Event\IAsyncAgiStartEvent;
 /**
  * Event triggered when a channel starts AsyncAGI command processing.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -68,7 +71,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'ChannelState'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelState()
     {
@@ -78,7 +81,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'ChannelStateDesc'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelStateDesc()
     {
@@ -88,7 +91,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'CallerIDNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDNum()
     {
@@ -98,7 +101,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'CallerIDName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDName()
     {
@@ -108,7 +111,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'ConnectedLineNum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineNum()
     {
@@ -118,7 +121,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'ConnectedLineName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConnectedLineName()
     {
@@ -128,7 +131,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -138,7 +141,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -148,7 +151,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -158,7 +161,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Priority'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPriority()
     {
@@ -168,7 +171,7 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     /**
      * Returns key: 'Uniqueid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueid()
     {
@@ -176,19 +179,9 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     }
 
     /**
-     * @deprecated
-     * @use AsyncAGIStartEvent::getEnvironment()
-     * @return string
-     */
-    public function getEnv()
-    {
-        return $this->getEnvironment();
-    }
-
-    /**
      * Returns key: 'Env'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEnvironment()
     {
@@ -203,6 +196,9 @@ class AsyncAGIStartEvent extends EventMessage implements IAsyncAgiStartEvent
     public function __construct($rawContent)
     {
         parent::__construct($rawContent);
-        $this->setKey('Env', urldecode($this->getEnvironment()));
+        $env = $this->getStringKey('Env');
+        if ($env !== null) {
+            $this->setKey('Env', rawurldecode($env));
+        }
     }
 }

@@ -2,14 +2,13 @@
 /**
  * This class will test the ami client
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
  * @subpackage Client
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -29,11 +28,12 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test the ami client
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test
@@ -44,9 +44,7 @@ namespace PAMI\Client\Impl {
      */
     class Test_Client extends BaseTestCase
     {
-        /**
-         * @test
-         */
+        #[Test]
         public function can_get_client()
         {
             $options = array(
@@ -60,9 +58,8 @@ namespace PAMI\Client\Impl {
             $client = new \PAMI\Client\Impl\ClientImpl($options);
             $this->assertTrue($client instanceof \PAMI\Client\Impl\ClientImpl);
         }
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_set_logger()
         {
             $options = array(
@@ -77,9 +74,8 @@ namespace PAMI\Client\Impl {
             $client->setLogger(new \Psr\Log\NullLogger);
             $this->assertTrue($client->getLogger() instanceof \Psr\Log\NullLogger);
         }
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_connect_timeout()
         {
             $options = array(
@@ -101,9 +97,9 @@ namespace PAMI\Client\Impl {
             $this->assertTrue($length >= 2 && $length <= 5);
         }
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function can_detect_other_peer()
         {
             global $mock_stream_socket_client;
@@ -126,9 +122,8 @@ namespace PAMI\Client\Impl {
             $client = new \PAMI\Client\Impl\ClientImpl($options);
             $client->open();
         }
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_register_event_listener()
         {
             global $mock_stream_socket_client;
@@ -171,9 +166,8 @@ namespace PAMI\Client\Impl {
             $this->assertTrue($event instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_register_closure_event_listener()
         {
             global $mock_stream_socket_client;
@@ -219,9 +213,7 @@ namespace PAMI\Client\Impl {
             $this->assertTrue($resultVariable instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
-        /**
-         * @test
-         */
+        #[Test]
         public function can_register_method_event_listener()
         {
             global $mock_stream_socket_client;
@@ -266,9 +258,8 @@ namespace PAMI\Client\Impl {
             $this->assertTrue($event instanceof \PAMI\Message\Event\NewchannelEvent);
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_unregister_event_listener()
         {
             global $mock_stream_socket_client;
@@ -312,9 +303,8 @@ namespace PAMI\Client\Impl {
             $this->assertNull(SomeListenerClass::$event);
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_filter_with_predicate()
         {
             global $mock_stream_socket_client;
@@ -363,9 +353,67 @@ namespace PAMI\Client\Impl {
             $this->assertFalse($resultVariable);
         }
 
-        /**
-         * @test
-         */
+        #[Test]
+        public function can_filter_with_int_predicate()
+        {
+            global $mock_stream_socket_client;
+            global $mock_stream_set_blocking;
+            global $mockTime;
+            global $standardAMIStart;
+            $mockTime = true;
+            $mock_stream_socket_client = true;
+            $mock_stream_set_blocking = true;
+            $options = array(
+            'host' => '2.3.4.5',
+            'scheme' => 'tcp://',
+            'port' => 9999,
+            'username' => 'asd',
+            'secret' => 'asd',
+            'connect_timeout' => 10,
+            'read_timeout' => 10
+            );
+            $write = array(
+            "action: Login\r\nactionid: 1432.123\r\nusername: asd\r\nsecret: asd\r\n"
+            );
+            setFgetsMock($standardAMIStart, $write);
+            $client = new \PAMI\Client\Impl\ClientImpl($options);
+            $matched = false;
+            $unmatched = false;
+            $client->registerEventListener(
+                function () use (&$matched) {
+                    $matched = true;
+                },
+                function ($event) {
+                    return preg_match('/PJSIP/', (string) $event->getKey('Channel'));
+                }
+            );
+            $client->registerEventListener(
+                function () use (&$unmatched) {
+                    $unmatched = true;
+                },
+                function ($event) {
+                    return preg_match('/^SIP\//', (string) $event->getKey('Channel'));
+                }
+            );
+            $client->open();
+            $event = array(
+            'Event: Newchannel',
+            'Privilege: system,all',
+            'Channel: PJSIP/endpoint-00000001',
+            'ChannelState: 4',
+            'Uniqueid: 1234567890.1',
+            ''
+            );
+            setFgetsMock($event, $event);
+            for ($i = 0; $i < 6; $i++) {
+                $client->process();
+            }
+            $this->assertTrue($matched);
+            $this->assertFalse($unmatched);
+        }
+
+        
+        #[Test]
         public function can_login()
         {
             global $mock_stream_socket_client;
@@ -394,9 +442,9 @@ namespace PAMI\Client\Impl {
             $client->close();
         }
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function cannot_send()
         {
             global $mock_stream_socket_client;
@@ -425,9 +473,9 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function cannot_login()
         {
             global $mock_stream_socket_client;
@@ -457,9 +505,9 @@ namespace PAMI\Client\Impl {
             $client->open();
         }
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function cannot_read()
         {
             global $mock_stream_socket_client;
@@ -489,9 +537,9 @@ namespace PAMI\Client\Impl {
             $client->send(new \PAMI\Message\Action\LoginAction('asd', 'asd'));
         }
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function cannot_read_by_read_timeout()
         {
             global $mock_stream_socket_client;
@@ -526,9 +574,8 @@ namespace PAMI\Client\Impl {
             //$this->assertEquals(\time() - $start, 10);
             $this->assertEquals(\time() - $start, 3);
         }
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_get_response_with_associated_events()
         {
             global $mock_stream_socket_client;
@@ -586,9 +633,8 @@ namespace PAMI\Client\Impl {
             );
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_serialize_response_and_events()
         {
             global $mock_stream_socket_client;
@@ -639,9 +685,8 @@ namespace PAMI\Client\Impl {
             $this->assertEquals($events[0]->getListItems(), 0);
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_get_response_events_without_actionid_and_event()
         {
             global $mock_stream_socket_client;
@@ -697,9 +742,7 @@ namespace PAMI\Client\Impl {
             $this->assertEquals($completeEvent->getListItems(), 0);
         }
 
-        /**
-         * @test
-         */
+        #[Test]
         public function can_get_set_variable()
         {
             $now = time();
@@ -710,9 +753,8 @@ namespace PAMI\Client\Impl {
             $this->assertNull($action->getVariable('variable2'));
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_get_set_variable_with_multiple_values()
         {
             global $mockTime;
@@ -733,9 +775,8 @@ namespace PAMI\Client\Impl {
             $this->assertEquals($text, $action->serialize());
         }
 
-        /**
-         * @test
-         */
+        
+        #[Test]
         public function can_report_unknown_event()
         {
             global $mock_stream_socket_client;
@@ -775,12 +816,12 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * @group channel_vars
          * ChanVariable is sent without a channel name and without a "channel"
          * key.
          * https://github.com/marcelog/PAMI/issues/85
          */
+        #[Test]
         public function can_get_channel_variables_without_default_channel_name()
         {
             global $mock_stream_socket_client;
@@ -841,11 +882,11 @@ namespace PAMI\Client\Impl {
 
 
         /**
-         * @test
          * @group channel_vars
          * ChanVariable is sent without a channel name but with a "channel" key.
          * https://github.com/marcelog/PAMI/issues/85
          */
+        #[Test]
         public function can_get_channel_variables_with_default_channel_name()
         {
             global $mock_stream_socket_client;
@@ -911,11 +952,11 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * @group channel_vars
          * ChanVariable is sent with a channel name and with a "channel" key.
          * https://github.com/marcelog/PAMI/issues/85
          */
+        #[Test]
         public function can_get_channel_variables()
         {
             global $mock_stream_socket_client;
@@ -991,9 +1032,9 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function can_detect_socket_returning_false()
         {
             global $mock_stream_socket_client;
@@ -1018,9 +1059,9 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function can_detect_socket_set_blocking_returning_false()
         {
             global $mock_stream_socket_client;
@@ -1045,9 +1086,9 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function can_detect_socket_set_timeout_returning_false()
         {
             global $mock_stream_socket_client;
@@ -1074,9 +1115,9 @@ namespace PAMI\Client\Impl {
         }
 
         /**
-         * @test
          * expectedException \PAMI\Client\Exception\ClientException
          */
+        #[Test]
         public function can_detect_open_returning_non_asteriskId()
         {
             global $mock_stream_socket_client;

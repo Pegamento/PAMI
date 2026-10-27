@@ -1,15 +1,15 @@
 <?php
+
 /**
  * PJSIPShowEndpoint action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Niklas Larsson <niklas@tese.se>, Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Niklas Larsson <niklas@tese.se>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * PJSIPSipshowendpoint action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -46,11 +49,11 @@ class PJSIPShowEndpointAction extends ActionMessage
     /**
      * Constructor.
      *
-     * @param string $peer Peer name.
+     * @param string $endpointName Endpoint name.
      *
      * @return void
      */
-    public function __construct($endpointName)
+    public function __construct(string $endpointName)
     {
         parent::__construct('PJSIPShowEndpoint');
         $this->setKey('Endpoint', $endpointName);

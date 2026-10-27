@@ -1,15 +1,15 @@
 <?php
+
 /**
  * WaitEvent action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * WaitEvent action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,9 +51,9 @@ class WaitEventAction extends ActionMessage
      *
      * @param int $timeout Timeout in seconds
      */
-    public function __construct($timeout)
+    public function __construct(int $timeout)
     {
         parent::__construct('WaitEvent');
-        $this->setKey('Timeout', (int)$timeout);
+        $this->setKey('Timeout', (string) $timeout);
     }
 }

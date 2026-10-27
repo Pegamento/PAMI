@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a CEL log message is generated
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Jacob Kiers <jacob@alphacomm.nl>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when a CEL log message is generated
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'AMAFlags'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAMAFlags()
     {
@@ -59,7 +62,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'AccountCode'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountCode()
     {
@@ -70,7 +73,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'AppData'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAppData()
     {
@@ -81,7 +84,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Application'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getApplication()
     {
@@ -92,7 +95,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'CallerIDani'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDani()
     {
@@ -103,7 +106,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'CallerIDdnid'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDdnid()
     {
@@ -114,7 +117,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'CallerIDname'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDname()
     {
@@ -125,7 +128,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'CallerIDnum'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDnum()
     {
@@ -136,7 +139,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'CallerIDrdnis'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerIDrdnis()
     {
@@ -147,7 +150,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Channel'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel()
     {
@@ -158,7 +161,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Context'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContext()
     {
@@ -169,7 +172,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Event'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEvent()
     {
@@ -180,7 +183,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'EventName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventName()
     {
@@ -191,7 +194,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'EventTime'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventTime()
     {
@@ -202,7 +205,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Exten'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExten()
     {
@@ -213,7 +216,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Extra'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtra()
     {
@@ -224,7 +227,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'LinkedID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLinkedID()
     {
@@ -235,7 +238,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Peer'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPeer()
     {
@@ -246,7 +249,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'PeerAccount'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPeerAccount()
     {
@@ -257,7 +260,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -268,7 +271,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Timestamp'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTimestamp()
     {
@@ -279,7 +282,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'UniqueID'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID()
     {
@@ -290,7 +293,7 @@ class CELEvent extends EventMessage
     /**
      * Returns key: 'Userfield'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUserfield()
     {

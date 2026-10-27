@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when a bridged channel is unlinked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when a bridged channel is unlinked.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -58,7 +61,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'Channel1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel1()
     {
@@ -68,7 +71,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'Channel2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannel2()
     {
@@ -78,7 +81,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'CallerID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID1()
     {
@@ -88,7 +91,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'CallerID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCallerID2()
     {
@@ -98,7 +101,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'UniqueID1'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID1()
     {
@@ -108,7 +111,7 @@ class UnlinkEvent extends EventMessage
     /**
      * Returns key: 'UniqueID2'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getUniqueID2()
     {

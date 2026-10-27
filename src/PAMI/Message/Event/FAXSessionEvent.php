@@ -1,11 +1,12 @@
 <?php
+
 /**
  * FAXSession Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:The numerical identifier for this particular session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionNumber()
     {
@@ -69,7 +72,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:FAX session operation type
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getOperation()
     {
@@ -81,7 +84,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Current state of the FAX session
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getState()
     {
@@ -93,7 +96,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Whether error correcting mode is enabled for the FAX session. This field is not included when operation is 'V.21 Detect' or if operation is 'gateway' and state is 'Uninitialized'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getErrorCorrectionMode()
     {
@@ -105,7 +108,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Bit rate of the FAX. This field is not included when operation is 'V.21 Detect' or if operation is 'gateway' and state is 'Uninitialized'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDataRate()
     {
@@ -117,7 +120,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Resolution of each page of the FAX. Will be in the format of X_RESxY_RES. This field is not included if the operation is anything other than Receive/Transmit.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getImageResolution()
     {
@@ -129,7 +132,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Current number of pages transferred during this FAX session. May change as the FAX progresses. This field is not included when operation is 'V.21 Detect' or if operation is 'gateway' and state is 'Uninitialized'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPageNumber()
     {
@@ -141,7 +144,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Filename of the image being sent/received for this FAX session. This field is not included if Operation isn't 'send' or 'receive'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFileName()
     {
@@ -153,7 +156,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Total number of pages sent during this session. This field is not included if Operation isn't 'send' or 'receive'. Will always be 0 for 'receive'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPagesTransmitted()
     {
@@ -165,7 +168,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Total number of pages received during this session. This field is not included if Operation is not 'send' or 'receive'. Will be 0 for 'send'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPagesReceived()
     {
@@ -177,7 +180,7 @@ class FAXSessionEvent extends EventMessage
      *
      * Returns:Total number of bad lines sent/received during this session. This field is not included if Operation is not 'send' or 'received'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTotalBadLines()
     {

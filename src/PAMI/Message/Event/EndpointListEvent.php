@@ -1,16 +1,16 @@
 <?php
+
 /**
  * Event from PJSIPShowEndpoints
  * Provide details about a device/endpoint/contact's status.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Niklas Larsson <niklas@tese.se>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Niklas Larsson <niklas@tese.se>, Marcelo Gornstein <marcelog@gmail.com>
@@ -28,6 +28,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -35,7 +38,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event from PJSIPShowEndpoints
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -49,7 +52,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The object's type. This will always be 'endpoint'.
      *
-     * @return string key: 'ObjectType'
+     * @return string|int|float|bool|null key: 'ObjectType'
      */
     public function getObjectType()
     {
@@ -59,7 +62,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The name of this object.
      *
-     * @return string key: 'ObjectName'.
+     * @return string|int|float|bool|null key: 'ObjectName'.
      */
     public function getObjectName()
     {
@@ -69,7 +72,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The transport configurations associated with this endpoint.
      *
-     * @return string key: 'Transport'.
+     * @return string|int|float|bool|null key: 'Transport'.
      */
     public function getTransport()
     {
@@ -79,7 +82,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The aor configurations associated with this endpoint.
      *
-     * @return string key: 'Aor'.
+     * @return string|int|float|bool|null key: 'Aor'.
      */
     public function getAor()
     {
@@ -89,7 +92,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The inbound authentication configurations associated with this endpoint.
      *
-     * @return string key: 'Auths'.
+     * @return string|int|float|bool|null key: 'Auths'.
      */
     public function getAuths()
     {
@@ -99,7 +102,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The outbound authentication configurations associated with this endpoint.
      *
-     * @return string key: 'OutboundAuths'.
+     * @return string|int|float|bool|null key: 'OutboundAuths'.
      */
     public function getOutboundAuths()
     {
@@ -109,7 +112,7 @@ class EndpointListEvent extends EventMessage
     /**
      * Returns key: 'Contacts'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContacts()
     {
@@ -119,7 +122,7 @@ class EndpointListEvent extends EventMessage
     /**
      * The aggregate device state for this endpoint.
      *
-     * @return string key: 'DeviceState'.
+     * @return string|int|float|bool|null key: 'DeviceState'.
      */
     public function getDeviceState()
     {
@@ -129,9 +132,9 @@ class EndpointListEvent extends EventMessage
     /**
      * The number of active channels associated with this endpoint.
      *
-     * @return integer for key: 'ActiveChannels'.
+     * @return int for key: 'ActiveChannels'.
      */
-    public function getActiveChannels()
+    public function getActiveChannels(): int
     {
         return intval($this->getKey('ActiveChannels'));
     }

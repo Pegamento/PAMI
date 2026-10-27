@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This is a generic event received from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\IncomingMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\IncomingMessage;
 /**
  * This is a generic event received from ami.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ abstract class EventMessage extends IncomingMessage
     /**
      * Returns key 'Event'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getName()
     {

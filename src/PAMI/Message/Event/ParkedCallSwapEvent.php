@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ParkedCallSwap Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannel()
     {
@@ -69,7 +72,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ParkeeChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelState()
     {
@@ -81,7 +84,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeChannelStateDesc()
     {
@@ -93,7 +96,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeCallerIDNum()
     {
@@ -105,7 +108,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeCallerIDName()
     {
@@ -117,7 +120,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeConnectedLineNum()
     {
@@ -129,7 +132,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeConnectedLineName()
     {
@@ -141,7 +144,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeLanguage()
     {
@@ -153,7 +156,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeAccountCode()
     {
@@ -165,7 +168,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeContext()
     {
@@ -177,7 +180,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeExten()
     {
@@ -189,7 +192,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeePriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeePriority()
     {
@@ -201,7 +204,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkeeUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeUniqueid()
     {
@@ -213,7 +216,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkeeLinkedid()
     {
@@ -225,7 +228,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerChannel'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannel()
     {
@@ -237,7 +240,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:A numeric code for the channel's current state, related to ParkerChannelStateDesc
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannelState()
     {
@@ -249,7 +252,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerChannelStateDesc'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerChannelStateDesc()
     {
@@ -261,7 +264,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerCallerIDNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerCallerIDNum()
     {
@@ -273,7 +276,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerCallerIDName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerCallerIDName()
     {
@@ -285,7 +288,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerConnectedLineNum'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerConnectedLineNum()
     {
@@ -297,7 +300,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerConnectedLineName'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerConnectedLineName()
     {
@@ -309,7 +312,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerLanguage'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerLanguage()
     {
@@ -321,7 +324,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerAccountCode'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerAccountCode()
     {
@@ -333,7 +336,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerContext'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerContext()
     {
@@ -345,7 +348,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerExten'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerExten()
     {
@@ -357,7 +360,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerPriority'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerPriority()
     {
@@ -369,7 +372,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns key: 'ParkerUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerUniqueid()
     {
@@ -381,7 +384,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Uniqueid of the oldest channel associated with this channel.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerLinkedid()
     {
@@ -393,7 +396,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Dial String that can be used to call back the parker on ParkingTimeout.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkerDialString()
     {
@@ -405,7 +408,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Name of the parking lot that the parkee is parked in
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkinglot()
     {
@@ -417,7 +420,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Parking Space that the parkee is parked in
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingSpace()
     {
@@ -429,7 +432,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Time remaining until the parkee is forcefully removed from parking in seconds
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingTimeout()
     {
@@ -441,7 +444,7 @@ class ParkedCallSwapEvent extends EventMessage
      *
      * Returns:Time the parkee has been in the parking bridge (in seconds)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getParkingDuration()
     {

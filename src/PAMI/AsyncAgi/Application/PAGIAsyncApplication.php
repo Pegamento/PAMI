@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PAMI\AsyncAgi\Application;
 
 use PAGI\Application\PAGIApplication;

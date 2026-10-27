@@ -1,15 +1,15 @@
 <?php
+
 /**
  * GetVar action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Action
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,12 +27,15 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 /**
  * GetVar action message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -51,11 +54,11 @@ class GetVarAction extends ActionMessage
      *
      * @return void
      */
-    public function __construct($name, $channel = false)
+    public function __construct(string $name, ?string $channel = null)
     {
         parent::__construct('Getvar');
         $this->setKey('Variable', $name);
-        if ($channel != false) {
+        if ($channel !== null) {
             $this->setKey('Channel', $channel);
         }
     }

@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ConfbridgeRecord Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:The name of the Confbridge conference.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getConference()
     {
@@ -69,7 +72,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns key: 'BridgeUniqueid'
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeUniqueid()
     {
@@ -81,7 +84,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:The type of bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeType()
     {
@@ -93,7 +96,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:Technology in use by the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeTechnology()
     {
@@ -105,7 +108,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:Entity that created the bridge if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeCreator()
     {
@@ -117,7 +120,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:Name used to refer to the bridge by its BridgeCreator if applicable
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeName()
     {
@@ -129,7 +132,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:Number of channels in the bridge
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeNumChannels()
     {
@@ -141,7 +144,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:The video source mode for the bridge.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSourceMode()
     {
@@ -153,7 +156,7 @@ class ConfbridgeRecordEvent extends EventMessage
      *
      * Returns:If there is a video source for the bridge, the unique ID of the channel that is the video source.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBridgeVideoSource()
     {

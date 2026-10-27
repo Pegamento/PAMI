@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when an agent logs in.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Niklas Larsson <niklas@tese.se>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Diederik de Groot <ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when an agent logs in.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectType'. The object's type. This will always be 'transport'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectType()
     {
@@ -58,7 +61,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'ObjectName'. The name of this object.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getObjectName()
     {
@@ -68,7 +71,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Protocol'. Protocol to use for SIP traffic
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getProtocol()
     {
@@ -78,7 +81,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Bind'. IP Address and optional port to bind to for this transport
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getBind()
     {
@@ -88,7 +91,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'AsycOperations'. Number of simultaneous Asynchronous Operations
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAsycOperations()
     {
@@ -98,7 +101,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'CaListFile'. File containing a list of certificates to read (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCaListFile()
     {
@@ -108,7 +111,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'CaListPath'. Path to directory containing a list of certificates to read (TLSONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCaListPath()
     {
@@ -118,7 +121,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'CertFile'. Certificate file for endpoint (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCertFile()
     {
@@ -128,7 +131,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'PrivKeyFile'. Private key file (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivKeyFile()
     {
@@ -138,7 +141,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Password'. Password required for transport
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPassword()
     {
@@ -148,7 +151,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'ExternalSignalingAddress'. External address for SIP signalling
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExternalSignalingAddress()
     {
@@ -158,7 +161,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'ExternalSignalingPort'. External port for SIP signalling
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExternalSignalingPort()
     {
@@ -168,7 +171,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'ExternalMediaAddress'. External IP address to use in RTP handling
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExternalMediaAddress()
     {
@@ -178,7 +181,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Domain'. Domain the transport comes from
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDomain()
     {
@@ -188,7 +191,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'VerifyServer'. Require verification of server certificate (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVerifyServer()
     {
@@ -198,7 +201,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'VerifyClient'. Require verification of client certificate (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getVerifyClient()
     {
@@ -208,7 +211,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'RequireClientCert'. Require client certificate (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRequireClientCert()
     {
@@ -218,7 +221,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Method'. Method of SSL transport (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMethod()
     {
@@ -228,7 +231,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Cipher'. Preferred cryptography cipher names (TLS ONLY)
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCipher()
     {
@@ -238,7 +241,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'LocalNet'. Network to consider local (used for NAT purposes).
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalNet()
     {
@@ -248,7 +251,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Tos'. Enable TOS for the signalling sent over this transport
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getTos()
     {
@@ -258,7 +261,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'Cos'. Enable COS for the signalling sent over this transport
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getCos()
     {
@@ -268,7 +271,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'WebsocketWriteTimeout'. The timeout (in milliseconds) to set on WebSocket connections.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getWebsocketWriteTimeout()
     {
@@ -278,7 +281,7 @@ class TransportDetailEvent extends EventMessage
     /**
      * Returns key: 'EndpointName'. The name of the endpoint associated with this information.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEndpointName()
     {

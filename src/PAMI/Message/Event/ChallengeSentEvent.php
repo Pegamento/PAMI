@@ -1,11 +1,12 @@
 <?php
+
 /**
  * ChallengeSent Event
  *
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -13,7 +14,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -31,6 +31,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -41,7 +44,7 @@ use PAMI\Message\Event\EventMessage;
  *
  * Note: Auto Generated using xsltproc
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -57,7 +60,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The time the event was detected.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventTV()
     {
@@ -69,7 +72,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:A relative severity of the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSeverity()
     {
@@ -81,7 +84,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The Asterisk service that raised the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getService()
     {
@@ -93,7 +96,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The version of this event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getEventVersion()
     {
@@ -105,7 +108,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The Service account associated with the security event notification.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getAccountID()
     {
@@ -117,7 +120,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:A unique identifier for the session in the service that raised the event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionID()
     {
@@ -129,7 +132,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The address of the Asterisk service that raised the security event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocalAddress()
     {
@@ -141,7 +144,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The remote address of the entity that caused the security event to be raised.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getRemoteAddress()
     {
@@ -153,7 +156,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The challenge that was sent.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChallenge()
     {
@@ -165,7 +168,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:If available, the name of the module that raised the event.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getModule()
     {
@@ -177,7 +180,7 @@ class ChallengeSentEvent extends EventMessage
      *
      * Returns:The timestamp reported by the session.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSessionTV()
     {

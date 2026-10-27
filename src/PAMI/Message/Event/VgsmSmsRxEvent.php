@@ -1,17 +1,17 @@
 <?php
+
 /**
  * On reception of an inbound SMS (SMS-DELIVERY) the message will also be
  * reported as a manager event, however, acknowledgment still relies on SMS
  * spooler to handle the message. This event is generated starting from 0.21.0
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -29,6 +29,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -38,7 +41,7 @@ use PAMI\Message\Event\EventMessage;
  * reported as a manager event, however, acknowledgment still relies on SMS
  * spooler to handle the message. This event is generated starting from 0.21.0
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -52,7 +55,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Privilege'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getPrivilege()
     {
@@ -62,7 +65,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Received'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReceived()
     {
@@ -72,7 +75,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'From'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFrom()
     {
@@ -82,7 +85,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Subject'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSubject()
     {
@@ -92,7 +95,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'MIME-Version'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMimeVersion()
     {
@@ -102,7 +105,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Content-Type'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContentType()
     {
@@ -112,7 +115,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Content-Transfer-Encoding'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContentEncoding()
     {
@@ -122,7 +125,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Date'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDate()
     {
@@ -132,7 +135,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'Content'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getContent()
     {
@@ -142,7 +145,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Message-Type:'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMessageType()
     {
@@ -152,7 +155,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Sender-NP'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSenderNP()
     {
@@ -162,7 +165,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Sender-TON'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSenderTON()
     {
@@ -172,7 +175,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Sender-Number'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSenderNumber()
     {
@@ -182,7 +185,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-SMCC-NP'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMCCNP()
     {
@@ -192,7 +195,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-SMCC-TON'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMCCTON()
     {
@@ -202,7 +205,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-SMCC-Number'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSMCCNumber()
     {
@@ -212,7 +215,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-More-Messages-To-Send'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMoreMessagesToSend()
     {
@@ -222,7 +225,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Reply-Path'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getReplyPath()
     {
@@ -232,7 +235,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'XX-SMS-User-Data-Header-Indicator'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getDataHeaderIndicator()
     {
@@ -242,7 +245,7 @@ class VgsmSmsRxEvent extends EventMessage
     /**
      * Returns key: 'X-SMS-Status-Report-Indication'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStatusReportIndication()
     {

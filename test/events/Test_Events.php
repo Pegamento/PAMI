@@ -2,14 +2,13 @@
 /**
  * This class will test some events.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -29,11 +28,12 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test some events.
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test
@@ -52,9 +52,7 @@ namespace PAMI\Client\Impl {
             $this->_properties = array();
         }
 */
-        /**
-         * @test
-         */
+        #[Test]
         public function can_report_events()
         {
             $eventNames = array(
@@ -201,11 +199,8 @@ namespace PAMI\Client\Impl {
                 'IsInCall' => 1,
             ),
             'QueueMemberAdded' => array(
-                'Paused' => true,
-            ),
-            'QueueMemberAdded' => array(
                 'LastCall' => 1,
-                'Paused' => 2,
+                'Paused' => true,
                 'CallsTaken' => 3,
                 'Penalty' => 4,
             ),
@@ -581,7 +576,6 @@ namespace PAMI\Client\Impl {
                 'AppData' => 'AppData',
                 'Application' => 'Application',
                 'Priority' => 'Priority',
-                'Extension' => 'Extension',
                 'Exten' => 'Exten',
                 'Context' => 'Context',
                 'UniqueID' => 'UniqueID'
@@ -904,7 +898,7 @@ namespace PAMI\Client\Impl {
             'VarSet' => array(
                 'Privilege' => 'Privilege',
                 'Channel' => 'Channel',
-                'Variable' => null,
+                'Variable' => '',
                 'Value' => 'Value',
                 'UniqueID' => 'UniqueID',
                 'ChannelState' => 'ChannelState',
@@ -2025,6 +2019,9 @@ namespace PAMI\Client\Impl {
             'AsyncAGI' => array(
                 'Env' => 'Environment'
             ),
+            'AsyncAGIStart' => array(
+                'Env' => 'Environment'
+            ),
             'Agents' => array(
                 'LoggedInChan' => 'Channel'
             ),
@@ -2083,8 +2080,26 @@ namespace PAMI\Client\Impl {
                 'X-vGSM-ME-Old-State' => 'OldState',
                 'X-vGSM-ME-State' => 'State',
             ),
-            'ParkedCall' => array('Exten' => 'Extension'),
-            'UnParkedCall' => array('Exten' => 'Extension'),
+            'ParkedCall' => array(
+                'Timeout' => 'ParkingTimeout',
+                'ConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ConnectedLineName' => 'ParkeeConnectedLineName',
+                'Channel' => 'ParkeeChannel',
+                'CallerIDNum' => 'ParkeeCallerIDNum',
+                'CallerIDName' => 'ParkeeCallerIDName',
+                'UniqueID' => 'ParkeeUniqueid',
+                'Exten' => 'ParkingSpace',
+            ),
+            'UnParkedCall' => array(
+                'From' => 'RetrieverChannel',
+                'ConnectedLineNum' => 'ParkeeConnectedLineNum',
+                'ConnectedLineName' => 'ParkeeConnectedLineName',
+                'Channel' => 'ParkeeChannel',
+                'CallerIDNum' => 'ParkeeCallerIDNum',
+                'CallerIDName' => 'ParkeeCallerIDName',
+                'UniqueID' => 'ParkeeUniqueid',
+                'Exten' => 'ParkingSpace',
+            ),
             'AGIExecStart' => array(
 
             ),
@@ -2101,7 +2116,8 @@ namespace PAMI\Client\Impl {
             global $mock_stream_set_blocking;
             global $mockTime;
             global $standardAMIStart;
-            $eventClass = "\\PAMI\\Message\\Event\\" . $eventName . 'Event';
+            $normalized = implode('', array_map('ucfirst', explode('_', $eventName)));
+            $eventClass = "\\PAMI\\Message\\Event\\" . $normalized . 'Event';
             $mockTime = true;
             $mock_stream_socket_client = true;
             $mock_stream_set_blocking = true;
@@ -2132,7 +2148,7 @@ namespace PAMI\Client\Impl {
                 $client->process();
             }
             $event = SomeListenerClass::$event;
-            //$this->assertInstanceOf($eventClass, $event);
+            $this->assertInstanceOf($eventClass, $event);
             foreach ($values as $key => $value) {
                 if (isset($getters[$eventName][$key])) {
                     $methodName = 'get' . $getters[$eventName][$key];
@@ -2141,13 +2157,17 @@ namespace PAMI\Client\Impl {
                 }
                 if (isset($translatedValues[$eventName][$key])) {
                     $value = $translatedValues[$eventName][$key];
+                } elseif (strcasecmp($key, 'Event') === 0) {
+                    // The harness already sent "Event: $eventName". A repeated
+                    // Event header is kept, joined with CRLF, rather than replaced.
+                    $value = $eventName . "\r\n" . $value;
                 }
                 $this->assertTrue(
                     method_exists($event, $methodName),
                     sprintf('Method %s doesn\'t exist in the event %s', $methodName, get_class($event))
                 );
 
-                $this->assertEquals($event->$methodName(), $value, $eventName);
+                $this->assertSame($value, $event->$methodName(), $eventName . ' ' . $key);
             }
         }
     }

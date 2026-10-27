@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered for a QueueStatus action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered for a QueueStatus action.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Queue'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getQueue()
     {
@@ -58,7 +61,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Location'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getLocation()
     {
@@ -68,7 +71,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'MemberName'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMemberName()
     {
@@ -78,7 +81,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Membership'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getMembership()
     {
@@ -88,7 +91,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Penalty'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getPenalty()
     {
@@ -98,7 +101,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'CallsTaken'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getCallsTaken()
     {
@@ -108,7 +111,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Status'.
      *
-     * @return integer
+     * @return string|int|float|bool|null
      */
     public function getStatus()
     {
@@ -118,9 +121,9 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'Pause'.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getPaused()
+    public function getPaused(): bool
     {
         return intval($this->getKey('Paused')) != 0;
     }
@@ -130,7 +133,7 @@ class QueueMemberEvent extends EventMessage
      *
      * @return int
      */
-    public function getLastCall()
+    public function getLastCall(): int
     {
         return intval($this->getKey('lastcall'));
     }
@@ -140,7 +143,7 @@ class QueueMemberEvent extends EventMessage
      *
      * @return int
      */
-    public function getIsInCall()
+    public function getIsInCall(): int
     {
         return intval($this->getKey('isincall'));
     }
@@ -148,7 +151,7 @@ class QueueMemberEvent extends EventMessage
     /**
      * Returns key: 'StateInterface'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getStateInterface()
     {

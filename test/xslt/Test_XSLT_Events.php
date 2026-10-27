@@ -2,7 +2,7 @@
 /**
  * This class will test some events.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Test
@@ -10,7 +10,6 @@
  * @author     Marcelo Gornstein <marcelog@gmail.com>
  * @author     Diederik de Groot <ddegroot@gmail.com>
  * @license    http://github.com/chan-sccp/PAMI/LICENSE
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -30,11 +29,12 @@
  */
 namespace PAMI\Client\Impl {
     use PHPUnit\Framework\TestCase as BaseTestCase;
+    use PHPUnit\Framework\Attributes\Test;
 
     /**
      * This class will test  xslt generated actions.
      *
-     * PHP Version 5
+     * PHP Version 8
      *
      * @category   Pami
      * @package    Test
@@ -101,9 +101,7 @@ namespace PAMI\Client\Impl {
             }
         }
         
-        /**
-         * @test
-         */
+        #[Test]
         public function can_report_events()
         {
             $eventNames = array(

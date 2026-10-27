@@ -1,14 +1,14 @@
 <?php
+
 /**
  * A generic action ami message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message
  * @author   Marcelo Gornstein <marcelog@gmail.com>
  * @license  http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version  SVN: $Id$
  * @link     http://marcelog.github.com/PAMI/
  *
  * Copyright 2011 Marcelo Gornstein <marcelog@gmail.com>
@@ -26,6 +26,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Action;
 
 use PAMI\Message\OutgoingMessage;
@@ -34,7 +37,7 @@ use PAMI\Exception\PAMIException;
 /**
  * A generic action ami message.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category Pami
  * @package  Message
@@ -45,17 +48,50 @@ use PAMI\Exception\PAMIException;
 abstract class ActionMessage extends OutgoingMessage
 {
     /**
+     * Optional generator used instead of random ActionIDs. Tests pin this.
+     *
+     * @var null|\Closure(): string
+     */
+    private static ?\Closure $actionIdGenerator = null;
+
+    /**
+     * Replace the default random ActionID generator.
+     *
+     * Pass null to restore bin2hex(random_bytes(8)).
+     *
+     * @param null|\Closure(): string $generator
+     *
+     * @return void
+     */
+    public static function setActionIdGenerator(?\Closure $generator): void
+    {
+        self::$actionIdGenerator = $generator;
+    }
+
+    /**
      * Constructor.
      *
      * @param string $what Action command.
      *
      * @return void
      */
-    public function __construct($what)
+    public function __construct(string $what)
     {
         parent::__construct();
         $this->setKey('Action', $what);
-        $this->setKey('ActionID', microtime(true));
+        $this->setKey('ActionID', self::generateActionId());
+    }
+
+    /**
+     * @return string
+     */
+    private static function generateActionId(): string
+    {
+        if (self::$actionIdGenerator !== null) {
+            return (string) (self::$actionIdGenerator)();
+        }
+
+        return bin2hex(random_bytes(8));
     }
 
     /**
@@ -71,8 +107,9 @@ abstract class ActionMessage extends OutgoingMessage
      * @return void
      * @throws PAMIException When the ActionID is more then 69 characters long
      */
-    public function setActionID($actionID)
+    public function setActionID(string $actionID): void
     {
+        $actionID = (string) $actionID;
         if (0 == strlen($actionID)) {
             throw new PAMIException('ActionID cannot be empty.');
         }

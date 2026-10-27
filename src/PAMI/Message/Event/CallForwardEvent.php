@@ -1,15 +1,15 @@
 <?php
+
 /**
  * Event triggered when the 'SCCPCallForward' Event arrives.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
  * @subpackage Event
  * @author     Diederik de Groot <ddegroot@users.sf.net>
  * @license    http://marcelog.github.com/PAMI/ Apache License 2.0
- * @version    SVN: $Id$
  * @link       http://marcelog.github.com/PAMI/
  *
  * Copyright 2015 Diederik de Groot <ddegroot@users.sf.net>, Marcelo Gornstein <marcelog@gmail.com>
@@ -27,6 +27,9 @@
  * limitations under the License.
  *
  */
+
+declare(strict_types=1);
+
 namespace PAMI\Message\Event;
 
 use PAMI\Message\Event\EventMessage;
@@ -34,7 +37,7 @@ use PAMI\Message\Event\EventMessage;
 /**
  * Event triggered when the 'SCCPCallForward' Event arrives.
  *
- * PHP Version 5
+ * PHP Version 8
  *
  * @category   Pami
  * @package    Message
@@ -48,7 +51,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'ChannelType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelType()
     {
@@ -58,7 +61,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'ChannelObjectType'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getChannelObjectType()
     {
@@ -68,7 +71,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'Feature'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getFeature()
     {
@@ -88,7 +91,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'Extension'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getExtension()
     {
@@ -98,7 +101,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'SCCPLine'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPLine()
     {
@@ -108,7 +111,7 @@ class CallForwardEvent extends EventMessage
     /**
      * Returns key: 'SCCPDevice'.
      *
-     * @return string
+     * @return string|int|float|bool|null
      */
     public function getSCCPDevice()
     {
