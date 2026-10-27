@@ -18,7 +18,7 @@ either via SOA or ajax.
 
 # PHP Versions
 
-PAMI requires PHP 8.1 or higher.
+PAMI requires PHP 8.4 or higher.
 
 # Installing
 Add this library to your [Composer](https://packagist.org/) configuration. In
