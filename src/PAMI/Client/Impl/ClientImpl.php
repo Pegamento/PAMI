@@ -544,15 +544,20 @@ class ClientImpl implements IClient
     /**
      * Closes the connection to ami.
      *
-     * When the client is logged in, this sends Logoff and waits for the reply
-     * before closing the socket. That wait is bounded by read_timeout.
+     * When the client is logged in and the socket is still usable, this sends
+     * Logoff and waits for the reply before closing the socket. That wait is
+     * bounded by read_timeout. A socket the peer has already closed is dropped
+     * without Logoff, so a dead stream cannot block shutdown.
      *
      * @return void
      */
     public function close(): void
     {
         $this->logger->debug('Closing connection to asterisk.');
-        if ($this->connected) {
+        // $connected stays true until this method finishes. A peer that has
+        // already gone away still looks logged in, and send() would block in
+        // fwrite(): stream_set_timeout() does not bound writes.
+        if ($this->connected && $this->canSendLogoff()) {
             try {
                 $this->send(new LogoffAction());
             } catch (\Throwable $e) {
@@ -564,6 +569,47 @@ class ClientImpl implements IClient
         }
         $this->socket = null;
         $this->connected = false;
+    }
+
+    /**
+     * True when a best-effort Logoff can be written without blocking.
+     *
+     * @return bool
+     */
+    private function canSendLogoff(): bool
+    {
+        if (!is_resource($this->socket)) {
+            // The test suite stubs the socket functions and leaves this null.
+            // A logged-in client always holds a stream resource.
+            return true;
+        }
+
+        $meta = @stream_get_meta_data($this->socket);
+        if (!is_array($meta) || !empty($meta['eof']) || @feof($this->socket)) {
+            return false;
+        }
+
+        $socket = $this->socket;
+        $read = [$socket];
+        $write = [$socket];
+        $except = [$socket];
+        $ready = @stream_select($read, $write, $except, 0, 0);
+        if ($ready === false || (is_array($except) && $except !== [])) {
+            // false: select failed. except: Windows reports a failed connection here.
+            return false;
+        }
+
+        // Readable and empty means the peer closed the connection. Pending AMI
+        // bytes stay in the buffer (STREAM_PEEK) so a later read still sees them.
+        if (is_array($read) && $read !== []) {
+            $peek = @stream_socket_recvfrom($socket, 1, STREAM_PEEK);
+            if ($peek === false || $peek === '') {
+                return false;
+            }
+        }
+
+        // Not writable: fwrite() in send() would block.
+        return is_array($write) && $write !== [];
     }
 
     /**

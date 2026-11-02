@@ -89,8 +89,10 @@ interface IClient
     /**
      * Closes the connection to ami.
      *
-     * When the client is logged in, this sends Logoff and waits for the reply
-     * before closing the socket. That wait is bounded by read_timeout.
+     * When the client is logged in and the socket is still usable, this sends
+     * Logoff and waits for the reply before closing the socket. That wait is
+     * bounded by read_timeout. A socket the peer has already closed is dropped
+     * without Logoff.
      *
      * @return void
      */
