@@ -185,6 +185,58 @@ abstract class Message
     }
 
     /**
+     * Converts a raw AMI value.
+     *
+     * An empty string becomes null. A numeric value becomes an int or a float.
+     * A leading 0 or + stays a string, and so does a decimal whose fractional
+     * part ends in 0. A validated integer 0 is returned as an int. on/true/yes
+     * and off/false/no become booleans. Any other string is HTML-escaped.
+     *
+     * @param string $value Raw value.
+     *
+     * @return string|int|float|bool|null
+     */
+    public static function sanitize(string $value): string|int|float|bool|null
+    {
+        if ($value === '') {
+            return null;
+        }
+        if (is_numeric($value)) {
+            // Float conversion drops a trailing fractional zero ("1234.10" would become 1234.1).
+            if (preg_match('/\.\d*0(?:[eE][+-]?\d+)?$/', $value) === 1) {
+                return $value;
+            }
+            $asInt = filter_var(
+                $value,
+                FILTER_VALIDATE_INT,
+                FILTER_FLAG_ALLOW_HEX | FILTER_FLAG_ALLOW_OCTAL
+            );
+            if ($asInt !== false) {
+                // "0", "-0", and "+0" validate as integer 0. "00" still has a significant zero.
+                if ($asInt === 0 && preg_match('/^[+-]?0$/', $value) === 1) {
+                    return 0;
+                }
+                if ($value[0] === '0' || $value[0] === '+') {
+                    return $value;
+                }
+                return intval($value, 0);
+            }
+            if ($value[0] === '0' || $value[0] === '+') {
+                return $value;
+            }
+            return (float) $value;
+        }
+        if (strcasecmp($value, 'on') === 0 || strcasecmp($value, 'true') === 0 || strcasecmp($value, 'yes') === 0) {
+            return true;
+        }
+        if (strcasecmp($value, 'off') === 0 || strcasecmp($value, 'false') === 0 || strcasecmp($value, 'no') === 0) {
+            return false;
+        }
+        return htmlspecialchars($value);
+    }
+
+
+    /**
      * Returns a key by name, exactly as stored.
      *
      * Repeated values are one string separated by EOL. No numeric or yes/no
@@ -197,6 +249,24 @@ abstract class Message
     public function getKey(string $key): ?string
     {
         return $this->keys[strtolower($key)] ?? null;
+    }
+
+    /**
+     * Returns a key converted the way 2.1 setSanitizedKey() stored it.
+     *
+     * A missing key is null. Every stored value is passed through sanitize().
+     *
+     * @param string $key Key name (i.e: Action).
+     *
+     * @return string|int|float|bool|null
+     */
+    public function getSanitizedKey(string $key): string|int|float|bool|null
+    {
+        $value = $this->getKey($key);
+        if ($value === null) {
+            return null;
+        }
+        return self::sanitize($value);
     }
 
     /**
@@ -278,6 +348,22 @@ abstract class Message
     public function getKeys(): array
     {
         return $this->keys;
+    }
+
+    /**
+     * Returns every key converted the way 2.1 setSanitizedKey() stored it.
+     *
+     * Every stored value is passed through sanitize(). An empty value becomes null.
+     *
+     * @return array<string, string|int|float|bool|null>
+     */
+    public function getSanitizedKeys(): array
+    {
+        $sanitized = [];
+        foreach ($this->keys as $key => $value) {
+            $sanitized[$key] = self::sanitize($value);
+        }
+        return $sanitized;
     }
 
     /**
