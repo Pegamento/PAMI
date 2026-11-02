@@ -109,22 +109,18 @@ namespace PAMI\Client\Impl {
             return call_user_func_array('\stream_set_timeout', func_get_args());
         }
     }
-    function stream_get_meta_data()
+    function stream_get_meta_data($stream)
     {
         global $mockRTimeout;
         global $mock_stream_socket_client;
         global $mock_stream_get_meta_data_return;
-        if (isset($mock_stream_socket_client)) {
-            if ($mock_stream_socket_client === true) {
-                if ($mock_stream_get_meta_data_return === true) {
-                    sleep($mockRTimeout);
-                }
-                return array('timed_out' => $mock_stream_get_meta_data_return);
+        if (isset($mock_stream_socket_client) && $mock_stream_socket_client === true) {
+            if ($mock_stream_get_meta_data_return === true) {
+                sleep($mockRTimeout);
             }
-            return $mock_stream_socket_client;
-        } else {
-            return call_user_func_array('\stream_get_meta_data', func_get_args());
+            return array('timed_out' => $mock_stream_get_meta_data_return);
         }
+        return \stream_get_meta_data($stream);
     }
     function fwrite()
     {

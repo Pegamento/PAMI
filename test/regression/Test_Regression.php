@@ -268,6 +268,7 @@ namespace PAMI\Client\Impl {
             global $mock_stream_socket_client;
             global $mock_stream_set_blocking;
             global $mockTime;
+            global $mockFwriteCount;
             global $standardAMIStart;
             $mockTime = true;
             $mock_stream_socket_client = true;
@@ -281,6 +282,69 @@ namespace PAMI\Client\Impl {
             $client->open();
             $client->close();
             $this->assertNull($client->getSocket());
+            $this->assertSame(2, $mockFwriteCount);
+        }
+
+        #[Test]
+        public function close_skips_logoff_when_the_peer_has_gone()
+        {
+            $this->useRealSocketIo();
+            [$socket, $peer] = $this->connectedSocketPair();
+            try {
+                \stream_socket_shutdown($peer, STREAM_SHUT_WR);
+                $read = [$socket];
+                $write = null;
+                $except = null;
+                $ready = \stream_select($read, $write, $except, 2, 0);
+                $this->assertSame(1, $ready);
+
+                $client = new \PAMI\Client\Impl\ClientImpl($this->clientOptions());
+                $this->markConnected($client, $socket);
+                $started = microtime(true);
+                $client->close();
+
+                $this->assertLessThan(1.0, microtime(true) - $started);
+                $this->assertNull($client->getSocket());
+                \stream_set_blocking($peer, false);
+                $payload = \stream_get_contents($peer);
+                $this->assertIsString($payload);
+                $this->assertStringNotContainsString('Logoff', $payload);
+            } finally {
+                $this->closeSocket($peer);
+                $this->closeSocket($socket);
+            }
+        }
+
+        #[Test]
+        public function close_sends_logoff_when_the_socket_is_open()
+        {
+            $this->useRealSocketIo();
+            [$socket, $peer] = $this->connectedSocketPair();
+            try {
+                $goodbye = "Response: Goodbye\r\nActionID: 1432.123\r\n"
+                    . "Message: Thanks for all the fish.\r\n\r\n";
+                $this->assertSame(strlen($goodbye), \fwrite($peer, $goodbye));
+                $read = [$socket];
+                $write = null;
+                $except = null;
+                $ready = \stream_select($read, $write, $except, 2, 0);
+                $this->assertSame(1, $ready);
+
+                $client = new \PAMI\Client\Impl\ClientImpl($this->clientOptions());
+                $this->markConnected($client, $socket);
+                $started = microtime(true);
+                $client->close();
+
+                $this->assertLessThan(1.0, microtime(true) - $started);
+                $this->assertNull($client->getSocket());
+                \stream_set_blocking($peer, false);
+                $payload = \stream_get_contents($peer);
+                $this->assertIsString($payload);
+                $this->assertStringContainsString('Logoff', $payload);
+            } finally {
+                $this->closeSocket($peer);
+                $this->closeSocket($socket);
+            }
         }
 
         #[Test]
@@ -403,6 +467,60 @@ namespace PAMI\Client\Impl {
             $this->assertSame(base64_encode($body), $action->getKey('base64body'));
             $this->assertSame('pjsip:me', $action->getKey('from'));
             $this->assertStringNotContainsString("hello\r\nworld", $action->serialize());
+        }
+
+        private function useRealSocketIo(): void
+        {
+            global $mock_stream_socket_client, $mockFgets, $mockFwrite, $mockFwritePartial;
+            $mock_stream_socket_client = false;
+            $mockFgets = false;
+            $mockFwrite = false;
+            $mockFwritePartial = 0;
+        }
+
+        /**
+         * @return array{0: resource, 1: resource}
+         */
+        private function connectedSocketPair(): array
+        {
+            $errno = 0;
+            $errstr = '';
+            $server = \stream_socket_server('tcp://127.0.0.1:0', $errno, $errstr);
+            $this->assertIsResource($server);
+            try {
+                $name = \stream_socket_get_name($server, false);
+                $this->assertIsString($name);
+                $client = \stream_socket_client('tcp://' . $name, $errno, $errstr, 2);
+                $this->assertIsResource($client);
+                $peer = \stream_socket_accept($server, 2);
+                $this->assertIsResource($peer);
+                \stream_set_blocking($client, true);
+                \stream_set_timeout($client, 5);
+                return [$client, $peer];
+            } finally {
+                \fclose($server);
+            }
+        }
+
+        /**
+         * @param resource $socket
+         */
+        private function markConnected(\PAMI\Client\Impl\ClientImpl $client, $socket): void
+        {
+            $socketProperty = new \ReflectionProperty($client, 'socket');
+            $socketProperty->setValue($client, $socket);
+            $connectedProperty = new \ReflectionProperty($client, 'connected');
+            $connectedProperty->setValue($client, true);
+        }
+
+        /**
+         * @param resource|false|null $socket
+         */
+        private function closeSocket($socket): void
+        {
+            if (is_resource($socket)) {
+                \fclose($socket);
+            }
         }
 
         /**
